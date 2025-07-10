@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rohan Bali Portfolio</title>
+
+  <!--
+    - favicon
+  -->
+  <link rel="shortcut icon" href="./assets/images/logo.ico" type="image/x-icon">
+
+  <!--
+    - custom css link
+  -->
+  <link rel="stylesheet" href="./assets/css/style.css">
+
+  <!--
+    - google font link
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+  <!--
+    - #MAIN
+  -->
+
+  <main>
+
+    <!--
+      - #SIDEBAR
+    -->
+
+    <aside class="sidebar" data-sidebar>
+
+      <div class="sidebar-info">
+
+        <figure class="avatar-box">
+          <img src="./assets/images/my-avatar.png" alt="Rohan Bali" width="80">
+        </figure>
+
+        <div class="info-content">
+          <h1 class="name" title="Richard hanrick">Rohan Bali</h1>
+
+          <p class="title">Data Scientist</p>
+        </div>
+
+        <button class="info_more-btn" data-sidebar-btn>
+          <span>Show Contacts</span>
+
+          <ion-icon name="chevron-down"></ion-icon>
+        </button>
+
+      </div>
+
+      <div class="sidebar-info_more">
+
+        <div class="separator"></div>
+
+        <ul class="contacts-list">
+
+          <li class="contact-item">
+
+            <div class="icon-box">
+              <ion-icon name="mail-outline"></ion-icon>
+            </div>
+
+            <div class="contact-info">
+              <p class="contact-title">Email</p>
+
+              <a href="mailto:rbali@umassd.edu" class="contact-link">rbali@umassd.edu</a>
+            </div>
+
+          </li>
+
+          <li class="contact-item">
+
+            <div class="icon-box">
+              <ion-icon name="phone-portrait-outline"></ion-icon>
+            </div>
+
+            <div class="contact-info">
+              <p class="contact-title">Phone</p>
+
+              <a href="tel:+17745240505" class="contact-link">+1 (774) 524-0505</a>
+            </div>
+
+          </li>
+
+          <li class="contact-item">
+
+            <div class="icon-box">
+              <ion-icon name="calendar-outline"></ion-icon>
+            </div>
+
+            <div class="contact-info">
+              <p class="contact-title">Birthday</p>
+
+              <time datetime="1982-06-23">August 11, 1998</time>
+            </div>
+
+          </li>
+
+          <li class="contact-item">
+
+            <div class="icon-box">
+              <ion-icon name="location-outline"></ion-icon>
+            </div>
+
+            <div class="contact-info">
+              <p class="contact-title">Location</p>
+
+              <address>Boston, Massachusetts, USA</address>
+            </div>
+
+          </li>
+
+        </ul>
+
+        <div class="separator"></div>
+
+        <ul class="social-list">
+
+          <li class="social-item">
+            <a href="https://www.linkedin.com/in/rohan-bali-301345293/" class="social-link">
+              <ion-icon name="logo-linkedin"></ion-icon>
+            </a>
+          </li>
+
+          <li class="social-item">
+            <a href="https://medium.com/@bali2rohan" class="social-link">
+              <ion-icon name="logo-medium"></ion-icon>
+            </a>
+          </li>
+
+          <li class="social-item">
+            <a href="https://github.com/rohanbalixz" class="social-link">
+              <ion-icon name="logo-github"></ion-icon>
+            </a>
+          </li>
+
+        </ul>
+
+      </div>
+
+    </aside>
+
+
+
+
+
+    <!--
+      - #main-content
+    -->
+
+    <div class="main-content">
+
+      <!--
+        - #NAVBAR
+      -->
+
+      <nav class="navbar">
+
+        <ul class="navbar-list">
+
+          <li class="navbar-item">
+            <button class="navbar-link  active" data-nav-link>About</button>
+          </li>
+
+          <li class="navbar-item">
+            <button class="navbar-link" data-nav-link>Resume</button>
+          </li>
+
+        </ul>
+
+      </nav>
+
+
+
+
+
+      <!--
+        - #ABOUT
+      -->
+
+      <article class="about  active" data-page="about">
+
+        <header>
+          <h2 class="h2 article-title">About me</h2>
+        </header>
+
+        <section class="about-text">
+          <p>
+            I am Rohan Bali, a Masters candidate in Data Science at UMass Dartmouth. Working at the intersection of machine learning and cloud engineering. 
+            I enjoy turning complex problems, whether it is unstructured data or large scale 
+            infrastructure into simple, beautiful, and intuitive solution.  
+          </p>
+          <p>
+            My job is to design and deploy predictive models and data pipelines that are 
+            robust and user friendly but also visually compelling. Moreover, I add a personal touch to 
+            each project, ensuring dashboards and reports are eye catching and easy to navigate. 
+            My aim is to bring your data story to life in the most creative way. 
+            I have crafted data driven solutions for enterprise teams at Capgemini.
+          </p>
+
+        
+        </section>
+
+
+        <!--
+          - service
+        -->
+        
+        <header>
+          <h2 class="h2 article-title">Portfolio</h2>
+        </header>
+        <section class="projects">
+
+          <ul class="project-list">
+
+            <li class="project-item  active" data-filter-item data-category="web development">
+              <a href="https://rohanbalixz.github.io/global_airport_dashboard/">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img src="./assets/images/project-10.png" alt="arrival" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">Global Airport Management Dashboard (LIVE)</h3>
+
+                <p class="project-category">Data Visualization</p>
+
+              </a>
+            </li>
+
+            <li class="project-item  active" data-filter-item data-category="web development">
+              <a href="https://github.com/rohanbalixz/Disaster-Risk-Monitoring-Using-Satellite-Imagery">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+                  
+                  <img src="./assets/images/project-1.jpg" alt="finance" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">Disaster Risk Monitoring Using Satellite Imagery</h3>
+
+                <p class="project-category">Deep Learning</p>
+
+              </a>
+            </li>
+
+            <li class="project-item  active" data-filter-item data-category="web development">
+              <a href="https://github.com/rohanbalixz/Accelerating-COVID-19-Diagnosis-Using-High-Performance-GPU-Training">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img src="./assets/images/project-2.png" alt="orizon" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">Accelerating COVID-19 Diagnosis Using High Performance GPU Training</h3>
+
+                <p class="project-category">Deep Learning</p>
+
+              </a>
+            </li>
+
+            <li class="project-item  active" data-filter-item data-category="web design">
+              <a href="https://github.com/rohanbalixz/Movie-Recommendation-System">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img src="./assets/images/project-3.jpg" alt="fundo" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">Movie Recommendation System</h3>
+
+                <p class="project-category">Natural Language Processing</p>
+
+              </a>
+            </li>
+
+            <li class="project-item  active" data-filter-item data-category="applications">
+              <a href="https://github.com/rohanbalixz/NASA-Logs-Billing-Dashboard">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img src="./assets/images/project-4.png" alt="brawlhalla" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">NASA Logs Billing Dashboard</h3>
+
+                <p class="project-category">Data Engineering</p>
+
+              </a>
+            </li>
+
+            <li class="project-item  active" data-filter-item data-category="web design">
+              <a href="https://github.com/rohanbalixz/RealEstatePricePrediction">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img src="./assets/images/project-5.png" alt="dsm." loading="lazy">
+                </figure>
+
+                <h3 class="project-title">Real Estate Price Prediction</h3>
+
+                <p class="project-category">Machine Learning</p>
+
+              </a>
+            </li>
+
+            <li class="project-item  active" data-filter-item data-category="web design">
+              <a href="https://github.com/rohanbalixz/Interactive-CT-Scan-Contour-Map">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img src="./assets/images/project-6.png" alt="metaspark" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">Interactive CT Scan Contour Map</h3>
+
+                <p class="project-category">Data Visualization</p>
+
+              </a>
+            </li>
+
+            <li class="project-item  active" data-filter-item data-category="web development">
+              <a href="https://github.com/rohanbalixz/Car-Price-Prediction-System">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img src="./assets/images/project-7.png" alt="summary" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">Car Resell Price Prediction System</h3>
+
+                <p class="project-category">Machine Learning</p>
+
+              </a>
+            </li>
+
+            <li class="project-item  active" data-filter-item data-category="applications">
+              <a href="https://github.com/rohanbalixz/Analysis-of-Global-Terrorism-Data-Using-Python">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img src="./assets/images/project-8.jpg" alt="task manager" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">Analysis of Global Terrorism Data Using Python</h3>
+
+                <p class="project-category">Machine Learning</p>
+
+              </a>
+            </li>
+
+            <li class="project-item  active" data-filter-item data-category="web development">
+              <a href="https://github.com/rohanbalixz/Understanding-Academic-Collaboration-Networks-Through-Small-World-Theory">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img src="./assets/images/project-9.png" alt="arrival" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">Understanding Academic Collaboration Networks Through Small World Theory</h3>
+
+                <p class="project-category">Machine Learning</p>
+
+              </a>
+            </li>
+
+          </ul>
+
+        </section>
+
+
+        <header>
+          <h2 class="h2 article-title">What I Am Doing</h2>
+        </header>
+        <section class="service">
+
+      
+
+          <ul class="service-list">
+
+            <li class="service-item">
+
+              
+
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title">Building RAG Agents</h4>
+
+                <p class="service-item-text">
+                  Develop state-of-the-art Retrieval-Augmented Generation agents that seamlessly 
+                  combine vector retrieval with large language models to deliver precise, 
+                  context-aware answers tailored to your domain.
+                </p>
+              </div>
+
+            </li>
+
+            
+            <li class="service-item">
+
+              
+
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title">Fine Tuning LLMs</h4>
+
+                <p class="service-item-text">
+                  Customize large language models on your own datasets to boost accuracy 
+                  on specialized NLP tasks, then integrate them into production pipelines 
+                  for maximum performance.
+                </p>
+              </div>
+
+            </li>
+
+            <li class="service-item">
+
+              
+
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title">Predictive Modeling</h4>
+
+                <p class="service-item-text">
+                  Build and deploy robust machine-learning pipelines that forecast trends, 
+                  classify outcomes, and power data-driven decisions across your organization.
+                </p>
+              </div>
+
+            </li>
+
+            <li class="service-item">
+
+              
+
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title">Anomaly Detection</h4>
+
+                <p class="service-item-text">
+                  Implement real-time anomaly detection systems to spot outliers and 
+                  unusual patterns in data streams, helping you prevent issues and maintain 
+                  operational integrity.
+                </p>
+              </div>
+
+            </li>
+
+            <li class="service-item">
+
+              
+
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title">Fraud Detection</h4>
+
+                <p class="service-item-text">
+                  Design and deploy real-time fraud detection systems for web and mobile platforms, 
+                  leveraging machine learning and anomaly detection to identify and prevent 
+                  fraudulent activity with high accuracy and low latency.
+                </p>
+              </div>
+
+            </li>
+
+            <li class="service-item">
+
+              
+
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title">A/B Testing</h4>
+
+                <p class="service-item-text">
+                  Plan, run, and analyze A/B experiments to optimize user experiences, 
+                  validate design changes, and drive conversion with rigorously tested, 
+                  data-driven insights.
+                </p>
+              </div>
+
+            </li>
+
+          </ul>
+
+        </section>
+
+        
+        
+
+
+        <!--
+          - testimonials
+        -->
+        <header>
+          <h2 class="h2 article-title">Certifications</h2>
+        </header>
+        <section class="testimonials">
+
+
+          <ul class="testimonials-list has-scrollbar">
+            <li class="testimonials-item">
+              <a href = "https://learn.nvidia.com/certificates?id">
+                <div class="content-card" data-testimonials-item>
+                  <figure class="testimonials-avatar-box">
+                    <img src="./assets/images/avatar-1.png" alt="Disaster Risk Monitoring Using Satellite Imagery" width="60" data-testimonials-avatar>
+                  </figure>
+                  <h4 class="h4 testimonials-item-title" data-testimonials-title>Disaster Risk Monitoring Using Satellite Imagery</h4>
+                  <div class="testimonials-text" data-testimonials-text>
+                    <p>
+                      Issued Mar 2025
+                    </p>
+                    <p>
+                      Credential ID TPtajwPPQ9qVBOkFJ5pVhg
+                    </p>
+                  </div>
+
+                </div>
+              </a>
+            </li>
+
+            <li class="testimonials-item">
+              <a href = "https://www.credly.com/badges/fda60383-51f2-4a21-994b-b716417a250c/public_url">
+                <div class= "content-card" data-testimonials-item>
+                    <figure class="testimonials-avatar-box">
+                      <img src="./assets/images/avatar-2.png" alt="Jessica miller" width="60" data-testimonials-avatar>
+                    </figure>
+
+                    <h4 class="h4 testimonials-item-title" data-testimonials-title>McKinsey.org Forward program</h4>
+
+                    <div class="testimonials-text" data-testimonials-text>
+                      <p>
+                        Issued Jul 2025
+                      </p>
+                      <p>
+                        Credential ID fda60383-51f2-4a21-994b-b716417a250c
+                      </p>
+                  </div>
+
+                </div>
+              </a>
+            </li>
+
+          </ul>
+
+        </section>
+
+
+
+        <!--
+          - testimonials modal
+        -->
+
+        <div class="modal-container" data-modal-container>
+
+          <div class="overlay" data-overlay></div>
+
+          <section class="testimonials-modal">
+
+            <button class="modal-close-btn" data-modal-close-btn>
+              <ion-icon name="close-outline"></ion-icon>
+            </button>
+
+          </section>
+
+        </div>
+
+
+        <!--
+          - clients
+        -->
+
+        <section class="clients">
+
+          
+        </section>
+
+      </article>
+
+            <!--
+        - #RESUME
+      -->
+
+      <article class="resume" data-page="resume">
+
+        <header>
+          <h2 class="h2 article-title">Resume</h2>
+        </header>
+
+        <section class="timeline">
+
+          <div class="title-wrapper">
+            <div class="icon-box">
+              <ion-icon name="book-outline"></ion-icon>
+            </div>
+
+            <h3 class="h3">Education</h3>
+          </div>
+
+          <ol class="timeline-list">
+
+            <li class="timeline-item">
+
+              <h4 class="h4 timeline-item-title">University of Massachusetts, Dartmouth</h4>
+
+              <span>2024 — 2025</span>
+
+              <p class="timeline-text">
+                M.S. Data Science
+              </p>
+
+            </li>
+
+            <li class="timeline-item">
+
+              <h4 class="h4 timeline-item-title">Manipal University Jaipur</h4>
+
+              <span>2017 — 2021</span>
+
+              <p class="timeline-text">
+                B. Tech Computer and Communication Engineering
+              </p>
+
+            </li>
+
+          </ol>
+
+        </section>
+
+        <section class="timeline">
+
+          <div class="title-wrapper">
+            <div class="icon-box">
+              <ion-icon name="book-outline"></ion-icon>
+            </div>
+
+            <h3 class="h3">Experience</h3>
+          </div>
+
+          <ol class="timeline-list">
+
+            <li class="timeline-item">
+
+              <h4 class="h4 timeline-item-title">Software Engineer @ Capgemini</h4>
+
+              <span>December 2021 — August 2023</span>
+
+              <p class="timeline-text">
+                 Redesigned robust core components of an internal tool using Azure and AWS,reducing manual issues by 30%, and Automated operational tasks with Python 
+                 and PowerShell, boosting efficiency by 25%Led cross-functional code reviews, reducing deployment errors by 40%, and
+                 Integrated CI/CD pipelines, enhancing release cycles by 15%.
+              </p>
+
+            </li>
+
+            <li class="timeline-item">
+
+              <h4 class="h4 timeline-item-title">Machine Learning Engineer @ Upcred</h4>
+
+              <span>May 2021 — December 2021</span>
+
+              <p class="timeline-text">
+                Designed a learning-based approach saving $650/month in operational costs, and reducing latency by 25% and
+                Maintained a version-controlled dataset repository, improving reproducibility
+                across projects by 30%.
+              </p>
+
+            </li>
+
+          </ol>
+
+        </section>
+
+        <section class="skill">
+
+          <h3 class="h3 skills-title">My skills</h3>
+
+          <ul class="skills-list content-card">
+
+            <li class="skills-item">
+
+              <div class="title-wrapper">
+                <h5 class="h5">Predictive Modeling & Machine Learning</h5>
+                <data value="90"></data>
+              </div>
+
+              <div class="skill-progress-bg">
+                <div class="skill-progress-fill" style="width: 90%;"></div>
+              </div>
+
+            </li>
+
+            <li class="skills-item">
+
+              <div class="title-wrapper">
+                <h5 class="h5">Statistical Analysis & Experimental Design</h5>
+                <data value="75"></data>
+              </div>
+
+              <div class="skill-progress-bg">
+                <div class="skill-progress-fill" style="width: 75%;"></div>
+              </div>
+
+            </li>
+
+            <li class="skills-item">
+
+              <div class="title-wrapper">
+                <h5 class="h5">Deep Learning & Natural Language Processing (NLP)</h5>
+                <data value="85"></data>
+              </div>
+
+              <div class="skill-progress-bg">
+                <div class="skill-progress-fill" style="width: 85%;"></div>
+              </div>
+
+            </li>
+
+            <li class="skills-item">
+
+              <div class="title-wrapper">
+                <h5 class="h5">ETL Pipeline Development</h5>
+                <data value="70"></data>
+              </div>
+
+              <div class="skill-progress-bg">
+                <div class="skill-progress-fill" style="width: 70%;"></div>
+              </div>
+
+            </li>
+
+            <li class="skills-item">
+
+              <div class="title-wrapper">
+                <h5 class="h5">Big Data Frameworks</h5>
+                <data value="75"></data>
+              </div>
+
+              <div class="skill-progress-bg">
+                <div class="skill-progress-fill" style="width: 75%;"></div>
+              </div>
+
+            </li>
+
+            <li class="skills-item">
+
+              <div class="title-wrapper">
+                <h5 class="h5">Cloud Data Architecture</h5>
+                <data value="85"></data>
+              </div>
+
+              <div class="skill-progress-bg">
+                <div class="skill-progress-fill" style="width: 85%;"></div>
+              </div>
+
+            </li>
+
+            <li class="skills-item">
+
+              <div class="title-wrapper">
+                <h5 class="h5">Data Visualization & Dashboarding</h5>
+                <data value="95"></data>
+              </div>
+
+              <div class="skill-progress-bg">
+                <div class="skill-progress-fill" style="width: 95%;"></div>
+              </div>
+
+            </li>
+
+            <li class="skills-item">
+
+              <div class="title-wrapper">
+                <h5 class="h5">SQL & Relational Database Querying</h5>
+                <data value="90"></data>
+              </div>
+
+              <div class="skill-progress-bg">
+                <div class="skill-progress-fill" style="width: 90%;"></div>
+              </div>
+
+            </li>
+
+            <li class="skills-item">
+
+              <div class="title-wrapper">
+                <h5 class="h5">Exploratory Data Analysis (EDA)</h5>
+                <data value="95"></data>
+              </div>
+
+              <div class="skill-progress-bg">
+                <div class="skill-progress-fill" style="width: 95%;"></div>
+              </div>
+
+            </li>
+
+          </ul>
+
+        </section>
+
+      </article>
+
+
+
+
+      <!--
+        - #PORTFOLIO
+      -->
+
+      <article class="portfolio" data-page="portfolio">
+
+        <header>
+          <h2 class="h2 article-title">Portfolio</h2>
+        </header>
+
+      </article>
+
+
+
+
+
+      <!--
+        - #BLOG
+      -->
+
+      <article class="blog" data-page="blog">
+
+    
+      </article>
+
+
+
+
+
+      <!--
+        - #CONTACT
+      -->
+
+      <article class="contact" data-page="contact">
+
+      </article>
+
+    </div>
+
+  </main>
+
+  <!--
+    - custom js link
+  -->
+  <script src="./assets/js/script.js"></script>
+
+  <!--
+    - ionicon link
+  -->
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+</body>
+
+</html>
