@@ -3,7 +3,6 @@ import { Inter, Source_Serif_4, IBM_Plex_Mono } from 'next/font/google';
 import './globals.css';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import { asset } from '@/lib/site';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -54,7 +53,7 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: asset('/og.svg'),
+        url: '/og.svg',
         width: 1200,
         height: 630,
         alt: 'Rohan Bali. Robust spatiotemporal vision for Earth observation.',
@@ -66,7 +65,7 @@ export const metadata: Metadata = {
     title: 'Rohan Bali. Geospatial AI research.',
     description:
       'I work on robust spatiotemporal vision for Earth observation.',
-    images: [asset('/og.svg')],
+    images: ['/og.svg'],
   },
 };
 
