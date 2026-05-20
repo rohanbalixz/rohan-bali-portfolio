@@ -21,7 +21,7 @@ export default function ResultsTable({
                 <th
                   key={i}
                   scope="col"
-                  className={`px-4 py-3 font-mono text-xs uppercase tracking-wider text-subtle ${
+                  className={`px-4 py-3 font-mono text-xs uppercase tracking-wider text-subtle whitespace-nowrap ${
                     i === 0 ? 'text-left' : 'text-right'
                   }`}
                 >
@@ -44,7 +44,7 @@ export default function ResultsTable({
                     className={`px-4 py-3 ${
                       ci === 0
                         ? 'text-ink font-medium'
-                        : 'text-muted text-right'
+                        : 'text-muted text-right whitespace-nowrap'
                     } ${ri === highlightRow ? 'text-ink' : ''}`}
                   >
                     {cell}
