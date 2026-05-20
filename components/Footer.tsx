@@ -16,7 +16,6 @@ export default function Footer() {
               <li><Link href="/publications" className="link-quiet">Paper</Link></li>
               <li><Link href="/code" className="link-quiet">Code</Link></li>
               <li><Link href="/cv" className="link-quiet">CV</Link></li>
-              <li><Link href="/about" className="link-quiet">About</Link></li>
               <li><Link href="/contact" className="link-quiet">Contact</Link></li>
               <li><Link href="/archive" className="link-quiet">Archive</Link></li>
             </ul>

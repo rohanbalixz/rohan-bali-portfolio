@@ -5,7 +5,7 @@ import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 
 const navLinks = [
-  { href: '/about', label: 'About' },
+  { href: '/', label: 'About' },
   { href: '/research', label: 'Research' },
   { href: '/publications', label: 'Paper' },
   { href: '/code', label: 'Code' },
@@ -27,23 +27,21 @@ export default function Navbar() {
     <nav className="fixed top-0 w-full bg-paper/95 backdrop-blur-md border-b border-rule z-50">
       <div className="max-w-5xl mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
-          <Link
-            href="/"
-            onClick={() => setMobileMenuOpen(false)}
-            className="group flex items-center gap-3"
-            aria-label="Rohan Bali, Home"
+          <div
+            className="flex items-center gap-3"
+            aria-label="Rohan Bali"
           >
             <span
               className="relative inline-flex items-center justify-center w-7 h-7 font-serif text-base text-ink leading-none"
               aria-hidden="true"
             >
               R
-              <span className="absolute bottom-0.5 left-1 right-1 h-px bg-accent transition-transform origin-left group-hover:scale-x-110" />
+              <span className="absolute bottom-0.5 left-1 right-1 h-px bg-accent" />
             </span>
-            <span className="font-serif text-base text-ink tracking-tight group-hover:text-accent transition-colors">
+            <span className="font-serif text-base text-ink tracking-tight">
               Rohan Bali
             </span>
-          </Link>
+          </div>
 
           <div className="hidden md:flex gap-8">
             {navLinks.map((link) => (
