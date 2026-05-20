@@ -1,0 +1,174 @@
+{
+  "summary": "M.S. Data Science researcher working on geospatial AI and robust spatiotemporal vision. Current focus: benchmark validity, geographic transfer, and uncertainty under shift in Earth-observation ML.",
+  "research_interests": "My research is on evaluation methodology and out-of-distribution generalization for spatiotemporal vision. I work on input-design covariates that confound architectural comparisons in earth-observation models (channel count, temporal horizon, geographic distribution), and on whether observed differences hold up under sealed holdouts and zero-shot geographic transfer. Broader interests: robust computer vision, distribution-shift evaluation, calibrated uncertainty in deep learning.",
+  "education": [
+    {
+      "degree": "M.S. in Data Science",
+      "institution": "University of Massachusetts Dartmouth",
+      "department": "Department of Computer & Information Science",
+      "location": "Dartmouth, MA",
+      "duration": "2024–2026",
+      "advisor": "Dr. Donghui Yan",
+      "advisor_url": "https://www.umassd.edu/directory/dyan/",
+      "thesis": "Multi-Horizon Urban Growth Prediction: A Comparative Deep Learning Study",
+      "focus": "Distribution shift, evaluation methodology, and uncertainty quantification in spatiotemporal vision",
+      "coursework": [
+        "Machine Learning",
+        "Deep Learning",
+        "Advanced Statistics",
+        "Network Science",
+        "Optimization",
+        "Big Data Analytics"
+      ]
+    },
+    {
+      "degree": "B.Tech in Computer and Communication Engineering",
+      "institution": "Manipal University Jaipur",
+      "department": "School of Computing and Information Technology",
+      "location": "Jaipur, India",
+      "duration": "2017–2021",
+      "advisor": "Dr. Somya Goyal",
+      "project": "Road Safety Analysis using Machine Learning"
+    }
+  ],
+  "honors_awards": [
+    {
+      "title": "GeoAI 2026 Oral Presentation",
+      "year": "2026"
+    },
+    {
+      "title": "National Talent Search Examination (NTSE) Scholar, Government of India",
+      "year": "2016"
+    }
+  ],
+  "publications": [
+    {
+      "title": "The Channel-Count Confound: A Continental Audit of Multi-Horizon Urban Growth Prediction",
+      "authors": "Rohan Bali",
+      "venue": "GeoAI 2026, Ghent, Belgium (Oral). Also at SpatialDI 2026, Springer LNCS proceedings, ACM SIGSPATIAL China Chapter, Changsha, China.",
+      "note": "Sole author. Distilled from the M.S. thesis.",
+      "year": "2026",
+      "url": ""
+    }
+  ],
+  "in_preparation": [
+    {
+      "title": "Causal Modeling for Land-Cover Change under Geographic Distribution Shift",
+      "authors": "Rohan Bali",
+      "note": "Sole author. Direct mechanistic follow-on to the channel-count audit: tests the causal contribution of terrain, transport networks, and settlement structure to out-of-distribution geographic transfer in spatiotemporal vision models, using the same CONUS-to-Lagos protocol established in the GeoAI paper."
+    }
+  ],
+  "research_projects": [
+    {
+      "title": "Multi-Horizon Urban-Growth Prediction (Channel-Count Confound)",
+      "duration": "2025–2026",
+      "description": "Continental-scale benchmark audit of CNN and ConvLSTM comparisons on multi-horizon urban-growth prediction using GHSL R2023A over CONUS.",
+      "highlights": [
+        "Sealed 2020 temporal holdout; channel-matched horizon controls",
+        "MC Dropout calibration r = 0.983 across 8.69M validation pixels",
+        "Zero-shot transfer to Lagos, Nigeria",
+        "SpatialDI 2026 (Springer LNCS) main paper. GeoAI 2026 short paper (oral). PDFs and Zenodo DOI forthcoming."
+      ]
+    },
+    {
+      "title": "Learning from Minimal Data under Distribution Shift (Master's thesis)",
+      "duration": "2024–2026",
+      "description": "Frameworks for data-efficient learning when supervision is scarce and the distribution moves; the boundary between representation learning, robustness, and evaluation.",
+      "highlights": [
+        "Investigating robustness and adaptation in low-data regimes",
+        "Empirical study of representation-learning trade-offs under shift"
+      ]
+    },
+    {
+      "title": "Disaster Risk Monitoring from Satellite Radar (NVIDIA DLI)",
+      "duration": "2025",
+      "description": "U-Net flood segmentation on Sentinel-1 SAR with preprocessing tuned to radar noise.",
+      "highlights": [
+        "Dice = 0.82, IoU = 0.78 on UNOSAT flood event",
+        "Earth Engine integration for real-time risk assessment"
+      ]
+    },
+    {
+      "title": "Academic Collaboration Networks",
+      "duration": "2024",
+      "description": "Small-world analysis across 180K+ co-authorship edges and 12 academic domains.",
+      "highlights": [
+        "72% of high-impact researchers within a 3-hop neighborhood",
+        "Reproducible citation-graph and author-impact pipelines"
+      ]
+    }
+  ],
+  "professional_experience": [
+    {
+      "company": "Capgemini",
+      "location": "Mumbai, India",
+      "role": "Software Engineer",
+      "duration": "December 2021 – August 2023",
+      "description": "Supported production infrastructure and job-scheduling workflows; built Python, PowerShell, and Bash automation for data and systems operations across cloud environments."
+    },
+    {
+      "company": "Upcred.ai",
+      "location": "Bangalore, India",
+      "role": "Machine Learning Researcher",
+      "duration": "June 2021 – December 2021",
+      "description": "Designed Python and Beautiful Soup web-scraping pipelines and MongoDB schemas supplying training data for the team's machine learning models."
+    }
+  ],
+  "engineering_projects": [
+    {
+      "title": "Tripsy: RAG Travel Assistant",
+      "duration": "2025",
+      "description": "Retrieval-augmented travel-planning assistant with geographic embeddings and OpenRoute integration.",
+      "highlights": [
+        "Reduced hallucinations by 35% over GPT-only baseline"
+      ]
+    },
+    {
+      "title": "LocalMapReduce",
+      "duration": "2024",
+      "description": "Local MapReduce on Python + LevelDB with multiprocessing.",
+      "highlights": [
+        "Near-linear scaling on 8 cores (R² = 0.94)"
+      ]
+    }
+  ],
+  "service": [
+    {
+      "role": "Founding Team Member, The Parivartan Foundation",
+      "duration": "2023 – Present",
+      "description": "Registered non-profit based in Shimla, Himachal Pradesh, India. Source and analyze public government datasets to identify community-level priorities and inform targeted outreach campaigns for local development and civic engagement."
+    }
+  ],
+  "skills": {
+    "research": [
+      "Spatiotemporal vision",
+      "Benchmark design",
+      "Uncertainty quantification (MC Dropout, ensembles)",
+      "Geographic transfer evaluation",
+      "Reproducibility (sealed holdouts, multi-seed reporting)"
+    ],
+    "ml": [
+      "PyTorch",
+      "TensorFlow",
+      "ConvLSTM",
+      "Graph Neural Networks",
+      "Conformal & post-hoc calibration"
+    ],
+    "data": [
+      "GHSL",
+      "Sentinel-1 SAR",
+      "GDAL",
+      "Earth Engine",
+      "pandas",
+      "NumPy"
+    ],
+    "systems": [
+      "Python",
+      "Docker",
+      "Git",
+      "AWS",
+      "GCP",
+      "Airflow"
+    ]
+  }
+}

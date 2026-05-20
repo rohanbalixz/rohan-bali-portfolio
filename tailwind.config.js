@@ -1,0 +1,87 @@
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: [
+    './pages/**/*.{js,ts,jsx,tsx,mdx}',
+    './components/**/*.{js,ts,jsx,tsx,mdx}',
+    './app/**/*.{js,ts,jsx,tsx,mdx}',
+  ],
+  theme: {
+    extend: {
+      colors: {
+        paper: '#FAFAF7',
+        surface: '#FFFFFF',
+        ink: '#0F172A',
+        muted: '#475569',
+        subtle: '#64748B',
+        rule: '#E5E7EB',
+        'soft-rule': '#EEF2F7',
+        accent: '#0F766E',
+        'accent-hover': '#115E59',
+        secondary: '#92400E',
+        success: '#166534',
+        'code-bg': '#F8FAFC',
+      },
+      fontFamily: {
+        serif: [
+          'Source Serif 4',
+          'Source Serif Pro',
+          'Charter',
+          'Georgia',
+          'Cambria',
+          'serif',
+        ],
+        sans: [
+          'Inter',
+          '-apple-system',
+          'BlinkMacSystemFont',
+          'Segoe UI',
+          'Helvetica Neue',
+          'Arial',
+          'sans-serif',
+        ],
+        mono: [
+          'IBM Plex Mono',
+          'ui-monospace',
+          'SFMono-Regular',
+          'Menlo',
+          'Monaco',
+          'monospace',
+        ],
+      },
+      fontSize: {
+        xs: ['12px', '1.5'],
+        sm: ['14px', '1.6'],
+        base: ['16px', '1.75'],
+        lg: ['18px', '1.75'],
+        xl: ['20px', '1.6'],
+        '2xl': ['24px', '1.4'],
+        '3xl': ['30px', '1.3'],
+        '4xl': ['36px', '1.2'],
+        '5xl': ['48px', '1.1'],
+        '6xl': ['60px', '1.05'],
+        '7xl': ['72px', '1.02'],
+      },
+      lineHeight: {
+        relaxed: '1.75',
+        loose: '1.875',
+      },
+      letterSpacing: {
+        tighter: '-0.025em',
+        tight: '-0.015em',
+        normal: '0',
+        wide: '0.025em',
+        wider: '0.08em',
+        widest: '0.18em',
+      },
+      maxWidth: {
+        prose: '68ch',
+        narrow: '55ch',
+        wide: '76ch',
+      },
+      fontVariantNumeric: {
+        'tabular-nums': 'tabular-nums',
+      },
+    },
+  },
+  plugins: [],
+};

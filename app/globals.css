@@ -1,0 +1,115 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    font-feature-settings: 'kern', 'liga', 'calt', 'ss01';
+  }
+
+  body {
+    @apply bg-paper text-ink font-sans;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif text-ink;
+    font-feature-settings: 'kern', 'liga', 'ss01';
+  }
+
+  a {
+    @apply transition-colors duration-150;
+  }
+
+  :focus-visible {
+    outline: 2px solid theme('colors.accent');
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  ::selection {
+    background-color: theme('colors.accent');
+    color: white;
+  }
+}
+
+@layer components {
+  .overline {
+    @apply text-xs font-sans font-medium uppercase tracking-widest text-muted;
+  }
+
+  .hairline {
+    @apply border-t border-rule;
+  }
+
+  .lede {
+    @apply font-serif text-xl leading-relaxed text-ink;
+  }
+
+  .prose-research {
+    @apply max-w-prose text-base leading-loose text-ink;
+  }
+
+  .prose-research p + p {
+    @apply mt-6;
+  }
+
+  .badge {
+    @apply inline-flex items-center px-2.5 py-1 text-xs font-mono uppercase tracking-wider border border-rule text-muted bg-paper rounded-md;
+  }
+
+  .badge-accent {
+    @apply border-accent/30 text-accent;
+  }
+
+  .badge-secondary {
+    @apply border-secondary/30 text-secondary;
+  }
+
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+
+  .link-inline {
+    @apply text-accent underline decoration-accent/30 underline-offset-4 hover:decoration-accent;
+  }
+
+  .link-quiet {
+    @apply text-ink hover:text-accent;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center gap-2 px-5 py-2.5 text-sm font-medium bg-ink text-paper border border-ink transition-all duration-200 hover:bg-accent hover:border-accent hover:-translate-y-0.5;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center gap-2 px-5 py-2.5 text-sm font-medium bg-transparent border border-rule text-ink transition-all duration-200 hover:border-ink hover:-translate-y-0.5;
+  }
+
+  .card-lift {
+    @apply transition-all duration-200 hover:-translate-y-0.5 hover:border-ink;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .text-pretty {
+    text-wrap: pretty;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

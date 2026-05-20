@@ -1,0 +1,33 @@
+<svg width="1200" height="630" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <defs>
+    <style>
+      .paper { fill: #FAFAF7; }
+      .ink { fill: #0F172A; }
+      .muted { fill: #475569; }
+      .subtle { fill: #64748B; }
+      .accent { fill: #0F766E; }
+      .secondary { fill: #92400E; }
+      .rule { stroke: #E5E7EB; stroke-width: 1; }
+      .display { font-family: 'Source Serif 4', 'Source Serif Pro', Charter, Georgia, serif; font-weight: 500; }
+      .body { font-family: 'Source Serif 4', 'Source Serif Pro', Charter, Georgia, serif; font-weight: 400; }
+      .mono { font-family: 'IBM Plex Mono', 'SFMono-Regular', Menlo, monospace; font-weight: 400; letter-spacing: 0.12em; text-transform: uppercase; }
+    </style>
+  </defs>
+  <rect width="1200" height="630" class="paper"/>
+  <line x1="80" y1="540" x2="1120" y2="540" class="rule"/>
+
+  <text x="80" y="120" font-size="72" class="display ink">Rohan Bali</text>
+
+  <text x="80" y="240" font-size="46" class="body muted">Robust spatiotemporal vision</text>
+  <text x="80" y="295" font-size="46" class="body muted">for Earth observation.</text>
+
+  <text x="80" y="400" font-size="22" class="body ink">M.S. Data Science, University of Massachusetts Dartmouth.</text>
+  <text x="80" y="438" font-size="22" class="body ink">Current paper audits a benchmark confound in multi-horizon</text>
+  <text x="80" y="476" font-size="22" class="body ink">urban-growth prediction.</text>
+
+  <text x="80" y="585" font-size="13" class="mono muted">GeoAI 2026 Oral</text>
+  <text x="245" y="585" font-size="13" class="mono muted">SpatialDI 2026</text>
+  <text x="1120" y="585" font-size="13" class="mono muted" text-anchor="end">rbali@umassd.edu</text>
+
+  <rect x="80" y="552" width="40" height="2" class="accent" />
+</svg>

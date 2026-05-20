@@ -1,0 +1,61 @@
+[
+  {
+    "id": "channel-count-confound-spatialdi",
+    "title": "The Channel-Count Confound: A Continental Audit of Multi-horizon Urban Growth Prediction",
+    "authors": "Rohan Bali",
+    "year": "2026",
+    "venues": [
+      { "label": "SpatialDI 2026 (Springer LNCS)", "tone": "accent" },
+      { "label": "Main paper", "tone": "secondary" }
+    ],
+    "status": "Accepted. Sole author. PDF coming soon at SpatialDI.",
+    "abstract": "A continental audit of CNN and ConvLSTM comparisons on multi-horizon urban-growth prediction across 305M CONUS pixels. Under sealed 2020 temporal holdouts, zero-shot transfer to Lagos, and MC Dropout calibration over 8.69M validation pixels, the apparent ConvLSTM advantage at longer horizons collapses. It was a channel-count artefact, not a representational benefit. Per-tile Wilcoxon and bootstrap confirmation; calibration r = 0.983.",
+    "links": [
+      { "label": "Paper (coming soon)", "href": "" },
+      { "label": "Code & data", "href": "https://github.com/rohanbalixz/Multi-Horizon-Urban-Growth-Prediction", "external": true },
+      { "label": "Project page", "href": "/research/channel-count-confound" }
+    ],
+    "featured": true
+  },
+  {
+    "id": "channel-count-confound-geoai",
+    "title": "Channel Count, Not Horizon Length, Drives Architectural Divergence in Multi-horizon Urban Growth Prediction",
+    "authors": "Rohan Bali",
+    "year": "2026",
+    "venues": [
+      { "label": "GeoAI 2026 Short Paper (Oral)", "tone": "secondary" }
+    ],
+    "status": "Accepted. Sole author. 6-page short paper companion to the SpatialDI main paper. PDF coming soon on Zenodo.",
+    "abstract": "A short-form companion to the SpatialDI main paper. Distils the channel-count finding into a six-page argument: when forecast horizon and input-channel count move together, what looks like a horizon-length effect in CNN vs ConvLSTM comparisons is largely an input-design artefact. Channel-matched controls collapse the apparent gap.",
+    "links": [
+      { "label": "Paper (coming soon)", "href": "" },
+      { "label": "Code & data", "href": "https://github.com/rohanbalixz/Multi-Horizon-Urban-Growth-Prediction", "external": true },
+      { "label": "Project page", "href": "/research/channel-count-confound" }
+    ]
+  },
+  {
+    "id": "causal-transfer-follow-on",
+    "title": "Causal Modeling for Land-Cover Change under Geographic Distribution Shift",
+    "authors": "Rohan Bali",
+    "year": "2026",
+    "venues": [
+      { "label": "In preparation" }
+    ],
+    "status": "Mechanistic follow-on to the channel-count audit",
+    "abstract": "Tests whether terrain, transport networks, and settlement structure explain when CONUS-trained spatiotemporal vision retains or loses behavior under geographic shift. Extends the Lagos transfer experiment into a multi-region causal analysis of representation failure modes.",
+    "links": []
+  },
+  {
+    "id": "small-world-collaboration",
+    "title": "Understanding Academic Collaboration Networks through Small World Theory",
+    "authors": "Rohan Bali",
+    "year": "2024",
+    "venues": [
+      { "label": "Working note. Medium" }
+    ],
+    "abstract": "An empirical study of academic collaboration structure across 12 domains and 180K+ co-authorship edges, applying small-world statistics to test whether high-impact researchers concentrate within short network neighborhoods. Includes reproducible pipelines for citation-graph construction and author-impact inference.",
+    "links": [
+      { "label": "Essay", "href": "https://swn465.home.blog/2024/12/12/understanding-academic-collaboration-networks-through-small-world/", "external": true }
+    ]
+  }
+]
