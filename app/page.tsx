@@ -39,10 +39,10 @@ const selectedWork = [
   },
   {
     title:
-      'Causal Modeling for Land-Cover Change under Geographic Distribution Shift',
+      'Cross-Region Land-Cover Transfer Bounded by Covariate Support: A Multi-Architecture Foundation-Model Audit',
     venue: 'In preparation, 2026',
     body:
-      'A mechanistic follow-on to the channel-count audit. Tests whether terrain, transport networks, and settlement structure explain when CONUS-trained vision retains or loses behavior under geographic shift.',
+      'A multi-architecture follow-on to the channel-count audit. A 44-city benchmark over four under-represented regions tests eight architectures — including three independently pretrained foundation models — and bounds how much cross-region transfer loss is a structural covariate-support mismatch versus an architectural effect.',
     href: '/publications',
     external: false,
     role: 'In preparation',

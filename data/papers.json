@@ -34,15 +34,15 @@
     ]
   },
   {
-    "id": "causal-transfer-follow-on",
-    "title": "Causal Modeling for Land-Cover Change under Geographic Distribution Shift",
+    "id": "cross-region-covariate-support",
+    "title": "Cross-Region Land-Cover Transfer Bounded by Covariate Support: A Multi-Architecture Foundation-Model Audit",
     "authors": "Rohan Bali",
     "year": "2026",
     "venues": [
       { "label": "In preparation" }
     ],
-    "status": "Mechanistic follow-on to the channel-count audit",
-    "abstract": "Tests whether terrain, transport networks, and settlement structure explain when CONUS-trained spatiotemporal vision retains or loses behavior under geographic shift. Extends the Lagos transfer experiment into a multi-region causal analysis of representation failure modes.",
+    "status": "In preparation. Sole author. Multi-architecture follow-on to the channel-count audit.",
+    "abstract": "When a CONUS-trained built-up model is moved to under-represented regions, how much of the degradation is a structural covariate-support mismatch anticipable from source data, and how much is architecture-dependent? A 44-city benchmark over four regions (Andes, Sub-Saharan Africa, South Asia, East Asia) audits eight architecture variants: from-scratch CNN, U-Net, ConvLSTM, and a divided space-time transformer, plus three independently pretrained foundation models (IBM-NASA Prithvi-EO-1.0 and 2.0 on HLS, and Berkeley ScaleMAE on fMoW-RGB). A local-Lipschitz partial-identification bound, estimable from CONUS data alone, correctly nominates the Andes as the hardest region; six models agree on the full four-region hardness ordering at pairwise Spearman ρ = +1.00, and mean transfer gap scales near-linearly with absolute CONUS performance (r ≈ 0.99), traced to a recent-growth shortcut.",
     "links": []
   },
   {

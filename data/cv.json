@@ -53,9 +53,9 @@
   ],
   "in_preparation": [
     {
-      "title": "Causal Modeling for Land-Cover Change under Geographic Distribution Shift",
+      "title": "Cross-Region Land-Cover Transfer Bounded by Covariate Support: A Multi-Architecture Foundation-Model Audit",
       "authors": "Rohan Bali",
-      "note": "Sole author. Direct mechanistic follow-on to the channel-count audit: tests the causal contribution of terrain, transport networks, and settlement structure to out-of-distribution geographic transfer in spatiotemporal vision models, using the same CONUS-to-Lagos protocol established in the GeoAI paper."
+      "note": "Sole author. Multi-architecture follow-on to the channel-count audit. A 44-city benchmark over four under-represented regions (Andes, Sub-Saharan Africa, South Asia, East Asia) audits eight architecture variants — CNN, U-Net, ConvLSTM, a divided space-time transformer, and three independently pretrained foundation models (IBM-NASA Prithvi-EO-1.0/2.0 and Berkeley ScaleMAE) — and derives a covariate-support bound, estimable from CONUS data alone, that correctly identifies the hardest transfer region. Six models agree on the four-region hardness ordering at Spearman ρ = +1.00."
     }
   ],
   "research_projects": [
