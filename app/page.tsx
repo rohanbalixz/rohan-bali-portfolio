@@ -176,7 +176,8 @@ export default function Home() {
                 { label: 'Ablation tables', status: 'yes' },
                 { label: 'Code repository', status: 'yes' },
                 { label: 'Docker image', status: 'no', detail: 'planned' },
-                { label: 'Zenodo DOI', status: 'no', detail: 'reserved · publishing soon' },
+                { label: 'Zenodo DOI (GeoAI)', status: 'yes' },
+                { label: 'Zenodo DOI (SpatialDI)', status: 'no', detail: 'forthcoming' },
               ]}
             />
             <div className="mt-8 flex flex-wrap gap-x-6 gap-y-3">

@@ -152,7 +152,8 @@ export default function CodePage() {
                   { label: 'CITATION.cff', status: 'no', detail: 'planned at release' },
                   { label: 'Pretrained weights', status: 'no', detail: 'Regenerable; not distributed' },
                   { label: 'Docker / smoke test', status: 'no', detail: 'planned' },
-                  { label: 'Zenodo DOI', status: 'no', detail: 'reserved · publishing soon' },
+                  { label: 'Zenodo DOI (GeoAI)', status: 'yes' },
+                  { label: 'Zenodo DOI (SpatialDI)', status: 'no', detail: 'forthcoming' },
                 ]}
               />
             </div>

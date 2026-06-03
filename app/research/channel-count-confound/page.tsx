@@ -708,9 +708,13 @@ export default function FlagshipPage() {
                     detail: 'planned',
                   },
                   {
-                    label: 'Zenodo DOI',
+                    label: 'Zenodo DOI (GeoAI)',
+                    status: 'yes',
+                  },
+                  {
+                    label: 'Zenodo DOI (SpatialDI)',
                     status: 'no',
-                    detail: 'reserved · publishing soon',
+                    detail: 'forthcoming',
                   },
                 ]}
               />
