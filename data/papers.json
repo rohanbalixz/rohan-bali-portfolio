@@ -31,7 +31,8 @@
       { "label": "Paper (PDF)", "href": "https://zenodo.org/records/20278403", "external": true },
       { "label": "Code & data", "href": "https://github.com/rohanbalixz/Multi-Horizon-Urban-Growth-Prediction", "external": true },
       { "label": "Project page", "href": "/research/channel-count-confound" }
-    ]
+    ],
+    "featured": true
   },
   {
     "id": "cross-region-covariate-support",
