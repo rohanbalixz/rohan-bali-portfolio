@@ -4,6 +4,9 @@ export const basePath =
 export const asset = (path: string) =>
   `${basePath}${path.startsWith('/') ? path : `/${path}`}`;
 
+// GeoAI 2026 short paper, hosted on Zenodo (public record).
+export const geoaiPaperUrl = 'https://zenodo.org/records/20278403';
+
 export const siteMeta = {
   name: 'Rohan Bali',
   role: 'Geospatial AI. Robust Spatiotemporal Vision. Evaluation under Shift.',

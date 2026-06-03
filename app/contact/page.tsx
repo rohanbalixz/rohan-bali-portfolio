@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { siteMeta } from '@/lib/site';
+import { siteMeta, geoaiPaperUrl } from '@/lib/site';
 import SocialLinks from '@/components/SocialLinks';
 
 export const metadata: Metadata = {
@@ -21,7 +21,7 @@ const fastestPath = [
     n: 2,
     title: 'Jump to the headline results',
     href: '/research/channel-count-confound#results',
-    detail: 'Four main results, three figures, two result tables. PDFs for the SpatialDI main paper and the GeoAI 2026 short paper are coming soon.',
+    detail: 'Four main results, three figures, two result tables. The GeoAI 2026 short paper is on Zenodo; the SpatialDI main paper PDF is coming soon.',
     internal: true,
   },
   {
@@ -100,12 +100,14 @@ export default function ContactPage() {
             <Link href="/research-statement" className="btn-secondary">
               Research statement
             </Link>
-            <span
-              className="text-subtle italic cursor-default"
-              aria-disabled="true"
+            <a
+              href={geoaiPaperUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="link-quiet underline decoration-rule underline-offset-4 hover:decoration-accent"
             >
-              Paper (coming soon)
-            </span>
+              GeoAI paper (PDF)
+            </a>
             <a
               href="https://github.com/rohanbalixz/Multi-Horizon-Urban-Growth-Prediction"
               target="_blank"

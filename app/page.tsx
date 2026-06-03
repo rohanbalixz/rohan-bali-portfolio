@@ -4,7 +4,7 @@ import FlagshipHero from '@/components/FlagshipHero';
 import MetricCard from '@/components/MetricCard';
 import PipelineDiagram from '@/components/PipelineDiagram';
 import ReproChecklist from '@/components/ReproChecklist';
-import { siteMeta } from '@/lib/site';
+import { siteMeta, geoaiPaperUrl } from '@/lib/site';
 
 const researchQuestions = [
   {
@@ -273,12 +273,14 @@ export default function Home() {
               <Link href="/research-statement" className="btn-secondary">
                 Research statement
               </Link>
-              <span
-                className="text-subtle italic cursor-default"
-                aria-disabled="true"
+              <a
+                href={geoaiPaperUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="link-quiet underline decoration-rule underline-offset-4 hover:decoration-accent"
               >
-                Paper (coming soon)
-              </span>
+                GeoAI paper (PDF)
+              </a>
               <a
                 href="https://github.com/rohanbalixz/Multi-Horizon-Urban-Growth-Prediction"
                 target="_blank"

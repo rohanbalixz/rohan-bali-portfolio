@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
-import { asset } from '@/lib/site';
+import { asset, geoaiPaperUrl } from '@/lib/site';
 import FlagshipHero from '@/components/FlagshipHero';
 import ResultsTable from '@/components/ResultsTable';
 import ReproChecklist from '@/components/ReproChecklist';
@@ -796,9 +796,18 @@ export default function FlagshipPage() {
 }`}
               />
               <p className="mt-6 text-sm text-muted">
-                A peer-reviewed manuscript describing this benchmark is
-                forthcoming at GeoAI&nbsp;2026 (oral) and SpatialDI&nbsp;2026
-                proceedings.
+                A peer-reviewed manuscript describing this benchmark appears at
+                GeoAI&nbsp;2026 (oral) and in the SpatialDI&nbsp;2026
+                proceedings. The{' '}
+                <a
+                  href={geoaiPaperUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="link-quiet underline decoration-rule underline-offset-4 hover:decoration-accent"
+                >
+                  GeoAI short paper is available on Zenodo
+                </a>
+                .
               </p>
             </Section>
 

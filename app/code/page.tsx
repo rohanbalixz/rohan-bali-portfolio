@@ -3,6 +3,7 @@ import Link from 'next/link';
 import PipelineDiagram from '@/components/PipelineDiagram';
 import ReproChecklist from '@/components/ReproChecklist';
 import CopyableBibtex from '@/components/CopyableBibtex';
+import { geoaiPaperUrl } from '@/lib/site';
 
 export const metadata: Metadata = {
   title: 'Code & Reproducibility',
@@ -59,12 +60,14 @@ export default function CodePage() {
                   GitHub
                   <span aria-hidden="true">↗</span>
                 </a>
-                <span
-                  className="text-subtle italic cursor-default"
-                  aria-disabled="true"
+                <a
+                  href={geoaiPaperUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="link-quiet underline decoration-rule underline-offset-4 hover:decoration-accent"
                 >
-                  Paper (coming soon)
-                </span>
+                  GeoAI paper (PDF)
+                </a>
                 <Link
                   href="/research/channel-count-confound#results"
                   className="link-quiet underline decoration-rule underline-offset-4 hover:decoration-accent"
@@ -184,9 +187,17 @@ export default function CodePage() {
               <p className="mt-6 text-sm text-muted">
                 Two peer-reviewed artifacts describe this benchmark: the full
                 paper at SpatialDI&nbsp;2026 (Springer LNCS) and a 6-page
-                short paper companion at GeoAI&nbsp;2026 (oral). Camera-ready
-                PDFs and the Zenodo DOI will be wired in here when both
-                venues release.
+                short paper companion at GeoAI&nbsp;2026 (oral). The{' '}
+                <a
+                  href={geoaiPaperUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="link-quiet underline decoration-rule underline-offset-4 hover:decoration-accent"
+                >
+                  GeoAI short paper is available on Zenodo
+                </a>
+                ; the SpatialDI camera-ready PDF will be wired in here when the
+                venue releases.
               </p>
             </div>
           </div>

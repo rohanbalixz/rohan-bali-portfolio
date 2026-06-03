@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { asset } from '@/lib/site';
+import { asset, geoaiPaperUrl } from '@/lib/site';
 
 interface FlagshipHeroProps {
   slug: string;
@@ -79,12 +79,14 @@ export default function FlagshipHero({
                   >
                     Project page
                   </Link>
-                  <span
-                    className="text-subtle italic cursor-default"
-                    aria-disabled="true"
+                  <a
+                    href={geoaiPaperUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="link-quiet underline decoration-rule underline-offset-4 hover:decoration-accent"
                   >
-                    Paper (coming soon)
-                  </span>
+                    GeoAI paper (PDF)
+                  </a>
                   <a
                     href="https://github.com/rohanbalixz/Multi-Horizon-Urban-Growth-Prediction"
                     target="_blank"
@@ -102,12 +104,14 @@ export default function FlagshipHero({
                 </>
               ) : (
                 <>
-                  <span
-                    className="btn-secondary opacity-60 cursor-default"
-                    aria-disabled="true"
+                  <a
+                    href={geoaiPaperUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-secondary"
                   >
-                    GeoAI paper (coming soon)
-                  </span>
+                    GeoAI paper (PDF)
+                  </a>
                   <span
                     className="btn-secondary opacity-60 cursor-default"
                     aria-disabled="true"

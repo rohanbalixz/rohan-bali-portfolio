@@ -25,10 +25,10 @@
     "venues": [
       { "label": "GeoAI 2026 Short Paper (Oral)", "tone": "secondary" }
     ],
-    "status": "Accepted. Sole author. 6-page short paper companion to the SpatialDI main paper. PDF coming soon on Zenodo.",
+    "status": "Accepted. Sole author. 6-page short paper companion to the SpatialDI main paper. PDF on Zenodo.",
     "abstract": "A short-form companion to the SpatialDI main paper. Distils the channel-count finding into a six-page argument: when forecast horizon and input-channel count move together, what looks like a horizon-length effect in CNN vs ConvLSTM comparisons is largely an input-design artefact. Channel-matched controls collapse the apparent gap.",
     "links": [
-      { "label": "Paper (coming soon)", "href": "" },
+      { "label": "Paper (PDF)", "href": "https://zenodo.org/records/20278403", "external": true },
       { "label": "Code & data", "href": "https://github.com/rohanbalixz/Multi-Horizon-Urban-Growth-Prediction", "external": true },
       { "label": "Project page", "href": "/research/channel-count-confound" }
     ]
