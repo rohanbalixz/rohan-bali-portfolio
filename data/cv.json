@@ -55,7 +55,7 @@
     {
       "title": "Cross-Region Land-Cover Transfer Bounded by Covariate Support: A Multi-Architecture Foundation-Model Audit",
       "authors": "Rohan Bali",
-      "note": "Sole author. Multi-architecture follow-on to the channel-count audit. A 44-city benchmark over four under-represented regions (Andes, Sub-Saharan Africa, South Asia, East Asia) audits eight architecture variants — CNN, U-Net, ConvLSTM, a divided space-time transformer, and three independently pretrained foundation models (IBM-NASA Prithvi-EO-1.0/2.0 and Berkeley ScaleMAE) — and derives a covariate-support bound, estimable from CONUS data alone, that correctly identifies the hardest transfer region. Six models agree on the four-region hardness ordering at Spearman ρ = +1.00."
+      "note": "Sole author. Follow-on to the channel-count audit. Audits built-up land-cover transfer from CONUS to 44 cities across four under-represented regions, comparing eight architectures including three pretrained foundation models. A covariate-support bound estimated from source data alone identifies the Andes as the hardest transfer region, matching the empirical ranking across architectures."
     }
   ],
   "research_projects": [

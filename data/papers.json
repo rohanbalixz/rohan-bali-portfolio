@@ -41,8 +41,8 @@
     "venues": [
       { "label": "In preparation" }
     ],
-    "status": "In preparation. Sole author. Multi-architecture follow-on to the channel-count audit.",
-    "abstract": "When a CONUS-trained built-up model is moved to under-represented regions, how much of the degradation is a structural covariate-support mismatch anticipable from source data, and how much is architecture-dependent? A 44-city benchmark over four regions (Andes, Sub-Saharan Africa, South Asia, East Asia) audits eight architecture variants: from-scratch CNN, U-Net, ConvLSTM, and a divided space-time transformer, plus three independently pretrained foundation models (IBM-NASA Prithvi-EO-1.0 and 2.0 on HLS, and Berkeley ScaleMAE on fMoW-RGB). A local-Lipschitz partial-identification bound, estimable from CONUS data alone, correctly nominates the Andes as the hardest region; six models agree on the full four-region hardness ordering at pairwise Spearman ρ = +1.00, and mean transfer gap scales near-linearly with absolute CONUS performance (r ≈ 0.99), traced to a recent-growth shortcut.",
+    "status": "In preparation. Sole author. Follow-on to the channel-count audit.",
+    "abstract": "A multi-architecture audit of cross-region land-cover transfer. Built-up models trained on CONUS are evaluated on 44 cities across four under-represented regions (Andes, Sub-Saharan Africa, South Asia, East Asia), comparing eight architecture variants: a small CNN, a U-Net, a ConvLSTM, a space-time transformer, and three independently pretrained foundation models (Prithvi-EO-1.0 and 2.0 from IBM-NASA, and ScaleMAE from Berkeley). A bound estimable from source data alone identifies the Andes as the hardest region. The six strongest models agree on the four-region ordering, and the mean transfer gap tracks absolute CONUS performance, which the paper attributes to a recent-growth shortcut.",
     "links": []
   },
   {

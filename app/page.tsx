@@ -42,7 +42,7 @@ const selectedWork = [
       'Cross-Region Land-Cover Transfer Bounded by Covariate Support: A Multi-Architecture Foundation-Model Audit',
     venue: 'In preparation, 2026',
     body:
-      'A multi-architecture follow-on to the channel-count audit. A 44-city benchmark over four under-represented regions tests eight architectures — including three independently pretrained foundation models — and bounds how much cross-region transfer loss is a structural covariate-support mismatch versus an architectural effect.',
+      'A follow-on to the channel-count audit. Built-up models trained on CONUS are tested on 44 cities across four under-represented regions, comparing eight architectures including three pretrained foundation models. A covariate-support bound from source data alone identifies the hardest region, matching the empirical ranking.',
     href: '/publications',
     external: false,
     role: 'In preparation',
