@@ -29,7 +29,7 @@ const researchQuestions = [
 
 const selectedWork = [
   {
-    title: 'The Channel-Count Confound: A Continental Audit of Multi-horizon Urban Growth Prediction',
+    title: 'The Channel-Count Confound: A Continental Audit of Multi-Horizon Urban Growth Prediction',
     venue: 'SpatialDI 2026 (Springer LNCS) main paper. GeoAI 2026 short paper (oral).',
     body:
       'A continental audit of multi-horizon urban-growth prediction under temporal and geographic shift, with calibrated per-pixel uncertainty on 8.69M validation pixels.',

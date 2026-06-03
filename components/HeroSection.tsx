@@ -90,8 +90,8 @@ export default function HeroSection() {
               >
                 The Channel-Count Confound
               </Link>
-              . SpatialDI 2026 main paper. GeoAI 2026 short paper, oral. Both
-              PDFs forthcoming.
+              . SpatialDI 2026 main paper. GeoAI 2026 short paper, oral. GeoAI
+              PDF on Zenodo; SpatialDI forthcoming.
             </p>
           </figure>
         </div>

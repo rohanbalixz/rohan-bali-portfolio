@@ -12,7 +12,7 @@ import CopyableBibtex from '@/components/CopyableBibtex';
 
 export const metadata: Metadata = {
   title:
-    'The Channel-Count Confound: A Continental Audit of Multi-horizon Urban Growth Prediction',
+    'The Channel-Count Confound: A Continental Audit of Multi-Horizon Urban Growth Prediction',
   description:
     'A continental audit of CNN and ConvLSTM comparisons on multi-horizon urban-growth prediction. Sealed temporal holdouts, zero-shot geographic transfer to Lagos, and calibrated MC Dropout uncertainty over 8.69M validation pixels.',
 };
@@ -785,7 +785,7 @@ export default function FlagshipPage() {
               <CopyableBibtex
                 bibtex={`@inproceedings{bali_channel_count_2026_spatialdi,
   author    = {Bali, Rohan},
-  title     = {The Channel-Count Confound: A Continental Audit of Multi-horizon Urban Growth Prediction},
+  title     = {The Channel-Count Confound: A Continental Audit of Multi-Horizon Urban Growth Prediction},
   booktitle = {SpatialDI 2026, Springer LNCS},
   year      = {2026},
   note      = {Main paper}
@@ -793,10 +793,11 @@ export default function FlagshipPage() {
 
 @inproceedings{bali_channel_count_2026_geoai,
   author    = {Bali, Rohan},
-  title     = {Channel Count, Not Horizon Length, Drives Architectural Divergence in Multi-horizon Urban Growth Prediction},
+  title     = {Channel Count, Not Horizon Length, Drives Architectural Divergence in Multi-Horizon Urban Growth Prediction},
   booktitle = {GeoAI 2026},
   year      = {2026},
-  note      = {6-page short paper, oral. Companion to the SpatialDI main paper. Zenodo DOI forthcoming.}
+  doi       = {10.5281/zenodo.20278403},
+  note      = {6-page short paper, oral. Companion to the SpatialDI main paper.}
 }`}
               />
               <p className="mt-6 text-sm text-muted">

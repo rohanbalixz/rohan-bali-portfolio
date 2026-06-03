@@ -171,7 +171,7 @@ export default function CodePage() {
               <CopyableBibtex
                 bibtex={`@inproceedings{bali_channel_count_2026_spatialdi,
   author    = {Bali, Rohan},
-  title     = {The Channel-Count Confound: A Continental Audit of Multi-horizon Urban Growth Prediction},
+  title     = {The Channel-Count Confound: A Continental Audit of Multi-Horizon Urban Growth Prediction},
   booktitle = {SpatialDI 2026, Springer LNCS},
   year      = {2026},
   note      = {Main paper}
@@ -179,10 +179,11 @@ export default function CodePage() {
 
 @inproceedings{bali_channel_count_2026_geoai,
   author    = {Bali, Rohan},
-  title     = {Channel Count, Not Horizon Length, Drives Architectural Divergence in Multi-horizon Urban Growth Prediction},
+  title     = {Channel Count, Not Horizon Length, Drives Architectural Divergence in Multi-Horizon Urban Growth Prediction},
   booktitle = {GeoAI 2026},
   year      = {2026},
-  note      = {6-page short paper, oral. Companion to the SpatialDI main paper. Zenodo DOI forthcoming.}
+  doi       = {10.5281/zenodo.20278403},
+  note      = {6-page short paper, oral. Companion to the SpatialDI main paper.}
 }`}
               />
               <p className="mt-6 text-sm text-muted">
