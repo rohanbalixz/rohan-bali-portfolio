@@ -53,12 +53,27 @@
   ],
   "in_preparation": [
     {
-      "title": "Cross-Region Land-Cover Transfer Bounded by Covariate Support: A Multi-Architecture Foundation-Model Audit",
+      "title": "Cross-Region Source-Invariance in Earth Observation",
       "authors": "Rohan Bali",
-      "note": "Sole author. Follow-on to the channel-count audit. Audits built-up land-cover transfer from CONUS to 44 cities across four under-represented regions, comparing eight architectures including three pretrained foundation models. A covariate-support bound estimated from source data alone identifies the Andes as the hardest transfer region, matching the empirical ranking across architectures."
+      "note": "Sole author. Follow-on to the channel-count audit. Trains one model per region and evaluates every model on every region across twenty world regions, eight prediction tasks, and several input representations. The test region and input representation explain almost all cross-region score variance while the training region explains almost none, and a parameter-free recent-past baseline matches or beats trained models on temporal tasks. Code at github.com/rohanbalixz/Cross-Region-Source-Invariance-in-Earth-Observation."
+    },
+    {
+      "title": "UrbanFinance: Forecasting the Latent Land-Demand Residual at 100 m across Divergent Indian Urban Typologies",
+      "authors": "Rohan Bali",
+      "note": "Sole author. Predicts the signed gap between economically expressed demand and EO-realized supply across five divergent Indian metros, fusing free GHSL, night-lights, terrain, and NHB RESIDEX layers. The DSRF model beats SimVP, TAU, and PredRNN.V2 on Figure of Merit at p<0.05 over ten seeds, gives calibrated 95% prediction intervals, and under leave-one-city-out transfers to an unseen city better than SOTA trained on all five."
     }
   ],
   "research_projects": [
+    {
+      "title": "UrbanFinance: Latent Land-Demand Forecasting across Indian Metros",
+      "duration": "2026",
+      "description": "Forecasts the latent land-demand residual at 100 m across five divergent Indian urban typologies (Noida, Mumbai, Chandigarh, Bengaluru, Hyderabad), fusing free Earth observation with guideline-value and transaction records.",
+      "highlights": [
+        "DSRF beats SimVP, TAU, and PredRNN.V2 on Figure of Merit at p<0.05 over 10 seeds, with calibrated 95% prediction intervals",
+        "Leave-one-city-out transfer to an unseen metro beats SOTA trained on all five cities",
+        "Saiz-style supply economics: constrained cities convert less land (corr -0.77) and carry more suppressed demand (corr +0.79)"
+      ]
+    },
     {
       "title": "Multi-Horizon Urban-Growth Prediction (Channel-Count Confound)",
       "duration": "2025–2026",

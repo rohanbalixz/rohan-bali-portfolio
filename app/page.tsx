@@ -38,11 +38,20 @@ const selectedWork = [
     role: 'Flagship',
   },
   {
-    title:
-      'Cross-Region Land-Cover Transfer Bounded by Covariate Support: A Multi-Architecture Foundation-Model Audit',
+    title: 'Cross-Region Source-Invariance in Earth Observation',
     venue: 'In preparation, 2026',
     body:
-      'A follow-on to the channel-count audit. Built-up models trained on CONUS are tested on 44 cities across four under-represented regions, comparing eight architectures including three pretrained foundation models. A covariate-support bound from source data alone identifies the hardest region, matching the empirical ranking.',
+      'A follow-on to the channel-count audit. One model is trained per region and evaluated on every region across twenty world regions, eight tasks, and several input representations. Transfer is governed by the data, not the model: the test region and input representation explain almost all of the score variance while the training region explains almost none.',
+    href: 'https://github.com/rohanbalixz/Cross-Region-Source-Invariance-in-Earth-Observation',
+    external: true,
+    role: 'In preparation',
+  },
+  {
+    title:
+      'UrbanFinance: Forecasting the Latent Land-Demand Residual across Indian Metros',
+    venue: 'In preparation, 2026',
+    body:
+      'Predicts the signed gap between economically expressed demand and EO-realized supply at 100 m across five divergent Indian metros, fusing free GHSL, night-lights, terrain, and NHB RESIDEX layers. DSRF beats SimVP, TAU, and PredRNN.V2 on Figure of Merit at p<0.05 over ten seeds, with calibrated 95% intervals and leave-one-city-out transfer that beats SOTA trained on all five.',
     href: '/publications',
     external: false,
     role: 'In preparation',
