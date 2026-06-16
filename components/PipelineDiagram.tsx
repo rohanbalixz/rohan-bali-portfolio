@@ -13,7 +13,7 @@ export default function PipelineDiagram({
         <ol className="flex items-stretch gap-2 min-w-max">
           {steps.map((s, i) => (
             <li key={i} className="flex items-stretch gap-2">
-              <div className="flex flex-col items-start justify-between border border-rule bg-white px-4 py-3 min-w-[140px] rounded-xl">
+              <div className="flex flex-col items-start justify-between border border-rule bg-surface px-4 py-3 min-w-[140px]">
                 <p className="font-mono text-[10px] uppercase tracking-widest text-subtle leading-none mb-2">
                   Step {String(i + 1).padStart(2, '0')}
                 </p>

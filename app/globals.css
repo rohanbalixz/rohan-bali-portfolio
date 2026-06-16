@@ -57,15 +57,15 @@
   }
 
   .badge {
-    @apply inline-flex items-center px-2.5 py-1 text-xs font-mono uppercase tracking-wider border border-rule text-muted bg-paper rounded-md;
+    @apply inline-flex items-center text-xs font-sans font-medium uppercase tracking-widest text-subtle;
   }
 
   .badge-accent {
-    @apply border-accent/30 text-accent;
+    @apply text-accent;
   }
 
   .badge-secondary {
-    @apply border-secondary/30 text-secondary;
+    @apply text-muted;
   }
 
   .tabular {
@@ -81,15 +81,15 @@
   }
 
   .btn-primary {
-    @apply inline-flex items-center gap-2 px-5 py-2.5 text-sm font-medium bg-ink text-paper border border-ink transition-all duration-200 hover:bg-accent hover:border-accent hover:-translate-y-0.5;
+    @apply inline-flex items-center gap-1.5 text-base text-accent underline decoration-accent/40 underline-offset-4 transition-colors duration-150 hover:decoration-accent;
   }
 
   .btn-secondary {
-    @apply inline-flex items-center gap-2 px-5 py-2.5 text-sm font-medium bg-transparent border border-rule text-ink transition-all duration-200 hover:border-ink hover:-translate-y-0.5;
+    @apply inline-flex items-center gap-1.5 text-base text-ink underline decoration-rule underline-offset-4 transition-colors duration-150 hover:decoration-ink;
   }
 
   .card-lift {
-    @apply transition-all duration-200 hover:-translate-y-0.5 hover:border-ink;
+    @apply transition-colors duration-150;
   }
 }
 

@@ -120,13 +120,13 @@ export default function Home() {
               Research agenda
             </Link>
           </div>
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-3 gap-x-10 gap-y-12">
             {researchQuestions.map((q) => (
               <div
                 key={q.n}
-                className="border border-rule rounded-2xl bg-surface p-7 card-lift flex flex-col"
+                className="border-t border-rule pt-5 flex flex-col"
               >
-                <p className="font-mono text-xs uppercase tracking-widest text-subtle mb-4">
+                <p className="font-sans text-xs uppercase tracking-widest text-subtle mb-4">
                   Q{q.n}
                 </p>
                 <h3 className="font-serif text-xl text-ink leading-snug mb-3">
@@ -137,7 +137,7 @@ export default function Home() {
                 </p>
                 <Link
                   href="/research/channel-count-confound"
-                  className="mt-6 text-xs font-mono uppercase tracking-wider text-accent hover:text-accent-hover"
+                  className="mt-6 text-sm text-accent underline decoration-accent/40 underline-offset-4 hover:decoration-accent"
                 >
                   See evidence
                 </Link>

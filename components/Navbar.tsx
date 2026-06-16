@@ -24,24 +24,16 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="fixed top-0 w-full bg-paper/95 backdrop-blur-md border-b border-rule z-50">
+    <nav className="fixed top-0 w-full bg-paper border-b border-rule z-50">
       <div className="max-w-5xl mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
-          <div
-            className="flex items-center gap-3"
+          <Link
+            href="/"
+            className="font-serif text-base text-ink tracking-tight hover:text-accent transition-colors"
             aria-label="Rohan Bali"
           >
-            <span
-              className="relative inline-flex items-center justify-center w-7 h-7 font-serif text-base text-ink leading-none"
-              aria-hidden="true"
-            >
-              R
-              <span className="absolute bottom-0.5 left-1 right-1 h-px bg-accent" />
-            </span>
-            <span className="font-serif text-base text-ink tracking-tight">
-              Rohan Bali
-            </span>
-          </div>
+            Rohan Bali
+          </Link>
 
           <div className="hidden md:flex gap-8">
             {navLinks.map((link) => (

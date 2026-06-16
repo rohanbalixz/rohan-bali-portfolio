@@ -65,7 +65,7 @@ export default function HeroSection() {
           </div>
 
           <figure className="lg:pt-2">
-            <div className="relative w-full aspect-[4/3] bg-white border border-rule rounded-2xl overflow-hidden">
+            <div className="relative w-full aspect-[4/3] bg-surface border border-rule overflow-hidden">
               <Image
                 src={asset('/paper_figures/fig_multihorizon.png')}
                 alt="Multi-horizon FoM with the channel-matched CNN control isolating the true horizon effect from the channel-count confound."

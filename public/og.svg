@@ -1,13 +1,13 @@
 <svg width="1200" height="630" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
   <defs>
     <style>
-      .paper { fill: #FAFAF7; }
-      .ink { fill: #0F172A; }
-      .muted { fill: #475569; }
-      .subtle { fill: #64748B; }
-      .accent { fill: #0F766E; }
-      .secondary { fill: #92400E; }
-      .rule { stroke: #E5E7EB; stroke-width: 1; }
+      .paper { fill: #FBFBF9; }
+      .ink { fill: #1A1A18; }
+      .muted { fill: #55534D; }
+      .subtle { fill: #807D75; }
+      .accent { fill: #6B2B2B; }
+      .secondary { fill: #5C5A53; }
+      .rule { stroke: #DAD8D1; stroke-width: 1; }
       .display { font-family: 'Source Serif 4', 'Source Serif Pro', Charter, Georgia, serif; font-weight: 500; }
       .body { font-family: 'Source Serif 4', 'Source Serif Pro', Charter, Georgia, serif; font-weight: 400; }
       .mono { font-family: 'IBM Plex Mono', 'SFMono-Regular', Menlo, monospace; font-weight: 400; letter-spacing: 0.12em; text-transform: uppercase; }

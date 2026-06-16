@@ -11,16 +11,16 @@ export default function MetricCard({
   description,
   tone = 'accent',
 }: MetricCardProps) {
-  const valueColor = tone === 'secondary' ? 'text-secondary' : 'text-ink';
+  const valueColor = tone === 'secondary' ? 'text-muted' : 'text-ink';
   return (
-    <div className="border border-rule rounded-2xl bg-surface p-6 card-lift">
-      <p className={`font-serif font-medium ${valueColor} text-4xl md:text-5xl tabular leading-none tracking-[-0.025em]`}>
+    <div className="border-t border-ink/80 pt-4">
+      <p className={`font-serif ${valueColor} text-4xl md:text-5xl tabular leading-none tracking-[-0.02em]`}>
         {value}
         {unit && (
-          <span className="text-xl md:text-2xl text-muted ml-1.5">{unit}</span>
+          <span className="text-xl md:text-2xl text-subtle ml-1">{unit}</span>
         )}
       </p>
-      <p className="mt-5 text-sm text-muted leading-relaxed">
+      <p className="mt-4 text-sm text-muted leading-relaxed max-w-[28ch]">
         {description}
       </p>
     </div>

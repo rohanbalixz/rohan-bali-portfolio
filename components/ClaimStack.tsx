@@ -10,11 +10,11 @@ interface ClaimStackProps {
 
 export default function ClaimStack({ claims }: ClaimStackProps) {
   return (
-    <ol className="space-y-6">
+    <ol className="space-y-8">
       {claims.map((c) => (
         <li
           key={c.n}
-          className="grid sm:grid-cols-[auto_1fr] gap-4 sm:gap-6 border border-rule bg-white p-5 rounded-2xl card-lift"
+          className="grid sm:grid-cols-[auto_1fr] gap-4 sm:gap-6 border-t border-rule pt-6"
         >
           <div className="font-serif text-3xl text-accent tabular leading-none">
             {String(c.n).padStart(2, '0')}

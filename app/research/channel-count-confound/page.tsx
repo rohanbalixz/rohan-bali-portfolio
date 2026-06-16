@@ -177,7 +177,7 @@ export default function FlagshipPage() {
 
               <figure className="my-10">
                 <div className="grid sm:grid-cols-2 gap-4">
-                  <div className="border border-rule bg-white p-5 rounded-2xl">
+                  <div className="border border-rule bg-surface p-5">
                     <p className="font-mono text-[10px] uppercase tracking-widest text-subtle leading-none mb-3">
                       5-year horizon
                     </p>
@@ -192,7 +192,7 @@ export default function FlagshipPage() {
                       8 epochs · 3 layers each
                     </p>
                   </div>
-                  <div className="border border-rule bg-white p-5 rounded-2xl">
+                  <div className="border border-rule bg-surface p-5">
                     <p className="font-mono text-[10px] uppercase tracking-widest text-subtle leading-none mb-3">
                       10-year horizon
                     </p>

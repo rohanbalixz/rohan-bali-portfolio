@@ -1,5 +1,5 @@
 <svg width="32" height="32" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <rect width="32" height="32" fill="#FAFAF7"/>
-  <text x="16" y="23" font-family="'Source Serif 4', 'Source Serif Pro', Charter, Georgia, serif" font-size="24" font-weight="500" text-anchor="middle" fill="#0F172A">R</text>
-  <rect x="6" y="26" width="20" height="1" fill="#0F766E"/>
+  <rect width="32" height="32" fill="#FBFBF9"/>
+  <text x="16" y="23" font-family="'Source Serif 4', 'Source Serif Pro', Charter, Georgia, serif" font-size="24" font-weight="500" text-anchor="middle" fill="#1A1A18">R</text>
+  <rect x="6" y="26" width="20" height="1" fill="#6B2B2B"/>
 </svg>
