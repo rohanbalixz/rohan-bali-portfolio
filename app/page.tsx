@@ -38,10 +38,10 @@ const selectedWork = [
     role: 'Flagship',
   },
   {
-    title: 'Cross-Region Source-Invariance in Earth Observation',
+    title: 'Train Anywhere, Test Everywhere: Cross-Region Transfer in Earth Observation Is Decided by the Data, Not the Model',
     venue: 'In preparation, 2026',
     body:
-      'A follow-on to the channel-count audit. One model is trained per region and evaluated on every region across twenty world regions, eight tasks, and several input representations. Transfer is governed by the data, not the model: the test region and input representation explain almost all of the score variance while the training region explains almost none.',
+      'A follow-on to the channel-count audit. The full source-by-target transfer matrix over twenty world regions shows the training source is inert: the target sets the score (home-field advantage -0.001 FoM) and a parameter-free recent-past baseline beats every trained model (FoM 0.56 vs 0.34). Swap the input and retention traces a provenance spectrum, from harmonised products that transfer to raw sensor reflectance that does not.',
     href: 'https://github.com/rohanbalixz/Cross-Region-Source-Invariance-in-Earth-Observation',
     external: true,
     role: 'In preparation',

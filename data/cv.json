@@ -53,9 +53,9 @@
   ],
   "in_preparation": [
     {
-      "title": "Cross-Region Source-Invariance in Earth Observation",
+      "title": "Train Anywhere, Test Everywhere: Cross-Region Transfer in Earth Observation Is Decided by the Data, Not the Model",
       "authors": "Rohan Bali",
-      "note": "Sole author. Follow-on to the channel-count audit. Trains one model per region and evaluates every model on every region across twenty world regions, eight prediction tasks, and several input representations. The test region and input representation explain almost all cross-region score variance while the training region explains almost none, and a parameter-free recent-past baseline matches or beats trained models on temporal tasks. Code at github.com/rohanbalixz/Cross-Region-Source-Invariance-in-Earth-Observation."
+      "note": "Sole author. Prepared as a SIGSPATIAL '26 short paper; follow-on to the channel-count audit. The full source-by-target transfer matrix over twenty world regions shows the training source is inert: the target sets the score (home-field advantage -0.001 FoM, source rows at Spearman 0.97, ordering identical across six architectures incl. fine-tuned foundation models), and a parameter-free recent-past baseline tops every trained model (FoM 0.56 vs 0.34, IoU 0.92 vs 0.61). Swapping the input traces a provenance spectrum, from harmonised products that transfer to raw sensor reflectance that does not; the same target-over-model dominance recurs on the PANGAEA benchmark. Code at github.com/rohanbalixz/Cross-Region-Source-Invariance-in-Earth-Observation."
     },
     {
       "title": "UrbanFinance: Forecasting the Latent Land-Demand Residual at 100 m across Divergent Indian Urban Typologies",

@@ -59,13 +59,13 @@ const activeWork = [
     status: 'In preparation',
     statusClass: 'badge badge-secondary',
     venue: 'Sole author · 2026',
-    title: 'Cross-Region Source-Invariance in Earth Observation',
+    title: 'Train Anywhere, Test Everywhere: Cross-Region Transfer in Earth Observation Is Decided by the Data, Not the Model',
     summary:
-      'What actually decides whether a geospatial model transfers between regions? One model is trained per region and every model is evaluated on every region, across 20 world regions, 8 tasks, and several input representations.',
+      'What actually decides whether a geospatial model transfers between regions? The full source-by-target transfer matrix trains one model per region and evaluates every model on every region, across 20 world regions, 8 tasks, and several input representations.',
     results: [
-      'Transfer is governed by the data, not the model: test region and input explain almost all score variance, training region almost none',
-      'A parameter-free recent-past baseline matches or beats the trained models on temporal tasks',
-      'Retention falls along an invariance spectrum: harmonized products high, raw single-sensor low, SAR better than expected',
+      'Hold the input fixed and the target sets the score: home-field advantage is -0.001 FoM, source rows agree at Spearman 0.97, difficulty ordering identical across six architectures incl. fine-tuned foundation models',
+      'A parameter-free recent-past baseline tops every trained model (FoM 0.56 vs 0.34, IoU 0.92 vs 0.61); GroupDRO, pooling, and 14x capacity add nothing',
+      'Swap the input and retention traces a provenance spectrum, from harmonised products (~1.0) to raw sensor reflectance (0.55); the same target-over-model dominance recurs on PANGAEA',
     ],
     links: [
       { label: 'Code & data', href: 'https://github.com/rohanbalixz/Cross-Region-Source-Invariance-in-Earth-Observation', external: true },
@@ -111,7 +111,7 @@ const threads = [
       'When does a model trained on one region still hold up on another?',
       'Which inductive biases enable transfer without per-region fine-tuning?',
     ],
-    evidence: { label: 'See: Cross-Region Source-Invariance', href: 'https://github.com/rohanbalixz/Cross-Region-Source-Invariance-in-Earth-Observation', external: true },
+    evidence: { label: 'See: Train Anywhere, Test Everywhere', href: 'https://github.com/rohanbalixz/Cross-Region-Source-Invariance-in-Earth-Observation', external: true },
   },
   {
     label: 'Thread 03',

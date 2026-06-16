@@ -36,14 +36,14 @@
   },
   {
     "id": "cross-region-source-invariance",
-    "title": "Cross-Region Source-Invariance in Earth Observation",
+    "title": "Train Anywhere, Test Everywhere: Cross-Region Transfer in Earth Observation Is Decided by the Data, Not the Model",
     "authors": "Rohan Bali",
     "year": "2026",
     "venues": [
       { "label": "In preparation" }
     ],
-    "status": "In preparation. Sole author. Follow-on to the channel-count audit.",
-    "abstract": "A source-by-target study of what actually decides whether a geospatial model transfers between regions. One model is trained per region and every model is evaluated on every region, spanning twenty world regions, eight prediction tasks, and several input representations. Two results hold across the matrix. First, transfer is governed by the data, not the model: the test region and the input representation explain almost all of the cross-region score variance while the training region explains almost none, and a parameter-free baseline that extrapolates each region's recent past matches or beats the trained models on temporal tasks. Second, when the input is held fixed and swapped, retention falls along a spectrum set by how region-invariant the input-to-label mapping is, with harmonized products at the top, raw single-sensor inputs at the bottom, and SAR holding up better than expected. Controls cover deflation baselines, input-swap provenance, change-rate confounds, covariates, and pretrained foundation models. Built on GHSL, Landsat, Sentinel-1/2, MODIS NDVI and LST, ESA WorldCover, Copernicus DEM, OpenStreetMap, and the PANGAEA benchmark.",
+    "status": "In preparation. Sole author. Prepared as a SIGSPATIAL '26 short paper. Follow-on to the channel-count audit.",
+    "abstract": "A geospatial model's cross-region score is decided by the data: which region you evaluate on and which input you feed it, not the architecture, the training region, or the domain-generalisation objective. Computing the full source-by-target transfer matrix over twenty world regions yields two near-orthogonal findings. (1) Hold the input fixed and the target sets the score while the training source is inert: the home-field advantage is -0.001 FoM (zero within seed noise), source rows agree at Spearman rho = 0.97, and the per-region difficulty ordering is identical across six architectures including fine-tuned foundation models. Neither GroupDRO, source pooling, nor a 14x capacity increase beats a parameter-free extrapolation of each region's recent past, which tops every trained model on FoM (0.56 vs. 0.34) and on a confound-free state metric (IoU 0.92 vs. 0.61). (2) Hold the target fixed and swap the input, and retention moves along a provenance spectrum, from globally-harmonised products that transfer (approximately 1.0) to raw sensor reflectance that does not (0.55); an independent model-free probe recovers what orders it. The same target-over-model dominance recurs on the published PANGAEA foundation-model benchmark. The upshot is a cheap diagnostic any cross-region benchmark can run before trusting a gap. Built on GHSL, Landsat, Sentinel-1/2, MODIS NDVI and LST, ESA WorldCover, Copernicus DEM, OpenStreetMap, and the PANGAEA benchmark.",
     "links": [
       { "label": "Code & data", "href": "https://github.com/rohanbalixz/Cross-Region-Source-Invariance-in-Earth-Observation", "external": true }
     ]
