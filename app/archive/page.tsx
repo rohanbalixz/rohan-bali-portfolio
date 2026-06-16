@@ -20,9 +20,8 @@ export default function ArchivePage() {
             Engineering &amp; systems projects.
           </h1>
           <p className="text-base text-muted leading-loose max-w-2xl">
-            Applied systems, infrastructure, and product work that&apos;s
-            outside my current research focus. Kept here for completeness
-            rather than as part of the research funnel. For current research,
+            Applied systems, infrastructure, and product work from before my
+            current research focus, kept here for completeness. For research,
             see the{' '}
             <Link href="/research" className="link-inline">
               research page
@@ -32,7 +31,7 @@ export default function ArchivePage() {
               href="/research/channel-count-confound"
               className="link-inline"
             >
-              flagship project
+              channel-count study
             </Link>
             .
           </p>

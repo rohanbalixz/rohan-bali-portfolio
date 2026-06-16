@@ -18,8 +18,8 @@
 
   <text x="80" y="120" font-size="72" class="display ink">Rohan Bali</text>
 
-  <text x="80" y="240" font-size="46" class="body muted">Robust spatiotemporal vision</text>
-  <text x="80" y="295" font-size="46" class="body muted">for Earth observation.</text>
+  <text x="80" y="240" font-size="44" class="body muted">Evaluation and generalization</text>
+  <text x="80" y="295" font-size="44" class="body muted">for Earth-observation vision.</text>
 
   <text x="80" y="400" font-size="22" class="body ink">M.S. Data Science, University of Massachusetts Dartmouth.</text>
   <text x="80" y="438" font-size="22" class="body ink">Current paper audits a benchmark confound in multi-horizon</text>

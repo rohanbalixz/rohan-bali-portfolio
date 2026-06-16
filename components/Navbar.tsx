@@ -5,12 +5,10 @@ import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 
 const navLinks = [
-  { href: '/', label: 'About' },
-  { href: '/research', label: 'Research' },
-  { href: '/publications', label: 'Paper' },
-  { href: '/code', label: 'Code' },
+  { href: '/#research', label: 'Research' },
+  { href: '/publications', label: 'Publications' },
   { href: '/cv', label: 'CV' },
-  { href: '/contact', label: 'Contact' },
+  { href: '/#contact', label: 'Contact' },
 ];
 
 export default function Navbar() {

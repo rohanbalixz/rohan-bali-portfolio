@@ -1,40 +1,11 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import MetricCard from '@/components/MetricCard';
 
 export const metadata: Metadata = {
   title: 'Research',
   description:
     'Evaluation methodology and out-of-distribution generalization for spatiotemporal vision: continental urban-growth audits, cross-region transfer, and latent land-demand forecasting in Earth observation.',
 };
-
-const headline = [
-  {
-    value: '305',
-    unit: 'M',
-    description:
-      'CONUS pixels audited under matched evaluation in the channel-count study.',
-  },
-  {
-    value: '94',
-    unit: '%',
-    description:
-      'of the apparent horizon effect in CNN vs ConvLSTM was a channel-count artefact, not a representational gain.',
-    tone: 'secondary' as const,
-  },
-  {
-    value: '20',
-    description:
-      'world regions in the source-by-target transfer matrix behind the source-invariance study.',
-    tone: 'secondary' as const,
-  },
-  {
-    value: 'p<.05',
-    description:
-      'DSRF beats SimVP, TAU, and PredRNN.V2 on Figure of Merit across 10 seeds in UrbanFinance.',
-    tone: 'secondary' as const,
-  },
-];
 
 const activeWork = [
   {
@@ -122,30 +93,7 @@ const threads = [
       'When does dropout-based uncertainty ranking survive distribution shift?',
       'Can conformal calibration close the magnitude gap for spatiotemporal models?',
     ],
-    evidence: { label: 'See: MC Dropout calibration (flagship)', href: '/research/channel-count-confound', external: false },
-  },
-];
-
-const values = [
-  {
-    title: 'Evaluation rigor',
-    body:
-      'Sealed holdouts, channel-matched controls, per-tile statistical confirmation, and bootstrap intervals on every reported result.',
-  },
-  {
-    title: 'Reproducibility',
-    body:
-      'Every claim ships with the script that produces it, results JSONs that regenerate the figures, and an open license.',
-  },
-  {
-    title: 'Domain grounding',
-    body:
-      'Real Earth-observation pipelines and real geophysical data products, not synthetic benchmarks built to favor a method.',
-  },
-  {
-    title: 'Honest scope',
-    body:
-      'Limitations stated next to results, ranking separated from magnitude, and no claim that outruns the evidence.',
+    evidence: { label: 'See: MC Dropout calibration in the channel-count study', href: '/research/channel-count-confound', external: false },
   },
 ];
 
@@ -167,30 +115,20 @@ export default function ResearchPage() {
             the data came from.
           </p>
           <p className="text-base text-muted leading-loose">
-            Three projects below carry that question through urban-growth
-            forecasting, cross-region transfer, and land-demand estimation. The
-            numbers are from the work, not the abstract.
+            The projects below carry that question through urban-growth
+            forecasting, cross-region transfer, and land-demand estimation.
           </p>
         </header>
 
-        {/* Headline numbers */}
-        <section className="mb-24">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
-            {headline.map((m) => (
-              <MetricCard key={m.value} {...m} />
-            ))}
-          </div>
-        </section>
-
-        {/* Active work */}
+        {/* Projects */}
         <section className="mb-24">
           <div className="flex items-baseline justify-between mb-10">
             <h2 className="font-serif text-2xl text-ink tracking-tight">
-              Active research
+              Projects
             </h2>
             <Link
               href="/publications"
-              className="text-xs font-mono uppercase tracking-wider text-muted hover:text-accent"
+              className="text-sm text-muted hover:text-accent"
             >
               All papers
             </Link>
@@ -315,15 +253,17 @@ export default function ResearchPage() {
 
         {/* How I work */}
         <section className="pt-12 border-t border-rule">
-          <p className="overline mb-8">How I work</p>
-          <div className="grid md:grid-cols-2 gap-x-12 gap-y-8 max-w-3xl">
-            {values.map((v) => (
-              <div key={v.title}>
-                <h3 className="font-serif text-lg text-ink mb-2">{v.title}</h3>
-                <p className="text-sm text-muted leading-relaxed">{v.body}</p>
-              </div>
-            ))}
-          </div>
+          <p className="overline mb-6">How I work</p>
+          <p className="text-base text-ink leading-loose max-w-2xl text-pretty">
+            I try to keep the evaluation honest: sealed holdouts, channel-matched
+            controls, per-tile statistical confirmation, and bootstrap intervals
+            on the results that matter. Every claim ships with the script that
+            produces it and the results files that regenerate the figures, under
+            an open license. The data are real Earth-observation products rather
+            than synthetic benchmarks built to favor a method, and limitations
+            sit next to the results — ranking kept separate from magnitude, with
+            no claim that outruns the evidence.
+          </p>
         </section>
       </div>
     </div>

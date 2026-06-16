@@ -29,42 +29,41 @@ const plexMono = IBM_Plex_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL('https://rohanbalixz.github.io/rohan-bali-portfolio'),
   title: {
-    default:
-      'Rohan Bali. Geospatial AI, robust spatiotemporal vision, evaluation under shift.',
-    template: '%s. Rohan Bali',
+    default: 'Rohan Bali',
+    template: '%s · Rohan Bali',
   },
   description:
-    "M.S. Data Science researcher working on Earth-observation ML, benchmark design, uncertainty calibration, and geographic transfer in spatiotemporal vision.",
+    'Rohan Bali — M.S. Data Science student at UMass Dartmouth working on evaluation methodology and out-of-distribution generalization for Earth-observation vision.',
   keywords: [
-    'geospatial AI',
+    'Rohan Bali',
+    'Earth observation',
     'remote sensing',
     'spatiotemporal vision',
-    'uncertainty quantification',
     'distribution shift',
-    'benchmark design',
-    'Earth observation',
-    'multi-horizon forecasting',
+    'out-of-distribution generalization',
+    'benchmark evaluation',
+    'uncertainty calibration',
   ],
   authors: [{ name: 'Rohan Bali' }],
   openGraph: {
-    title: 'Rohan Bali. Geospatial AI research.',
+    title: 'Rohan Bali',
     description:
-      'I work on robust spatiotemporal vision for Earth observation.',
+      'M.S. Data Science student at UMass Dartmouth. Evaluation methodology and out-of-distribution generalization for Earth-observation vision.',
     type: 'website',
     images: [
       {
         url: '/og.svg',
         width: 1200,
         height: 630,
-        alt: 'Rohan Bali. Robust spatiotemporal vision for Earth observation.',
+        alt: 'Rohan Bali',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Rohan Bali. Geospatial AI research.',
+    title: 'Rohan Bali',
     description:
-      'I work on robust spatiotemporal vision for Earth observation.',
+      'M.S. Data Science student at UMass Dartmouth. Evaluation methodology and out-of-distribution generalization for Earth-observation vision.',
     images: ['/og.svg'],
   },
 };

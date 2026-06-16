@@ -6,6 +6,9 @@ interface SocialLinksProps {
 
 const links = [
   { key: 'github' as const, label: 'GitHub', href: socialLinks.github },
+  { key: 'scholar' as const, label: 'Google Scholar', href: socialLinks.scholar },
+  { key: 'orcid' as const, label: 'ORCID', href: socialLinks.orcid },
+  { key: 'openreview' as const, label: 'OpenReview', href: socialLinks.openreview },
   { key: 'linkedin' as const, label: 'LinkedIn', href: socialLinks.linkedin },
   { key: 'twitter' as const, label: 'X / Twitter', href: socialLinks.twitter },
   { key: 'medium' as const, label: 'Medium', href: socialLinks.medium },

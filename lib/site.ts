@@ -9,10 +9,10 @@ export const geoaiPaperUrl = 'https://zenodo.org/records/20278403';
 
 export const siteMeta = {
   name: 'Rohan Bali',
-  role: 'Geospatial AI. Robust Spatiotemporal Vision. Evaluation under Shift.',
+  role: 'Evaluation methodology and out-of-distribution generalization for Earth-observation vision.',
   tagline:
-    "I work on robust spatiotemporal vision for Earth observation.",
+    'I work on evaluation methodology and out-of-distribution generalization for Earth-observation vision.',
   email: 'rbali@umassd.edu',
   affiliation: 'M.S. Data Science, University of Massachusetts Dartmouth',
-  lastUpdated: 'May 2026',
+  lastUpdated: 'June 2026',
 };

@@ -1,314 +1,245 @@
 import Link from 'next/link';
-import HeroSection from '@/components/HeroSection';
-import FlagshipHero from '@/components/FlagshipHero';
-import MetricCard from '@/components/MetricCard';
-import PipelineDiagram from '@/components/PipelineDiagram';
-import ReproChecklist from '@/components/ReproChecklist';
-import { siteMeta, geoaiPaperUrl } from '@/lib/site';
+import { asset, siteMeta, geoaiPaperUrl } from '@/lib/site';
+import socialLinks from '@/data/social_links.json';
+import papers from '@/data/papers.json';
 
-const researchQuestions = [
+type LinkItem = { label: string; href: string; external?: boolean };
+
+const profileLinks: LinkItem[] = [
+  { label: 'Email', href: `mailto:${siteMeta.email}` },
+  { label: 'Google Scholar', href: socialLinks.scholar, external: true },
+  { label: 'GitHub', href: socialLinks.github, external: true },
+  { label: 'ORCID', href: socialLinks.orcid, external: true },
+  { label: 'OpenReview', href: socialLinks.openreview, external: true },
+  { label: 'CV', href: '/cv' },
+  { label: 'LinkedIn', href: socialLinks.linkedin, external: true },
+];
+
+const news = [
   {
-    n: '01',
-    title: 'Benchmark validity',
-    body:
-      'When does a model improvement come from architecture, and when does it come from the evaluation setup?',
+    date: 'Jun 2026',
+    body: (
+      <>
+        New paper in preparation —{' '}
+        <em>
+          Train Anywhere, Test Everywhere: Cross-Region Transfer in Earth
+          Observation Is Decided by the Data, Not the Model
+        </em>
+        , prepared as a SIGSPATIAL&nbsp;&rsquo;26 short paper.
+      </>
+    ),
   },
   {
-    n: '02',
-    title: 'Geographic transfer',
-    body:
-      'Which learned representations survive when a model moves from one region to another?',
+    date: '2026',
+    body: (
+      <>
+        <em>The Channel-Count Confound</em> accepted at SpatialDI&nbsp;2026
+        (Springer LNCS), with a short-paper companion at GeoAI&nbsp;2026 (oral).
+        The GeoAI PDF is{' '}
+        <a
+          href={geoaiPaperUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="link-inline"
+        >
+          on Zenodo
+        </a>
+        .
+      </>
+    ),
   },
   {
-    n: '03',
-    title: 'Uncertainty under shift',
-    body:
-      'Can uncertainty estimates remain useful when the test distribution changes?',
+    date: '2024',
+    body: (
+      <>
+        Working note on academic collaboration networks and small-world
+        structure.
+      </>
+    ),
   },
 ];
 
-const selectedWork = [
-  {
-    title: 'The Channel-Count Confound: A Continental Audit of Multi-Horizon Urban Growth Prediction',
-    venue: 'SpatialDI 2026 (Springer LNCS) main paper. GeoAI 2026 short paper (oral).',
-    body:
-      'A continental audit of multi-horizon urban-growth prediction under temporal and geographic shift, with calibrated per-pixel uncertainty on 8.69M validation pixels.',
-    href: '/research/channel-count-confound',
-    external: false,
-    role: 'Flagship',
-  },
-  {
-    title: 'Train Anywhere, Test Everywhere: Cross-Region Transfer in Earth Observation Is Decided by the Data, Not the Model',
-    venue: 'In preparation, 2026',
-    body:
-      'A follow-on to the channel-count audit. The full source-by-target transfer matrix over twenty world regions shows the training source is inert: the target sets the score (home-field advantage -0.001 FoM) and a parameter-free recent-past baseline beats every trained model (FoM 0.56 vs 0.34). Swap the input and retention traces a provenance spectrum, from harmonised products that transfer to raw sensor reflectance that does not.',
-    href: 'https://github.com/rohanbalixz/Cross-Region-Source-Invariance-in-Earth-Observation',
-    external: true,
-    role: 'In preparation',
-  },
-  {
-    title:
-      'UrbanFinance: Forecasting the Latent Land-Demand Residual across Indian Metros',
-    venue: 'In preparation, 2026',
-    body:
-      'Predicts the signed gap between economically expressed demand and EO-realized supply at 100 m across five divergent Indian metros, fusing free GHSL, night-lights, terrain, and NHB RESIDEX layers. DSRF beats SimVP, TAU, and PredRNN.V2 on Figure of Merit at p<0.05 over ten seeds, with calibrated 95% intervals and leave-one-city-out transfer that beats SOTA trained on all five.',
-    href: '/publications',
-    external: false,
-    role: 'In preparation',
-  },
-  {
-    title: 'Disaster Risk Monitoring from Satellite Radar',
-    venue: 'NVIDIA DLI, 2025',
-    body:
-      'U-Net flood segmentation on Sentinel-1 SAR with preprocessing tuned to radar noise. A grounding in real Earth-observation pipelines.',
-    href: 'https://github.com/rohanbalixz/Disaster-Risk-Monitoring-Using-Satellite-Imagery',
-    external: true,
-    role: 'Secondary project',
-  },
-];
+const selected = papers.slice(0, 4);
+
+function InlineLinks({ items }: { items: LinkItem[] }) {
+  const usable = items.filter((l) => l.href);
+  return (
+    <>
+      {usable.map((l, i) => (
+        <span key={l.label}>
+          {i > 0 && <span className="text-rule mx-2">·</span>}
+          {l.external ? (
+            <a
+              href={l.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="link-inline"
+            >
+              {l.label}
+            </a>
+          ) : (
+            <Link href={l.href} className="link-inline">
+              {l.label}
+            </Link>
+          )}
+        </span>
+      ))}
+    </>
+  );
+}
 
 export default function Home() {
   return (
-    <>
-      <HeroSection />
-
-      {/* Metric strip */}
-      <section className="border-t border-rule">
-        <div className="max-w-6xl mx-auto px-6 py-16 md:py-20">
-          <h2 className="font-serif text-2xl text-ink tracking-tight mb-8">
-            Headline results
-          </h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
-            <MetricCard
-              value="5,698"
-              description="CONUS tiles at 250 m resolution, with an 821-tile spatial holdout."
-            />
-            <MetricCard
-              value="94"
-              unit="%"
-              description="of the CNN 5yr to 10yr FoM decline attributes to channel-count reduction."
-              tone="secondary"
-            />
-            <MetricCard
-              value="5.4"
-              unit="×"
-              description="larger ConvLSTM response to removing the most recent epoch."
-              tone="secondary"
-            />
-            <MetricCard
-              value="8.69"
-              unit="M"
-              description="validation pixels audited with MC Dropout calibration (r = 0.983)."
-            />
-          </div>
-        </div>
-      </section>
-
-      <FlagshipHero slug="channel-count-confound" variant="home" />
-
-      {/* Research questions */}
-      <section className="border-t border-rule">
-        <div className="max-w-6xl mx-auto px-6 py-20 md:py-24">
-          <div className="flex justify-between items-baseline mb-10">
-            <h2 className="font-serif text-2xl text-ink tracking-tight">
-              Research questions
-            </h2>
-            <Link
-              href="/research"
-              className="text-xs font-mono uppercase tracking-wider text-muted hover:text-accent"
-            >
-              Research agenda
-            </Link>
-          </div>
-          <div className="grid md:grid-cols-3 gap-x-10 gap-y-12">
-            {researchQuestions.map((q) => (
-              <div
-                key={q.n}
-                className="border-t border-rule pt-5 flex flex-col"
-              >
-                <p className="font-sans text-xs uppercase tracking-widest text-subtle mb-4">
-                  Q{q.n}
-                </p>
-                <h3 className="font-serif text-xl text-ink leading-snug mb-3">
-                  {q.title}
-                </h3>
-                <p className="text-sm text-muted leading-relaxed flex-grow">
-                  {q.body}
-                </p>
-                <Link
-                  href="/research/channel-count-confound"
-                  className="mt-6 text-sm text-accent underline decoration-accent/40 underline-offset-4 hover:decoration-accent"
-                >
-                  See evidence
-                </Link>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Code & reproducibility */}
-      <section className="border-t border-rule bg-surface">
-        <div className="max-w-6xl mx-auto px-6 py-20 md:py-24">
-          <div className="mb-10 max-w-3xl">
-            <h2 className="font-serif text-2xl text-ink tracking-tight mb-4">
-              Code and reproducibility
-            </h2>
-            <p className="text-base text-ink leading-relaxed text-pretty">
-              The benchmark behind the flagship paper ships with every
-              experiment as a self-contained script, the results JSONs that
-              regenerate the figures, and a sealed evaluation protocol used
-              identically across all six models.
+    <div className="py-16 md:py-24">
+      <div className="max-w-3xl mx-auto px-6">
+        {/* Header */}
+        <header className="flex flex-col sm:flex-row sm:items-start gap-6 sm:gap-8 mb-12">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={asset('/profile.jpg')}
+            alt="Rohan Bali"
+            width={144}
+            height={144}
+            className="w-28 h-28 sm:w-36 sm:h-36 object-cover border border-rule shrink-0"
+          />
+          <div>
+            <h1 className="font-serif text-3xl md:text-4xl text-ink tracking-tight mb-2">
+              Rohan Bali
+            </h1>
+            <p className="text-base text-muted mb-1">{siteMeta.affiliation}</p>
+            <p className="text-base text-ink leading-relaxed mb-4 text-pretty">
+              Evaluation methodology and out-of-distribution generalization for
+              Earth-observation vision.
+            </p>
+            <p className="text-sm text-muted">
+              <InlineLinks items={profileLinks} />
             </p>
           </div>
+        </header>
 
-          <PipelineDiagram
-            steps={[
-              { label: 'GHSL data', detail: '1975 to 2020, 10 epochs' },
-              { label: 'Reprojection', detail: 'EPSG:5070 Albers' },
-              { label: '250 m tiling', detail: '5,698 CONUS tiles' },
-              { label: 'Spatial holdout', detail: 'block_id mod 5 = 0' },
-              { label: 'Model training', detail: 'CNN, U-Net, ConvLSTM' },
-              { label: 'Channel-matched ablation', detail: 'Multi-horizon control' },
-              { label: 'MC Dropout UQ', detail: '20 forward passes' },
-              { label: 'Figure generation', detail: 'from results JSONs' },
-            ]}
-          />
+        {/* Bio */}
+        <section className="prose-research space-y-5 mb-16">
+          <p>
+            When one spatiotemporal model looks better than another, I try to
+            establish whether it actually is — or whether the gain came from how
+            the inputs were built and where the data came from. Most of my work
+            audits benchmarks in urban-growth prediction: sealed temporal
+            holdouts, channel-matched controls, zero-shot transfer to held-out
+            regions, and calibrated uncertainty, asking what part of a reported
+            result survives a tighter protocol.
+          </p>
+          <p>
+            Before graduate school I was a software engineer at Capgemini and a
+            machine-learning trainee at Upcred.ai.
+          </p>
+        </section>
 
-          <div className="mt-12">
-            <ReproChecklist
-              items={[
-                { label: 'Benchmark construction scripts', status: 'yes' },
-                { label: 'Evaluation scripts', status: 'yes' },
-                { label: 'Figure generation scripts', status: 'yes' },
-                { label: 'Holdout definitions', status: 'yes' },
-                { label: 'Ablation tables', status: 'yes' },
-                { label: 'Code repository', status: 'yes' },
-                { label: 'Docker image', status: 'no', detail: 'planned' },
-                { label: 'Zenodo DOI (GeoAI)', status: 'yes' },
-                { label: 'Zenodo DOI (SpatialDI)', status: 'no', detail: 'forthcoming' },
-              ]}
-            />
-            <div className="mt-8 flex flex-wrap gap-x-6 gap-y-3">
-              <Link href="/code" className="btn-primary">
-                Full code page
+        {/* News */}
+        <section className="mb-16 scroll-mt-24">
+          <h2 className="font-serif text-xl text-ink mb-6">News</h2>
+          <ol className="space-y-4">
+            {news.map((n, i) => (
+              <li key={i} className="flex flex-col sm:flex-row sm:gap-6">
+                <span className="shrink-0 text-sm text-subtle tabular sm:w-24 mb-0.5 sm:mb-0 sm:pt-0.5">
+                  {n.date}
+                </span>
+                <p className="text-sm text-ink leading-relaxed flex-1">
+                  {n.body}
+                </p>
+              </li>
+            ))}
+          </ol>
+        </section>
+
+        {/* Research */}
+        <section id="research" className="mb-16 scroll-mt-24">
+          <h2 className="font-serif text-xl text-ink mb-5">Research</h2>
+          <div className="prose-research space-y-5">
+            <p>
+              The through-line is evaluation under distribution shift. Three
+              questions recur: when a model improvement comes from the
+              architecture versus the evaluation setup; which learned
+              representations survive when a model moves between regions; and
+              whether uncertainty estimates stay useful once the test
+              distribution changes.
+            </p>
+            <p>
+              I keep claims close to the evidence — sealed holdouts and
+              channel-matched controls, per-tile statistical confirmation,
+              limitations stated next to results, and every reported number
+              reproducible from the released code. More in my{' '}
+              <Link href="/research-statement" className="link-inline">
+                research statement
+              </Link>{' '}
+              and the{' '}
+              <Link href="/research/channel-count-confound" className="link-inline">
+                channel-count study
               </Link>
-              <a
-                href="https://github.com/rohanbalixz/Multi-Horizon-Urban-Growth-Prediction"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="link-quiet underline decoration-rule underline-offset-4 hover:decoration-accent text-sm"
-              >
-                Repository
-              </a>
-            </div>
+              .
+            </p>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Selected work */}
-      <section className="border-t border-rule">
-        <div className="max-w-6xl mx-auto px-6 py-20 md:py-24">
-          <div className="flex justify-between items-baseline mb-10">
-            <h2 className="font-serif text-2xl text-ink tracking-tight">
-              Selected work
-            </h2>
-            <Link
-              href="/archive"
-              className="text-xs font-mono uppercase tracking-wider text-muted hover:text-accent"
-            >
-              Engineering archive
+        {/* Publications */}
+        <section id="publications" className="mb-16 scroll-mt-24">
+          <div className="flex items-baseline justify-between mb-6">
+            <h2 className="font-serif text-xl text-ink">Selected publications</h2>
+            <Link href="/publications" className="text-sm text-muted hover:text-accent">
+              All publications
             </Link>
           </div>
-          <ul className="divide-y divide-rule">
-            {selectedWork.map((w) => {
-              const TitleLink = w.external ? (
-                <a
-                  href={w.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="link-quiet underline decoration-rule underline-offset-4 hover:decoration-accent"
-                >
-                  {w.title}
-                </a>
-              ) : (
-                <Link
-                  href={w.href}
-                  className="link-quiet underline decoration-rule underline-offset-4 hover:decoration-accent"
-                >
-                  {w.title}
-                </Link>
-              );
-
+          <ol className="space-y-7">
+            {selected.map((p) => {
+              const pubLinks: LinkItem[] = (p.links ?? [])
+                .filter((l) => l.href)
+                .map((l) => ({ label: l.label, href: l.href, external: l.external }));
               return (
-                <li key={w.title} className="py-6 first:pt-0 last:pb-0">
-                  <div className="grid md:grid-cols-[1fr_2fr] gap-4 md:gap-10">
-                    <div>
-                      <p className="text-xs font-mono uppercase tracking-widest text-secondary mb-2">
-                        {w.role}
+                <li key={p.id} className="flex flex-col sm:flex-row sm:gap-6">
+                  <span className="shrink-0 text-sm text-subtle tabular sm:w-24 mb-1 sm:mb-0 sm:pt-1">
+                    {p.year}
+                  </span>
+                  <div className="flex-1">
+                    <h3 className="font-serif text-lg text-ink leading-snug">
+                      {p.title}
+                    </h3>
+                    <p className="mt-1 text-sm text-muted">
+                      {(p.venues ?? []).map((v) => v.label).join(' · ')}
+                    </p>
+                    {pubLinks.length > 0 && (
+                      <p className="mt-1.5 text-sm text-muted">
+                        <InlineLinks items={pubLinks} />
                       </p>
-                      <h3 className="font-serif text-lg text-ink leading-snug mb-2">
-                        {TitleLink}
-                      </h3>
-                      <p className="text-xs font-mono uppercase tracking-wider text-subtle">
-                        {w.venue}
-                      </p>
-                    </div>
-                    <p className="text-sm text-muted leading-relaxed">{w.body}</p>
+                    )}
                   </div>
                 </li>
               );
             })}
-          </ul>
-        </div>
-      </section>
+          </ol>
+        </section>
 
-      {/* For supervisors */}
-      <section className="border-t border-rule bg-surface">
-        <div className="max-w-6xl mx-auto px-6 py-20 md:py-24">
-          <div className="max-w-3xl">
-            <h2 className="font-serif text-2xl md:text-3xl text-ink tracking-tight leading-snug mb-6">
-              For research supervisors
-            </h2>
-            <p className="text-base text-muted leading-loose mb-8 max-w-2xl">
-              I am most interested in projects involving robust computer
-              vision, uncertainty calibration, Earth-observation ML,
-              representation learning, and evaluation under distribution
-              shift. The flagship project page is the fastest read.
+        {/* Contact */}
+        <section id="contact" className="scroll-mt-24">
+          <h2 className="font-serif text-xl text-ink mb-5">Contact</h2>
+          <div className="prose-research mb-4">
+            <p>
+              Email is the best way to reach me. I welcome conversations with
+              potential PhD supervisors and collaborators working on evaluation
+              under distribution shift, robust computer vision, uncertainty
+              calibration, and Earth-observation ML.
             </p>
-            <div className="flex flex-wrap items-center gap-x-5 gap-y-3 text-sm">
-              <Link href="/cv" className="btn-primary">
-                CV
-              </Link>
-              <Link href="/research-statement" className="btn-secondary">
-                Research statement
-              </Link>
-              <a
-                href={geoaiPaperUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="link-quiet underline decoration-rule underline-offset-4 hover:decoration-accent"
-              >
-                GeoAI paper (PDF)
-              </a>
-              <a
-                href="https://github.com/rohanbalixz/Multi-Horizon-Urban-Growth-Prediction"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="link-quiet underline decoration-rule underline-offset-4 hover:decoration-accent"
-              >
-                Code
-              </a>
-              <a
-                href={`mailto:${siteMeta.email}`}
-                className="link-inline"
-              >
-                Email
-              </a>
-            </div>
           </div>
-        </div>
-      </section>
-    </>
+          <p className="text-sm text-muted">
+            <a
+              href={`mailto:${siteMeta.email}`}
+              className="link-inline"
+            >
+              {siteMeta.email}
+            </a>
+            <span className="text-rule mx-2">·</span>
+            Boston, MA
+          </p>
+        </section>
+      </div>
+    </div>
   );
 }

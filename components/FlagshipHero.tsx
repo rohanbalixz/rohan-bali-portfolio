@@ -16,7 +16,7 @@ export default function FlagshipHero({
       <div className="max-w-6xl mx-auto px-6 py-20 md:py-24">
         <div className="grid md:grid-cols-[1fr_2fr] gap-10 md:gap-16">
           <div>
-            <p className="overline mb-3">Flagship research</p>
+            <p className="overline mb-3">Paper</p>
             <div className="flex flex-col gap-1.5 mb-6">
               <span className="badge badge-accent">SpatialDI 2026 (Springer LNCS)</span>
               <span className="badge badge-secondary">GeoAI 2026 Short Paper (Oral)</span>

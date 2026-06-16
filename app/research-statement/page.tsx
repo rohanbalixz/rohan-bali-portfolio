@@ -5,7 +5,7 @@ import { asset } from '@/lib/site';
 export const metadata: Metadata = {
   title: 'Research statement',
   description:
-    'Research statement on robust spatiotemporal vision for Earth observation: evaluation methodology, channel-count confounds, geographic transfer, and uncertainty under shift.',
+    'Research statement: evaluation methodology and out-of-distribution generalization for Earth-observation vision — benchmark confounds, geographic transfer, and uncertainty under shift.',
 };
 
 export default function ResearchStatementPage() {
@@ -95,7 +95,7 @@ export default function ResearchStatementPage() {
               href="/research/channel-count-confound"
               className="btn-primary"
             >
-              Flagship project page
+              Channel-count project page
             </Link>
             <Link
               href="/research"

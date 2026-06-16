@@ -5,143 +5,78 @@ import SocialLinks from '@/components/SocialLinks';
 
 export const metadata: Metadata = {
   title: 'Contact',
-  description:
-    'Contact details, fastest-path links, and supervisor-facing materials.',
+  description: 'How to reach Rohan Bali, and links to materials.',
 };
-
-const fastestPath = [
-  {
-    n: 1,
-    title: 'Read the flagship project page',
-    href: '/research/channel-count-confound',
-    detail: 'Methods, results, claim stack, reproducibility checklist.',
-    internal: true,
-  },
-  {
-    n: 2,
-    title: 'Jump to the headline results',
-    href: '/research/channel-count-confound#results',
-    detail: 'Four main results, three figures, two result tables. The GeoAI 2026 short paper is on Zenodo; the SpatialDI main paper PDF is coming soon.',
-    internal: true,
-  },
-  {
-    n: 3,
-    title: 'Check the benchmark code repository',
-    href: 'https://github.com/rohanbalixz/Multi-Horizon-Urban-Growth-Prediction',
-    detail:
-      'Scripts, tests, results JSONs, evaluation protocol, hardware notes.',
-    internal: false,
-  },
-];
 
 export default function ContactPage() {
   return (
-    <div className="py-20 md:py-24">
-      <div className="max-w-4xl mx-auto px-6">
-        <header className="mb-14 max-w-2xl">
-          <p className="overline mb-4">Contact</p>
-          <h1 className="font-serif text-4xl md:text-5xl text-ink tracking-[-0.025em] leading-[1.1] mb-6 text-balance">
-            For research supervisors and collaborators.
+    <div className="py-20 md:py-28">
+      <div className="max-w-2xl mx-auto px-6">
+        <header className="mb-16">
+          <h1 className="font-serif text-3xl md:text-4xl text-ink tracking-tight mb-8">
+            Contact
           </h1>
-          <p className="text-base text-muted leading-loose">
-            I am most interested in projects involving robust computer vision,
-            uncertainty calibration, Earth-observation ML, representation
-            learning, and evaluation under distribution shift.
+          <p className="prose-research">
+            Email is the best way to reach me. I&apos;m interested in evaluation
+            under distribution shift, robust computer vision, uncertainty
+            calibration, and Earth-observation ML, and I welcome conversations
+            with potential PhD supervisors and collaborators working on related
+            problems.
           </p>
         </header>
 
-        <section className="border-t border-rule pt-12 mb-16">
-          <p className="overline mb-6">Fastest path</p>
-          <ol className="space-y-4">
-            {fastestPath.map((step) => {
-              const Wrapper = step.internal ? Link : 'a';
-              const extra = step.internal
-                ? {}
-                : { target: '_blank', rel: 'noopener noreferrer' };
-              return (
-                <li key={step.n}>
-                  <Wrapper
-                    href={step.href}
-                    {...extra}
-                    className="group block border border-rule rounded-2xl bg-surface p-5 card-lift"
-                  >
-                    <div className="flex items-baseline gap-5">
-                      <span className="font-serif text-2xl text-accent tabular leading-none flex-shrink-0">
-                        {String(step.n).padStart(2, '0')}
-                      </span>
-                      <div>
-                        <p className="font-serif text-lg text-ink leading-snug group-hover:text-accent transition-colors">
-                          {step.title}
-                        </p>
-                        <p className="text-sm text-muted leading-relaxed mt-1.5">
-                          {step.detail}
-                        </p>
-                      </div>
-                    </div>
-                  </Wrapper>
-                </li>
-              );
-            })}
-          </ol>
-        </section>
-
-        <section className="border-t border-rule pt-12 mb-16">
-          <p className="overline mb-6">Direct links</p>
-          <div className="flex flex-wrap items-center gap-x-5 gap-y-3 text-sm">
-            <a
-              href={`mailto:${siteMeta.email}`}
-              className="btn-primary"
-            >
-              Email
-            </a>
-            <Link href="/cv" className="btn-secondary">
-              CV
-            </Link>
-            <Link href="/research-statement" className="btn-secondary">
-              Research statement
-            </Link>
-            <a
-              href={geoaiPaperUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="link-quiet underline decoration-rule underline-offset-4 hover:decoration-accent"
-            >
-              GeoAI paper (PDF)
-            </a>
-            <a
-              href="https://github.com/rohanbalixz/Multi-Horizon-Urban-Growth-Prediction"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="link-quiet underline decoration-rule underline-offset-4 hover:decoration-accent"
-            >
-              Code
-            </a>
-          </div>
-        </section>
-
-        <section className="border-t border-rule pt-12">
-          <div className="grid md:grid-cols-3 gap-12">
+        <section className="border-t border-rule pt-10 mb-12">
+          <div className="grid sm:grid-cols-3 gap-10">
             <div>
               <p className="overline mb-3">Email</p>
               <a
                 href={`mailto:${siteMeta.email}`}
-                className="font-serif text-lg text-ink hover:text-accent transition-colors"
+                className="text-base text-ink hover:text-accent transition-colors break-words"
               >
                 {siteMeta.email}
               </a>
             </div>
             <div>
               <p className="overline mb-3">Location</p>
-              <p className="font-serif text-lg text-ink">Boston, MA</p>
-              <p className="text-xs font-mono text-subtle mt-2">
-                {siteMeta.affiliation}
-              </p>
+              <p className="text-base text-ink">Boston, MA</p>
+              <p className="text-sm text-subtle mt-2">{siteMeta.affiliation}</p>
             </div>
             <div>
               <p className="overline mb-3">Elsewhere</p>
               <SocialLinks />
             </div>
           </div>
+        </section>
+
+        <section className="border-t border-rule pt-10">
+          <p className="overline mb-4">Materials</p>
+          <p className="text-sm text-muted">
+            <Link href="/cv" className="link-inline">
+              CV
+            </Link>
+            <span className="text-rule mx-2">·</span>
+            <Link href="/research-statement" className="link-inline">
+              Research statement
+            </Link>
+            <span className="text-rule mx-2">·</span>
+            <a
+              href={geoaiPaperUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="link-inline"
+            >
+              GeoAI paper (PDF)
+            </a>
+            <span className="text-rule mx-2">·</span>
+            <a
+              href="https://github.com/rohanbalixz/Multi-Horizon-Urban-Growth-Prediction"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="link-inline"
+            >
+              Code
+            </a>
+          </p>
         </section>
       </div>
     </div>

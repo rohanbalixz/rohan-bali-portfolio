@@ -10,13 +10,11 @@ export default function Footer() {
           <div>
             <p className="overline mb-3">Site</p>
             <ul className="space-y-2 text-sm">
-              <li><Link href="/" className="link-quiet">Home</Link></li>
-              <li><Link href="/research" className="link-quiet">Research</Link></li>
+              <li><Link href="/" className="link-quiet">About</Link></li>
+              <li><Link href="/publications" className="link-quiet">Publications</Link></li>
               <li><Link href="/research-statement" className="link-quiet">Research statement</Link></li>
-              <li><Link href="/publications" className="link-quiet">Paper</Link></li>
-              <li><Link href="/code" className="link-quiet">Code</Link></li>
               <li><Link href="/cv" className="link-quiet">CV</Link></li>
-              <li><Link href="/contact" className="link-quiet">Contact</Link></li>
+              <li><Link href="/#contact" className="link-quiet">Contact</Link></li>
               <li><Link href="/archive" className="link-quiet">Archive</Link></li>
             </ul>
           </div>
@@ -26,6 +24,21 @@ export default function Footer() {
               <li>
                 <a href={socialLinks.github} target="_blank" rel="noopener noreferrer" className="link-quiet">
                   GitHub
+                </a>
+              </li>
+              <li>
+                <a href={socialLinks.scholar} target="_blank" rel="noopener noreferrer" className="link-quiet">
+                  Google Scholar
+                </a>
+              </li>
+              <li>
+                <a href={socialLinks.orcid} target="_blank" rel="noopener noreferrer" className="link-quiet">
+                  ORCID
+                </a>
+              </li>
+              <li>
+                <a href={socialLinks.openreview} target="_blank" rel="noopener noreferrer" className="link-quiet">
+                  OpenReview
                 </a>
               </li>
               <li>
