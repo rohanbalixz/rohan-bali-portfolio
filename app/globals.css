@@ -11,7 +11,20 @@
   }
 
   body {
-    @apply bg-paper text-ink font-sans;
+    @apply text-ink font-sans;
+    background-color: theme('colors.paper');
+    /* Graph-paper grid: faint minor lines with a slightly stronger major line every 5 cells. */
+    background-image:
+      linear-gradient(to right, rgba(26, 26, 24, 0.07) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(26, 26, 24, 0.07) 1px, transparent 1px),
+      linear-gradient(to right, rgba(26, 26, 24, 0.035) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(26, 26, 24, 0.035) 1px, transparent 1px);
+    background-size:
+      140px 140px,
+      140px 140px,
+      28px 28px,
+      28px 28px;
+    background-position: -1px -1px;
   }
 
   h1, h2, h3, h4, h5, h6 {
