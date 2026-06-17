@@ -71,17 +71,16 @@ export default function FlagshipPage() {
           <div className="max-w-4xl">
             <Section id="tldr" title="Summary">
               <p>
-                A six-model benchmark (CNN, U-Net, ConvLSTM with
-                MC&nbsp;Dropout, linear extrapolation, SLEUTH cellular
-                automata, and persistence) for predicting urban built-up
-                surface density across the Continental United States at
-                250&nbsp;m resolution from 45 years of Global Human Settlement
-                Layer observations. The repository contains the full
-                experimental pipeline behind two independent holdouts (821-tile
-                2015 spatial block, fully sealed 2020 temporal), four
-                change-threshold sensitivities, channel-matched multi-horizon
-                experiments, zero-shot transfer to Lagos, and MC&nbsp;Dropout
-                calibration on 8.69&nbsp;million validation pixels.
+                I built a benchmark of six models, a CNN, a U-Net, a ConvLSTM
+                with MC&nbsp;Dropout, linear extrapolation, the SLEUTH cellular
+                automaton, and plain persistence, to predict how built-up an
+                area gets across the continental US at 250&nbsp;m, from 45 years
+                of Global Human Settlement Layer data. The repository has the
+                whole pipeline behind it. There are two separate holdouts, an
+                821-tile 2015 spatial block and a fully sealed 2020 temporal
+                one, plus four change-threshold settings, the channel-matched
+                horizon experiments, a cold transfer to Lagos, and MC&nbsp;Dropout
+                calibration over 8.69&nbsp;million validation pixels.
               </p>
             </Section>
 
@@ -114,7 +113,7 @@ export default function FlagshipPage() {
                       <>
                         Bootstrap attribution:{' '}
                         <span className="text-ink tabular">94%</span> of the
-                        CNN 5yr→10yr FoM decline is attributable to input
+                        CNN 5yr to 10yr FoM decline is attributable to input
                         channel reduction, 95% CI{' '}
                         <span className="text-ink tabular">
                           [62%,&nbsp;100%]
@@ -146,7 +145,7 @@ export default function FlagshipPage() {
                         <span className="text-ink tabular">r = 0.983</span>{' '}
                         between predicted σ̂ and actual error across 10 decile
                         bins. Absolute magnitudes are{' '}
-                        <span className="text-ink tabular">1.4–1.9×</span>{' '}
+                        <span className="text-ink tabular">1.4-1.9×</span>{' '}
                         under-estimated. The score is useful for triage, not
                         yet for coverage.
                       </>
@@ -158,21 +157,20 @@ export default function FlagshipPage() {
 
             <Section id="problem" title="Problem">
               <p>
-                Multi-horizon urban-growth papers consistently report a single
-                pattern: CNN baselines weaken at longer forecast horizons, and
-                ConvLSTMs (framed as sequence-modeling architectures) catch up
-                or overtake them. The interpretation that follows is
-                structural: recurrence captures something architectural that
-                flat-stacking cannot.
+                Papers on multi-horizon urban growth tend to report the same
+                thing. The CNN baselines get worse at longer horizons, and the
+                ConvLSTMs, sold as sequence models, catch up or pass them. The
+                story people then tell is structural. Recurrence is supposedly
+                catching something that flat stacking cannot.
               </p>
               <p>
-                But the benchmark protocol changes with the horizon. Moving
-                from a 5-year to a 10-year horizon does not only push the
-                prediction further out. It also removes the most recent input
-                epoch. The CNN baseline therefore sees a shorter encoder
-                window at long horizons, while the ConvLSTM hidden state still
-                summarizes the full history. The architectural claim and the
-                protocol confound are not separated.
+                But the setup itself changes with the horizon. Going from a
+                5-year to a 10-year forecast does not just push the target
+                further out. It also drops the most recent input epoch. So at
+                long horizons the CNN is looking at a shorter window, while the
+                ConvLSTM hidden state still folds in the whole history. The
+                architecture claim and this setup artifact end up stuck
+                together, and nobody pulls them apart.
               </p>
 
               <figure className="my-10">
@@ -182,7 +180,7 @@ export default function FlagshipPage() {
                       5-year horizon
                     </p>
                     <p className="font-serif text-base text-ink leading-snug mb-4">
-                      1975 → 2010 input · target 2015
+                      1975 to 2010 input, target 2015
                     </p>
                     <p className="font-serif text-3xl text-accent tabular leading-none">
                       24{' '}
@@ -197,7 +195,7 @@ export default function FlagshipPage() {
                       10-year horizon
                     </p>
                     <p className="font-serif text-base text-ink leading-snug mb-4">
-                      1975 → 2005 input · target 2015
+                      1975 to 2005 input, target 2015
                     </p>
                     <p className="font-serif text-3xl text-accent tabular leading-none">
                       21{' '}
@@ -251,7 +249,7 @@ export default function FlagshipPage() {
                 <li className="flex gap-3">
                   <span className="font-mono text-success flex-shrink-0">✓</span>
                   <span>
-                    Zero-shot CONUS&nbsp;→&nbsp;Lagos geographic transfer
+                    Zero-shot CONUS to Lagos geographic transfer
                   </span>
                 </li>
                 <li className="flex gap-3">
@@ -500,7 +498,7 @@ export default function FlagshipPage() {
                 <MetricCard
                   value="94"
                   unit="%"
-                  description="of CNN's 5yr→10yr FoM decline attributes to channel-count reduction, 95% CI [62%, 100%]."
+                  description="of CNN's 5yr to 10yr FoM decline attributes to channel-count reduction, 95% CI [62%, 100%]."
                   tone="secondary"
                 />
                 <MetricCard
@@ -514,7 +512,7 @@ export default function FlagshipPage() {
                   description="Pearson r between predicted uncertainty σ̂ and actual error across 10 decile bins on 8.69M validation pixels."
                 />
                 <MetricCard
-                  value="1.4–1.9"
+                  value="1.4-1.9"
                   unit="×"
                   description="uncertainty-magnitude underestimation. Useful for ranking, not yet for coverage without post-hoc calibration."
                 />
@@ -739,7 +737,7 @@ export default function FlagshipPage() {
                 economic covariates in the neural models; post-2015 CONUS
                 growth slowdown (5&times; lower rate) is the dominant driver
                 of the 2020-holdout FoM drop; MC&nbsp;Dropout magnitudes are
-                1.4–1.9× under-estimated and need post-hoc or conformal
+                1.4-1.9× under-estimated and need post-hoc or conformal
                 calibration for coverage.
               </p>
             </Section>

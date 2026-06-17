@@ -255,14 +255,15 @@ export default function ResearchPage() {
         <section className="pt-12 border-t border-rule">
           <p className="overline mb-6">How I work</p>
           <p className="text-base text-ink leading-loose max-w-2xl text-pretty">
-            I try to keep the evaluation honest: sealed holdouts, channel-matched
-            controls, per-tile statistical confirmation, and bootstrap intervals
-            on the results that matter. Every claim ships with the script that
-            produces it and the results files that regenerate the figures, under
-            an open license. The data are real Earth-observation products rather
-            than synthetic benchmarks built to favor a method, and limitations
-            sit next to the results — ranking kept separate from magnitude, with
-            no claim that outruns the evidence.
+            I try to keep the evaluation honest. The holdouts are sealed, the
+            controls are channel-matched, the statistics are checked per tile,
+            and the results that matter come with bootstrap intervals. Every
+            claim ships with the script that produces it and the results files
+            that redraw the figures, under an open license. The data are real
+            Earth-observation products, not synthetic benchmarks tuned to make a
+            method look good. The limitations sit next to the results, ranking
+            is kept separate from magnitude, and no claim runs past the
+            evidence.
           </p>
         </section>
       </div>

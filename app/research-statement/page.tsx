@@ -5,7 +5,7 @@ import { asset } from '@/lib/site';
 export const metadata: Metadata = {
   title: 'Research statement',
   description:
-    'Research statement: evaluation methodology and out-of-distribution generalization for Earth-observation vision — benchmark confounds, geographic transfer, and uncertainty under shift.',
+    'My research statement. I work on how Earth-observation models are evaluated, on benchmark confounds, geographic transfer, and whether uncertainty estimates hold up when the data shifts.',
 };
 
 export default function ResearchStatementPage() {
@@ -25,20 +25,19 @@ export default function ResearchStatementPage() {
 
         <article className="prose-research max-w-prose">
           <p>
-            My research started from a simple question: when a deep model looks
-            better, is it actually learning something better, or did the
-            benchmark quietly make the comparison unfair?
+            This all started from one question. When a deep model looks better,
+            is it actually learning something better, or did the benchmark
+            quietly make the comparison unfair?
           </p>
 
           <p>
-            I work on spatiotemporal vision for Earth observation. These
-            models are usually tested across time and geography, but the
-            evaluation setup is often not as clean as it looks. The input
-            pipeline can change with the prediction horizon. A metric can
-            make one model look best while another metric says the opposite.
-            A model that works in one region can fail badly in another. I am
-            interested in these failure points because they decide what we
-            believe about a model.
+            I work on spatiotemporal vision for Earth observation. These models
+            get tested across time and geography, but the test setup is often
+            not as clean as it looks. The input pipeline can shift with the
+            prediction horizon. One metric can crown a model while another
+            metric picks the opposite one. A model that does fine in one region
+            can fall apart in the next. I care about these spots because they
+            are where our beliefs about a model actually come from.
           </p>
 
           <p>
@@ -51,12 +50,11 @@ export default function ResearchStatementPage() {
               The Channel-Count Confound: A Continental Audit of Multi-Horizon
               Urban Growth Prediction
             </Link>
-            , I found that a standard CNN vs. ConvLSTM comparison is not
-            really architecture against architecture. When the task moves
-            from a 5-year to a 10-year horizon, the benchmark also removes
-            the most recent input epoch, cutting the input stack from 24 to
-            21 channels. That means horizon length and input availability are
-            mixed together.
+            , I found that the usual CNN versus ConvLSTM comparison is not
+            really one architecture against another. When the task moves from a
+            5-year to a 10-year horizon, the benchmark also drops the most
+            recent input epoch, cutting the input stack from 24 channels to 21.
+            So horizon length and input availability end up tangled together.
           </p>
 
           <p>
@@ -72,19 +70,19 @@ export default function ResearchStatementPage() {
           </p>
 
           <p>
-            The larger lesson is what matters to me: if the benchmark changes
-            the input, metric, or test geography, the reported model ranking
-            may be telling us as much about the benchmark as about the model.
+            The part that stays with me is the bigger lesson. If the benchmark
+            changes the input, the metric, or the test geography, the ranking it
+            hands you might be saying as much about the benchmark as about the
+            model.
           </p>
 
           <p>
-            My next step is to build reusable diagnostics for spatiotemporal
-            ML benchmarks: tests for input-design confounds, temporal and
-            geographic transfer failure, and uncertainty calibration under
-            distribution shift. I do not want this work to stop at one
-            urban-growth model. I want to make model comparisons in
-            Earth-observation ML more reproducible, interpretable, and
-            trustworthy.
+            Next I want to turn this into reusable checks for spatiotemporal ML
+            benchmarks. Things that catch input-design confounds, flag where a
+            model stops transferring across time or geography, and test whether
+            its uncertainty still means anything once the data shifts. I do not
+            want it to end at one urban-growth model. The point is to make model
+            comparisons in this field easier to reproduce and easier to trust.
           </p>
         </article>
 
@@ -98,16 +96,16 @@ export default function ResearchStatementPage() {
               Channel-count project page
             </Link>
             <Link
-              href="/research"
+              href="/#research"
               className="link-quiet underline decoration-rule underline-offset-4 hover:decoration-accent"
             >
-              Research questions
+              Research
             </Link>
             <Link
               href="/code"
               className="link-quiet underline decoration-rule underline-offset-4 hover:decoration-accent"
             >
-              Code &amp; reproducibility
+              Code &amp; data
             </Link>
             <a
               href={asset('/RohanBali_CV.pdf')}
@@ -117,7 +115,7 @@ export default function ResearchStatementPage() {
               CV (PDF)
             </a>
             <Link
-              href="/contact"
+              href="/#contact"
               className="link-quiet underline decoration-rule underline-offset-4 hover:decoration-accent"
             >
               Contact

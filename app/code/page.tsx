@@ -14,7 +14,7 @@ const repos = [
     title: 'Multi-Horizon Urban Growth Prediction',
     href: 'https://github.com/rohanbalixz/Multi-Horizon-Urban-Growth-Prediction',
     body:
-      'The benchmark behind the channel-count audit. CONUS at 250 m, 45 years of GHSL inputs, 5,698 tiles with an 821-tile spatial holdout, a sealed 2020 temporal holdout, CONUS→Lagos transfer, and MC Dropout calibration over 8.69 M validation pixels.',
+      'The benchmark behind the channel-count audit. CONUS at 250 m, 45 years of GHSL inputs, 5,698 tiles with an 821-tile spatial holdout, a sealed 2020 temporal holdout, a cold transfer from CONUS to Lagos, and MC Dropout calibration over 8.69 M validation pixels.',
     links: [
       { label: 'GitHub', href: 'https://github.com/rohanbalixz/Multi-Horizon-Urban-Growth-Prediction', external: true },
       { label: 'GeoAI paper (PDF)', href: geoaiPaperUrl, external: true },
@@ -46,9 +46,9 @@ export default function CodePage() {
             Each repository is organized so that every reported number can be
             regenerated from committed results: experiments run as
             self-contained scripts, results are written as JSON, and the
-            figure-generation scripts read those files back. Evaluation uses a
-            single shared protocol — the same held-out tile indices across every
-            script — and results are reported over multiple seeds.
+            figure-generation scripts read those files back. Evaluation runs on
+            one shared protocol, the same held-out tile indices across every
+            script, and results are reported over several seeds.
           </p>
         </header>
 
@@ -95,10 +95,10 @@ export default function CodePage() {
             The Multi-Horizon repository ships under an MIT license with unit
             tests for the models and metrics, the per-experiment results files,
             data-download instructions for GHSL R2023A, and notes on runtime
-            (about five GPU-days on a single A100). Pretrained weights are not
-            distributed — they are regenerable from the scripts. The GeoAI short
-            paper has a Zenodo DOI; a container image and the SpatialDI DOI are
-            forthcoming.
+            (about five GPU-days on a single A100). I do not ship pretrained
+            weights, since you can regenerate them from the scripts. The GeoAI
+            short paper has a Zenodo DOI. A container image and the SpatialDI DOI
+            are still to come.
           </p>
         </section>
 

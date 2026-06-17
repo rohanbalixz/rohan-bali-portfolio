@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     template: '%s · Rohan Bali',
   },
   description:
-    'Rohan Bali — M.S. Data Science student at UMass Dartmouth working on evaluation methodology and out-of-distribution generalization for Earth-observation vision.',
+    'Rohan Bali. M.S. Data Science student at UMass Dartmouth. I work on how machine learning models for Earth observation are tested, and whether they hold up across regions.',
   keywords: [
     'Rohan Bali',
     'Earth observation',

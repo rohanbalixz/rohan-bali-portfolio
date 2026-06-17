@@ -20,12 +20,12 @@ const news = [
     date: 'Jun 2026',
     body: (
       <>
-        New paper in preparation —{' '}
+        Started a new paper,{' '}
         <em>
           Train Anywhere, Test Everywhere: Cross-Region Transfer in Earth
           Observation Is Decided by the Data, Not the Model
         </em>
-        , prepared as a SIGSPATIAL&nbsp;&rsquo;26 short paper.
+        . It is headed to SIGSPATIAL 2026 as a short paper.
       </>
     ),
   },
@@ -33,16 +33,16 @@ const news = [
     date: '2026',
     body: (
       <>
-        <em>The Channel-Count Confound</em> accepted at SpatialDI&nbsp;2026
-        (Springer LNCS), with a short-paper companion at GeoAI&nbsp;2026 (oral).
-        The GeoAI PDF is{' '}
+        <em>The Channel-Count Confound</em> got into SpatialDI&nbsp;2026
+        (Springer LNCS). A shorter companion paper is at GeoAI&nbsp;2026 as an
+        oral, and that one is{' '}
         <a
           href={geoaiPaperUrl}
           target="_blank"
           rel="noopener noreferrer"
           className="link-inline"
         >
-          on Zenodo
+          up on Zenodo
         </a>
         .
       </>
@@ -52,7 +52,7 @@ const news = [
     date: '2024',
     body: (
       <>
-        Working note on academic collaboration networks and small-world
+        Wrote up a note on academic collaboration networks and small world
         structure.
       </>
     ),
@@ -113,8 +113,9 @@ export default function Home() {
             </h1>
             <p className="text-base text-muted mb-1">{siteMeta.affiliation}</p>
             <p className="text-base text-ink leading-relaxed mb-4 text-pretty">
-              Evaluation methodology and out-of-distribution generalization for
-              Earth-observation vision.
+              I work on how we test machine learning models for satellite and
+              Earth data, and whether they hold up outside the place they were
+              trained.
             </p>
             <p className="text-sm text-muted">
               <InlineLinks items={profileLinks} />
@@ -125,17 +126,18 @@ export default function Home() {
         {/* Bio */}
         <section className="prose-research space-y-5 mb-16">
           <p>
-            When one spatiotemporal model looks better than another, I try to
-            establish whether it actually is — or whether the gain came from how
-            the inputs were built and where the data came from. Most of my work
-            audits benchmarks in urban-growth prediction: sealed temporal
-            holdouts, channel-matched controls, zero-shot transfer to held-out
-            regions, and calibrated uncertainty, asking what part of a reported
-            result survives a tighter protocol.
+            A lot of papers say one model beats another. I spend most of my
+            time checking whether that is actually true. Usually the win turns
+            out to come from how the data was set up, not from the model. So I
+            take benchmarks apart, mostly in urban growth prediction, and see
+            how much of the result is left once the test gets harder. That means
+            hiding the years the model never saw, matching the inputs so two
+            models get a fair shot, testing on cities the model was never
+            trained on, and checking that its confidence numbers mean something.
           </p>
           <p>
-            Before graduate school I was a software engineer at Capgemini and a
-            machine-learning trainee at Upcred.ai.
+            Before grad school I worked as a software engineer at Capgemini, and
+            before that as a machine learning trainee at Upcred.ai.
           </p>
         </section>
 
@@ -161,18 +163,21 @@ export default function Home() {
           <h2 className="font-serif text-xl text-ink mb-5">Research</h2>
           <div className="prose-research space-y-5">
             <p>
-              The through-line is evaluation under distribution shift. Three
-              questions recur: when a model improvement comes from the
-              architecture versus the evaluation setup; which learned
-              representations survive when a model moves between regions; and
-              whether uncertainty estimates stay useful once the test
-              distribution changes.
+              Most of my projects come back to the same worry. When the test
+              data stops looking like the training data, does the model still
+              work, and would our metric even tell us if it did not? A few
+              questions keep showing up. Is a model really better, or did the
+              benchmark just make it look that way? When a model trained in one
+              part of the world gets dropped into another, what holds and what
+              breaks? And once the data shifts, can you still trust what the
+              model says about how sure it is?
             </p>
             <p>
-              I keep claims close to the evidence — sealed holdouts and
-              channel-matched controls, per-tile statistical confirmation,
-              limitations stated next to results, and every reported number
-              reproducible from the released code. More in my{' '}
+              I try not to say more than the evidence backs up. The holdouts are
+              sealed, the inputs are matched, the statistics are checked tile by
+              tile, and the limitations sit next to the results instead of
+              getting buried at the end. Every number here can be reproduced
+              from the code I put out. There is more in my{' '}
               <Link href="/research-statement" className="link-inline">
                 research statement
               </Link>{' '}
@@ -227,21 +232,18 @@ export default function Home() {
           <h2 className="font-serif text-xl text-ink mb-5">Contact</h2>
           <div className="prose-research mb-4">
             <p>
-              Email is the best way to reach me. I welcome conversations with
-              potential PhD supervisors and collaborators working on evaluation
-              under distribution shift, robust computer vision, uncertainty
-              calibration, and Earth-observation ML.
+              Email is the best way to reach me. I am looking for PhD positions,
+              so if you supervise work on evaluation, generalization,
+              uncertainty, or machine learning for Earth observation, I would
+              like to hear from you. Same goes for anyone working on close
+              problems.
             </p>
           </div>
           <p className="text-sm text-muted">
-            <a
-              href={`mailto:${siteMeta.email}`}
-              className="link-inline"
-            >
+            <a href={`mailto:${siteMeta.email}`} className="link-inline">
               {siteMeta.email}
             </a>
-            <span className="text-rule mx-2">·</span>
-            Boston, MA
+            . Based in Boston, MA.
           </p>
         </section>
       </div>

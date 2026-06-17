@@ -38,26 +38,28 @@ export default function FlagshipHero({
             )}
 
             <p className="text-base text-muted leading-relaxed mb-8 text-pretty">
-              A continental audit of CNN and ConvLSTM comparisons on 305M
-              CONUS pixels. Under sealed 2020 temporal holdouts, zero-shot
-              transfer to Lagos, and MC Dropout calibration, the apparent
-              ConvLSTM advantage at longer horizons turns out to be a
-              channel-count artefact, not a representational benefit.
+              I audited the usual CNN and ConvLSTM comparison across 305M pixels
+              of the continental US. Once you seal the 2020 holdout, test cold
+              on Lagos, and calibrate the uncertainty, the ConvLSTM lead at
+              longer horizons turns out to be about the number of input
+              channels, not the model learning anything more.
             </p>
 
             <div className="grid sm:grid-cols-3 gap-6 mb-8">
               <div>
                 <p className="overline mb-2">Problem</p>
                 <p className="text-sm text-ink leading-relaxed">
-                  Multi-horizon urban-growth benchmarks change forecast
-                  horizon and input-channel count at the same time.
+                  These benchmarks change the forecast horizon and the input
+                  channel count at the same time, so you cannot tell which one
+                  is doing the work.
                 </p>
               </div>
               <div>
                 <p className="overline mb-2">Finding</p>
                 <p className="text-sm text-ink leading-relaxed">
-                  94% of the CNN 5yr to 10yr FoM decline is explained by
-                  channel-count reduction, not horizon length.
+                  About 94% of the CNN drop from the 5-year to the 10-year
+                  horizon comes from losing a channel, not from the longer
+                  horizon.
                 </p>
               </div>
               <div>

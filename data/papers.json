@@ -8,8 +8,8 @@
       { "label": "SpatialDI 2026 (Springer LNCS)", "tone": "accent" },
       { "label": "Main paper", "tone": "secondary" }
     ],
-    "status": "Accepted. Sole author. PDF coming soon at SpatialDI.",
-    "abstract": "A continental audit of CNN and ConvLSTM comparisons on multi-horizon urban-growth prediction across 305M CONUS pixels. Under sealed 2020 temporal holdouts, zero-shot transfer to Lagos, and MC Dropout calibration over 8.69M validation pixels, the apparent ConvLSTM advantage at longer horizons collapses. It was a channel-count artefact, not a representational benefit. Per-tile Wilcoxon and bootstrap confirmation; calibration r = 0.983.",
+    "status": "Accepted, sole author. PDF coming once SpatialDI posts it.",
+    "abstract": "People keep reporting that ConvLSTMs beat plain CNNs at predicting urban growth further into the future. I checked that claim across 305M pixels of the continental US. Once you hold out 2020 properly, test cold on Lagos, and calibrate the uncertainty over 8.69M pixels, the ConvLSTM lead at longer horizons mostly goes away. It came from the number of input channels, not from the model learning anything better. The finding holds up under per-tile Wilcoxon tests and bootstrapping, and the calibration came in at r = 0.983.",
     "links": [
       { "label": "Paper (coming soon)", "href": "" },
       { "label": "Code & data", "href": "https://github.com/rohanbalixz/Multi-Horizon-Urban-Growth-Prediction", "external": true },
@@ -25,8 +25,8 @@
     "venues": [
       { "label": "GeoAI 2026 Short Paper (Oral)", "tone": "secondary" }
     ],
-    "status": "Accepted. Sole author. 6-page short paper companion to the SpatialDI main paper. PDF on Zenodo.",
-    "abstract": "A short-form companion to the SpatialDI main paper. Distils the channel-count finding into a six-page argument: when forecast horizon and input-channel count move together, what looks like a horizon-length effect in CNN vs ConvLSTM comparisons is largely an input-design artefact. Channel-matched controls collapse the apparent gap.",
+    "status": "Accepted, sole author. A six-page companion to the SpatialDI paper. PDF is on Zenodo.",
+    "abstract": "The short companion to the SpatialDI paper. It makes the same point in six pages. When you push the forecast further out, you also end up feeding the model fewer input channels, so the two move together. What looks like a horizon effect in CNN versus ConvLSTM comparisons is mostly about that input design. Match the channels and the gap basically disappears.",
     "links": [
       { "label": "Paper (PDF)", "href": "https://zenodo.org/records/20278403", "external": true },
       { "label": "Code & data", "href": "https://github.com/rohanbalixz/Multi-Horizon-Urban-Growth-Prediction", "external": true },
@@ -42,8 +42,8 @@
     "venues": [
       { "label": "In preparation" }
     ],
-    "status": "In preparation. Sole author. Prepared as a SIGSPATIAL '26 short paper. Follow-on to the channel-count audit.",
-    "abstract": "A geospatial model's cross-region score is decided by the data: which region you evaluate on and which input you feed it, not the architecture, the training region, or the domain-generalisation objective. Computing the full source-by-target transfer matrix over twenty world regions yields two near-orthogonal findings. (1) Hold the input fixed and the target sets the score while the training source is inert: the home-field advantage is -0.001 FoM (zero within seed noise), source rows agree at Spearman rho = 0.97, and the per-region difficulty ordering is identical across six architectures including fine-tuned foundation models. Neither GroupDRO, source pooling, nor a 14x capacity increase beats a parameter-free extrapolation of each region's recent past, which tops every trained model on FoM (0.56 vs. 0.34) and on a confound-free state metric (IoU 0.92 vs. 0.61). (2) Hold the target fixed and swap the input, and retention moves along a provenance spectrum, from globally-harmonised products that transfer (approximately 1.0) to raw sensor reflectance that does not (0.55); an independent model-free probe recovers what orders it. The same target-over-model dominance recurs on the published PANGAEA foundation-model benchmark. The upshot is a cheap diagnostic any cross-region benchmark can run before trusting a gap. Built on GHSL, Landsat, Sentinel-1/2, MODIS NDVI and LST, ESA WorldCover, Copernicus DEM, OpenStreetMap, and the PANGAEA benchmark.",
+    "status": "Still writing this one. Sole author, aimed at SIGSPATIAL 2026, and a follow-on to the channel-count work.",
+    "abstract": "How well a model carries over to a new region turns out to be about the data, not the model. What matters is which region you test on and which input you feed in. It is not the architecture, not where you trained, and not the usual domain-generalization tricks. I trained one model per region and tested every model on every region, twenty regions in all, and two things came out of it. The first holds the input fixed. Then the test region sets the score and the training source barely counts. Training a model on its home region buys it almost nothing. The home-field edge is -0.001 FoM, which is basically noise. The regions rank the same way across six different architectures, fine-tuned foundation models included, and nothing on the model side helps. GroupDRO, pooling the sources, a 14x bigger model: none of them beat a one-line rule that just extends each region's recent past, which wins on FoM (0.56 against 0.34) and on a cleaner state metric (IoU 0.92 against 0.61). The second swaps the input and keeps the region fixed. Now transfer falls along a spectrum. Globally harmonized products carry over almost perfectly, raw sensor reflectance hardly carries at all (0.55), and a simple model-free probe predicts where a given input will land. The same pattern, the target mattering far more than the model, shows up again on the published PANGAEA benchmark. So the practical takeaway is a cheap check any cross-region benchmark can run before it trusts a gap. Built on GHSL, Landsat, Sentinel-1 and 2, MODIS NDVI and LST, ESA WorldCover, Copernicus DEM, OpenStreetMap, and PANGAEA.",
     "links": [
       { "label": "Code & data", "href": "https://github.com/rohanbalixz/Cross-Region-Source-Invariance-in-Earth-Observation", "external": true }
     ]
@@ -56,8 +56,8 @@
     "venues": [
       { "label": "In preparation" }
     ],
-    "status": "In preparation. Sole author.",
-    "abstract": "Rather than predicting realized built-up area or price, both well covered, this work predicts the signed gap between economically expressed demand and the supply that Earth observation actually records: the cells where the demand signal runs hot but conversion never happened, held back by zoning, litigation, geography, or vacancy. That residual is what demand for land over time really means. Five deliberately divergent metros, Noida, Mumbai, Chandigarh, Bengaluru, and Hyderabad, stress-test cross-typology generalization on a free, open 100 m channel stack that fuses GHSL supply layers, population and night-lights demand signals, terrain and water constraints, and NHB RESIDEX price indices. The proposed DSRF model beats SimVP, TAU, and PredRNN.V2 on Figure of Merit at p<0.05 over ten seeds, yields calibrated 95% prediction intervals, and under leave-one-city-out transfers to an unseen city better than SOTA models trained on all five. An undevelopable-land measure built from terrain and water recovers a correct-signed supply economics: constrained cities convert less land (corr -0.77) and carry more suppressed demand (corr +0.79).",
+    "status": "Still in progress. Sole author.",
+    "abstract": "Most work here predicts built-up area or price, and both are well covered already. This project goes after something different. It predicts the gap between where the demand for land is and where building actually happened. Those are the cells where the signal runs hot but nothing went up, held back by zoning, litigation, geography, or plain vacancy. That leftover is closer to what demand for land really means over time. I test it on five very different metros, Noida, Mumbai, Chandigarh, Bengaluru, and Hyderabad, using a free, open 100 m stack. GHSL covers supply, population and night-lights stand in for demand, terrain and water set the constraints, and NHB RESIDEX brings the prices. The model I propose, DSRF, beats SimVP, TAU, and PredRNN.V2 on Figure of Merit at p<0.05 over ten seeds, gives calibrated 95% intervals, and when a whole city is held out it transfers to that unseen city better than models trained on all five. A measure of undevelopable land built from terrain and water gets the economics right. Tighter cities convert less land (correlation -0.77) and sit on more suppressed demand (correlation +0.79).",
     "links": []
   },
   {
@@ -68,7 +68,7 @@
     "venues": [
       { "label": "Working note. Medium" }
     ],
-    "abstract": "An empirical study of academic collaboration structure across 12 domains and 180K+ co-authorship edges, applying small-world statistics to test whether high-impact researchers concentrate within short network neighborhoods. Includes reproducible pipelines for citation-graph construction and author-impact inference.",
+    "abstract": "I looked at how academic collaboration is structured across 12 fields and more than 180,000 co-authorship links, using small-world statistics to ask whether the high-impact researchers cluster within a few hops of each other. The code for building the citation graph and estimating author impact is reproducible.",
     "links": [
       { "label": "Essay", "href": "https://swn465.home.blog/2024/12/12/understanding-academic-collaboration-networks-through-small-world/", "external": true }
     ]

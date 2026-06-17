@@ -15,7 +15,7 @@ export default function CopyableBibtex({ bibtex }: CopyableBibtexProps) {
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     } catch {
-      // clipboard failed silently — user can still copy by selecting text
+      // clipboard failed silently, user can still copy by selecting text
     }
   };
 

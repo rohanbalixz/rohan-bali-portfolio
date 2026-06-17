@@ -118,7 +118,7 @@
     "tech_stack": ["Python", "React", "Next.js", "Leaflet", "Docker"],
     "highlights": [
       "RAG with geographic embeddings",
-      "Reduced hallucinations by 35% vs GPT-only baseline",
+      "Cut hallucinations by 35% compared to a GPT-only baseline",
       "Interactive Leaflet-based map UI"
     ],
     "github": "https://github.com/rohanbalixz/Tripsy-AI-Travel-Assistant",
