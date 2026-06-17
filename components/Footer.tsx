@@ -6,7 +6,7 @@ export default function Footer() {
   return (
     <footer className="border-t border-rule mt-32">
       <div className="max-w-5xl mx-auto px-6 py-12">
-        <div className="grid md:grid-cols-3 gap-8 mb-10">
+        <div className="grid sm:grid-cols-2 gap-8 mb-10">
           <div>
             <p className="overline mb-3">Site</p>
             <ul className="space-y-2 text-sm">
@@ -57,12 +57,6 @@ export default function Footer() {
                 </a>
               </li>
             </ul>
-          </div>
-          <div>
-            <p className="overline mb-3">Colophon</p>
-            <p className="text-sm text-muted leading-relaxed">
-              Figures from primary research.
-            </p>
           </div>
         </div>
 
