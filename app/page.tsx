@@ -94,14 +94,19 @@ export default function Home() {
       <div className="max-w-3xl mx-auto px-6">
         {/* Header */}
         <header className="flex flex-col sm:flex-row sm:items-start gap-6 sm:gap-8 mb-12">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={asset('/profile.jpg')}
-            alt="Rohan Bali"
-            width={144}
-            height={144}
-            className="w-28 h-28 sm:w-36 sm:h-36 object-cover border border-rule shrink-0"
-          />
+          <figure className="shrink-0">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={asset('/profile.jpg')}
+              alt="Rohan Bali"
+              width={144}
+              height={144}
+              className="w-28 h-28 sm:w-36 sm:h-36 object-cover border border-rule"
+            />
+            <figcaption className="mt-2 w-28 sm:w-36 text-xs text-subtle italic leading-snug text-center">
+              somewhere in new hampshire
+            </figcaption>
+          </figure>
           <div>
             <h1 className="font-serif text-3xl md:text-4xl text-ink tracking-tight mb-2">
               Rohan Bali
