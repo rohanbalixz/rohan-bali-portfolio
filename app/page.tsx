@@ -64,10 +64,14 @@ const selected = papers.slice(0, 4);
 function InlineLinks({ items }: { items: LinkItem[] }) {
   const usable = items.filter((l) => l.href);
   return (
-    <>
+    <span className="flex flex-wrap items-center gap-x-2 gap-y-1">
       {usable.map((l, i) => (
-        <span key={l.label}>
-          {i > 0 && <span className="text-rule mx-2">·</span>}
+        <span key={l.label} className="inline-flex items-center gap-x-2">
+          {i > 0 && (
+            <span className="text-rule" aria-hidden="true">
+              ·
+            </span>
+          )}
           {l.external ? (
             <a
               href={l.href}
@@ -84,7 +88,7 @@ function InlineLinks({ items }: { items: LinkItem[] }) {
           )}
         </span>
       ))}
-    </>
+    </span>
   );
 }
 
