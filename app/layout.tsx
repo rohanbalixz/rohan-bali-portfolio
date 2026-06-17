@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { Inter, Source_Serif_4, IBM_Plex_Mono } from 'next/font/google';
 import './globals.css';
 import Navbar from '@/components/Navbar';
@@ -66,6 +66,11 @@ export const metadata: Metadata = {
       'M.S. Data Science student at UMass Dartmouth. Evaluation methodology and out-of-distribution generalization for Earth-observation vision.',
     images: ['/og.svg'],
   },
+};
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
 };
 
 export default function RootLayout({
