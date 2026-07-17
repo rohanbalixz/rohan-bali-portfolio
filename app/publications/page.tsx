@@ -3,7 +3,7 @@ import PaperCard from '@/components/PaperCard';
 import papers from '@/data/papers.json';
 
 export const metadata: Metadata = {
-  title: 'Paper',
+  title: 'Publications',
   description:
     'Papers and the code, benchmarks, and data that back them up, in Earth-observation machine learning and evaluation under distribution shift.',
 };
