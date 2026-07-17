@@ -44,7 +44,7 @@ const news = [
     ),
   },
   {
-    date: '2026',
+    date: 'Jan 2026',
     body: (
       <>
         <em>The Channel-Count Confound</em> got into SpatialDI&nbsp;2026
@@ -80,11 +80,19 @@ const news = [
     ),
   },
   {
-    date: '2024',
+    date: 'Dec 2024',
     body: (
       <>
-        Wrote up a note on academic collaboration networks and small world
-        structure.
+        Wrote up a{' '}
+        <a
+          href="https://swn465.home.blog/author/rbali196018b763/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="link-inline"
+        >
+          note
+        </a>{' '}
+        on academic collaboration networks and small world structure.
       </>
     ),
   },
@@ -92,12 +100,27 @@ const news = [
 
 const selected = papers.slice(0, 4);
 
-function InlineLinks({ items }: { items: LinkItem[] }) {
+function InlineLinks({
+  items,
+  nowrap = false,
+}: {
+  items: LinkItem[];
+  nowrap?: boolean;
+}) {
   const usable = items.filter((l) => l.href);
   return (
-    <span className="flex flex-wrap items-center gap-x-2 gap-y-1">
+    <span
+      className={`flex items-center gap-x-2 ${
+        nowrap ? 'flex-nowrap overflow-x-auto' : 'flex-wrap gap-y-1'
+      }`}
+    >
       {usable.map((l, i) => (
-        <span key={l.label} className="inline-flex items-center gap-x-2">
+        <span
+          key={l.label}
+          className={`inline-flex items-center gap-x-2${
+            nowrap ? ' shrink-0 whitespace-nowrap' : ''
+          }`}
+        >
           {i > 0 && (
             <span className="text-rule" aria-hidden="true">
               ·
@@ -153,7 +176,7 @@ export default function Home() {
               trained.
             </p>
             <p className="text-sm text-muted">
-              <InlineLinks items={profileLinks} />
+              <InlineLinks items={profileLinks} nowrap />
             </p>
           </div>
         </header>
