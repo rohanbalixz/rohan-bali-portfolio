@@ -58,7 +58,7 @@ export default function CVPage() {
           <p className="text-base text-ink leading-relaxed mb-8 max-w-2xl">
             {cvData.summary}
           </p>
-          <div className="flex flex-wrap items-center gap-x-5 gap-y-3 text-sm">
+          <div className="flex flex-wrap items-center gap-x-5 gap-y-3 text-base">
             <a
               href={asset('/RohanBali_CV.pdf')}
               className="btn-primary"
