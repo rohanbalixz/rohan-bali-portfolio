@@ -58,20 +58,20 @@
       "note": "Sole author, aimed at SIGSPATIAL 2026, a follow-on to the channel-count work. I trained one model per region and tested every model on every region across twenty regions. The training source barely matters. The test region sets the score, the home-field edge is -0.001 FoM, and the regions rank the same way across six architectures, fine-tuned foundation models included. A one-line rule that just extends each region's recent past beats every trained model (FoM 0.56 against 0.34, IoU 0.92 against 0.61). Change the input instead and transfer falls along a spectrum, with harmonized products carrying over and raw reflectance hardly carrying at all. The same pattern shows up again on the PANGAEA benchmark. Code at github.com/rohanbalixz/Cross-Region-Source-Invariance-in-Earth-Observation."
     },
     {
-      "title": "UrbanFinance: Forecasting the Latent Land-Demand Residual at 100 m across Divergent Indian Urban Typologies",
+      "title": "Confident but Unidentifiable: Positivity Limits on Cross-Region Attribution in Geospatial Models",
       "authors": "Rohan Bali",
-      "note": "Sole author. It predicts the gap between where demand for land is and where building actually happened, across five very different Indian metros, using free GHSL, night-lights, terrain, and NHB RESIDEX layers. The DSRF model beats SimVP, TAU, and PredRNN.V2 on Figure of Merit at p<0.05 over ten seeds, gives calibrated 95% intervals, and when a whole city is held out it transfers to that unseen city better than models trained on all five."
+      "note": "Sole author. Submitted to Transactions in GIS (Wiley), under review. It reframes the question of why a geospatial model fails in a new region as a transportability problem and asks when a covariate explanation is even identifiable. I derive a positivity diagnostic and a partial-identification bound computable from the source data alone, with a threshold past which not even the sign of an attribution is recoverable. On land-cover transfer from the contiguous US to 44 cities across four world regions, overlap with the training data drops as low as 5.8%, and a confident, well-fit explanation predicts the wrong sign of the transfer gap in every architecture that degrades. Code at github.com/rohanbalixz/Confident-but-Unidentifiable-Positivity-Limits-on-Cross-Region-Attribution-in-Geospatial-Models."
     }
   ],
   "research_projects": [
     {
-      "title": "UrbanFinance: Latent Land-Demand Forecasting across Indian Metros",
+      "title": "Confident but Unidentifiable: Positivity Limits on Cross-Region Attribution",
       "duration": "2026",
-      "description": "Forecasts the latent land-demand residual at 100 m across five divergent Indian urban typologies (Noida, Mumbai, Chandigarh, Bengaluru, Hyderabad), fusing free Earth observation with guideline-value and transaction records.",
+      "description": "Asks whether covariate-based explanations of why a geospatial model fails in a new region are identifiable at all, framed as a transportability problem with a source-computable positivity diagnostic and partial-identification bound. Submitted to Transactions in GIS (Wiley), under review.",
       "highlights": [
-        "DSRF beats SimVP, TAU, and PredRNN.V2 on Figure of Merit at p<0.05 over 10 seeds, with calibrated 95% prediction intervals",
-        "Leave-one-city-out transfer to an unseen metro beats SOTA trained on all five cities",
-        "Supply economics in the Saiz tradition. Tighter cities convert less land (correlation -0.77) and carry more suppressed demand (correlation +0.79)"
+        "A source-computable threshold past which not even the sign of an attribution is recoverable",
+        "Land-cover transfer from the contiguous US to 44 cities across four world regions, with covariate overlap as low as 5.8%",
+        "A confident, well-fit explanation predicts the wrong sign of the transfer gap in every degrading architecture"
       ]
     },
     {

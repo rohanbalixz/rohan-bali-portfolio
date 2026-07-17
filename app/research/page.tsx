@@ -46,16 +46,17 @@ const activeWork = [
   {
     status: 'In preparation',
     statusClass: 'badge badge-secondary',
-    venue: 'Sole author · 2026',
-    title: 'UrbanFinance: Latent Land-Demand at 100 m',
+    venue: 'Sole author · Transactions in GIS · 2026',
+    title: 'Confident but Unidentifiable: Positivity Limits on Cross-Region Attribution',
     summary:
-      'Instead of predicting built-up area or price, this work predicts the signed gap between economically expressed demand and the supply Earth observation records: the cells where demand runs hot but conversion never happened. Five deliberately divergent Indian metros stress-test cross-typology generalization.',
+      'When a geospatial model fails in a new region, the usual move is to blame a covariate: rougher terrain, denser settlement. This asks whether that attribution is even identifiable before anyone trusts it, framed as a transportability problem with a positivity diagnostic you can compute from the source data alone.',
     results: [
-      'DSRF beats SimVP, TAU, and PredRNN.V2 on Figure of Merit at p<0.05 over 10 seeds, with 95% interval coverage of 0.948',
-      'Leave-one-city-out transfer to an unseen metro beats SOTA trained on all five cities',
-      'Saiz-style supply economics: constrained cities convert less land (corr -0.77) and carry more suppressed demand (corr +0.79)',
+      'A source-computable threshold past which not even the sign of an attribution is recoverable',
+      'Land-cover transfer from the contiguous US to 44 cities across four world regions, with covariate overlap as low as 5.8%',
+      'A confident, well-fit explanation predicts the wrong sign of the transfer gap in every architecture that actually degrades',
     ],
     links: [
+      { label: 'Code & data', href: 'https://github.com/rohanbalixz/Confident-but-Unidentifiable-Positivity-Limits-on-Cross-Region-Attribution-in-Geospatial-Models', external: true },
       { label: 'All papers', href: '/publications', external: false },
     ],
   },

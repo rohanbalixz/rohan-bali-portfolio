@@ -49,16 +49,18 @@
     ]
   },
   {
-    "id": "urbanfinance-latent-land-demand",
-    "title": "UrbanFinance: Forecasting the Latent Land-Demand Residual at 100 m across Divergent Indian Urban Typologies",
+    "id": "confident-but-unidentifiable",
+    "title": "Confident but Unidentifiable: Positivity Limits on Cross-Region Attribution in Geospatial Models",
     "authors": "Rohan Bali",
     "year": "2026",
     "venues": [
       { "label": "In preparation" }
     ],
-    "status": "Still in progress. Sole author.",
-    "abstract": "Most work here predicts built-up area or price, and both are well covered already. This project goes after something different. It predicts the gap between where the demand for land is and where building actually happened. Those are the cells where the signal runs hot but nothing went up, held back by zoning, litigation, geography, or plain vacancy. That leftover is closer to what demand for land really means over time. I test it on five very different metros, Noida, Mumbai, Chandigarh, Bengaluru, and Hyderabad, using a free, open 100 m stack. GHSL covers supply, population and night-lights stand in for demand, terrain and water set the constraints, and NHB RESIDEX brings the prices. The model I propose, DSRF, beats SimVP, TAU, and PredRNN.V2 on Figure of Merit at p<0.05 over ten seeds, gives calibrated 95% intervals, and when a whole city is held out it transfers to that unseen city better than models trained on all five. A measure of undevelopable land built from terrain and water gets the economics right. Tighter cities convert less land (correlation -0.77) and sit on more suppressed demand (correlation +0.79).",
-    "links": []
+    "status": "Sole author. Submitted to Transactions in GIS (Wiley), under review.",
+    "abstract": "When a geospatial model fails in a new region, people reach for a covariate to blame: the terrain is rougher, the settlement pattern is different. I ask whether that kind of attribution is even identifiable before anyone trusts it. Framed as a transportability problem, the answer is often no. I derive a positivity diagnostic and a partial-identification bound you can compute from the source data alone, including a threshold past which not even the sign of an attribution is recoverable. On land-cover transfer from the contiguous US to 44 cities across four world regions, overlap with the training data drops as low as 5.8%, and a confident, well-fit explanation predicts the wrong sign of the transfer gap in every architecture that actually degrades, which is direct evidence of a regional effect the measured covariates never capture. The point is a reporting standard: an honest geographic explanation should say what it can and cannot identify, not just what it attributes.",
+    "links": [
+      { "label": "Code & data", "href": "https://github.com/rohanbalixz/Confident-but-Unidentifiable-Positivity-Limits-on-Cross-Region-Attribution-in-Geospatial-Models", "external": true }
+    ]
   },
   {
     "id": "small-world-collaboration",
