@@ -13,6 +13,7 @@ const profileLinks: LinkItem[] = [
   { label: 'OpenReview', href: socialLinks.openreview, external: true },
   { label: 'CV', href: '/cv' },
   { label: 'LinkedIn', href: socialLinks.linkedin, external: true },
+  { label: 'Medium', href: socialLinks.medium, external: true },
 ];
 
 const news = [
@@ -58,6 +59,23 @@ const news = [
           up on Zenodo
         </a>
         .
+      </>
+    ),
+  },
+  {
+    date: 'Feb 2025',
+    body: (
+      <>
+        Started a{' '}
+        <a
+          href={socialLinks.medium}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="link-inline"
+        >
+          Medium series
+        </a>{' '}
+        explaining the fundamentals of machine learning from the ground up.
       </>
     ),
   },
