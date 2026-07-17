@@ -227,8 +227,10 @@ export default function Home() {
               questions keep showing up. Is a model really better, or did the
               benchmark just make it look that way? When a model trained in one
               part of the world gets dropped into another, what holds and what
-              breaks? And once the data shifts, can you still trust what the
-              model says about how sure it is?
+              breaks? And when it does break, can we even say why, or is the
+              explanation we reach for something the data cannot pin down? Once
+              the data shifts, can you still trust what the model says about how
+              sure it is?
             </p>
             <p>
               I try not to say more than the evidence backs up. The holdouts are
@@ -238,10 +240,14 @@ export default function Home() {
               from the code I put out. There is more in my{' '}
               <Link href="/research-statement" className="link-inline">
                 research statement
-              </Link>{' '}
-              and the{' '}
+              </Link>
+              , the{' '}
               <Link href="/research/channel-count-confound" className="link-inline">
                 channel-count study
+              </Link>
+              , and the rest of my{' '}
+              <Link href="/publications" className="link-inline">
+                papers
               </Link>
               .
             </p>

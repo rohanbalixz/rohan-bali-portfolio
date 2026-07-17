@@ -5,7 +5,7 @@ import { asset } from '@/lib/site';
 export const metadata: Metadata = {
   title: 'Research statement',
   description:
-    'My research statement. I work on how Earth-observation models are evaluated, on benchmark confounds, geographic transfer, and whether uncertainty estimates hold up when the data shifts.',
+    'My research statement. I work on how Earth-observation models are evaluated: benchmark confounds, cross-region transfer, whether an explanation of a failure is even identifiable, and whether uncertainty estimates hold up once the data shifts.',
 };
 
 export default function ResearchStatementPage() {
@@ -25,64 +25,132 @@ export default function ResearchStatementPage() {
 
         <article className="prose-research max-w-prose">
           <p>
-            This all started from one question. When a deep model looks better,
-            is it actually learning something better, or did the benchmark
-            quietly make the comparison unfair?
+            The question in the title is the one I keep coming back to. A model
+            posts a better score, and the field reads that as the model having
+            learned something the last one missed. Often it has not. The gain
+            came from how the data was arranged for the test, and a different
+            arrangement would have handed the win to something else. My work is
+            about finding those cases and saying, with evidence, how much of a
+            reported result is the model and how much is the setup.
           </p>
 
           <p>
-            I work on spatiotemporal vision for Earth observation. These models
-            get tested across time and geography, but the test setup is often
-            not as clean as it looks. The input pipeline can shift with the
-            prediction horizon. One metric can crown a model while another
-            metric picks the opposite one. A model that does fine in one region
-            can fall apart in the next. I care about these spots because they
-            are where our beliefs about a model actually come from.
+            I work on spatiotemporal vision for Earth observation: models that
+            read decades of satellite data and predict how land changes. They
+            are tested across time and across regions, which is exactly where
+            evaluation quietly bends. The input pipeline can shift when the
+            forecast horizon changes. One accuracy measure can rank a model
+            first while another ranks it last. A model that works over one
+            continent can come apart over the next. I care about these seams
+            because this is where our beliefs about a model are formed, and
+            where a wrong belief is easiest to publish.
           </p>
 
           <p>
-            My current work studies this through multi-horizon urban-growth
-            prediction. In my sole-authored paper,{' '}
+            My first sole-authored study,{' '}
             <Link
               href="/research/channel-count-confound"
               className="link-inline"
             >
-              The Channel-Count Confound: A Continental Audit of Multi-Horizon
-              Urban Growth Prediction
+              The Channel-Count Confound
             </Link>
-            , I found that the usual CNN versus ConvLSTM comparison is not
-            really one architecture against another. When the task moves from a
-            5-year to a 10-year horizon, the benchmark also drops the most
-            recent input epoch, cutting the input stack from 24 channels to 21.
-            So horizon length and input availability end up tangled together.
+            , took apart a result that recurs across the multi-horizon
+            urban-growth literature: recurrent models appear to overtake plain
+            CNNs at longer horizons. I built a controlled benchmark over 5,698
+            tiles of the continental United States at 250 m, with a spatial
+            holdout, a 2020 temporal holdout downloaded only after model
+            selection was finished, and a cold transfer to Lagos. Moving from a
+            five-year to a ten-year forecast does more than push the target
+            further out. It also drops the most recent input epoch, which cuts
+            the encoder from 24 channels to 21. Once I hold the channel count fixed,
+            most of the apparent CNN decline goes with it. A bootstrap
+            attributes 94 percent of the drop to the lost channel, and the gap
+            between the CNN and the recurrent model collapses to under 0.015
+            FoM. The headline was never about recurrence. It was about what the
+            protocol fed each model.
           </p>
 
           <p>
-            To separate those effects, I built a controlled benchmark over
-            5,698 CONUS tiles at 250 m resolution, with a sealed 2020
-            temporal holdout, uncertainty calibration, and zero-shot transfer
-            from CONUS to Lagos. The results showed that most of the apparent
-            CNN decline comes from the channel-count drop, not the longer
-            horizon. ConvLSTM also showed strong recency sensitivity. MC
-            Dropout ranked error well, but underestimated the actual
-            magnitude. And replacing Figure of Merit with MSE could change
-            which model looked best.
+            That pushed me toward a larger question about geography. When a
+            model transfers poorly to a new region, is that the model&apos;s
+            fault or the region&apos;s? In a follow-on study I trained one model
+            per region and evaluated every model on every region, across twenty
+            regions. Holding the input fixed, the training source barely counts.
+            The test region sets the score, training on a region&apos;s own data
+            buys almost nothing, and the difficulty ordering is nearly identical
+            across six architectures, fine-tuned foundation models included. A
+            one-line rule that extends each region&apos;s recent past beats every
+            trained model. Change the input instead of the model and transfer
+            moves along a clean spectrum, from harmonized products that carry
+            over to raw sensor reflectance that does not. The deciding factor was
+            the data, not the architecture, and the same pattern held on an
+            outside benchmark.
           </p>
 
           <p>
-            The part that stays with me is the bigger lesson. If the benchmark
-            changes the input, the metric, or the test geography, the ranking it
-            hands you might be saying as much about the benchmark as about the
-            model.
+            Both studies kept hitting the same wall, so I went at it directly.
+            When a geospatial model fails in a new region, people explain the
+            failure by pointing at a covariate: the terrain is rougher, the
+            settlement is denser. My most recent work, currently{' '}
+            <Link href="/publications" className="link-inline">
+              under review at Transactions in GIS
+            </Link>
+            , asks whether that explanation can be recovered from the data at
+            all before anyone trusts it. Written as a transportability problem,
+            the answer is often no. I derive a support diagnostic and a
+            partial-identification bound whose controlling constant can be
+            estimated from the source region alone, together with a threshold
+            past which not even the sign of an attribution is identified. On
+            transfer from the United States to 44 cities across four world
+            regions, overlap with the training data falls as low as 6 percent,
+            and a confident, well-fit explanation predicts the wrong direction
+            of the gap in every architecture that degrades. The explanation is
+            not just noisy. It points the opposite way, and the geometry of the
+            data says it has to.
           </p>
 
           <p>
-            Next I want to turn this into reusable checks for spatiotemporal ML
-            benchmarks. Things that catch input-design confounds, flag where a
-            model stops transferring across time or geography, and test whether
-            its uncertainty still means anything once the data shifts. I do not
-            want it to end at one urban-growth model. The point is to make model
-            comparisons in this field easier to reproduce and easier to trust.
+            A third thread runs under all of this: whether a model&apos;s stated
+            confidence still means anything once the distribution moves. In the
+            channel-count benchmark, MC Dropout uncertainty ranked tile-level
+            error almost perfectly, a Pearson r of 0.983 across ten deciles,
+            while underestimating the actual magnitude by 1.4 to 1.9 times. That
+            gap is the whole point. A score good enough to decide which
+            predictions to check by hand is not good enough to promise coverage,
+            and treating one as the other is how a calibration claim breaks in
+            deployment.
+          </p>
+
+          <p>
+            What ties these together is a stance about evaluation. I try to
+            report what the evidence supports and nothing past it. The holdouts
+            are sealed before the data is seen, the inputs are matched so two
+            models get the same information, the statistics are checked tile by
+            tile, and the limitations sit beside the results rather than at the
+            end. Every number I publish can be regenerated from the code I
+            release. This is not caution for its own sake. In this field the
+            reader usually cannot rerun the experiment, so the honesty of the
+            protocol is most of what a result is worth.
+          </p>
+
+          <p>
+            For a PhD I want to turn these one-off audits into methods other
+            people can use: diagnostics that flag input-design confounds before
+            a comparison is trusted, tests that mark where a model stops
+            transferring across time or geography, and identifiability checks
+            that say when the explanation of a failure can be recovered and when
+            it cannot. None of this should stay inside urban-growth modeling.
+            The same failures turn up wherever models are evaluated under shift
+            with metrics that were never stress-tested. What I am after is a way
+            of doing spatiotemporal machine learning where the evaluation is
+            treated as an experiment in its own right, not a formality that
+            follows the model.
+          </p>
+
+          <p>
+            I would like to do that work with people who treat evaluation as a
+            research problem, and who care whether a claim about a model would
+            survive someone else reproducing it.
           </p>
         </article>
 
