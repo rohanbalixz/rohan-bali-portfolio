@@ -20,6 +20,19 @@ const news = [
     date: 'Jun 2026',
     body: (
       <>
+        Submitted a new paper,{' '}
+        <em>
+          Confident but Unidentifiable: Positivity Limits on Cross-Region
+          Attribution in Geospatial Models
+        </em>
+        , to Transactions in GIS (Wiley). It is under review.
+      </>
+    ),
+  },
+  {
+    date: 'Jun 2026',
+    body: (
+      <>
         Started a new paper,{' '}
         <em>
           Train Anywhere, Test Everywhere: Cross-Region Transfer in Earth
