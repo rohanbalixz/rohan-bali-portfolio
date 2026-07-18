@@ -8,6 +8,7 @@
       "department": "Department of Computer & Information Science",
       "location": "Dartmouth, MA",
       "duration": "2024-2026",
+      "gpa": "3.77/4.0",
       "advisor": "Dr. Donghui Yan",
       "advisor_url": "https://www.umassd.edu/directory/dyan/",
       "thesis": "Multi-Horizon Urban Growth Prediction: A Comparative Deep Learning Study",
@@ -27,6 +28,7 @@
       "department": "School of Computing and Information Technology",
       "location": "Jaipur, India",
       "duration": "2017-2021",
+      "gpa": "2.82/4.0",
       "advisor": "Dr. Somya Goyal",
       "project": "Road Safety Analysis using Machine Learning"
     }

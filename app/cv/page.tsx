@@ -161,6 +161,11 @@ export default function CVPage() {
                     {edu.department}
                   </p>
                 )}
+                {edu.gpa && (
+                  <p className="text-sm text-muted leading-relaxed mt-1">
+                    <span className="text-ink">GPA:</span> {edu.gpa}
+                  </p>
+                )}
                 {edu.advisor && (
                   <p className="text-sm text-muted leading-relaxed mt-2">
                     <span className="text-ink">Advisor:</span>{' '}
