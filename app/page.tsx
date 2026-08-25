@@ -155,14 +155,14 @@ export default function Home() {
           <figure className="shrink-0">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src={asset('/profile.jpg')}
+              src={asset('/new_pfp.jpeg')}
               alt="Rohan Bali"
               width={144}
               height={144}
               className="w-28 h-28 sm:w-36 sm:h-36 object-cover border border-rule"
             />
             <figcaption className="mt-2 w-28 sm:w-36 text-xs text-subtle italic leading-snug text-center">
-              somewhere in new hampshire
+              at the top of rockefeller center, nyc
             </figcaption>
           </figure>
           <div>
