@@ -170,7 +170,7 @@ export default function ResearchStatementPage() {
               Channel-count project page
             </Link>
             <Link
-              href="/#research"
+              href="/research"
               className="link-quiet underline decoration-rule underline-offset-4 hover:decoration-accent"
             >
               Research

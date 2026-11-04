@@ -43,7 +43,7 @@ export default function PublicationsPage() {
           </h2>
           <ol className="space-y-12">
             {peerReviewed.map((p) => (
-              <li key={p.id} className="pt-10 border-t border-rule first:border-t-0 first:pt-0">
+              <li key={p.id} id={p.id} className="pt-10 border-t border-rule first:border-t-0 first:pt-0 scroll-mt-24">
                 <PaperCard paper={p} />
               </li>
             ))}
@@ -57,7 +57,7 @@ export default function PublicationsPage() {
             </h2>
             <ol className="space-y-10">
               {other.map((p) => (
-                <li key={p.id}>
+                <li key={p.id} id={p.id} className="scroll-mt-24">
                   <PaperCard paper={p} />
                 </li>
               ))}
