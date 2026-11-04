@@ -39,11 +39,6 @@ export default function Footer() {
                 </a>
               </li>
               <li>
-                <a href={socialLinks.openreview} target="_blank" rel="noopener noreferrer" className="link-quiet">
-                  OpenReview
-                </a>
-              </li>
-              <li>
                 <a href={socialLinks.linkedin} target="_blank" rel="noopener noreferrer" className="link-quiet">
                   LinkedIn
                 </a>

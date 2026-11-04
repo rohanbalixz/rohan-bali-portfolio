@@ -1,4 +1,10 @@
+'use client';
+
 import Link from 'next/link';
+import { useState } from 'react';
+import { asset } from '@/lib/site';
+import { bibtexById } from '@/lib/citations';
+import CopyableBibtex from '@/components/CopyableBibtex';
 
 export interface PaperLink {
   label: string;
@@ -6,98 +12,143 @@ export interface PaperLink {
   external?: boolean;
 }
 
-export interface PaperCardProps {
+export interface Paper {
+  id: string;
   title: string;
   authors: string;
-  venues: { label: string; tone?: 'accent' | 'secondary' }[];
   year: string;
-  abstract: string;
+  venue: string;
+  venueFull: string;
+  honor?: string;
+  state?: string;
+  summary: string;
+  abstract?: string;
+  abstractNote?: string;
+  teaser?: string;
+  teaserAlt?: string;
   links: PaperLink[];
-  status?: string;
-  featured?: boolean;
+}
+
+const linkClass =
+  'text-accent underline decoration-accent/30 underline-offset-4 hover:decoration-accent';
+
+function PaperLinks({ links }: { links: PaperLink[] }) {
+  return (
+    <>
+      {links.map((l) =>
+        !l.href ? (
+          <span key={l.label} className="text-subtle italic" aria-disabled="true">
+            {l.label}
+          </span>
+        ) : l.external ? (
+          <a
+            key={l.label}
+            href={l.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={linkClass}
+          >
+            {l.label}
+          </a>
+        ) : (
+          <Link key={l.label} href={l.href} className={linkClass}>
+            {l.label}
+          </Link>
+        ),
+      )}
+    </>
+  );
 }
 
 export default function PaperCard({
-  title,
-  authors,
-  venues,
-  year,
-  abstract,
-  links,
-  status,
-  featured = false,
-}: PaperCardProps) {
-  return (
-    <article
-      className={`py-8 ${featured ? 'border-t-2 border-ink' : 'border-t border-rule'}`}
-    >
-      <div className="grid md:grid-cols-[1fr_3fr] gap-4 md:gap-10">
-        <div>
-          <p className="font-mono text-xs uppercase tracking-wider text-subtle mb-2">
-            {year}
-          </p>
-          <div className="flex flex-wrap gap-2">
-            {venues.map((v, i) => (
-              <span
-                key={i}
-                className={`badge ${v.tone === 'accent' ? 'badge-accent' : v.tone === 'secondary' ? 'badge-secondary' : ''}`}
-              >
-                {v.label}
-              </span>
-            ))}
-          </div>
-          {status && (
-            <p className="mt-3 text-xs font-mono text-subtle">{status}</p>
-          )}
-        </div>
+  paper,
+  compact = false,
+}: {
+  paper: Paper;
+  compact?: boolean;
+}) {
+  const [open, setOpen] = useState<'abstract' | 'bibtex' | null>(null);
+  const bibtex = bibtexById[paper.id];
+  const toggle = (k: 'abstract' | 'bibtex') => setOpen(open === k ? null : k);
 
-        <div>
-          <h3
-            className={`font-serif text-ink leading-snug mb-2 ${
-              featured ? 'text-2xl' : 'text-xl'
-            }`}
-          >
-            {title}
-          </h3>
-          <p className="text-sm text-muted mb-4">{authors}</p>
-          <p className="text-sm text-ink leading-relaxed mb-5 text-pretty">
-            {abstract}
-          </p>
-          <div className="flex flex-wrap gap-x-5 gap-y-2 text-sm">
-            {links.map((link, i) => {
-              if (!link.href) {
-                return (
-                  <span
-                    key={i}
-                    className="text-subtle italic cursor-default"
-                    aria-disabled="true"
-                  >
-                    {link.label}
-                  </span>
-                );
-              }
-              return link.external ? (
-                <a
-                  key={i}
-                  href={link.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="link-quiet underline decoration-rule underline-offset-4 hover:decoration-accent"
-                >
-                  {link.label}
-                </a>
-              ) : (
-                <Link
-                  key={i}
-                  href={link.href}
-                  className="link-quiet underline decoration-rule underline-offset-4 hover:decoration-accent"
-                >
-                  {link.label}
-                </Link>
-              );
-            })}
-          </div>
+  return (
+    <article className="grid sm:grid-cols-[176px_1fr] gap-4 sm:gap-6">
+      {paper.teaser ? (
+        <div className="w-full max-w-[280px] sm:max-w-none aspect-[4/3] bg-white border border-rule flex items-center justify-center overflow-hidden">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={asset(paper.teaser)}
+            alt={paper.teaserAlt ?? ''}
+            loading="lazy"
+            decoding="async"
+            className="max-w-full max-h-full object-contain"
+          />
         </div>
+      ) : (
+        <div className="hidden sm:block" aria-hidden="true" />
+      )}
+
+      <div className="min-w-0">
+        <h3 className="font-serif text-lg text-ink leading-snug text-pretty">
+          {paper.title}
+        </h3>
+        <p className="mt-1 text-sm text-ink">
+          <span className="font-medium">{paper.authors}</span>
+        </p>
+        <p className="mt-0.5 text-sm text-muted leading-relaxed">
+          <em>{compact ? `${paper.venue}` : paper.venueFull}</em>
+          {paper.honor && (
+            <>
+              {' · '}
+              <span className="text-accent font-medium">{paper.honor}</span>
+            </>
+          )}
+          {paper.state && <> · {paper.state}</>}
+          {compact && !paper.state && <> · {paper.year}</>}
+        </p>
+        <p className="mt-2 text-sm text-ink leading-relaxed text-pretty">
+          {paper.summary}
+        </p>
+
+        <p className="mt-2 text-sm flex flex-wrap gap-x-4 gap-y-1">
+          <PaperLinks links={paper.links} />
+          {!compact && paper.abstract && (
+            <button
+              type="button"
+              onClick={() => toggle('abstract')}
+              aria-expanded={open === 'abstract'}
+              className={linkClass}
+            >
+              Abstract
+            </button>
+          )}
+          {!compact && bibtex && (
+            <button
+              type="button"
+              onClick={() => toggle('bibtex')}
+              aria-expanded={open === 'bibtex'}
+              className={linkClass}
+            >
+              BibTeX
+            </button>
+          )}
+        </p>
+
+        {open === 'abstract' && paper.abstract && (
+          <div className="mt-4 border-l-2 border-rule pl-4">
+            <p className="text-sm text-ink leading-relaxed text-pretty">
+              {paper.abstract}
+            </p>
+            {paper.abstractNote && (
+              <p className="mt-2 text-xs text-subtle">{paper.abstractNote}</p>
+            )}
+          </div>
+        )}
+        {open === 'bibtex' && bibtex && (
+          <div className="mt-4">
+            <CopyableBibtex bibtex={bibtex} />
+          </div>
+        )}
       </div>
     </article>
   );

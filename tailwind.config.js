@@ -12,7 +12,7 @@ module.exports = {
         surface: '#FBFBF9',
         ink: '#1A1A18',
         muted: '#55534D',
-        subtle: '#807D75',
+        subtle: '#6F6C65',
         rule: '#DAD8D1',
         'soft-rule': '#E9E7E0',
         accent: '#6B2B2B',

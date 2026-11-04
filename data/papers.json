@@ -4,31 +4,18 @@
     "title": "Channel Count, Not Horizon Length, Drives Architectural Divergence in Multi-Horizon Urban Growth Prediction",
     "authors": "Rohan Bali",
     "year": "2026",
-    "venues": [
-      {
-        "label": "GeoAI 2026 (Oral)",
-        "tone": "accent"
-      }
-    ],
+    "venue": "GeoAI 2026",
+    "venueFull": "Proceedings of the 1st International Conference on Geospatial Artificial Intelligence (GeoAI 2026), Ghent, Belgium",
+    "honor": "Oral",
     "state": "Published",
     "summary": "Shows that losing input channels, not lengthening the forecast horizon, drives most of the apparent architectural divergence in urban-growth prediction.",
-    "status": "Published, sole author. Proceedings of the 1st International Conference on Geospatial Artificial Intelligence, Ghent. PDF is on Zenodo.",
-    "abstract": "The six-page version of the channel-count audit, presented as an oral at GeoAI 2026 in Ghent. Multi-horizon urban-growth benchmarks keep showing the CNN getting worse as the forecast horizon extends while the ConvLSTM gets better, and the difference gets credited to recurrence. But pushing the horizon out also drops an input epoch, cutting the CNN's input from 24 channels to 21. That lost input accounts for 94% of the CNN's decline (delta-method 95% CI [62%, 100%]). With channels matched, the CNN leads at every horizon, and the ConvLSTM's gain turns out to be positional: removing its most recent epoch moves its score 5.4 times as much as removing the four oldest combined.",
+    "abstract": "Multi-horizon urban growth benchmarks show a consistent pattern: CNN Figure of Merit (FoM) falls as horizons extend; ConvLSTM’s climbs. The pattern has been attributed to architecture in every benchmark we examined. But advancing the horizon in GHSL also drops one input epoch, cutting channel count from 24 to 21, a covariate no prior study separates. We control for it over 5,698 CONUS tiles at 250 m by fixing the prediction target and trimming from the oldest end. Channel reduction accounts for 94% of CNN’s 5yr→10yr FoM drop (delta-method 95% CI [62%, 100%]; conservative bound ≥84%). ConvLSTM’s gain holds, but the mechanism is positional: the most recent epoch produces 5.4× the FoM response of four oldest epochs combined. Channel-equated, CNN leads at every tested horizon (FoM 0.702±0.019 on the 2015 spatial holdout; 0.252±0.009 on a sealed 2020 holdout).",
+    "teaser": "/paper_figures/teaser_geoai.png",
+    "teaserAlt": "Figure of Merit against forecast horizon. The CNN's score drops from 0.739 at 5 years to 0.675 at 10 years, and the channel-matched CNN follows almost the same line, while the ConvLSTM rises from 0.523 to 0.596.",
     "links": [
-      {
-        "label": "Paper (PDF)",
-        "href": "https://zenodo.org/records/20278403",
-        "external": true
-      },
-      {
-        "label": "Code & data",
-        "href": "https://github.com/rohanbalixz/Multi-Horizon-Urban-Growth-Prediction",
-        "external": true
-      },
-      {
-        "label": "Project page",
-        "href": "/research/channel-count-confound"
-      }
+      { "label": "Paper (Zenodo)", "href": "https://zenodo.org/records/20278403", "external": true },
+      { "label": "Code & benchmark", "href": "https://github.com/rohanbalixz/Multi-Horizon-Urban-Growth-Prediction", "external": true },
+      { "label": "Project page", "href": "/research/channel-count-confound" }
     ],
     "featured": true
   },
@@ -37,30 +24,17 @@
     "title": "The Channel-Count Confound: A Continental Audit of Multi-Horizon Urban Growth Prediction",
     "authors": "Rohan Bali",
     "year": "2026",
-    "venues": [
-      {
-        "label": "SpatialDI 2026 (Springer LNCS)",
-        "tone": "accent"
-      }
-    ],
+    "venue": "SpatialDI 2026",
+    "venueFull": "Spatial Data and Intelligence: 7th International Conference, SpatialDI 2026, Changsha, China. Lecture Notes in Computer Science, Springer",
     "state": "Accepted, to appear",
     "summary": "Extended version of the GeoAI paper, with the full ablations and the MC Dropout uncertainty analysis.",
-    "status": "Accepted, to appear. Sole author. The extended version of the GeoAI paper, with the full ablations and the MC Dropout uncertainty analysis.",
-    "abstract": "The full audit behind the GeoAI paper, run over 5,698 tiles of the continental US at 250 m with a spatial holdout, a sealed 2020 temporal holdout, and a zero-shot transfer to Lagos. The core finding is the same: the apparent horizon effect in CNN versus ConvLSTM comparisons is mostly an input-design effect, because a longer horizon also means fewer input channels. This version adds the full ablations and the MC Dropout uncertainty analysis over 8.69M pixels, where uncertainty ranks error almost perfectly (r = 0.983) but understates its size by 1.4 to 1.9 times.",
+    "abstract": "Multi-horizon urban growth benchmarks show a consistent pattern: CNN Figure of Merit falls as horizons extend; ConvLSTM’s climbs. The pattern has been attributed to architecture in every benchmark we examined. But advancing the horizon in GHSL also drops one input epoch, cutting channel count from 24 to 21, a covariate no prior study separates. We control for it over 5,698 CONUS tiles at 250 m by fixing the prediction target and trimming from the oldest end. Channel reduction accounts for 94% of CNN’s 5yr→10yr FoM drop (delta-method 95% CI: [62%, 100%]; conservative bound: ≥84%). ConvLSTM’s gain holds, but the mechanism is positional: the most recent epoch produces 5.4× the FoM response of four oldest epochs combined. Channel-equated, CNN leads at all tested horizons (FoM 0.702±0.019, 2015 spatial holdout; 0.252±0.009, sealed 2020 holdout). On both holdouts persistence wins MSE at FoM = 0; metric choice controls which model ranks first.",
+    "teaser": "/paper_figures/teaser_spatialdi.png",
+    "teaserAlt": "A validation tile from the 2015 spatial holdout: GHSL ground-truth built-up fraction beside the ConvLSTM prediction, which scores a Figure of Merit of 0.480.",
     "links": [
-      {
-        "label": "Paper (to appear)",
-        "href": ""
-      },
-      {
-        "label": "Code, benchmark & pre-trained weights",
-        "href": "https://github.com/rohanbalixz/Multi-Horizon-Urban-Growth-Prediction",
-        "external": true
-      },
-      {
-        "label": "Project page",
-        "href": "/research/channel-count-confound"
-      }
+      { "label": "Paper (to appear)", "href": "" },
+      { "label": "Code, benchmark & weights", "href": "https://github.com/rohanbalixz/Multi-Horizon-Urban-Growth-Prediction", "external": true },
+      { "label": "Project page", "href": "/research/channel-count-confound" }
     ],
     "featured": true
   },
@@ -69,43 +43,30 @@
     "title": "Confident but Unidentifiable: Positivity Limits on Cross-Region Attribution in Geospatial Models",
     "authors": "Rohan Bali",
     "year": "2026",
-    "venues": [
-      {
-        "label": "Transactions in GIS (Wiley)",
-        "tone": "accent"
-      }
-    ],
+    "venue": "Transactions in GIS",
+    "venueFull": "Transactions in GIS (Wiley)",
     "state": "Accepted pending revisions",
     "summary": "Derives a positivity diagnostic and partial-identification bound for cross-region attribution; across 44 cities, a confident, well-fit explanation gets the sign of the transfer gap wrong in every degrading model.",
-    "status": "Accepted pending revisions. Sole author.",
-    "abstract": "When a geospatial model fails in a new region, people reach for a covariate to blame: the terrain is rougher, the settlement pattern is different. I ask whether that kind of attribution is even identifiable before anyone trusts it. Framed as a transportability problem, the answer is often no. I derive a positivity diagnostic and a partial-identification bound you can compute from the source data alone, including a threshold past which not even the sign of an attribution is recoverable. On land-cover transfer from the contiguous US to 44 cities across four world regions, overlap with the training data drops as low as 5.8%, and a confident, well-fit explanation predicts the wrong sign of the transfer gap in every architecture that actually degrades, which is direct evidence of a regional effect the measured covariates never capture. The point is a reporting standard: an honest geographic explanation should say what it can and cannot identify, not just what it attributes.",
+    "abstract": "Geospatial models trained in one region routinely fail in another, and explainable-AI methods are increasingly used to attribute that failure to measured covariates. We ask whether such attribution is even identifiable. Framing it as transportability, we derive a positivity diagnostic and a partial-identification bound that marks when even the sign of an attribution is undetermined. For land-cover models transferred from the contiguous United States to 44 cities in four regions, target covariates fall inside the source support far less often than held-out source data do, least of all in the Andes, and a confident covariate explanation predicts the wrong sign of the gap for all three degrading architectures. Separating positivity from conditional invariance shows the first fails in the Andes, while elsewhere the evidence is at odds with the second, most clearly in South Asia. This single-setting study illustrates a proposed standard: honest explanation must report identifiability, not just attributions.",
+    "abstractNote": "Abstract of the revised manuscript, as posted in the code repository.",
+    "teaser": "/paper_figures/teaser_tgis.png",
+    "teaserAlt": "Share of target tiles inside the source covariate support: Andes 5.8%, Sub-Saharan Africa 44.6%, South Asia 50.2%, East Asia 42.3%, against 77% for held-out US tiles.",
     "links": [
-      {
-        "label": "Code & data",
-        "href": "https://github.com/rohanbalixz/Confident-but-Unidentifiable-Positivity-Limits-on-Cross-Region-Attribution-in-Geospatial-Models",
-        "external": true
-      }
+      { "label": "Code & data", "href": "https://github.com/rohanbalixz/Confident-but-Unidentifiable-Positivity-Limits-on-Cross-Region-Attribution-in-Geospatial-Models", "external": true },
+      { "label": "Project page", "href": "/research/confident-but-unidentifiable" }
     ],
     "featured": true
   },
   {
     "id": "small-world-collaboration",
-    "title": "Understanding Academic Collaboration Networks through Small World Theory",
+    "title": "Understanding Academic Collaboration Networks Through Small-World Theory",
     "authors": "Rohan Bali",
     "year": "2024",
-    "venues": [
-      {
-        "label": "Research report · MTH 565"
-      }
-    ],
-    "status": "Course research project, supervised by Prof. Dana Fine, UMass Dartmouth.",
-    "abstract": "I built a co-authorship network of 33,981 researchers and 624,928 links from OpenAlex, using the PyAlex library, and tested it against small-world theory. Its clustering coefficient is 0.71, about 650 times that of a random graph with the same density, and the largest connected component holds 61% of the authors.",
+    "venue": "Research report",
+    "venueFull": "Research report, MTH 565 Small World Networks, UMass Dartmouth. Supervised by Prof. Dana Fine",
+    "summary": "A co-authorship network of 33,981 researchers and 624,928 links built from OpenAlex. Its clustering coefficient is 0.71, about 650 times that of a density-matched random graph, and its giant component spans 61% of authors.",
     "links": [
-      {
-        "label": "Write-up",
-        "href": "https://swn465.home.blog/2024/12/12/understanding-academic-collaboration-networks-through-small-world/",
-        "external": true
-      }
+      { "label": "Write-up", "href": "https://swn465.home.blog/2024/12/12/understanding-academic-collaboration-networks-through-small-world/", "external": true }
     ]
   }
 ]

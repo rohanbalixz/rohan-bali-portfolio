@@ -348,13 +348,14 @@ export default function FlagshipPage() {
                 Settlement Layer R2023A products: GHS-BUILT-S (surface
                 density), GHS-BUILT-V (volume), and GHS-POP (population), all
                 resampled to 250&nbsp;m in EPSG:5070 and clipped to CONUS
-                (12,717&nbsp;&times;&nbsp;23,996 pixels). Spatial validation
-                uses 821 geographic blocks of ~320&nbsp;km&sup2; selected by{' '}
+                (12,717&nbsp;&times;&nbsp;23,996 pixels). For spatial validation,
+                CONUS is split into blocks of 1280&nbsp;&times;&nbsp;1280 pixels
+                (320&nbsp;km on a side), and every fifth block{' '}
                 <code className="font-mono text-sm bg-rule/30 px-1 py-0.5">
                   block_id mod 5 == 0
-                </code>
-                , eliminating spatial autocorrelation leakage from tile
-                overlap.
+                </code>{' '}
+                is held out. That gives 821 validation tiles that share no
+                pixels with the training set.
               </p>
               <figure className="my-10 -mx-2 md:mx-0">
                 <div className="relative w-full aspect-[16/9] bg-white border border-rule overflow-hidden">
@@ -565,10 +566,10 @@ export default function FlagshipPage() {
               </p>
 
               <ResultsTable
-                caption="Tab. 2. 2020 sealed temporal holdout. Persistence achieves the lowest MSE because 89% of evaluated pixels are stable; this inversion is why FoM is reported as the primary metric for sparse-change spatial tasks."
+                caption="Tab. 2. 2020 sealed temporal holdout. SimpleCNN shows the mean with its two seeds in parentheses. Persistence achieves the lowest MSE because 89% of evaluated pixels are stable; this inversion is why FoM is reported as the primary metric for sparse-change spatial tasks."
                 headers={['Model', 'FoM (↑)', 'MSE (↓)']}
                 rows={[
-                  ['SimpleCNN', '0.252 ± 0.012', '4.90 × 10⁻⁴'],
+                  ['SimpleCNN', '0.252 (0.243, 0.260)', '4.90 × 10⁻⁴'],
                   ['U-Net', '0.229', '4.30 × 10⁻⁴'],
                   ['ConvLSTM + MC Dropout', '0.156', '4.84 × 10⁻⁴'],
                   ['SLEUTH', '0.121', 'n/a'],
@@ -682,7 +683,7 @@ export default function FlagshipPage() {
                   {
                     label: 'Tests',
                     status: 'yes',
-                    detail: 'Model and metric units',
+                    detail: 'Model unit tests',
                   },
                   {
                     label: 'Results JSONs',
@@ -764,7 +765,14 @@ export default function FlagshipPage() {
                   <span>
                     Geographic transfer at scale. Beyond Lagos, characterize
                     when CONUS-trained spatiotemporal vision retains its
-                    behavior elsewhere and when it does not.
+                    behavior elsewhere and when it does not. The follow-on{' '}
+                    <Link
+                      href="/research/confident-but-unidentifiable"
+                      className="link-inline"
+                    >
+                      identifiability study
+                    </Link>{' '}
+                    takes this to 44 cities in four world regions.
                   </span>
                 </li>
                 <li className="flex gap-3">
@@ -799,16 +807,16 @@ export default function FlagshipPage() {
                 bibtex={channelCountBibtex}
               />
               <p className="mt-6 text-sm text-muted">
-                A peer-reviewed manuscript describing this benchmark appears at
-                GeoAI&nbsp;2026 (oral) and in the SpatialDI&nbsp;2026
-                proceedings. The{' '}
+                The GeoAI&nbsp;2026 paper (oral) is published, and the extended
+                version is accepted for the SpatialDI&nbsp;2026 proceedings
+                (Springer LNCS). The{' '}
                 <a
                   href={geoaiPaperUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="link-quiet underline decoration-rule underline-offset-4 hover:decoration-accent"
                 >
-                  GeoAI short paper is available on Zenodo
+                  GeoAI paper is available on Zenodo
                 </a>
                 .
               </p>

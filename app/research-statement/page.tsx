@@ -19,7 +19,7 @@ export default function ResearchStatementPage() {
             did the benchmark quietly make the comparison unfair?
           </h1>
           <p className="text-sm font-mono uppercase tracking-wider text-subtle">
-            Rohan Bali. M.S. Data Science, UMass Dartmouth. 2026.
+            Rohan Bali · Independent researcher · November 2026
           </p>
         </header>
 
@@ -83,7 +83,8 @@ export default function ResearchStatementPage() {
             changing. A one-line rule that extends each region&apos;s recent past
             beats the trained model in every region. Change the input instead of the model and transfer
             moves along a clean spectrum, from harmonized products that carry
-            over to raw sensor reflectance that does not. The deciding factor was
+            over almost fully to raw sensor reflectance that keeps only about half
+            its skill. The deciding factor was
             the data, not the architecture, and the same pattern held on an
             outside benchmark.
           </p>
@@ -93,21 +94,25 @@ export default function ResearchStatementPage() {
             When a geospatial model fails in a new region, people explain the
             failure by pointing at a covariate: the terrain is rougher, the
             settlement is denser. My most recent work, currently{' '}
-            <Link href="/publications" className="link-inline">
+            <Link
+              href="/research/confident-but-unidentifiable"
+              className="link-inline"
+            >
               accepted pending revisions at Transactions in GIS
             </Link>
             , asks whether that explanation can be recovered from the data at
             all before anyone trusts it. Written as a transportability problem,
-            the answer is often no. I derive a support diagnostic and a
+            the answer is often no. I derive a positivity diagnostic and a
             partial-identification bound whose controlling constant can be
             estimated from the source region alone, together with a threshold
             past which not even the sign of an attribution is identified. On
             transfer from the United States to 44 cities across four world
-            regions, overlap with the training data falls as low as 6 percent,
-            and a confident, well-fit explanation predicts the wrong direction
+            regions, only 5.8 percent of Andes tiles fall inside the support of
+            the training data, against 77 percent of held-out US tiles, and a
+            confident, well-fit explanation predicts the wrong direction
             of the gap in every architecture that degrades. The explanation is
-            not just noisy. It points the opposite way, and the geometry of the
-            data says it has to.
+            not just noisy. It points the opposite way, and the data never had
+            the support to tell it otherwise.
           </p>
 
           <p>

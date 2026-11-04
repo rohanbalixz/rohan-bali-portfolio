@@ -30,3 +30,9 @@ export const tgisBibtex = `@article{bali_confident_2026_tgis,
 }`;
 
 export const channelCountBibtex = `${geoaiBibtex}\n\n${spatialdiBibtex}`;
+
+export const bibtexById: Record<string, string> = {
+  'channel-count-confound-geoai': geoaiBibtex,
+  'channel-count-confound-spatialdi': spatialdiBibtex,
+  'confident-but-unidentifiable': tgisBibtex,
+};

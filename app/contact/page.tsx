@@ -17,11 +17,10 @@ export default function ContactPage() {
             Contact
           </h1>
           <p className="prose-research">
-            Email is the best way to reach me. I&apos;m interested in evaluation
-            under distribution shift, robust computer vision, uncertainty
-            calibration, and Earth-observation ML, and I welcome conversations
-            with potential PhD supervisors and collaborators working on related
-            problems.
+            Email is the best way to reach me. I am applying to PhD programs
+            for 2027 and would be glad to hear from potential supervisors and
+            collaborators working on evaluation under distribution shift,
+            uncertainty, or machine learning for Earth observation.
           </p>
         </header>
 
@@ -57,6 +56,10 @@ export default function ContactPage() {
             <span className="text-rule mx-2">·</span>
             <Link href="/research-statement" className="link-inline">
               Research statement
+            </Link>
+            <span className="text-rule mx-2">·</span>
+            <Link href="/publications" className="link-inline">
+              Publications
             </Link>
             <span className="text-rule mx-2">·</span>
             <a

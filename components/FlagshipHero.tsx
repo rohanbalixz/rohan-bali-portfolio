@@ -18,9 +18,9 @@ export default function FlagshipHero({
           <div>
             <p className="overline mb-3">Paper</p>
             <div className="flex flex-col gap-1.5 mb-6">
-              <span className="badge badge-accent">SpatialDI 2026 (Springer LNCS)</span>
-              <span className="badge badge-secondary">GeoAI 2026 Short Paper (Oral)</span>
-              <span className="badge">Sole author · Reproducible benchmark</span>
+              <span className="badge badge-accent">GeoAI 2026 · Oral · Published</span>
+              <span className="badge badge-secondary">SpatialDI 2026 · Springer LNCS · To appear</span>
+              <span className="badge">Sole author · Code, benchmark &amp; weights</span>
             </div>
           </div>
 

@@ -4,7 +4,7 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: 'Research',
   description:
-    'Evaluation methodology and out-of-distribution generalization for spatiotemporal vision: continental urban-growth audits, cross-region transfer, and whether explanations of transfer failure are identifiable.',
+    'Reliable machine learning for Earth observation: evaluation confounds in urban-growth benchmarks, the identifiability of cross-region explanations, cross-region transfer, and uncertainty under distribution shift.',
 };
 
 const activeWork = [
@@ -27,6 +27,23 @@ const activeWork = [
     ],
   },
   {
+    status: 'Accepted pending revisions',
+    statusClass: 'badge badge-accent',
+    venue: 'Sole author · Transactions in GIS · 2026',
+    title: 'Confident but Unidentifiable: Positivity Limits on Cross-Region Attribution in Geospatial Models',
+    summary:
+      'When a geospatial model fails in a new region, the usual move is to blame a covariate: rougher terrain, denser settlement. This asks whether that attribution is even identifiable before anyone trusts it, framed as a transportability problem with a positivity diagnostic you can compute from the source data alone.',
+    results: [
+      'Only 5.8% of Andes tiles fall inside the source covariate support, against 77% of held-out US tiles',
+      'A covariate explanation that fits held-out US data (R² about 0.5) predicts the wrong sign of the transfer gap for all three degrading architectures, in all four regions',
+      'At the primary setting the sign of the attributable gap is not identified in any region, and the observed gap lies outside the identified set',
+    ],
+    links: [
+      { label: 'Project page', href: '/research/confident-but-unidentifiable', external: false },
+      { label: 'Code & data', href: 'https://github.com/rohanbalixz/Confident-but-Unidentifiable-Positivity-Limits-on-Cross-Region-Attribution-in-Geospatial-Models', external: true },
+    ],
+  },
+  {
     status: 'Ongoing research',
     statusClass: 'badge badge-secondary',
     venue: 'Code and results on GitHub · 2026',
@@ -40,23 +57,6 @@ const activeWork = [
     ],
     links: [
       { label: 'Code & data', href: 'https://github.com/rohanbalixz/Cross-Region-Source-Invariance-in-Earth-Observation', external: true },
-      { label: 'All papers', href: '/publications', external: false },
-    ],
-  },
-  {
-    status: 'Accepted pending revisions',
-    statusClass: 'badge badge-accent',
-    venue: 'Sole author · Transactions in GIS · 2026',
-    title: 'Confident but Unidentifiable: Positivity Limits on Cross-Region Attribution',
-    summary:
-      'When a geospatial model fails in a new region, the usual move is to blame a covariate: rougher terrain, denser settlement. This asks whether that attribution is even identifiable before anyone trusts it, framed as a transportability problem with a positivity diagnostic you can compute from the source data alone.',
-    results: [
-      'A source-computable threshold past which not even the sign of an attribution is recoverable',
-      'Land-cover transfer from the contiguous US to 44 cities across four world regions, with covariate overlap as low as 5.8%',
-      'A confident, well-fit explanation predicts the wrong sign of the transfer gap in every architecture that actually degrades',
-    ],
-    links: [
-      { label: 'Code & data', href: 'https://github.com/rohanbalixz/Confident-but-Unidentifiable-Positivity-Limits-on-Cross-Region-Attribution-in-Geospatial-Models', external: true },
       { label: 'All papers', href: '/publications', external: false },
     ],
   },
@@ -76,14 +76,14 @@ const threads = [
   },
   {
     label: 'Thread 02',
-    title: 'Geographic transfer',
+    title: 'Explaining failure across regions',
     body:
-      'Whether models trained on data-rich regions keep their behavior elsewhere. A full source-by-target matrix separates what the architecture learned from what the training region happened to contain, and it keeps surfacing the data, not the model, as the deciding factor.',
+      'When a model trained in one region fails in another, the explanation usually points at a covariate. Whether that explanation is identifiable depends on how much of the target falls inside the source support, and in the regions I have studied, often not enough to recover even its sign.',
     questions: [
-      'When does a model trained on one region still hold up on another?',
-      'Which inductive biases enable transfer without per-region fine-tuning?',
+      'When can the cause of a transfer failure be recovered from source data alone?',
+      'What should a cross-region explanation report, beyond the covariates it credits?',
     ],
-    evidence: { label: 'See: Cross-region source-invariance (code)', href: 'https://github.com/rohanbalixz/Cross-Region-Source-Invariance-in-Earth-Observation', external: true },
+    evidence: { label: 'See: Confident but Unidentifiable', href: '/research/confident-but-unidentifiable', external: false },
   },
   {
     label: 'Thread 03',
@@ -109,16 +109,17 @@ export default function ResearchPage() {
             actually is.
           </h1>
           <p className="text-base text-ink leading-loose mb-6">
-            I work on evaluation methodology and out-of-distribution
-            generalization for Earth-observation vision. The through-line is
-            simple: tighten the protocol until the reported gain either survives
-            or turns out to be an artefact of how the inputs were built and where
-            the data came from.
+            I work on reliable machine learning for Earth observation: when a
+            model&apos;s measured skill, its explanation of failure, and its
+            uncertainty can be trusted in places and periods it was not trained
+            on. The through-line is simple: tighten the protocol until the
+            reported result either survives or turns out to be an artefact of
+            how the inputs were built and where the data came from.
           </p>
           <p className="text-base text-muted leading-loose">
             The projects below carry that question through urban-growth
-            forecasting, cross-region transfer, and the identifiability of
-            cross-region explanations.
+            forecasting, the identifiability of cross-region explanations, and
+            cross-region transfer.
           </p>
         </header>
 

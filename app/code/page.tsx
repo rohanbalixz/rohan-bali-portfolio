@@ -27,10 +27,10 @@ const repos = [
     title: 'Confident but Unidentifiable',
     href: 'https://github.com/rohanbalixz/Confident-but-Unidentifiable-Positivity-Limits-on-Cross-Region-Attribution-in-Geospatial-Models',
     body:
-      'The positivity diagnostic, the partial-identification bound, and every receipt and figure for the Transactions in GIS paper: land-cover transfer from the contiguous US to 44 cities in four world regions, starting from the processed per-tile covariates.',
+      'The positivity diagnostic, the partial-identification bound, and every result file and figure for the Transactions in GIS paper: transfer from the contiguous US to 44 cities in four world regions. One command, bash reproduce.sh, regenerates everything from the processed per-tile covariates, with no GPU or network access needed.',
     links: [
       { label: 'GitHub', href: 'https://github.com/rohanbalixz/Confident-but-Unidentifiable-Positivity-Limits-on-Cross-Region-Attribution-in-Geospatial-Models', external: true },
-      { label: 'Paper', href: '/publications', external: false },
+      { label: 'Project page', href: '/research/confident-but-unidentifiable', external: false },
     ],
   },
   {

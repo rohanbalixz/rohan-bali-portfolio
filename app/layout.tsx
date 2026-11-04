@@ -12,7 +12,7 @@ const personJsonLd = {
   '@type': 'Person',
   name: 'Rohan Bali',
   url: siteUrl,
-  image: `${siteUrl}new_pfp.jpeg`,
+  image: `${siteUrl}headshot.jpg`,
   email: `mailto:${socialLinks.email}`,
   jobTitle: 'Independent Researcher',
   alumniOf: [
@@ -119,8 +119,16 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
         />
+        <a
+          href="#main"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[60] focus:bg-paper focus:px-3 focus:py-2 focus:text-sm focus:text-accent focus:border focus:border-rule"
+        >
+          Skip to content
+        </a>
         <Navbar />
-        <main className="min-h-screen pt-20">{children}</main>
+        <main id="main" className="min-h-screen pt-20">
+          {children}
+        </main>
         <Footer />
       </body>
     </html>
