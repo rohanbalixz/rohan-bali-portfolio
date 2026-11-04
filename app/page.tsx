@@ -21,35 +21,12 @@ const news = [
     date: 'Jun 2026',
     body: (
       <>
-        Submitted a new paper,{' '}
+        Gave an oral presentation of{' '}
         <em>
-          Confident but Unidentifiable: Positivity Limits on Cross-Region
-          Attribution in Geospatial Models
-        </em>
-        , to Transactions in GIS (Wiley). It is under review.
-      </>
-    ),
-  },
-  {
-    date: 'Jun 2026',
-    body: (
-      <>
-        Started a new paper,{' '}
-        <em>
-          Train Anywhere, Test Everywhere: Cross-Region Transfer in Earth
-          Observation Is Decided by the Data, Not the Model
-        </em>
-        . It is headed to SIGSPATIAL 2026 as a short paper.
-      </>
-    ),
-  },
-  {
-    date: 'Jan 2026',
-    body: (
-      <>
-        <em>The Channel-Count Confound</em> got into SpatialDI&nbsp;2026
-        (Springer LNCS). A shorter companion paper is at GeoAI&nbsp;2026 as an
-        oral, and that one is{' '}
+          Channel Count, Not Horizon Length, Drives Architectural Divergence in
+          Multi-Horizon Urban Growth Prediction
+        </em>{' '}
+        at GeoAI&nbsp;2026 in Ghent. The paper is{' '}
         <a
           href={geoaiPaperUrl}
           target="_blank"
@@ -59,6 +36,57 @@ const news = [
           up on Zenodo
         </a>
         .
+      </>
+    ),
+  },
+  {
+    date: 'Jun 2026',
+    body: (
+      <>
+        Submitted{' '}
+        <em>
+          Confident but Unidentifiable: Positivity Limits on Cross-Region
+          Attribution in Geospatial Models
+        </em>{' '}
+        to Transactions in GIS (Wiley). It has since been accepted pending
+        revisions, which I am working through now.
+      </>
+    ),
+  },
+  {
+    date: 'Jun 2026',
+    body: (
+      <>
+        Released the code and results for a follow-on study on cross-region
+        transfer,{' '}
+        <a
+          href="https://github.com/rohanbalixz/Cross-Region-Source-Invariance-in-Earth-Observation"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="link-inline"
+        >
+          Cross-Region Source-Invariance in Earth Observation
+        </a>
+        .
+      </>
+    ),
+  },
+  {
+    date: 'May 2026',
+    body: (
+      <>
+        Finished my M.S. in Data Science at UMass Dartmouth with a thesis on
+        multi-horizon urban growth prediction, advised by Donghui Yan.
+      </>
+    ),
+  },
+  {
+    date: 'Jan 2026',
+    body: (
+      <>
+        <em>The Channel-Count Confound</em> was accepted at SpatialDI&nbsp;2026
+        (Springer LNCS), and a six-page version was accepted as an oral at
+        GeoAI&nbsp;2026.
       </>
     ),
   },
@@ -98,7 +126,7 @@ const news = [
   },
 ];
 
-const selected = papers.slice(0, 4);
+const selected = papers.filter((p) => 'featured' in p && p.featured);
 
 function InlineLinks({
   items,
@@ -111,14 +139,16 @@ function InlineLinks({
   return (
     <span
       className={`flex items-center gap-x-2 ${
-        nowrap ? 'flex-nowrap overflow-x-auto' : 'flex-wrap gap-y-1'
+        nowrap
+          ? 'flex-wrap gap-y-1 sm:flex-nowrap sm:overflow-x-auto'
+          : 'flex-wrap gap-y-1'
       }`}
     >
       {usable.map((l, i) => (
         <span
           key={l.label}
           className={`inline-flex items-center gap-x-2${
-            nowrap ? ' shrink-0 whitespace-nowrap' : ''
+            nowrap ? ' sm:shrink-0 whitespace-nowrap' : ''
           }`}
         >
           {i > 0 && (
@@ -171,9 +201,10 @@ export default function Home() {
             </h1>
             <p className="text-base text-muted mb-1">{siteMeta.affiliation}</p>
             <p className="text-base text-ink leading-relaxed mb-4 text-pretty">
-              I work on how we test machine learning models for satellite and
-              Earth data, and whether they hold up outside the place they were
-              trained.
+              I work on reliable machine learning for Earth observation: knowing
+              when a model&apos;s measured skill, its explanation of failure, and
+              its uncertainty can be trusted in places and periods it was not
+              trained on.
             </p>
             <p className="text-sm text-muted">
               <InlineLinks items={profileLinks} nowrap />
@@ -184,19 +215,85 @@ export default function Home() {
         {/* Bio */}
         <section className="prose-research space-y-5 mb-16">
           <p>
-            A lot of papers say one model beats another. I spend most of my
-            time checking whether that is actually true. Usually the win turns
-            out to come from how the data was set up, not from the model. So I
-            take benchmarks apart, mostly in urban growth prediction, and see
-            how much of the result is left once the test gets harder. That means
-            hiding the years the model never saw, matching the inputs so two
-            models get a fair shot, testing on cities the model was never
-            trained on, and checking that its confidence numbers mean something.
+            A lot of what looks like one model beating another turns out to come
+            from how the evaluation was set up. My work follows that worry in
+            three directions. I find evaluation confounds that masquerade as
+            architectural differences: in multi-horizon urban-growth prediction,
+            a longer forecast horizon also means fewer input channels, and that
+            lost input explains 94% of a CNN&apos;s apparent decline. I test
+            whether cross-region explanations are identifiable at all when
+            covariate overlap is thin: across 44 cities, a confident, well-fit
+            explanation gets the sign of the transfer gap wrong in every
+            degrading model. And I measure how well deep-learning uncertainty
+            tracks real error under shift: MC Dropout ranks errors reliably
+            (r&nbsp;=&nbsp;0.983) but understates their size by 1.4 to 1.9
+            times.
           </p>
           <p>
-            Before grad school I worked as a software engineer at Capgemini, and
-            before that as a machine learning trainee at Upcred.ai.
+            I finished my M.S. in Data Science at UMass Dartmouth in May 2026,
+            with a thesis advised by{' '}
+            <a
+              href="https://www.umassd.edu/directory/dyan/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="link-inline"
+            >
+              Donghui Yan
+            </a>
+            , and I now work as an independent researcher. Before grad school I
+            was a data scientist at The Parivartan Foundation, an NGO in Shimla.
+            During the 2023 Himachal Pradesh floods I used satellite and
+            government data to find about 20 communities that had been cut off,
+            so relief could reach them. Earlier I was a software engineer at
+            Capgemini and a machine learning researcher at Upcred.ai.
           </p>
+        </section>
+
+        {/* Publications */}
+        <section id="publications" className="mb-16 scroll-mt-24">
+          <div className="flex items-baseline justify-between mb-2">
+            <h2 className="font-serif text-xl text-ink">Publications</h2>
+            <Link href="/publications" className="text-sm text-muted hover:text-accent">
+              Abstracts &amp; more
+            </Link>
+          </div>
+          <p className="text-sm text-muted italic mb-6">
+            All sole-authored, with public code and data.
+          </p>
+          <ol className="space-y-7">
+            {selected.map((p) => {
+              const pubLinks: LinkItem[] = (p.links ?? [])
+                .filter((l) => l.href)
+                .map((l) => ({ label: l.label, href: l.href, external: l.external }));
+              return (
+                <li key={p.id} className="flex flex-col sm:flex-row sm:gap-6">
+                  <span className="shrink-0 text-sm text-subtle tabular sm:w-24 mb-1 sm:mb-0 sm:pt-1">
+                    {p.year}
+                  </span>
+                  <div className="flex-1">
+                    <h3 className="font-serif text-lg text-ink leading-snug">
+                      {p.title}
+                    </h3>
+                    <p className="mt-1 text-sm text-muted">
+                      {[...(p.venues ?? []).map((v) => v.label), 'state' in p ? p.state : '']
+                        .filter(Boolean)
+                        .join(' · ')}
+                    </p>
+                    {'summary' in p && p.summary && (
+                      <p className="mt-1.5 text-sm text-ink leading-relaxed text-pretty">
+                        {p.summary}
+                      </p>
+                    )}
+                    {pubLinks.length > 0 && (
+                      <p className="mt-1.5 text-sm text-muted">
+                        <InlineLinks items={pubLinks} />
+                      </p>
+                    )}
+                  </div>
+                </li>
+              );
+            })}
+          </ol>
         </section>
 
         {/* News */}
@@ -252,43 +349,6 @@ export default function Home() {
               .
             </p>
           </div>
-        </section>
-
-        {/* Publications */}
-        <section id="publications" className="mb-16 scroll-mt-24">
-          <div className="flex items-baseline justify-between mb-6">
-            <h2 className="font-serif text-xl text-ink">Selected publications</h2>
-            <Link href="/publications" className="text-sm text-muted hover:text-accent">
-              All publications
-            </Link>
-          </div>
-          <ol className="space-y-7">
-            {selected.map((p) => {
-              const pubLinks: LinkItem[] = (p.links ?? [])
-                .filter((l) => l.href)
-                .map((l) => ({ label: l.label, href: l.href, external: l.external }));
-              return (
-                <li key={p.id} className="flex flex-col sm:flex-row sm:gap-6">
-                  <span className="shrink-0 text-sm text-subtle tabular sm:w-24 mb-1 sm:mb-0 sm:pt-1">
-                    {p.year}
-                  </span>
-                  <div className="flex-1">
-                    <h3 className="font-serif text-lg text-ink leading-snug">
-                      {p.title}
-                    </h3>
-                    <p className="mt-1 text-sm text-muted">
-                      {(p.venues ?? []).map((v) => v.label).join(' · ')}
-                    </p>
-                    {pubLinks.length > 0 && (
-                      <p className="mt-1.5 text-sm text-muted">
-                        <InlineLinks items={pubLinks} />
-                      </p>
-                    )}
-                  </div>
-                </li>
-              );
-            })}
-          </ol>
         </section>
 
         {/* Contact */}

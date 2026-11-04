@@ -20,8 +20,8 @@ export default function ArchivePage() {
             Engineering &amp; systems projects.
           </h1>
           <p className="text-base text-muted leading-loose max-w-2xl">
-            Applied systems, infrastructure, and product work from before my
-            current research focus, kept here for completeness. For research,
+            Engineering, systems, and course projects outside my main research,
+            kept here for completeness. Each one links to its code. For research,
             see the{' '}
             <Link href="/research" className="link-inline">
               research page
@@ -53,6 +53,16 @@ export default function ArchivePage() {
                       className="text-xs font-mono uppercase tracking-wider text-accent hover:text-accent-hover"
                     >
                       Code &rarr;
+                    </a>
+                  )}
+                  {'demo' in p && p.demo && (
+                    <a
+                      href={p.demo}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block mt-1 text-xs font-mono uppercase tracking-wider text-accent hover:text-accent-hover"
+                    >
+                      Live demo &rarr;
                     </a>
                   )}
                 </div>

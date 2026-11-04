@@ -9,6 +9,7 @@ import StickyToc from '@/components/StickyToc';
 import ClaimStack from '@/components/ClaimStack';
 import MetricCard from '@/components/MetricCard';
 import CopyableBibtex from '@/components/CopyableBibtex';
+import { channelCountBibtex } from '@/lib/citations';
 
 export const metadata: Metadata = {
   title:
@@ -111,14 +112,16 @@ export default function FlagshipPage() {
                       'Channel-count reduction explains most of the apparent CNN decline.',
                     evidence: (
                       <>
-                        Bootstrap attribution:{' '}
+                        Delta-method attribution:{' '}
                         <span className="text-ink tabular">94%</span> of the
                         CNN 5yr to 10yr FoM decline is attributable to input
                         channel reduction, 95% CI{' '}
                         <span className="text-ink tabular">
                           [62%,&nbsp;100%]
-                        </span>{' '}
-                        (n_bootstrap = 2000).
+                        </span>
+                        , propagating the two-seed spread (σ&nbsp;=&nbsp;0.007);
+                        conservative floor{' '}
+                        <span className="text-ink tabular">≥&nbsp;84%</span>.
                       </>
                     ),
                   },
@@ -127,11 +130,14 @@ export default function FlagshipPage() {
                     claim: 'ConvLSTM is recency-anchored, not horizon-robust.',
                     evidence: (
                       <>
-                        End-epoch removal degrades ConvLSTM FoM by{' '}
-                        <span className="text-ink tabular">5.4×</span> more
-                        than mid-sequence removal. This is consistent with a
-                        recency-anchored representation, not a long-horizon
-                        sequence advantage.
+                        Removing the single most recent epoch moves ConvLSTM
+                        FoM{' '}
+                        <span className="text-ink tabular">5.4×</span> as much
+                        as removing the four oldest epochs combined. A model
+                        that weighed every epoch evenly would respond about
+                        equally, so the latest epoch is acting as an anchor.
+                        The ConvLSTM&apos;s gain is positional, not a
+                        long-horizon sequence advantage.
                       </>
                     ),
                   },
@@ -158,9 +164,9 @@ export default function FlagshipPage() {
             <Section id="problem" title="Problem">
               <p>
                 Papers on multi-horizon urban growth tend to report the same
-                thing. The CNN baselines get worse at longer horizons, and the
-                ConvLSTMs, sold as sequence models, catch up or pass them. The
-                story people then tell is structural. Recurrence is supposedly
+                thing. The CNN baselines get worse at longer horizons, while
+                the ConvLSTMs, sold as sequence models, get better. The story
+                people then tell is structural. Recurrence is supposedly
                 catching something that flat stacking cannot.
               </p>
               <p>
@@ -282,9 +288,12 @@ export default function FlagshipPage() {
                   <span className="font-mono text-accent flex-shrink-0 tabular">[1]</span>
                   <span>
                     <strong className="text-ink">Channel-matched controls.</strong>{' '}
-                    Hold the input channel count fixed while varying forecast
-                    horizon. The apparent CNN vs ConvLSTM gap shrinks to less
-                    than 0.015 FoM across horizons.
+                    Hold the 2015 target fixed and trim inputs from the oldest
+                    end, so the channel count matches each horizon. With
+                    channels matched, what is left of the CNN&apos;s horizon
+                    effect is &minus;0.004&nbsp;FoM at 10&nbsp;years and
+                    &minus;0.015 at 20, and the CNN leads the ConvLSTM at every
+                    horizon tested.
                   </span>
                 </li>
                 <li className="flex gap-3">
@@ -311,9 +320,12 @@ export default function FlagshipPage() {
                     <strong className="text-ink">
                       Zero-shot geographic transfer.
                     </strong>{' '}
-                    The CONUS-trained model is evaluated on Lagos, Nigeria,
-                    without fine-tuning. Architecture comparisons retain their
-                    direction under distribution shift.
+                    The CONUS-trained models are run on 20 Lagos tiles
+                    (63,840 pixels) without fine-tuning, as a probe of the
+                    recency mechanism in a very different growth regime. The
+                    CNN reaches FoM&nbsp;0.460, above linear extrapolation
+                    (0.430). The ConvLSTM falls to 0.228, below a
+                    predict-all-growth baseline (0.696).
                   </span>
                 </li>
               </ol>
@@ -461,14 +473,16 @@ export default function FlagshipPage() {
                       </td>
                       <td className="px-4 py-3 text-muted align-top">
                         CNN vs ConvLSTM comparisons across 5, 10, 20 year
-                        horizons typically report a long-horizon advantage
-                        for recurrent architectures.
+                        horizons show CNN skill falling and ConvLSTM skill
+                        rising as the horizon extends, and credit the
+                        difference to recurrence.
                       </td>
                       <td className="px-4 py-3 text-muted align-top">
                         Shows the comparison is confounded: protocols that
                         vary the horizon also vary the input-channel count.
-                        Channel-matched controls collapse the gap to less
-                        than 0.015 FoM across horizons.
+                        With channels matched, the CNN&apos;s horizon effect
+                        shrinks to at most 0.015 FoM and the CNN leads at
+                        every horizon.
                       </td>
                     </tr>
                   </tbody>
@@ -504,7 +518,7 @@ export default function FlagshipPage() {
                 <MetricCard
                   value="5.4"
                   unit="×"
-                  description="larger ConvLSTM response to removing the most recent epoch vs mid-sequence. Recency-anchored, not horizon-robust."
+                  description="ConvLSTM FoM response to removing the most recent epoch, relative to removing the four oldest epochs combined. The gain is positional."
                   tone="secondary"
                 />
                 <MetricCard
@@ -588,24 +602,25 @@ export default function FlagshipPage() {
                   Statistical confirmation.
                 </strong>{' '}
                 Paired Wilcoxon signed-rank test on per-tile FoM across all
-                821 validation tiles, with bootstrap 95% CIs (n&nbsp;=&nbsp;2000).
+                821 validation tiles, with bootstrap 95% CIs on the mean per-tile gap
+                (n&nbsp;=&nbsp;2000).
               </p>
 
               <ResultsTable
                 caption="Tab. 3. Per-tile statistical confirmation. The CNN > ConvLSTM ordering holds with overwhelming significance and a tight CI."
-                headers={['Test', 'Median Δ FoM', 'p-value', '95% CI']}
+                headers={['Test', 'Median Δ FoM', 'p-value', 'Mean Δ FoM [95% CI]']}
                 rows={[
                   [
                     'CNN > ConvLSTM',
                     '+0.137',
                     '3.0 × 10⁻¹³⁶',
-                    '[0.142, 0.152]',
+                    '+0.147 [0.142, 0.152]',
                   ],
                   [
                     'U-Net > ConvLSTM',
                     '+0.118',
                     '5.9 × 10⁻¹³⁶',
-                    '[0.126, 0.135]',
+                    '+0.130 [0.126, 0.135]',
                   ],
                   ['CNN > U-Net', '+0.016', '2.3 × 10⁻⁶³', 'n/a'],
                 ]}
@@ -615,7 +630,7 @@ export default function FlagshipPage() {
                 <div className="relative w-full aspect-[16/9] bg-white border border-rule overflow-hidden">
                   <Image
                     src={asset('/paper_figures/fig_calibration.png')}
-                    alt="MC Dropout calibration plot. Predicted standard deviation from 20 forward passes versus mean absolute error, binned into 10 equal-count deciles of 8.69M pixels each."
+                    alt="MC Dropout calibration plot. Predicted standard deviation from 20 forward passes versus mean absolute error, binned into 10 equal-count deciles (about 0.87M pixels each, 8.69M in total)."
                     fill
                     className="object-contain"
                     sizes="(max-width: 768px) 100vw, 768px"
@@ -694,11 +709,6 @@ export default function FlagshipPage() {
                     label: 'Data download instructions',
                     status: 'yes',
                     detail: 'GHSL R2023A from Copernicus',
-                  },
-                  {
-                    label: 'Pretrained weights',
-                    status: 'no',
-                    detail: 'Regenerable; not distributed',
                   },
                   {
                     label: 'Docker / smoke test',
@@ -781,22 +791,7 @@ export default function FlagshipPage() {
 
             <Section id="citation" title="Citation">
               <CopyableBibtex
-                bibtex={`@inproceedings{bali_channel_count_2026_spatialdi,
-  author    = {Bali, Rohan},
-  title     = {The Channel-Count Confound: A Continental Audit of Multi-Horizon Urban Growth Prediction},
-  booktitle = {SpatialDI 2026, Springer LNCS},
-  year      = {2026},
-  note      = {Main paper}
-}
-
-@inproceedings{bali_channel_count_2026_geoai,
-  author    = {Bali, Rohan},
-  title     = {Channel Count, Not Horizon Length, Drives Architectural Divergence in Multi-Horizon Urban Growth Prediction},
-  booktitle = {GeoAI 2026},
-  year      = {2026},
-  doi       = {10.5281/zenodo.20278403},
-  note      = {6-page short paper, oral. Companion to the SpatialDI main paper.}
-}`}
+                bibtex={channelCountBibtex}
               />
               <p className="mt-6 text-sm text-muted">
                 A peer-reviewed manuscript describing this benchmark appears at

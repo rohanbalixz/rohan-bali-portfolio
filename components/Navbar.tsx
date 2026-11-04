@@ -5,6 +5,7 @@ import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 
 const navLinks = [
+  { href: '/research', label: 'Research' },
   { href: '/publications', label: 'Publications' },
   { href: '/cv', label: 'CV' },
 ];

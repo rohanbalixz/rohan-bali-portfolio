@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import CopyableBibtex from '@/components/CopyableBibtex';
 import { geoaiPaperUrl } from '@/lib/site';
+import { channelCountBibtex, tgisBibtex } from '@/lib/citations';
 
 export const metadata: Metadata = {
   title: 'Code & data',
@@ -20,6 +21,16 @@ const repos = [
       { label: 'GeoAI paper (PDF)', href: geoaiPaperUrl, external: true },
       { label: 'Project page', href: '/research/channel-count-confound', external: false },
       { label: 'Reproduce', href: 'https://github.com/rohanbalixz/Multi-Horizon-Urban-Growth-Prediction#reproducing-all-experiments', external: true },
+    ],
+  },
+  {
+    title: 'Confident but Unidentifiable',
+    href: 'https://github.com/rohanbalixz/Confident-but-Unidentifiable-Positivity-Limits-on-Cross-Region-Attribution-in-Geospatial-Models',
+    body:
+      'The positivity diagnostic, the partial-identification bound, and every receipt and figure for the Transactions in GIS paper: land-cover transfer from the contiguous US to 44 cities in four world regions, starting from the processed per-tile covariates.',
+    links: [
+      { label: 'GitHub', href: 'https://github.com/rohanbalixz/Confident-but-Unidentifiable-Positivity-Limits-on-Cross-Region-Attribution-in-Geospatial-Models', external: true },
+      { label: 'Paper', href: '/publications', external: false },
     ],
   },
   {
@@ -48,7 +59,7 @@ export default function CodePage() {
             self-contained scripts, results are written as JSON, and the
             figure-generation scripts read those files back. Evaluation runs on
             one shared protocol, the same held-out tile indices across every
-            script, and results are reported over several seeds.
+            script, and the neural models are trained with two seeds (0 and 42).
           </p>
         </header>
 
@@ -95,32 +106,16 @@ export default function CodePage() {
             The Multi-Horizon repository ships under an MIT license with unit
             tests for the models and metrics, the per-experiment results files,
             data-download instructions for GHSL R2023A, and notes on runtime
-            (about five GPU-days on a single A100). I do not ship pretrained
-            weights, since you can regenerate them from the scripts. The GeoAI
-            short paper has a Zenodo DOI. A container image and the SpatialDI DOI
-            are still to come.
+            (about five GPU-days on a single A100). The GeoAI
+            paper has a Zenodo DOI. A container image is still to come, and the
+            SpatialDI paper will get its DOI from Springer.
           </p>
         </section>
 
         <section>
           <h2 className="font-serif text-xl text-ink mb-5">Citation</h2>
           <CopyableBibtex
-            bibtex={`@inproceedings{bali_channel_count_2026_spatialdi,
-  author    = {Bali, Rohan},
-  title     = {The Channel-Count Confound: A Continental Audit of Multi-Horizon Urban Growth Prediction},
-  booktitle = {SpatialDI 2026, Springer LNCS},
-  year      = {2026},
-  note      = {Main paper}
-}
-
-@inproceedings{bali_channel_count_2026_geoai,
-  author    = {Bali, Rohan},
-  title     = {Channel Count, Not Horizon Length, Drives Architectural Divergence in Multi-Horizon Urban Growth Prediction},
-  booktitle = {GeoAI 2026},
-  year      = {2026},
-  doi       = {10.5281/zenodo.20278403},
-  note      = {Short paper, oral. Companion to the SpatialDI main paper.}
-}`}
+            bibtex={`${channelCountBibtex}\n\n${tgisBibtex}`}
           />
         </section>
       </div>

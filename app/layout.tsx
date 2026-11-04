@@ -3,6 +3,37 @@ import { Inter, Source_Serif_4, IBM_Plex_Mono } from 'next/font/google';
 import './globals.css';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import socialLinks from '@/data/social_links.json';
+
+const siteUrl = 'https://rohanbalixz.github.io/rohan-bali-portfolio/';
+
+const personJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Rohan Bali',
+  url: siteUrl,
+  image: `${siteUrl}new_pfp.jpeg`,
+  email: `mailto:${socialLinks.email}`,
+  jobTitle: 'Independent Researcher',
+  alumniOf: [
+    { '@type': 'CollegeOrUniversity', name: 'University of Massachusetts Dartmouth' },
+    { '@type': 'CollegeOrUniversity', name: 'Manipal University Jaipur' },
+  ],
+  knowsAbout: [
+    'Machine learning for Earth observation',
+    'Distribution shift',
+    'Evaluation methodology',
+    'Uncertainty quantification',
+    'Geospatial artificial intelligence',
+  ],
+  sameAs: [
+    socialLinks.scholar,
+    socialLinks.orcid,
+    socialLinks.github,
+    socialLinks.openreview,
+    socialLinks.linkedin,
+  ],
+};
 
 const inter = Inter({
   subsets: ['latin'],
@@ -33,7 +64,7 @@ export const metadata: Metadata = {
     template: '%s · Rohan Bali',
   },
   description:
-    'Rohan Bali. M.S. Data Science student at UMass Dartmouth. I work on how machine learning models for Earth observation are tested, and whether they hold up across regions.',
+    'Rohan Bali, independent researcher (M.S. Data Science, UMass Dartmouth, 2026). Reliable machine learning for Earth observation: when a model\'s measured skill, its explanation of failure, and its uncertainty can be trusted in places and periods it was not trained on.',
   keywords: [
     'Rohan Bali',
     'Earth observation',
@@ -48,11 +79,11 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Rohan Bali',
     description:
-      'M.S. Data Science student at UMass Dartmouth. Evaluation methodology and out-of-distribution generalization for Earth-observation vision.',
+      'Independent researcher. Reliable machine learning for Earth observation: evaluation confounds, identifiability of cross-region explanations, and uncertainty under distribution shift.',
     type: 'website',
     images: [
       {
-        url: '/og.svg',
+        url: '/og.png',
         width: 1200,
         height: 630,
         alt: 'Rohan Bali',
@@ -63,8 +94,8 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Rohan Bali',
     description:
-      'M.S. Data Science student at UMass Dartmouth. Evaluation methodology and out-of-distribution generalization for Earth-observation vision.',
-    images: ['/og.svg'],
+      'Independent researcher. Reliable machine learning for Earth observation: evaluation confounds, identifiability of cross-region explanations, and uncertainty under distribution shift.',
+    images: ['/og.png'],
   },
 };
 
@@ -84,6 +115,10 @@ export default function RootLayout({
       className={`${inter.variable} ${sourceSerif.variable} ${plexMono.variable} scroll-smooth`}
     >
       <body className="antialiased bg-paper text-ink">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+        />
         <Navbar />
         <main className="min-h-screen pt-20">{children}</main>
         <Footer />

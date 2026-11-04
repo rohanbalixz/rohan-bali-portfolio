@@ -28,9 +28,9 @@ export default function PublicationsPage() {
             Papers
           </h1>
           <p className="text-base text-muted leading-loose">
-            Each entry links to the paper, the public code, and where useful a
-            project page documenting the data and evaluation protocol. PDFs are
-            mirrored locally so links stay stable.
+            All sole-authored, with public code and data. Each entry links to
+            the paper where it is public, the code, and, where useful, a project
+            page documenting the data and evaluation protocol.
           </p>
         </header>
 

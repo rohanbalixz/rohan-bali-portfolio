@@ -12,7 +12,7 @@ export const siteMeta = {
   role: 'Evaluation methodology and out-of-distribution generalization for Earth-observation vision.',
   tagline:
     'I work on evaluation methodology and out-of-distribution generalization for Earth-observation vision.',
-  email: 'rbali@umassd.edu',
-  affiliation: 'M.S. Data Science, University of Massachusetts Dartmouth',
-  lastUpdated: 'June 2026',
+  email: 'rohanbaliwork@gmail.com',
+  affiliation: 'Independent researcher · M.S. Data Science, UMass Dartmouth (2026)',
+  lastUpdated: 'November 2026',
 };

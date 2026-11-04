@@ -39,10 +39,10 @@ export default function FlagshipHero({
 
             <p className="text-base text-muted leading-relaxed mb-8 text-pretty">
               I audited the usual CNN and ConvLSTM comparison across 305M pixels
-              of the continental US. Once you seal the 2020 holdout, test cold
-              on Lagos, and calibrate the uncertainty, the ConvLSTM lead at
-              longer horizons turns out to be about the number of input
-              channels, not the model learning anything more.
+              of the continental US. The CNN seems to lose skill at longer
+              horizons while the ConvLSTM gains it. Match the number of input
+              channels and almost all of the CNN&apos;s decline goes away, and
+              the CNN leads at every horizon.
             </p>
 
             <div className="grid sm:grid-cols-3 gap-6 mb-8">
@@ -58,7 +58,7 @@ export default function FlagshipHero({
                 <p className="overline mb-2">Finding</p>
                 <p className="text-sm text-ink leading-relaxed">
                   About 94% of the CNN drop from the 5-year to the 10-year
-                  horizon comes from losing a channel, not from the longer
+                  horizon comes from losing an input epoch, not from the longer
                   horizon.
                 </p>
               </div>
@@ -117,7 +117,7 @@ export default function FlagshipHero({
                     className="btn-secondary opacity-60 cursor-default"
                     aria-disabled="true"
                   >
-                    SpatialDI paper (coming soon)
+                    SpatialDI paper (to appear)
                   </span>
                   <a
                     href="https://github.com/rohanbalixz/Multi-Horizon-Urban-Growth-Prediction"

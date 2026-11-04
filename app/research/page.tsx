@@ -4,20 +4,20 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: 'Research',
   description:
-    'Evaluation methodology and out-of-distribution generalization for spatiotemporal vision: continental urban-growth audits, cross-region transfer, and latent land-demand forecasting in Earth observation.',
+    'Evaluation methodology and out-of-distribution generalization for spatiotemporal vision: continental urban-growth audits, cross-region transfer, and whether explanations of transfer failure are identifiable.',
 };
 
 const activeWork = [
   {
     status: 'Published',
     statusClass: 'badge badge-accent',
-    venue: 'GeoAI 2026 (Oral) · SpatialDI 2026 (Springer LNCS)',
+    venue: 'GeoAI 2026 (Oral) · SpatialDI 2026 (Springer LNCS, to appear)',
     title: 'The Channel-Count Confound',
     summary:
-      'A continental audit of multi-horizon urban-growth prediction. The ConvLSTM advantage that shows up at longer horizons turns out to be an input-design artefact, not a better representation. Once the input stack is channel-matched, the gap collapses.',
+      'A continental audit of multi-horizon urban-growth prediction. The CNN seems to lose skill at longer horizons while the ConvLSTM gains it, but lengthening the horizon also removes an input epoch. Once the input stack is channel-matched, the CNN decline almost disappears and the CNN leads at every horizon.',
     results: [
       '5,698 CONUS tiles at 250 m, sealed 2020 holdout, zero-shot transfer to Lagos',
-      '94% of the CNN horizon decline attributes to one removed channel (95% CI [62%, 100%])',
+      '94% of the CNN horizon decline comes from the removed epoch, 24 to 21 channels (delta-method 95% CI [62%, 100%])',
       'MC Dropout calibration r = 0.983 over 8.69M validation pixels',
     ],
     links: [
@@ -27,15 +27,15 @@ const activeWork = [
     ],
   },
   {
-    status: 'In preparation',
+    status: 'Ongoing research',
     statusClass: 'badge badge-secondary',
-    venue: 'Sole author · 2026',
-    title: 'Train Anywhere, Test Everywhere: Cross-Region Transfer in Earth Observation Is Decided by the Data, Not the Model',
+    venue: 'Code and results on GitHub · 2026',
+    title: 'Cross-Region Source-Invariance in Earth Observation',
     summary:
       'What actually decides whether a geospatial model transfers between regions? The full source-by-target transfer matrix trains one model per region and evaluates every model on every region, across 20 world regions, 8 tasks, and several input representations.',
     results: [
-      'Hold the input fixed and the target sets the score: home-field advantage is -0.001 FoM, source rows agree at Spearman 0.97, difficulty ordering identical across six architectures incl. fine-tuned foundation models',
-      'A parameter-free recent-past baseline tops every trained model (FoM 0.56 vs 0.34, IoU 0.92 vs 0.61); GroupDRO, pooling, and 14x capacity add nothing',
+      'Hold the input fixed and the target region sets the score: training on a region\'s own data is worth -0.001 FoM, and a region\'s difficulty tracks its change rate (Spearman 0.97)',
+      'A parameter-free recent-past baseline beats the trained CNN (FoM 0.56 vs 0.34; extent IoU 0.92 vs 0.61); GroupDRO and pooling the sources add nothing, and a 14x larger model still shows no home-field edge',
       'Swap the input and retention traces a provenance spectrum, from harmonised products (~1.0) to raw sensor reflectance (0.55); the same target-over-model dominance recurs on PANGAEA',
     ],
     links: [
@@ -44,8 +44,8 @@ const activeWork = [
     ],
   },
   {
-    status: 'In preparation',
-    statusClass: 'badge badge-secondary',
+    status: 'Accepted pending revisions',
+    statusClass: 'badge badge-accent',
     venue: 'Sole author · Transactions in GIS · 2026',
     title: 'Confident but Unidentifiable: Positivity Limits on Cross-Region Attribution',
     summary:
@@ -83,7 +83,7 @@ const threads = [
       'When does a model trained on one region still hold up on another?',
       'Which inductive biases enable transfer without per-region fine-tuning?',
     ],
-    evidence: { label: 'See: Train Anywhere, Test Everywhere', href: 'https://github.com/rohanbalixz/Cross-Region-Source-Invariance-in-Earth-Observation', external: true },
+    evidence: { label: 'See: Cross-region source-invariance (code)', href: 'https://github.com/rohanbalixz/Cross-Region-Source-Invariance-in-Earth-Observation', external: true },
   },
   {
     label: 'Thread 03',
@@ -117,7 +117,8 @@ export default function ResearchPage() {
           </p>
           <p className="text-base text-muted leading-loose">
             The projects below carry that question through urban-growth
-            forecasting, cross-region transfer, and land-demand estimation.
+            forecasting, cross-region transfer, and the identifiability of
+            cross-region explanations.
           </p>
         </header>
 
@@ -258,7 +259,7 @@ export default function ResearchPage() {
           <p className="text-base text-ink leading-loose max-w-2xl text-pretty">
             I try to keep the evaluation honest. The holdouts are sealed, the
             controls are channel-matched, the statistics are checked per tile,
-            and the results that matter come with bootstrap intervals. Every
+            and the results that matter come with confidence intervals. Every
             claim ships with the script that produces it and the results files
             that redraw the figures, under an open license. The data are real
             Earth-observation products, not synthetic benchmarks tuned to make a

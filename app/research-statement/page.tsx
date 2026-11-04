@@ -55,18 +55,20 @@ export default function ResearchStatementPage() {
               The Channel-Count Confound
             </Link>
             , took apart a result that recurs across the multi-horizon
-            urban-growth literature: recurrent models appear to overtake plain
-            CNNs at longer horizons. I built a controlled benchmark over 5,698
+            urban-growth literature: plain CNNs lose skill at longer horizons
+            while recurrent models gain it, and the difference is credited to
+            recurrence. I built a controlled benchmark over 5,698
             tiles of the continental United States at 250 m, with a spatial
             holdout, a 2020 temporal holdout downloaded only after model
             selection was finished, and a cold transfer to Lagos. Moving from a
             five-year to a ten-year forecast does more than push the target
             further out. It also drops the most recent input epoch, which cuts
             the encoder from 24 channels to 21. Once I hold the channel count fixed,
-            most of the apparent CNN decline goes with it. A bootstrap
-            attributes 94 percent of the drop to the lost channel, and the gap
-            between the CNN and the recurrent model collapses to under 0.015
-            FoM. The headline was never about recurrence. It was about what the
+            most of the apparent CNN decline goes with it. The lost epoch
+            accounts for 94 percent of the drop (delta-method 95% interval, 62
+            to 100 percent), and with channels matched the CNN leads the
+            recurrent model at every horizon. The recurrent model&apos;s own
+            gain turns out to lean on the most recent epoch. The headline was never about recurrence. It was about what the
             protocol fed each model.
           </p>
 
@@ -77,10 +79,9 @@ export default function ResearchStatementPage() {
             per region and evaluated every model on every region, across twenty
             regions. Holding the input fixed, the training source barely counts.
             The test region sets the score, training on a region&apos;s own data
-            buys almost nothing, and the difficulty ordering is nearly identical
-            across six architectures, fine-tuned foundation models included. A
-            one-line rule that extends each region&apos;s recent past beats every
-            trained model. Change the input instead of the model and transfer
+            buys almost nothing, and how hard a region is tracks how fast it is
+            changing. A one-line rule that extends each region&apos;s recent past
+            beats the trained model in every region. Change the input instead of the model and transfer
             moves along a clean spectrum, from harmonized products that carry
             over to raw sensor reflectance that does not. The deciding factor was
             the data, not the architecture, and the same pattern held on an
@@ -93,7 +94,7 @@ export default function ResearchStatementPage() {
             failure by pointing at a covariate: the terrain is rougher, the
             settlement is denser. My most recent work, currently{' '}
             <Link href="/publications" className="link-inline">
-              under review at Transactions in GIS
+              accepted pending revisions at Transactions in GIS
             </Link>
             , asks whether that explanation can be recovered from the data at
             all before anyone trusts it. Written as a transportability problem,
