@@ -711,6 +711,11 @@ export default function FlagshipPage() {
                     detail: 'GHSL R2023A from Copernicus',
                   },
                   {
+                    label: 'Pretrained weights',
+                    status: 'yes',
+                    detail: '10 checkpoints in models/, with checksums',
+                  },
+                  {
                     label: 'Docker / smoke test',
                     status: 'no',
                     detail: 'planned',

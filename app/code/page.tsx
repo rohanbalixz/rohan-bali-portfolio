@@ -15,7 +15,7 @@ const repos = [
     title: 'Multi-Horizon Urban Growth Prediction',
     href: 'https://github.com/rohanbalixz/Multi-Horizon-Urban-Growth-Prediction',
     body:
-      'The benchmark behind the channel-count audit. CONUS at 250 m, 45 years of GHSL inputs, 5,698 tiles with an 821-tile spatial holdout, a sealed 2020 temporal holdout, a cold transfer from CONUS to Lagos, and MC Dropout calibration over 8.69 M validation pixels.',
+      'The benchmark behind the channel-count audit, with trained weights. CONUS at 250 m, 45 years of GHSL inputs, 5,698 tiles with an 821-tile spatial holdout, a sealed 2020 temporal holdout, a cold transfer from CONUS to Lagos, and MC Dropout calibration over 8.69 M validation pixels.',
     links: [
       { label: 'GitHub', href: 'https://github.com/rohanbalixz/Multi-Horizon-Urban-Growth-Prediction', external: true },
       { label: 'GeoAI paper (PDF)', href: geoaiPaperUrl, external: true },
@@ -106,7 +106,17 @@ export default function CodePage() {
             The Multi-Horizon repository ships under an MIT license with unit
             tests for the models and metrics, the per-experiment results files,
             data-download instructions for GHSL R2023A, and notes on runtime
-            (about five GPU-days on a single A100). The GeoAI
+            (about five GPU-days on a single A100). The trained checkpoints for
+            all ten reported neural models are in its{' '}
+            <a
+              href="https://github.com/rohanbalixz/Multi-Horizon-Urban-Growth-Prediction#pre-trained-weights"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="link-inline"
+            >
+              models/ folder
+            </a>
+            , with checksums and a loading example. The GeoAI
             paper has a Zenodo DOI. A container image is still to come, and the
             SpatialDI paper will get its DOI from Springer.
           </p>
