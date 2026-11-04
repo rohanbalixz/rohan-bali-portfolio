@@ -45,19 +45,16 @@ jobs:
         with:
           path: ./out
 
-  deploy:
-    needs: build
+  # While the repo's Pages source is "Deploy from a branch", GitHub also runs
+  # its built-in Jekyll deploy ("pages build and deployment") on every push,
+  # which publishes the bare repo. Whichever deploy finishes last is served.
+  # This job waits for that run to finish so the built site is deployed after
+  # it. It is a separate job, without the github-pages environment, so it does
+  # not hold the Pages deployment slot that the built-in deploy needs. If no
+  # such run appears within a minute (source set to GitHub Actions), it ends.
+  wait-for-branch-deploy:
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      # While the repo's Pages source is "Deploy from a branch", GitHub also runs
-      # its built-in Jekyll deploy ("pages build and deployment") on every push,
-      # which publishes the bare repo. Whichever deploy finishes last is served,
-      # so wait for that run to finish and deploy the built site after it.
-      # If no such run appears within a minute (source set to GitHub Actions),
-      # carry on.
       - name: Wait for the built-in branch deploy
         env:
           GH_TOKEN: ${{ github.token }}
@@ -76,6 +73,13 @@ jobs:
           done
           echo "Timed out waiting; deploying anyway."
 
+  deploy:
+    needs: [build, wait-for-branch-deploy]
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
