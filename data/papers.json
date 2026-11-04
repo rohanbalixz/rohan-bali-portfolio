@@ -5,10 +5,11 @@
     "authors": "Rohan Bali",
     "year": "2026",
     "venue": "GeoAI 2026",
-    "venueFull": "Proceedings of the 1st International Conference on Geospatial Artificial Intelligence (GeoAI 2026), Oral Presentation Papers, edited by Haosheng Huang and Nico Van de Weghe. Ghent, Belgium",
+    "venueFull": "Proceedings of the 1st International Conference on Geospatial Artificial Intelligence (GeoAI 2026), Oral Presentation Papers, H. Huang and N. Van de Weghe (eds.), Ghent, Belgium",
+    "kind": "Short paper",
     "honor": "Oral",
     "state": "Published",
-    "format": "Short paper · 6 pages, 1 figure, 2 tables",
+    "format": "Short paper, 6 pages",
     "summary": "Shows that losing input channels, not lengthening the forecast horizon, drives most of the apparent architectural divergence in urban-growth prediction.",
     "contentsLabel": "In this paper",
     "contents": [
@@ -18,7 +19,7 @@
     ],
     "abstract": "Multi-horizon urban growth benchmarks show a consistent pattern: CNN Figure of Merit (FoM) falls as horizons extend; ConvLSTM’s climbs. The pattern has been attributed to architecture in every benchmark we examined. But advancing the horizon in GHSL also drops one input epoch, cutting channel count from 24 to 21, a covariate no prior study separates. We control for it over 5,698 CONUS tiles at 250 m by fixing the prediction target and trimming from the oldest end. Channel reduction accounts for 94% of CNN’s 5yr→10yr FoM drop (delta-method 95% CI [62%, 100%]; conservative bound ≥84%). ConvLSTM’s gain holds, but the mechanism is positional: the most recent epoch produces 5.4× the FoM response of four oldest epochs combined. Channel-equated, CNN leads at every tested horizon (FoM 0.702±0.019 on the 2015 spatial holdout; 0.252±0.009 on a sealed 2020 holdout).",
     "teaser": "/paper_figures/teaser_geoai.png",
-    "teaserAlt": "Figure of Merit against forecast horizon. The CNN's score drops from 0.739 at 5 years to 0.675 at 10 years, and the channel-matched CNN follows almost the same line, while the ConvLSTM rises from 0.523 to 0.596.",
+    "teaserAlt": "Figure of Merit against forecast horizon. The CNN’s score drops from 0.739 at 5 years to 0.675 at 10 years, and the channel-matched CNN follows almost the same line, while the ConvLSTM rises from 0.523 to 0.596.",
     "links": [
       {
         "label": "Paper (Zenodo)",
@@ -44,8 +45,9 @@
     "year": "2026",
     "venue": "SpatialDI 2026",
     "venueFull": "Spatial Data and Intelligence: 7th International Conference, SpatialDI 2026, Changsha, China. Lecture Notes in Computer Science, Springer",
+    "kind": "Full paper",
     "state": "Accepted, to appear",
-    "format": "Full paper · 13 figures, 4 tables",
+    "format": "Full paper",
     "summary": "Extended version of the GeoAI paper, with the full ablations and the MC Dropout uncertainty analysis.",
     "contentsLabel": "What it adds to the GeoAI paper",
     "contents": [
@@ -81,8 +83,16 @@
     "year": "2026",
     "venue": "Transactions in GIS",
     "venueFull": "Transactions in GIS (Wiley)",
+    "kind": "Journal article",
     "state": "Accepted pending revisions",
+    "format": "Journal article",
     "summary": "Derives a positivity diagnostic and partial-identification bound for cross-region attribution; across 44 cities, a confident, well-fit explanation gets the sign of the transfer gap wrong in every degrading model.",
+    "contentsLabel": "In this paper",
+    "contents": [
+      "A positivity diagnostic and a partial-identification bound for cross-region attribution, with a threshold computable from source data alone past which not even the sign of an attribution is identified.",
+      "Transfer from the contiguous US to 44 cities in four world regions: only 5.8% of Andes tiles fall inside the source covariate support, against 77% of held-out US tiles.",
+      "A covariate explanation that fits held-out US data well predicts the wrong sign of the transfer gap for all three degrading architectures, in all four regions."
+    ],
     "abstract": "Geospatial models trained in one region routinely fail in another, and explainable-AI methods are increasingly used to attribute that failure to measured covariates. We ask whether such attribution is even identifiable. Framing it as transportability, we derive a positivity diagnostic and a partial-identification bound that marks when even the sign of an attribution is undetermined. For land-cover models transferred from the contiguous United States to 44 cities in four regions, target covariates fall inside the source support far less often than held-out source data do, least of all in the Andes, and a confident covariate explanation predicts the wrong sign of the gap for all three degrading architectures. Separating positivity from conditional invariance shows the first fails in the Andes, while elsewhere the evidence is at odds with the second, most clearly in South Asia. This single-setting study illustrates a proposed standard: honest explanation must report identifiability, not just attributions.",
     "abstractNote": "Abstract of the revised manuscript, as posted in the code repository.",
     "teaser": "/paper_figures/teaser_tgis.png",
@@ -106,7 +116,8 @@
     "authors": "Rohan Bali",
     "year": "2024",
     "venue": "Research report",
-    "venueFull": "Research report, MTH 565 Small World Networks, UMass Dartmouth. Supervised by Prof. Dana Fine",
+    "venueFull": "Research report for MTH 565 Small World Networks, UMass Dartmouth, supervised by Prof. Dana Fine",
+    "kind": "Research report",
     "summary": "A co-authorship network of 33,981 researchers and 624,928 links built from OpenAlex. Its clustering coefficient is 0.71, about 650 times that of a density-matched random graph, and its giant component spans 61% of authors.",
     "links": [
       {

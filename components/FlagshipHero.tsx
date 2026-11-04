@@ -49,7 +49,7 @@ export default function FlagshipHero({ slug }: { slug: string; variant?: 'home' 
               paper at GeoAI&nbsp;2026 and a full-length paper at
               SpatialDI&nbsp;2026. The CNN seems to lose skill at longer
               horizons while the ConvLSTM gains it. Match the number of input
-              channels and almost all of the CNN&apos;s decline goes away, and
+              channels and almost all of the CNN’s decline goes away, and
               the CNN leads at every horizon.
             </p>
 

@@ -27,14 +27,14 @@ const repos = [
     title: 'Confident but Unidentifiable',
     href: 'https://github.com/rohanbalixz/Confident-but-Unidentifiable-Positivity-Limits-on-Cross-Region-Attribution-in-Geospatial-Models',
     body:
-      'The positivity diagnostic, the partial-identification bound, and every result file and figure for the Transactions in GIS paper: transfer from the contiguous US to 44 cities in four world regions. One command, bash reproduce.sh, regenerates everything from the processed per-tile covariates, with no GPU or network access needed.',
+      'The positivity diagnostic, the partial-identification bound, and every result file and figure for the Transactions in GIS paper: transfer from the contiguous US to 44 cities in four world regions. One command, bash reproduce.sh, regenerates its result files and figures from the processed per-tile covariates, with no GPU or network access needed.',
     links: [
       { label: 'GitHub', href: 'https://github.com/rohanbalixz/Confident-but-Unidentifiable-Positivity-Limits-on-Cross-Region-Attribution-in-Geospatial-Models', external: true },
       { label: 'Project page', href: '/research/confident-but-unidentifiable', external: false },
     ],
   },
   {
-    title: 'Cross-Region Transfer in Earth Observation',
+    title: 'Cross-Region Source-Invariance in Earth Observation',
     href: 'https://github.com/rohanbalixz/Cross-Region-Source-Invariance-in-Earth-Observation',
     body:
       'The source-by-target transfer matrices, evaluation scripts, holdout definitions, and figure-generation code for the cross-region study spanning twenty world regions and several input representations.',
@@ -54,8 +54,8 @@ export default function CodePage() {
           </h1>
           <p className="prose-research">
             The benchmarks and analysis behind the papers are openly available.
-            Each repository is organized so that every reported number can be
-            regenerated from committed results: experiments run as
+            Each repository is organized so that every figure and table can be
+            redrawn from committed result files: experiments run as
             self-contained scripts, results are written as JSON, and the
             figure-generation scripts read those files back. Evaluation runs on
             one shared protocol, the same held-out tile indices across every
@@ -104,7 +104,7 @@ export default function CodePage() {
           <h2 className="font-serif text-xl text-ink mb-5">Reproducibility</h2>
           <p className="prose-research">
             The Multi-Horizon repository ships under an MIT license with unit
-            tests for the models and metrics, the per-experiment results files,
+            tests for the models, the per-experiment results files,
             data-download instructions for GHSL R2023A, and notes on runtime
             (about five GPU-days on a single A100). The trained checkpoints for
             all ten reported neural models are in its{' '}

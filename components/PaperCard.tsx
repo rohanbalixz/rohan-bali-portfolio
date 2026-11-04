@@ -19,6 +19,7 @@ export interface Paper {
   year: string;
   venue: string;
   venueFull: string;
+  kind?: string;
   honor?: string;
   state?: string;
   format?: string;
@@ -98,19 +99,44 @@ export default function PaperCard({
         <p className="mt-1 text-sm text-ink">
           <span className="font-medium">{paper.authors}</span>
         </p>
-        <p className="mt-0.5 text-sm text-muted leading-relaxed">
-          <em>{compact ? `${paper.venue}` : paper.venueFull}</em>
-          {paper.honor && (
-            <>
-              {' · '}
-              <span className="text-accent font-medium">{paper.honor}</span>
-            </>
-          )}
-          {paper.state && <> · {paper.state}</>}
-          {compact && !paper.state && <> · {paper.year}</>}
-        </p>
-        {paper.format && (
-          <p className="mt-0.5 text-xs text-subtle">{paper.format}</p>
+        {compact ? (
+          <p className="mt-0.5 text-sm text-muted leading-relaxed">
+            <em>{paper.venue}</em>
+            {paper.kind && <> · {paper.kind}</>}
+            {paper.honor && (
+              <>
+                {' · '}
+                <span className="text-accent font-medium">{paper.honor}</span>
+              </>
+            )}
+            {paper.state && <> · {paper.state}</>}
+          </p>
+        ) : (
+          <>
+            <p className="mt-0.5 text-sm text-muted leading-relaxed">
+              <em>{paper.venueFull}</em>, {paper.year}
+            </p>
+            {(paper.honor || paper.state || paper.format) && (
+              <p className="mt-0.5 text-sm text-muted">
+                {[
+                  paper.honor && (
+                    <span key="h" className="text-accent font-medium">
+                      {paper.honor}
+                    </span>
+                  ),
+                  paper.state,
+                  paper.format,
+                ]
+                  .filter(Boolean)
+                  .map((el, k) => (
+                    <span key={k}>
+                      {k > 0 && ' · '}
+                      {el}
+                    </span>
+                  ))}
+              </p>
+            )}
+          </>
         )}
         <p className="mt-2 text-sm text-ink leading-relaxed text-pretty">
           {paper.summary}

@@ -33,9 +33,9 @@ const threads: Thread[] = [
       'When one architecture beats another, is it the architecture, or the way the comparison was set up?',
     body: 'Many reported gains come from protocols that change alongside the model being tested. Channel count, input window, sampling, and forecast horizon often move together, so a comparison can end up measuring the protocol as much as the model.',
     finding:
-      'In multi-horizon urban-growth prediction, losing one input epoch, not the longer horizon, explains 94% of a CNN’s apparent decline, and with channels matched the CNN leads the ConvLSTM at every horizon.',
+      'In multi-horizon urban-growth prediction, losing one input epoch, not the longer horizon, explains 94% of the CNN’s decline from the 5-year to the 10-year horizon, and with channels matched the CNN leads the ConvLSTM at every horizon.',
     open: [
-      'Which apparent architectural advantages in Earth-observation benchmarks are protocol artefacts?',
+      'Which apparent architectural advantages in Earth-observation benchmarks are protocol artifacts?',
       'How should a comparison be designed so the architecture is the only thing that varies?',
     ],
     work: [
@@ -115,8 +115,8 @@ const ongoing = {
     'What actually decides whether a geospatial model transfers between regions? The full source-by-target transfer matrix trains one model per region and evaluates every model on every region, across 20 world regions, 8 tasks, and several input representations.',
   results: [
     'Hold the input fixed and the target region sets the score: training on a region’s own data is worth −0.001 FoM, and a region’s difficulty tracks its change rate (Spearman 0.97).',
-    'A parameter-free recent-past baseline beats the trained CNN (FoM 0.56 vs 0.34; extent IoU 0.92 vs 0.61). GroupDRO and pooling the sources add nothing, and a 14× larger model still shows no home-field edge.',
-    'Swap the input and retention traces a provenance spectrum, from harmonised products (about 1.0) to raw sensor reflectance (0.55). The same target-over-model dominance recurs on the PANGAEA benchmark.',
+    'A parameter-free recent-past baseline beats the trained CNN (FoM 0.56 vs 0.34; extent IoU 0.92 vs 0.61). GroupDRO and pooling the training regions add nothing, and a model about 14× larger still shows no home-field edge.',
+    'Change the input instead, and retention (cross-region score over in-region score) traces a provenance spectrum, from globally harmonized products (about 1.0) to raw Landsat history (about 0.55). The same dominance of the target over the model recurs on the published PANGAEA benchmark.',
   ],
   href: 'https://github.com/rohanbalixz/Cross-Region-Source-Invariance-in-Earth-Observation',
 };
@@ -159,7 +159,7 @@ export default function ResearchPage() {
           </h1>
           <p className="text-base text-ink leading-loose mb-6">
             I work on reliable machine learning for Earth observation: knowing
-            when a model&apos;s measured skill, its explanation of failure, and
+            when a model’s measured skill, its explanation of failure, and
             its uncertainty can be trusted in places and periods it was not
             trained on. My work runs along three threads. Each one below states
             the question, what I have found so far, what is still open, and the
@@ -293,10 +293,10 @@ export default function ResearchPage() {
                 tile, and the results that matter come with confidence
                 intervals. Every claim ships with the script that produces it
                 and the result files that redraw the figures, under an open
-                license. The data are real Earth-observation products, not
-                synthetic benchmarks tuned to make a method look good. The
+                license. The data are real Earth-observation products. The
                 limitations sit next to the results, ranking is kept separate
-                from magnitude, and no claim runs past the evidence.
+                from magnitude, and I try not to claim more than the evidence
+                supports.
               </p>
               <p className="text-sm flex flex-wrap gap-x-6 gap-y-2">
                 <Link href="/publications" className="link-inline">

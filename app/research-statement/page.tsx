@@ -33,7 +33,7 @@ const studies = [
 
 const work = [
   {
-    title: 'Channel count, not horizon length, drives architectural divergence in multi-horizon urban growth prediction',
+    title: 'Channel Count, Not Horizon Length, Drives Architectural Divergence in Multi-Horizon Urban Growth Prediction',
     venue: 'GeoAI 2026, Ghent · Oral',
     status: 'Published',
     links: [
@@ -42,7 +42,7 @@ const work = [
     ],
   },
   {
-    title: 'The channel-count confound: A continental audit of multi-horizon urban growth prediction',
+    title: 'The Channel-Count Confound: A Continental Audit of Multi-horizon Urban Growth Prediction',
     venue: 'SpatialDI 2026 · Springer LNCS',
     status: 'Accepted, to appear',
     links: [
@@ -51,7 +51,7 @@ const work = [
     ],
   },
   {
-    title: 'Confident but unidentifiable: Positivity limits on cross-region attribution in geospatial models',
+    title: 'Confident but Unidentifiable: Positivity Limits on Cross-Region Attribution in Geospatial Models',
     venue: 'Transactions in GIS',
     status: 'Accepted pending revisions',
     links: [
@@ -60,7 +60,7 @@ const work = [
     ],
   },
   {
-    title: 'Cross-region source-invariance in Earth observation',
+    title: 'Cross-Region Source-Invariance in Earth Observation',
     venue: 'Ongoing',
     status: 'Not yet peer-reviewed',
     links: [
@@ -169,7 +169,7 @@ export default function ResearchStatementPage() {
           </h2>
           <p>
             My first machine-learning project, in 2020, modeled road-accident
-            hotspots from Indian government data. The first model reported high
+            hotspots from Indian government data. The initial model reported high
             accuracy and missed most of the hotspots. Hotspots were rare, so
             predicting &ldquo;safe&rdquo; almost everywhere scored well. I
             reworked the features, balanced the classes and changed what I
@@ -180,7 +180,7 @@ export default function ResearchStatementPage() {
           <p>
             In 2023, during the Himachal Pradesh floods, I worked with The
             Parivartan Foundation, using satellite and government data to locate
-            about 20 communities that had been cut off, so relief could reach
+            about 20 communities that had been cut off and help direct relief to
             them. That work made the geographic side of the problem concrete.
             The places that most need Earth-observation models are often the
             ones least represented in the data those models learn from.
@@ -198,7 +198,7 @@ export default function ResearchStatementPage() {
             that, in the standard GHSL setup, extending the horizon also drops
             the most recent input epoch, which cuts the input from 24 channels
             to 21. I hypothesized that this input change, not the horizon, drove
-            the CNN&apos;s decline.
+            the CNN’s decline.
           </p>
           <p>
             To separate the two, I built a benchmark of 5,698 tiles of the
@@ -206,13 +206,13 @@ export default function ResearchStatementPage() {
             the prediction target fixed, and removed epochs from the oldest end
             so that channel count and horizon no longer moved together. I also
             sealed a 2020 holdout, downloading that year only after all model
-            selection was finished, and ran the models zero-shot on 20 tiles of
-            Lagos. The channel reduction accounts for 94% of the CNN&apos;s drop
+            selection was finished, and ran the models zero-shot on 20 tiles
+            around Lagos. The channel reduction accounts for 94% of the CNN’s drop
             in Figure of Merit from the 5-year to the 10-year horizon
-            (delta-method 95% CI 62–100%). The ConvLSTM&apos;s gain is real but
+            (delta-method 95% CI 62–100%). The ConvLSTM’s gain is real but
             positional: removing its most recent epoch moves its score 5.4 times
             as much as removing the four oldest combined. With channels matched,
-            the CNN leads at every horizon, on the spatial holdout and on the
+            the CNN leads at every horizon tested, and it also leads on the
             sealed 2020 holdout.
           </p>
           <p>
@@ -228,8 +228,8 @@ export default function ResearchStatementPage() {
             The lesson I took from it: a benchmark comparison is only as valid
             as the variables it holds fixed. The short paper was published at
             GeoAI 2026 as an oral presentation, and the extended version is
-            accepted in Springer&apos;s Lecture Notes in Computer Science
-            (SpatialDI 2026). The{' '}
+            accepted at SpatialDI 2026, to appear in Springer’s Lecture
+            Notes in Computer Science. The{' '}
             <a href={REPO_MH} {...ext}>
               code, benchmark and trained weights
             </a>{' '}
@@ -247,7 +247,7 @@ export default function ResearchStatementPage() {
             settlement pattern is different. I asked a prior question. Can the
             data identify such an explanation at all? I framed it as a
             transportability problem. An attribution can be read from source
-            data only where the target&apos;s conditions also occur in the
+            data only where the target’s conditions also occur in the
             source, which is the positivity condition, and only if the link
             between those conditions and performance carries over between
             regions.
@@ -267,7 +267,7 @@ export default function ResearchStatementPage() {
           </p>
           <p>
             This changed how I think about explanation. An honest account of a
-            model&apos;s failure has to report whether it is identifiable, not
+            model’s failure has to report whether it is identifiable, not
             only what it attributes. The diagnostic needs only source data and
             target covariates, so it can be run before an explanation is
             trusted. The paper is accepted pending revisions at{' '}
@@ -288,13 +288,13 @@ export default function ResearchStatementPage() {
             does decide transfer? I trained a model in each of 20 world regions
             and tested every model on every region. The training region barely
             mattered: the home-field advantage was −0.001 Figure of Merit, and a
-            region&apos;s difficulty tracked how fast it was changing
+            region’s difficulty tracked how fast it was changing
             (Spearman&nbsp;ρ&nbsp;=&nbsp;0.97). A parameter-free baseline that
-            extends each region&apos;s recent past beat the trained CNN (0.56
+            extends each region’s recent past beat the trained CNN (0.56
             against 0.34), and neither GroupDRO nor pooling the training regions
-            helped. What did matter was the input. Globally harmonised products
+            helped. What did matter was the input. Globally harmonized products
             transferred almost completely, while raw Landsat history kept only
-            about 55% of its in-region performance. When I reanalysed the
+            about 55% of its in-region performance. When I reanalyzed the
             published PANGAEA benchmark, the dataset, not the model, again
             accounted for most of the variation in scores.
           </p>
@@ -314,7 +314,7 @@ export default function ResearchStatementPage() {
           </h2>
           <p>
             The gap these studies point to is that GeoAI has no standard way to
-            show, before deployment, that a model&apos;s evidence holds in a new
+            show, before deployment, that a model’s evidence holds in a new
             place. Benchmarks rarely hold input design fixed, explanations
             rarely report how much of the target the source data covers, and
             uncertainty is judged by how well it ranks errors rather than
@@ -331,13 +331,13 @@ export default function ResearchStatementPage() {
             the gap into an embedding space that nobody checks? Second, can
             conformal or post-hoc calibration correct the size of uncertainty
             under geographic shift, not only its ranking, when MC Dropout
-            currently understates error by up to nearly two times?
+            currently understates error by up to 1.9 times?
           </p>
           <p>
             <strong className="font-medium">Years 3–5: deployment.</strong> I
             propose to test these tools on flood mapping, land cover and urban
             growth in regions underrepresented in training data, and to produce
-            maps that mark where a model&apos;s predictions and explanations can
+            maps that mark where a model’s predictions and explanations can
             be trusted and where they cannot. The same diagnostic can also say
             where new labels would help most: target areas that fall outside
             the source support are where a small labeling effort would make an
@@ -349,10 +349,10 @@ export default function ResearchStatementPage() {
             How I work
           </h2>
           <p>
-            I have taken each of these studies from question to published code
-            on my own: building the data pipelines, designing the controls,
-            deriving the bounds and writing the papers. Every number in them can
-            be regenerated from code and result files I release. I want to keep
+            I have taken each of these studies from question to public code on
+            my own: building the data pipelines, designing the controls,
+            deriving the bounds and writing the papers. Each one comes with its
+            code and the result files behind its numbers. I want to keep
             doing this inside a group, where the work is tested by people who
             see the problem from other sides, whether GIScience, statistics or
             Earth-system science.

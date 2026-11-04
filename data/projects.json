@@ -3,8 +3,8 @@
     "slug": "scalable-gradient-descent",
     "category": "engineering",
     "title": "Scalable Gradient Descent on Large Datasets",
-    "tagline": "Serial and OpenMP gradient descent on Purdue's Anvil cluster.",
-    "description": "Linear-regression gradient descent in C++ over about 9.8 million points, run serially and with OpenMP from 1 to 128 threads on Purdue's Anvil HPC system and on Apple Silicon. Parallel and serial outputs match, and the speedup reaches about 6.7× at 16 cores, with diminishing returns beyond that.",
+    "tagline": "Serial and OpenMP gradient descent on Purdue’s Anvil cluster.",
+    "description": "Linear-regression gradient descent in C++ over about 9.8 million points, run serially and with OpenMP from 1 to 128 threads on Purdue’s Anvil HPC system and on Apple Silicon. Parallel and serial outputs match, and the speedup reaches about 6.7× at 16 cores, with diminishing returns beyond that.",
     "tech_stack": [
       "C++",
       "OpenMP",
@@ -66,135 +66,10 @@
     ]
   },
   {
-    "slug": "tripsy",
-    "category": "engineering",
-    "title": "Tripsy: AI Travel Assistant with RAG",
-    "tagline": "Conversational trip planning with retrieval and a live map.",
-    "description": "A FastAPI backend that answers travel questions with retrieval-augmented generation over a Milvus vector store (SentenceTransformers embeddings), and a Next.js frontend with a Leaflet map and OpenStreetMap geocoding. Runs with Docker Compose.",
-    "tech_stack": [
-      "Python",
-      "FastAPI",
-      "Milvus",
-      "SentenceTransformers",
-      "Next.js",
-      "Leaflet",
-      "Docker"
-    ],
-    "highlights": [
-      "RAG over Milvus with a fallback answer path",
-      "Contextual memory across a conversation",
-      "Leaflet map with Nominatim geocoding"
-    ],
-    "github": "https://github.com/rohanbalixz/Tripsy-AI-Travel-Assistant",
-    "image": "/project_images/tripsy.jpg",
-    "tags": [
-      "AI applications"
-    ]
-  },
-  {
-    "slug": "clad-pv",
-    "category": "engineering",
-    "title": "CLAD-PV: Cybersecurity and Load-Aware Dispatch for Photovoltaics",
-    "tagline": "Secure control and monitoring for solar inverter networks.",
-    "description": "A secure control and monitoring system for photovoltaic infrastructure: a guarded Modbus/TCP publisher and monitor, an authenticated curtailment API, spoofed-frame attack simulation, rule-based anomaly alerts on voltage, frequency and power, and signed audit logs. An OpenDSS feeder simulation supplies physics features such as net injection, power factor and ramp rate.",
-    "tech_stack": [
-      "Python",
-      "pymodbus",
-      "Modbus/TCP",
-      "OpenDSS"
-    ],
-    "highlights": [
-      "Authenticated curtailment control API",
-      "Spoofed Modbus frames to test the defenses",
-      "Signed, tamper-evident audit logs"
-    ],
-    "github": "https://github.com/rohanbalixz/clad-pv",
-    "image": "/project_images/cladpv.jpg",
-    "tags": [
-      "Security",
-      "IoT"
-    ]
-  },
-  {
-    "slug": "global-catalog",
-    "category": "engineering",
-    "title": "Global Catalog API: Multi-Region Product Catalog",
-    "tagline": "FastAPI on DynamoDB Global Tables, managed with Terraform.",
-    "description": "A multi-region product catalog and inventory service on FastAPI and DynamoDB Global Tables, with Terraform-managed AWS infrastructure including a Lambda stream processor, simulated cross-region conflict resolution, and Docker packaging. A k6 load test recorded a p95 latency of about 50 ms on product reads and writes, with no failed requests.",
-    "tech_stack": [
-      "Python",
-      "FastAPI",
-      "DynamoDB",
-      "AWS Lambda",
-      "Terraform",
-      "Docker",
-      "k6"
-    ],
-    "highlights": [
-      "DynamoDB Global Tables replication across AWS regions",
-      "Last-write-wins conflict simulation with an explain endpoint",
-      "k6 load test: p95 about 50 ms, 0% failed requests"
-    ],
-    "github": "https://github.com/rohanbalixz/global-catalog-api",
-    "image": "/project_images/globalcatalog.jpg",
-    "tags": [
-      "Distributed systems"
-    ]
-  },
-  {
-    "slug": "churn-prediction",
-    "category": "engineering",
-    "title": "Customer Churn Prediction Platform",
-    "tagline": "An end-to-end churn pipeline from Delta Lake to a REST API.",
-    "description": "Generates a synthetic subscription dataset, ingests and preprocesses it with PySpark and Delta Lake, trains an LSTM and XGBoost ensemble, and serves predictions from a FastAPI endpoint in Docker.",
-    "tech_stack": [
-      "Python",
-      "PySpark",
-      "Delta Lake",
-      "TensorFlow",
-      "XGBoost",
-      "FastAPI",
-      "Docker"
-    ],
-    "highlights": [
-      "Delta Lake ingestion and PySpark preprocessing",
-      "LSTM and XGBoost ensemble",
-      "Dockerized prediction API"
-    ],
-    "github": "https://github.com/rohanbalixz/Churn-Prediction-Platform",
-    "image": "/project_images/churn.jpg",
-    "tags": [
-      "MLOps"
-    ]
-  },
-  {
-    "slug": "aether",
-    "category": "engineering",
-    "title": "Aether: A Conversational Wellness Companion",
-    "tagline": "Emotionally aware chat on Hugging Face Transformers.",
-    "description": "A web chat companion for self-reflection: a FastAPI backend running a Hugging Face Transformers language model with prompts tuned for an empathetic tone, and a static frontend on GitHub Pages. The backend runs locally, and it is not a medical tool.",
-    "tech_stack": [
-      "Python",
-      "FastAPI",
-      "Hugging Face Transformers",
-      "PyTorch",
-      "JavaScript"
-    ],
-    "highlights": [
-      "Prompting for an empathetic, non-robotic tone",
-      "Local backend, so conversations stay on the machine"
-    ],
-    "github": "https://github.com/rohanbalixz/Aether",
-    "image": "/project_images/aether.jpg",
-    "tags": [
-      "NLP"
-    ]
-  },
-  {
     "slug": "global-airport-dashboard",
     "category": "engineering",
     "title": "Global Airports Dashboard",
-    "tagline": "An interactive map and charts of the world's airports.",
+    "tagline": "An interactive map and charts of the world’s airports.",
     "description": "An interactive dashboard of global airport locations and types: a Leaflet map on OpenStreetMap tiles, a searchable list, a details panel, and a D3 distribution chart by category or continent, with filters and a light and dark theme.",
     "tech_stack": [
       "JavaScript",
@@ -212,49 +87,6 @@
     "image": "/project_images/airport.jpg",
     "tags": [
       "Data viz"
-    ]
-  },
-  {
-    "slug": "nasa-logs-billing",
-    "category": "engineering",
-    "title": "NASA Logs Billing Dashboard",
-    "tagline": "Credit-based billing over NASA HTTP log events.",
-    "description": "Parses NASA HTTP access logs into billable events and prices them in credits (one per request plus one per KB served), with a FastAPI service for usage and invoices, a Plotly dashboard, and Docker packaging.",
-    "tech_stack": [
-      "Python",
-      "FastAPI",
-      "Plotly",
-      "Docker"
-    ],
-    "highlights": [
-      "Log parser that emits billing events",
-      "Usage and invoice API by date range",
-      "Plotly usage dashboard"
-    ],
-    "github": "https://github.com/rohanbalixz/NASA-Logs-Billing-Dashboard",
-    "image": "/project_images/nasa-logs.jpg",
-    "tags": [
-      "Systems"
-    ]
-  },
-  {
-    "slug": "local-mapreduce",
-    "category": "engineering",
-    "title": "LocalMapReduce",
-    "tagline": "A local MapReduce simulation on LMDB.",
-    "description": "An educational, single-process MapReduce simulation in Python that writes intermediate key-value pairs to an LMDB store, with a command-line interface to run jobs and clear the store.",
-    "tech_stack": [
-      "Python",
-      "LMDB"
-    ],
-    "highlights": [
-      "Map and reduce phases over an LMDB key-value store",
-      "Command-line run and clear"
-    ],
-    "github": "https://github.com/rohanbalixz/LocalMapReduce",
-    "image": "/project_images/mapreduce.jpg",
-    "tags": [
-      "Systems"
     ]
   }
 ]

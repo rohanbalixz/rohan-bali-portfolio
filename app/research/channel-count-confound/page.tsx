@@ -74,21 +74,21 @@ export default function FlagshipPage() {
               <p>
                 I built a benchmark of six models, a CNN, a U-Net, a ConvLSTM
                 with MC&nbsp;Dropout, linear extrapolation, the SLEUTH cellular
-                automaton, and plain persistence, to predict how built-up an
-                area gets across the continental US at 250&nbsp;m, from 45 years
-                of Global Human Settlement Layer data. The repository has the
-                whole pipeline behind it. There are two separate holdouts, an
-                821-tile 2015 spatial block and a fully sealed 2020 temporal
-                one, plus four change-threshold settings, the channel-matched
-                horizon experiments, a cold transfer to Lagos, and MC&nbsp;Dropout
-                calibration over 8.69&nbsp;million validation pixels.
+                automaton and persistence, that predict built-up surface across
+                the continental US at 250&nbsp;m from 45 years of Global Human
+                Settlement Layer data. The repository holds the full pipeline:
+                two independent holdouts (an 821-tile 2015 spatial block and a
+                sealed 2020 temporal holdout), four change-threshold settings,
+                the channel-matched horizon experiments, a zero-shot transfer to
+                Lagos, and MC&nbsp;Dropout calibration over 8.69&nbsp;million
+                validation pixels.
               </p>
             </Section>
 
             <Section id="claims" title="Claims">
               <p className="mb-6 text-pretty">
-                The four falsifiable claims this benchmark supports, each
-                paired with the script that produces its evidence.
+                The four claims this benchmark supports, and the evidence for
+                each.
               </p>
               <ClaimStack
                 claims={[
@@ -114,7 +114,7 @@ export default function FlagshipPage() {
                       <>
                         Delta-method attribution:{' '}
                         <span className="text-ink tabular">94%</span> of the
-                        CNN 5yr to 10yr FoM decline is attributable to input
+                        CNN’s 5-year to 10-year FoM decline is attributable to input
                         channel reduction, 95% CI{' '}
                         <span className="text-ink tabular">
                           [62%,&nbsp;100%]
@@ -136,7 +136,7 @@ export default function FlagshipPage() {
                         as removing the four oldest epochs combined. A model
                         that weighed every epoch evenly would respond about
                         equally, so the latest epoch is acting as an anchor.
-                        The ConvLSTM&apos;s gain is positional, not a
+                        The ConvLSTM’s gain is positional, not a
                         long-horizon sequence advantage.
                       </>
                     ),
@@ -151,9 +151,9 @@ export default function FlagshipPage() {
                         <span className="text-ink tabular">r = 0.983</span>{' '}
                         between predicted σ̂ and actual error across 10 decile
                         bins. Absolute magnitudes are{' '}
-                        <span className="text-ink tabular">1.4-1.9×</span>{' '}
-                        under-estimated. The score is useful for triage, not
-                        yet for coverage.
+                        underestimated by{' '}
+                        <span className="text-ink tabular">1.4–1.9×</span>. The
+                        score is useful for triage, not yet for coverage.
                       </>
                     ),
                   },
@@ -165,18 +165,18 @@ export default function FlagshipPage() {
               <p>
                 Papers on multi-horizon urban growth tend to report the same
                 thing. The CNN baselines get worse at longer horizons, while
-                the ConvLSTMs, sold as sequence models, get better. The story
+                the ConvLSTMs, built as sequence models, get better. The story
                 people then tell is structural. Recurrence is supposedly
                 catching something that flat stacking cannot.
               </p>
               <p>
                 But the setup itself changes with the horizon. Going from a
                 5-year to a 10-year forecast does not just push the target
-                further out. It also drops the most recent input epoch. So at
-                long horizons the CNN is looking at a shorter window, while the
-                ConvLSTM hidden state still folds in the whole history. The
-                architecture claim and this setup artifact end up stuck
-                together, and nobody pulls them apart.
+                further out. It also drops the most recent input epoch, so at
+                the longer horizon both models see one fewer epoch, which for
+                the flat-stacking CNN means three fewer input channels. The
+                architecture claim and this input change move together, and
+                none of the benchmarks I examined separates them.
               </p>
 
               <figure className="my-10">
@@ -193,7 +193,7 @@ export default function FlagshipPage() {
                       <span className="text-base text-muted">channels</span>
                     </p>
                     <p className="font-mono text-[11px] uppercase tracking-wider text-subtle mt-3 leading-relaxed">
-                      8 epochs · 3 layers each
+                      8 epochs · 3 GHSL layers each
                     </p>
                   </div>
                   <div className="border border-rule bg-surface p-5">
@@ -208,14 +208,14 @@ export default function FlagshipPage() {
                       <span className="text-base text-muted">channels</span>
                     </p>
                     <p className="font-mono text-[11px] uppercase tracking-wider text-subtle mt-3 leading-relaxed">
-                      7 epochs · 3 layers each
+                      7 epochs · 3 GHSL layers each
                     </p>
                   </div>
                 </div>
                 <figcaption className="mt-4 text-xs font-mono text-subtle leading-relaxed">
                   <span className="text-muted">Fig.&nbsp;2.</span> The horizon
                   changes, but so does the available input stack.
-                  Channel-count drops from 24 to 21 between the 5-year and
+                  The channel count drops from 24 to 21 between the 5-year and
                   10-year tasks. Standard benchmark protocols leave this
                   confound in place.
                 </figcaption>
@@ -290,7 +290,7 @@ export default function FlagshipPage() {
                     <strong className="text-ink">Channel-matched controls.</strong>{' '}
                     Hold the 2015 target fixed and trim inputs from the oldest
                     end, so the channel count matches each horizon. With
-                    channels matched, what is left of the CNN&apos;s horizon
+                    channels matched, what is left of the CNN’s horizon
                     effect is &minus;0.004&nbsp;FoM at 10&nbsp;years and
                     &minus;0.015 at 20, and the CNN leads the ConvLSTM at every
                     horizon tested.
@@ -308,7 +308,7 @@ export default function FlagshipPage() {
                 <li className="flex gap-3">
                   <span className="font-mono text-accent flex-shrink-0 tabular">[3]</span>
                   <span>
-                    <strong className="text-ink">Calibrated uncertainty.</strong>{' '}
+                    <strong className="text-ink">Uncertainty calibration.</strong>{' '}
                     MC Dropout (20 forward passes) on 8.69&nbsp;M validation
                     pixels. Pearson r&nbsp;=&nbsp;0.9834, Spearman
                     &nbsp;&rho;&nbsp;=&nbsp;1.000 across 10 decile bins.
@@ -344,17 +344,17 @@ export default function FlagshipPage() {
                 eight input epochs are encoded.
               </p>
               <p>
-                Data comes from the European Commission JRC Global Human
+                The data come from the European Commission JRC Global Human
                 Settlement Layer R2023A products: GHS-BUILT-S (surface
                 density), GHS-BUILT-V (volume), and GHS-POP (population), all
                 resampled to 250&nbsp;m in EPSG:5070 and clipped to CONUS
                 (12,717&nbsp;&times;&nbsp;23,996 pixels). For spatial validation,
                 CONUS is split into blocks of 1280&nbsp;&times;&nbsp;1280 pixels
-                (320&nbsp;km on a side), and every fifth block{' '}
+                (320&nbsp;km on a side), and every fifth block (
                 <code className="font-mono text-sm bg-rule/30 px-1 py-0.5">
                   block_id mod 5 == 0
-                </code>{' '}
-                is held out. That gives 821 validation tiles that share no
+                </code>
+                ) is held out. That gives 821 validation tiles that share no
                 pixels with the training set.
               </p>
               <figure className="my-10 -mx-2 md:mx-0">
@@ -415,12 +415,13 @@ export default function FlagshipPage() {
                         Pontius et&nbsp;al. 2008
                       </td>
                       <td className="px-4 py-3 text-muted align-top">
-                        Figure of Merit for evaluating land-change models;
-                        argues MSE is misleading when most pixels are stable.
+                        Figure of Merit for comparing land-change models,
+                        which scores predicted change rather than stable
+                        pixels.
                       </td>
                       <td className="px-4 py-3 text-muted align-top">
                         Adopts FoM as the primary metric and pairs it with a
-                        per-tile Wilcoxon test and bootstrap CIs. Confirms
+                        per-tile Wilcoxon test and bootstrap CIs, and shows
                         the MSE/FoM inversion in CONUS at 250&nbsp;m.
                       </td>
                     </tr>
@@ -460,7 +461,8 @@ export default function FlagshipPage() {
                       </td>
                       <td className="px-4 py-3 text-muted align-top">
                         Global Human Settlement Layer built-up, volume, and
-                        population products at 100&nbsp;m, 1975 to 2020.
+                        population products at 100&nbsp;m, used here for 1975
+                        to 2020.
                       </td>
                       <td className="px-4 py-3 text-muted align-top">
                         Underlying data source for all six models.
@@ -481,7 +483,7 @@ export default function FlagshipPage() {
                       <td className="px-4 py-3 text-muted align-top">
                         Shows the comparison is confounded: protocols that
                         vary the horizon also vary the input-channel count.
-                        With channels matched, the CNN&apos;s horizon effect
+                        With channels matched, the CNN’s horizon effect
                         shrinks to at most 0.015 FoM and the CNN leads at
                         every horizon.
                       </td>
@@ -491,8 +493,8 @@ export default function FlagshipPage() {
               </div>
 
               <p className="text-sm text-muted">
-                The full reference list is in the SpatialDI main paper
-                (forthcoming) and in the repository&apos;s{' '}
+                The full reference list is in the SpatialDI paper (to appear)
+                and in the repository’s{' '}
                 <a
                   href="https://github.com/rohanbalixz/Multi-Horizon-Urban-Growth-Prediction"
                   target="_blank"
@@ -513,7 +515,7 @@ export default function FlagshipPage() {
                 <MetricCard
                   value="94"
                   unit="%"
-                  description="of CNN's 5yr to 10yr FoM decline attributes to channel-count reduction, 95% CI [62%, 100%]."
+                  description="of the CNN’s 5-year to 10-year FoM decline comes from the channel-count reduction (delta-method 95% CI 62–100%)."
                   tone="secondary"
                 />
                 <MetricCard
@@ -527,9 +529,9 @@ export default function FlagshipPage() {
                   description="Pearson r between predicted uncertainty σ̂ and actual error across 10 decile bins on 8.69M validation pixels."
                 />
                 <MetricCard
-                  value="1.4-1.9"
+                  value="1.4–1.9"
                   unit="×"
-                  description="uncertainty-magnitude underestimation. Useful for ranking, not yet for coverage without post-hoc calibration."
+                  description="by which MC Dropout understates the size of errors. Useful for ranking errors, not yet for coverage without post-hoc calibration."
                 />
               </div>
 
@@ -544,7 +546,7 @@ export default function FlagshipPage() {
               </p>
 
               <ResultsTable
-                caption="Tab. 1. 2015 spatial block holdout. CNN leads at every metric while using ~6.5× fewer parameters than the ConvLSTM."
+                caption="Tab. 1. 2015 spatial block holdout. The CNN leads on FoM with about 6.5× fewer parameters than the ConvLSTM. SLEUTH has 4 calibrated coefficients rather than trained weights."
                 headers={['Model', 'FoM (↑)', 'Params']}
                 rows={[
                   ['SimpleCNN (flat stacking)', '0.702 ± 0.019', '74 K'],
@@ -592,10 +594,10 @@ export default function FlagshipPage() {
                 </div>
                 <figcaption className="mt-3 text-xs font-mono text-subtle leading-relaxed">
                   <span className="text-muted">Fig.&nbsp;4.</span> Multi-horizon
-                  FoM with the channel-matched CNN control (open markers)
-                  isolating the true horizon effect. The apparent ConvLSTM
-                  catch-up at longer horizons collapses when input channel
-                  count is held fixed.
+                  FoM with the channel-matched CNN control (open markers).
+                  With channels matched, almost none of the CNN’s decline
+                  remains and the CNN leads at every horizon. The
+                  ConvLSTM’s rise is real but positional (Claim&nbsp;3).
                 </figcaption>
               </figure>
 
@@ -609,7 +611,7 @@ export default function FlagshipPage() {
               </p>
 
               <ResultsTable
-                caption="Tab. 3. Per-tile statistical confirmation. The CNN > ConvLSTM ordering holds with overwhelming significance and a tight CI."
+                caption="Tab. 3. Per-tile statistical confirmation. The CNN beats the ConvLSTM on 817 of the 821 validation tiles."
                 headers={['Test', 'Median Δ FoM', 'p-value', 'Mean Δ FoM [95% CI]']}
                 rows={[
                   [
@@ -727,9 +729,9 @@ export default function FlagshipPage() {
                     status: 'yes',
                   },
                   {
-                    label: 'Zenodo DOI (SpatialDI)',
+                    label: 'DOI (SpatialDI, Springer)',
                     status: 'no',
-                    detail: 'forthcoming',
+                    detail: 'on publication',
                   },
                 ]}
               />
@@ -737,25 +739,33 @@ export default function FlagshipPage() {
 
             <Section id="limitations" title="Limitations">
               <p>
-                The Lagos transfer test is{' '}
-                <strong className="text-ink">directional</strong> rather than a
-                complete global-transfer study; one city does not generalise
-                to the global South. Some attribution estimates have wide
-                confidence intervals. The 94% channel-count attribution
-                carries a 95% CI of [62%, 100%], which is directionally clear
-                but not pinpoint. The next step is to
-                test whether terrain, transport networks, and settlement
-                structure explain transfer failure, rather than treating
-                Lagos as a one-region check.
+                These follow the limitations section of the SpatialDI paper.
+                Experiments are confined to CONUS GHSL at 250&nbsp;m. The 821
+                validation tiles cover seven climate zones and growth rates
+                from 5% to 40%, but the magnitudes (84–94% channel attribution,
+                the 5.4&times; end-removal asymmetry) may differ elsewhere, and
+                the 20-tile Lagos test supports directional, not quantitative,
+                claims.
+              </p>
+              <p>
+                The channel attribution rests on three single-seed FoM values.
+                Its delta-method 95% CI is wide (62–100%), and the 84% floor is
+                a sensitivity argument, not the lower end of the interval. The
+                channel-count isolation was run only for the CNN, so whether
+                part of the ConvLSTM’s gain is also channel-driven is
+                untested. The ConvLSTM’s 2020 result is a single run, and
+                the &plusmn; values are two-seed half-ranges, not standard
+                deviations.
               </p>
               <p className="mt-6 text-sm text-muted">
-                Smaller, complementary caveats: 250&nbsp;m resolution misses
-                fine-grained parcel dynamics; no zoning, terrain, or
-                economic covariates in the neural models; post-2015 CONUS
-                growth slowdown (5&times; lower rate) is the dominant driver
-                of the 2020-holdout FoM drop; MC&nbsp;Dropout magnitudes are
-                1.4-1.9× under-estimated and need post-hoc or conformal
-                calibration for coverage.
+                Other caveats: 250&nbsp;m resolution misses parcel-level
+                dynamics; the neural models use no zoning, terrain, or economic
+                covariates; SLEUTH omits terrain slope, so it is a lower bound
+                on cellular-automaton performance; the 2010–2020 growth
+                slowdown (10.6% of evaluated pixels grew, against 25.1% for
+                2015) compresses the 2020 FoM range; and MC&nbsp;Dropout
+                understates error size by 1.4–1.9&times;, so it needs post-hoc
+                or conformal calibration before it can promise coverage.
               </p>
             </Section>
 
@@ -829,7 +839,7 @@ export default function FlagshipPage() {
                   href="/research"
                   className="text-xs font-mono uppercase tracking-wider text-muted hover:text-accent"
                 >
-                  &larr; Research themes
+                  &larr; Research
                 </Link>
                 <Link
                   href="/contact"

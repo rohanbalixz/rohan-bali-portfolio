@@ -116,7 +116,7 @@ export default function CVPage() {
                 </p>
                 {edu.gpa && (
                   <p className="text-sm text-muted leading-relaxed mt-1">
-                    <span className="text-ink">GPA:</span> {edu.gpa}
+                    <span className="text-ink">{edu.gpa_label ?? 'GPA'}:</span> {edu.gpa}
                   </p>
                 )}
                 {edu.thesis && (

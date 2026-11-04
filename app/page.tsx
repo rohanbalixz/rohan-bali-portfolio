@@ -98,18 +98,6 @@ const news = [
     ),
   },
   {
-    date: 'Feb 2025',
-    body: (
-      <>
-        Started a{' '}
-        <a href={socialLinks.medium} {...ext}>
-          Medium series
-        </a>{' '}
-        explaining the fundamentals of machine learning from the ground up.
-      </>
-    ),
-  },
-  {
     date: 'Dec 2024',
     body: (
       <>
@@ -170,9 +158,6 @@ export default function Home() {
               height={144}
               className="w-28 h-28 sm:w-36 sm:h-36 object-cover border border-rule"
             />
-            <figcaption className="mt-2 w-28 sm:w-36 text-xs text-subtle italic leading-snug text-center">
-              at the top of rockefeller center, nyc
-            </figcaption>
           </figure>
           <div>
             <h1 className="font-serif text-3xl md:text-4xl text-ink tracking-tight mb-2">
@@ -191,14 +176,14 @@ export default function Home() {
         {/* Bio */}
         <section className="prose-research space-y-5 mb-16">
           <p>
-            I study when a model&apos;s measured skill, its explanation of
+            I study when a model’s measured skill, its explanation of
             failure, and its uncertainty can be trusted in places and periods it
             was not trained on. I find evaluation confounds that masquerade as
             architectural differences, test whether cross-region explanations
             are identifiable at all when covariate overlap is thin, and measure
             how well deep-learning uncertainty tracks real error under
-            distribution shift. Every number in my papers can be regenerated
-            from the code and data I release.
+            distribution shift. Each paper ships with its code, data and the
+            result files behind its numbers.
           </p>
           <p>
             I finished my M.S. in Data Science at UMass Dartmouth in May 2026,
@@ -210,8 +195,8 @@ export default function Home() {
             I was a data scientist at The Parivartan Foundation, an NGO in
             Shimla, where during the 2023 Himachal Pradesh floods I used
             satellite and government data to locate about 20 cut-off
-            communities so relief could reach them. Before that I was a software
-            engineer at Capgemini. My{' '}
+            communities and help direct relief to them. Earlier, I was a
+            software engineer at Capgemini. My{' '}
             <Link href="/research-statement" className="link-inline">
               research statement
             </Link>{' '}
@@ -263,7 +248,7 @@ export default function Home() {
           </h2>
           <div className="prose-research mb-4">
             <p>
-              I am applying to PhD programs for 2027. If you work on evaluation,
+              I am applying to PhD programs starting in Fall 2027. If you work on evaluation,
               generalization, uncertainty, or machine learning for Earth
               observation, I would be glad to hear from you.
             </p>

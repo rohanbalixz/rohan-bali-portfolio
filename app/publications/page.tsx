@@ -18,9 +18,8 @@ export default function PublicationsPage() {
     <div className="py-20 md:py-24">
       <div className="max-w-4xl mx-auto px-6">
         <header className="mb-14 max-w-2xl">
-          <p className="overline mb-4">Publications</p>
           <h1 className="font-serif text-4xl md:text-5xl text-ink tracking-[-0.025em] leading-[1.1] mb-6 text-balance">
-            Papers
+            Publications
           </h1>
           <p className="text-base text-muted leading-loose">
             All sole-authored, with public code and data. Abstracts and BibTeX

@@ -23,9 +23,10 @@
       "location": "Jaipur, India",
       "degree": "B.Tech., Computer and Communication Engineering",
       "duration": "Jul 2017 – Sep 2021",
-      "gpa": "CGPA 6.30/10 · Final-year GPA 8.53/10 (semesters 7–8), with an A in Machine Learning",
+      "gpa": "6.30/10 · Final-year GPA: 8.53/10 (semesters 7–8), with an A in Machine Learning",
       "project": "Road Safety Analysis using Machine Learning",
-      "supervisor": "Dr. Vijaypal Singh Dhaka"
+      "supervisor": "Dr. Vijaypal Singh Dhaka",
+      "gpa_label": "CGPA"
     }
   ],
   "publications": [

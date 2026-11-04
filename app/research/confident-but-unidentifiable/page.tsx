@@ -156,7 +156,7 @@ export default function ConfidentButUnidentifiablePage() {
                 fit how performance depends on terrain, roads, and settlement
                 form, and read the transfer gap off that fit: the target is
                 rougher, so the model does worse. That reading assumes two
-                things. The target&apos;s covariates have to fall where the
+                things. The target’s covariates have to fall where the
                 source data can say something about them (positivity), and the
                 relationship between covariates and performance has to carry
                 over between regions (conditional invariance).
@@ -275,9 +275,11 @@ export default function ConfidentButUnidentifiablePage() {
 
             <Section id="repro" title="Reproducibility">
               <p>
-                The repository regenerates every number, table, and figure in
-                the paper with one command,{' '}
+                The repository regenerates the paper’s result files and
+                figures with one command,{' '}
                 <code className="font-mono text-sm">bash reproduce.sh</code>.
+                Two result files that come from a broader evaluation pipeline
+                are included as provided.
                 It needs no GPU, network access, or external data: the analysis
                 runs on the processed per-tile files included in the repository,
                 and each reported quantity has its own result file. Code is MIT

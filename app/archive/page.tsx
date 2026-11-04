@@ -3,9 +3,9 @@ import Link from 'next/link';
 import projects from '@/data/projects.json';
 
 export const metadata: Metadata = {
-  title: 'Archive. Engineering and systems projects',
+  title: 'Technical projects',
   description:
-    'Engineering and applied systems work outside the current research focus.',
+    'Course and technical projects behind my research: parallel and GPU computing on HPC systems, and geospatial visualization.',
 };
 
 export default function ArchivePage() {
@@ -15,14 +15,13 @@ export default function ArchivePage() {
     <div className="py-20 md:py-24">
       <div className="max-w-3xl mx-auto px-6">
         <header className="mb-16">
-          <p className="overline mb-4">Archive</p>
           <h1 className="font-serif text-4xl md:text-5xl text-ink tracking-tighter leading-[1.1] mb-6 text-balance">
-            Engineering &amp; systems projects.
+            Technical projects
           </h1>
           <p className="text-base text-muted leading-loose max-w-2xl">
-            Engineering, systems, and course projects outside my main research,
-            kept here for completeness. Each one links to its code. For research,
-            see the{' '}
+            Course and technical projects behind the computing in my research:
+            parallel and GPU computing on HPC systems, and geospatial
+            visualization. Each one links to its code. For research, see the{' '}
             <Link href="/research" className="link-inline">
               research page
             </Link>{' '}

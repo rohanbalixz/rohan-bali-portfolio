@@ -18,14 +18,14 @@ export default function ContactPage() {
           </h1>
           <p className="prose-research">
             Email is the best way to reach me. I am applying to PhD programs
-            for 2027 and would be glad to hear from potential supervisors and
+            starting in Fall 2027 and would be glad to hear from potential supervisors and
             collaborators working on evaluation under distribution shift,
             uncertainty, or machine learning for Earth observation.
           </p>
         </header>
 
         <section className="border-t border-rule pt-10 mb-12">
-          <div className="grid sm:grid-cols-3 gap-10">
+          <div className="grid sm:grid-cols-[1.5fr_1fr_1fr] gap-10">
             <div>
               <p className="overline mb-3">Email</p>
               <a
@@ -71,14 +71,9 @@ export default function ContactPage() {
               GeoAI paper (PDF)
             </a>
             <span className="text-rule mx-2">·</span>
-            <a
-              href="https://github.com/rohanbalixz/Multi-Horizon-Urban-Growth-Prediction"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="link-inline"
-            >
-              Code
-            </a>
+            <Link href="/code" className="link-inline">
+              Code &amp; data
+            </Link>
           </p>
         </section>
       </div>
