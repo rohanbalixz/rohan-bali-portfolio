@@ -12,13 +12,13 @@ import CopyableBibtex from '@/components/CopyableBibtex';
 import { channelCountBibtex } from '@/lib/citations';
 
 export const metadata: Metadata = {
-  title:
-    'The Channel-Count Confound: A Continental Audit of Multi-Horizon Urban Growth Prediction',
+  title: 'The channel-count study',
   description:
-    'A continental audit of CNN and ConvLSTM comparisons on multi-horizon urban-growth prediction. Sealed temporal holdouts, zero-shot geographic transfer to Lagos, and calibrated MC Dropout uncertainty over 8.69M validation pixels.',
+    'One benchmark of multi-horizon urban-growth prediction, two papers: a short paper at GeoAI 2026 (oral) and a full-length paper at SpatialDI 2026 (Springer LNCS). Sealed temporal holdouts, zero-shot transfer to Lagos, and MC Dropout calibration over 8.69M validation pixels.',
 };
 
 const toc = [
+  { id: 'papers', label: 'The two papers' },
   { id: 'tldr', label: 'Summary' },
   { id: 'claims', label: 'Claims' },
   { id: 'problem', label: 'Problem' },
@@ -275,7 +275,7 @@ export default function FlagshipPage() {
                 <li className="flex gap-3">
                   <span className="font-mono text-success flex-shrink-0">✓</span>
                   <span>
-                    Multi-seed reporting (mean&nbsp;&plusmn;&nbsp;std across
+                    Multi-seed reporting (mean&nbsp;&plusmn;&nbsp;half-range across
                     seeds 0 and 42)
                   </span>
                 </li>
@@ -539,7 +539,8 @@ export default function FlagshipPage() {
                 </strong>{' '}
                 Pixel-level FoM on 1,542,747 evaluation pixels (
                 <code className="font-mono text-sm">gt &gt; 0.01</code>, 25.1%
-                growth), mean&nbsp;&plusmn;&nbsp;std across two seeds.
+                growth). For the neural models, &plusmn; is half the range across
+                two seeds, as in both papers.
               </p>
 
               <ResultsTable
@@ -664,7 +665,7 @@ export default function FlagshipPage() {
                 <code className="font-mono text-sm bg-rule/30 px-1 py-0.5">
                   scripts/consolidate_results.py
                 </code>
-                . Reported numbers are mean&nbsp;&plusmn;&nbsp;std across two
+                . Reported numbers are mean&nbsp;&plusmn;&nbsp;half-range across two
                 seeds (0 and 42) for every neural model.
               </p>
               <ReproChecklist

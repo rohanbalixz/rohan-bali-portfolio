@@ -46,7 +46,7 @@ const threads: Thread[] = [
         external: true,
       },
       {
-        title: 'The Channel-Count Confound: A Continental Audit of Multi-Horizon Urban Growth Prediction',
+        title: 'The Channel-Count Confound: A Continental Audit of Multi-horizon Urban Growth Prediction',
         meta: 'SpatialDI 2026 · Springer LNCS · To appear',
         href: '/publications#channel-count-confound-spatialdi',
       },
@@ -96,7 +96,7 @@ const threads: Thread[] = [
     ],
     work: [
       {
-        title: 'The Channel-Count Confound: A Continental Audit of Multi-Horizon Urban Growth Prediction',
+        title: 'The Channel-Count Confound: A Continental Audit of Multi-horizon Urban Growth Prediction',
         meta: 'SpatialDI 2026 · includes the MC Dropout uncertainty analysis',
         href: '/publications#channel-count-confound-spatialdi',
       },

@@ -5,36 +5,72 @@
     "authors": "Rohan Bali",
     "year": "2026",
     "venue": "GeoAI 2026",
-    "venueFull": "Proceedings of the 1st International Conference on Geospatial Artificial Intelligence (GeoAI 2026), Ghent, Belgium",
+    "venueFull": "Proceedings of the 1st International Conference on Geospatial Artificial Intelligence (GeoAI 2026), Oral Presentation Papers, edited by Haosheng Huang and Nico Van de Weghe. Ghent, Belgium",
     "honor": "Oral",
     "state": "Published",
+    "format": "Short paper · 6 pages, 1 figure, 2 tables",
     "summary": "Shows that losing input channels, not lengthening the forecast horizon, drives most of the apparent architectural divergence in urban-growth prediction.",
+    "contentsLabel": "In this paper",
+    "contents": [
+      "The channel-count decomposition: with the 2015 target fixed and epochs trimmed from the oldest end, losing input channels explains 94% of the CNN’s drop from the 5-year to the 10-year horizon.",
+      "The recency probe: removing the ConvLSTM’s most recent epoch moves its score 5.4× as much as removing the four oldest combined.",
+      "The main benchmark on the 2015 spatial and sealed 2020 holdouts, why persistence wins on MSE while scoring zero on Figure of Merit, and a 20-tile zero-shot test on Lagos."
+    ],
     "abstract": "Multi-horizon urban growth benchmarks show a consistent pattern: CNN Figure of Merit (FoM) falls as horizons extend; ConvLSTM’s climbs. The pattern has been attributed to architecture in every benchmark we examined. But advancing the horizon in GHSL also drops one input epoch, cutting channel count from 24 to 21, a covariate no prior study separates. We control for it over 5,698 CONUS tiles at 250 m by fixing the prediction target and trimming from the oldest end. Channel reduction accounts for 94% of CNN’s 5yr→10yr FoM drop (delta-method 95% CI [62%, 100%]; conservative bound ≥84%). ConvLSTM’s gain holds, but the mechanism is positional: the most recent epoch produces 5.4× the FoM response of four oldest epochs combined. Channel-equated, CNN leads at every tested horizon (FoM 0.702±0.019 on the 2015 spatial holdout; 0.252±0.009 on a sealed 2020 holdout).",
     "teaser": "/paper_figures/teaser_geoai.png",
     "teaserAlt": "Figure of Merit against forecast horizon. The CNN's score drops from 0.739 at 5 years to 0.675 at 10 years, and the channel-matched CNN follows almost the same line, while the ConvLSTM rises from 0.523 to 0.596.",
     "links": [
-      { "label": "Paper (Zenodo)", "href": "https://zenodo.org/records/20278403", "external": true },
-      { "label": "Code & benchmark", "href": "https://github.com/rohanbalixz/Multi-Horizon-Urban-Growth-Prediction", "external": true },
-      { "label": "Project page", "href": "/research/channel-count-confound" }
+      {
+        "label": "Paper (Zenodo)",
+        "href": "https://zenodo.org/records/20278403",
+        "external": true
+      },
+      {
+        "label": "Code & benchmark",
+        "href": "https://github.com/rohanbalixz/Multi-Horizon-Urban-Growth-Prediction",
+        "external": true
+      },
+      {
+        "label": "Project page",
+        "href": "/research/channel-count-confound"
+      }
     ],
     "featured": true
   },
   {
     "id": "channel-count-confound-spatialdi",
-    "title": "The Channel-Count Confound: A Continental Audit of Multi-Horizon Urban Growth Prediction",
+    "title": "The Channel-Count Confound: A Continental Audit of Multi-horizon Urban Growth Prediction",
     "authors": "Rohan Bali",
     "year": "2026",
     "venue": "SpatialDI 2026",
     "venueFull": "Spatial Data and Intelligence: 7th International Conference, SpatialDI 2026, Changsha, China. Lecture Notes in Computer Science, Springer",
     "state": "Accepted, to appear",
+    "format": "Full paper · 13 figures, 4 tables",
     "summary": "Extended version of the GeoAI paper, with the full ablations and the MC Dropout uncertainty analysis.",
+    "contentsLabel": "What it adds to the GeoAI paper",
+    "contents": [
+      "Related work on cellular-automaton, deep-learning and uncertainty approaches to urban change, and the full data, architecture and evaluation protocol.",
+      "Input-channel and architecture ablations: per-channel importance, network depth, and why training directly for Figure of Merit with a soft-Jaccard loss fails.",
+      "The MC Dropout uncertainty analysis: calibration over 8.69M pixels, where uncertainty ranks errors reliably (r = 0.983) but understates their size by 1.4–1.9×, and continental uncertainty maps.",
+      "A limitations section on what the results do and do not support."
+    ],
     "abstract": "Multi-horizon urban growth benchmarks show a consistent pattern: CNN Figure of Merit falls as horizons extend; ConvLSTM’s climbs. The pattern has been attributed to architecture in every benchmark we examined. But advancing the horizon in GHSL also drops one input epoch, cutting channel count from 24 to 21, a covariate no prior study separates. We control for it over 5,698 CONUS tiles at 250 m by fixing the prediction target and trimming from the oldest end. Channel reduction accounts for 94% of CNN’s 5yr→10yr FoM drop (delta-method 95% CI: [62%, 100%]; conservative bound: ≥84%). ConvLSTM’s gain holds, but the mechanism is positional: the most recent epoch produces 5.4× the FoM response of four oldest epochs combined. Channel-equated, CNN leads at all tested horizons (FoM 0.702±0.019, 2015 spatial holdout; 0.252±0.009, sealed 2020 holdout). On both holdouts persistence wins MSE at FoM = 0; metric choice controls which model ranks first.",
     "teaser": "/paper_figures/teaser_spatialdi.png",
     "teaserAlt": "A validation tile from the 2015 spatial holdout: GHSL ground-truth built-up fraction beside the ConvLSTM prediction, which scores a Figure of Merit of 0.480.",
     "links": [
-      { "label": "Paper (to appear)", "href": "" },
-      { "label": "Code, benchmark & weights", "href": "https://github.com/rohanbalixz/Multi-Horizon-Urban-Growth-Prediction", "external": true },
-      { "label": "Project page", "href": "/research/channel-count-confound" }
+      {
+        "label": "Paper (to appear)",
+        "href": ""
+      },
+      {
+        "label": "Code, benchmark & weights",
+        "href": "https://github.com/rohanbalixz/Multi-Horizon-Urban-Growth-Prediction",
+        "external": true
+      },
+      {
+        "label": "Project page",
+        "href": "/research/channel-count-confound"
+      }
     ],
     "featured": true
   },
@@ -52,8 +88,15 @@
     "teaser": "/paper_figures/teaser_tgis.png",
     "teaserAlt": "Share of target tiles inside the source covariate support: Andes 5.8%, Sub-Saharan Africa 44.6%, South Asia 50.2%, East Asia 42.3%, against 77% for held-out US tiles.",
     "links": [
-      { "label": "Code & data", "href": "https://github.com/rohanbalixz/Confident-but-Unidentifiable-Positivity-Limits-on-Cross-Region-Attribution-in-Geospatial-Models", "external": true },
-      { "label": "Project page", "href": "/research/confident-but-unidentifiable" }
+      {
+        "label": "Code & data",
+        "href": "https://github.com/rohanbalixz/Confident-but-Unidentifiable-Positivity-Limits-on-Cross-Region-Attribution-in-Geospatial-Models",
+        "external": true
+      },
+      {
+        "label": "Project page",
+        "href": "/research/confident-but-unidentifiable"
+      }
     ],
     "featured": true
   },
@@ -66,7 +109,11 @@
     "venueFull": "Research report, MTH 565 Small World Networks, UMass Dartmouth. Supervised by Prof. Dana Fine",
     "summary": "A co-authorship network of 33,981 researchers and 624,928 links built from OpenAlex. Its clustering coefficient is 0.71, about 650 times that of a density-matched random graph, and its giant component spans 61% of authors.",
     "links": [
-      { "label": "Write-up", "href": "https://swn465.home.blog/2024/12/12/understanding-academic-collaboration-networks-through-small-world/", "external": true }
+      {
+        "label": "Write-up",
+        "href": "https://swn465.home.blog/2024/12/12/understanding-academic-collaboration-networks-through-small-world/",
+        "external": true
+      }
     ]
   }
 ]

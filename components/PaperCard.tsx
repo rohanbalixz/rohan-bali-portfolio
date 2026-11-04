@@ -21,7 +21,10 @@ export interface Paper {
   venueFull: string;
   honor?: string;
   state?: string;
+  format?: string;
   summary: string;
+  contentsLabel?: string;
+  contents?: string[];
   abstract?: string;
   abstractNote?: string;
   teaser?: string;
@@ -106,9 +109,28 @@ export default function PaperCard({
           {paper.state && <> · {paper.state}</>}
           {compact && !paper.state && <> · {paper.year}</>}
         </p>
+        {paper.format && (
+          <p className="mt-0.5 text-xs text-subtle">{paper.format}</p>
+        )}
         <p className="mt-2 text-sm text-ink leading-relaxed text-pretty">
           {paper.summary}
         </p>
+        {!compact && paper.contents && paper.contents.length > 0 && (
+          <div className="mt-3">
+            {paper.contentsLabel && (
+              <p className="text-xs font-medium uppercase tracking-widest text-muted mb-2">
+                {paper.contentsLabel}
+              </p>
+            )}
+            <ul className="space-y-1.5 list-disc pl-5 marker:text-rule">
+              {paper.contents.map((c, i) => (
+                <li key={i} className="text-sm text-muted leading-relaxed text-pretty">
+                  {c}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
 
         <p className="mt-2 text-sm flex flex-wrap gap-x-4 gap-y-1">
           <PaperLinks links={paper.links} />
