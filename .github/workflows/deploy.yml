@@ -9,6 +9,7 @@ permissions:
   contents: read
   pages: write
   id-token: write
+  actions: read
 
 concurrency:
   group: pages
@@ -51,6 +52,30 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
+      # While the repo's Pages source is "Deploy from a branch", GitHub also runs
+      # its built-in Jekyll deploy ("pages build and deployment") on every push,
+      # which publishes the bare repo. Whichever deploy finishes last is served,
+      # so wait for that run to finish and deploy the built site after it.
+      # If no such run appears within a minute (source set to GitHub Actions),
+      # carry on.
+      - name: Wait for the built-in branch deploy
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          for i in $(seq 1 60); do
+            state=$(curl -s -H "Authorization: Bearer $GH_TOKEN" \
+              "https://api.github.com/repos/${{ github.repository }}/actions/runs?head_sha=${{ github.sha }}&per_page=20" \
+              | jq -r '[.workflow_runs[] | select(.name == "pages build and deployment")]
+                       | if length == 0 then "none"
+                         elif all(.status == "completed") then "done"
+                         else "running" end')
+            echo "built-in deploy: $state"
+            if [ "$state" = "done" ]; then exit 0; fi
+            if [ "$state" = "none" ] && [ "$i" -ge 6 ]; then exit 0; fi
+            sleep 10
+          done
+          echo "Timed out waiting; deploying anyway."
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
