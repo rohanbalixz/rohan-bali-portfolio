@@ -41,18 +41,18 @@ const threads: Thread[] = [
     work: [
       {
         title: 'Channel Count, Not Horizon Length, Drives Architectural Divergence in Multi-Horizon Urban Growth Prediction',
-        meta: 'GeoAI 2026 · Oral · Published',
+        meta: 'GeoAI 2026, oral',
         href: 'https://zenodo.org/records/20278403',
         external: true,
       },
       {
         title: 'The Channel-Count Confound: A Continental Audit of Multi-horizon Urban Growth Prediction',
-        meta: 'SpatialDI 2026 · Springer LNCS · To appear',
+        meta: 'SpatialDI 2026, Springer LNCS, to appear',
         href: '/publications#channel-count-confound-spatialdi',
       },
       {
-        title: 'Project page: the channel-count study',
-        meta: 'Data, protocol, results, limitations',
+        title: 'Project page for the channel-count study',
+        meta: 'Data, protocol, results and limitations',
         href: '/research/channel-count-confound',
       },
     ],
@@ -72,12 +72,12 @@ const threads: Thread[] = [
     work: [
       {
         title: 'Confident but Unidentifiable: Positivity Limits on Cross-Region Attribution in Geospatial Models',
-        meta: 'Transactions in GIS · Accepted pending revisions',
+        meta: 'Transactions in GIS, accepted pending revisions',
         href: '/research/confident-but-unidentifiable',
       },
       {
         title: 'Cross-Region Source-Invariance in Earth Observation',
-        meta: 'Ongoing · code and results public',
+        meta: 'Ongoing; code and results are public',
         href: '#ongoing',
       },
     ],
@@ -97,12 +97,12 @@ const threads: Thread[] = [
     work: [
       {
         title: 'The Channel-Count Confound: A Continental Audit of Multi-horizon Urban Growth Prediction',
-        meta: 'SpatialDI 2026 · includes the MC Dropout uncertainty analysis',
+        meta: 'SpatialDI 2026, which includes the MC Dropout uncertainty analysis',
         href: '/publications#channel-count-confound-spatialdi',
       },
       {
-        title: 'Project page: calibration results',
-        meta: 'Calibration figure and decile analysis',
+        title: 'Calibration results on the project page',
+        meta: 'The calibration figure and decile analysis',
         href: '/research/channel-count-confound#results',
       },
     ],
@@ -122,200 +122,118 @@ const ongoing = {
 };
 
 function WorkLink({ w }: { w: WorkItem }) {
-  const title = <span className="font-serif text-base text-ink leading-snug underline decoration-rule underline-offset-4 group-hover:text-accent group-hover:decoration-accent transition-colors">{w.title}</span>;
-  const meta = <span className="block mt-0.5 text-xs text-subtle">{w.meta}</span>;
-  if (w.external) {
-    return (
-      <a href={w.href} target="_blank" rel="noopener noreferrer" className="group block">
-        {title}
-        {meta}
-      </a>
-    );
-  }
-  if (w.href.startsWith('#')) {
-    return (
-      <a href={w.href} className="group block">
-        {title}
-        {meta}
-      </a>
-    );
-  }
+  const props = w.external ? { target: '_blank', rel: 'noopener noreferrer' } : {};
+  const anchor = w.external || w.href.startsWith('#');
   return (
-    <Link href={w.href} className="group block">
-      {title}
-      {meta}
-    </Link>
+    <>
+      {anchor ? (
+        <a href={w.href} {...props}>
+          {w.title}
+        </a>
+      ) : (
+        <Link href={w.href}>{w.title}</Link>
+      )}
+      <span className="text-muted">. {w.meta}</span>
+    </>
   );
 }
 
 export default function ResearchPage() {
   return (
-    <div className="py-20 md:py-24">
-      <div className="max-w-5xl mx-auto px-6">
-        <header className="mb-20 max-w-2xl">
-          <p className="overline mb-4">Research</p>
-          <h1 className="font-serif text-4xl md:text-5xl text-ink tracking-tighter leading-[1.1] mb-8 text-balance">
-            When a model looks better, I check whether it actually is.
-          </h1>
-          <p className="text-base text-ink leading-loose mb-6">
-            I work on reliable machine learning for Earth observation: knowing
-            when a model’s measured skill, its explanation of failure, and
-            its uncertainty can be trusted in places and periods it was not
-            trained on. My work runs along three threads. Each one below states
-            the question, what I have found so far, what is still open, and the
-            work behind it.
-          </p>
-          <p className="text-sm text-muted leading-relaxed">
-            The papers themselves, with abstracts and BibTeX, are on{' '}
-            <Link href="/publications" className="link-inline">
-              Publications
-            </Link>
-            . Where I want to take this is in my{' '}
-            <Link href="/research-statement" className="link-inline">
-              research statement
-            </Link>
-            .
-          </p>
-        </header>
+    <div className="max-w-3xl mx-auto px-5 pt-8">
+      <h1 className="text-[32px] leading-tight mb-4">Research</h1>
+      <div className="space-y-3 leading-relaxed mb-10">
+        <p>
+          I work on reliable machine learning for Earth observation: knowing
+          when a model’s measured skill, its explanation of failure, and its
+          uncertainty can be trusted in places and periods it was not trained
+          on. My work runs along three threads. Each one below states the
+          question, what I have found so far, what is still open, and the work
+          behind it.
+        </p>
+        <p>
+          The papers themselves, with abstracts and BibTeX, are on{' '}
+          <Link href="/publications">publications</Link>. Where I want to take
+          this is in my <Link href="/research-statement">research statement</Link>.
+        </p>
+      </div>
 
-        {/* Threads */}
-        <section aria-label="Research threads" className="mb-24">
-          <div className="space-y-20">
-            {threads.map((t) => (
-              <article
-                key={t.n}
-                id={`thread-${t.n}`}
-                className="grid md:grid-cols-[1fr_3fr] gap-6 md:gap-12 pt-12 border-t border-rule first:border-t-0 first:pt-0 scroll-mt-24"
-              >
-                <div>
-                  <p className="overline mb-2">Thread {t.n}</p>
-                  <h2 className="font-serif text-2xl text-ink tracking-tight leading-snug">
-                    {t.title}
-                  </h2>
-                </div>
-                <div>
-                  <p className="font-serif text-xl text-ink leading-snug mb-5 text-pretty">
-                    {t.question}
-                  </p>
-                  <p className="text-base text-ink leading-loose mb-8 text-pretty">
-                    {t.body}
-                  </p>
-
-                  <div className="border-l-2 border-accent pl-5 mb-8">
-                    <p className="overline mb-2">So far</p>
-                    <p className="text-base text-ink leading-relaxed text-pretty">
-                      {t.finding}
-                    </p>
-                  </div>
-
-                  <p className="overline mb-3">Open questions</p>
-                  <ul className="space-y-2.5 mb-8">
-                    {t.open.map((q, i) => (
-                      <li key={i} className="text-sm text-muted leading-relaxed flex gap-3">
-                        <span className="font-mono text-accent flex-shrink-0 tabular">
-                          [{i + 1}]
-                        </span>
-                        <span>{q}</span>
-                      </li>
-                    ))}
-                  </ul>
-
-                  <p className="overline mb-3">Work in this thread</p>
-                  <ul className="space-y-4">
-                    {t.work.map((w) => (
-                      <li key={w.title + w.meta}>
-                        <WorkLink w={w} />
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </article>
-            ))}
-          </div>
-        </section>
-
-        {/* Ongoing work */}
-        <section
-          id="ongoing"
-          aria-labelledby="ongoing-h"
-          className="mb-24 pt-12 border-t border-rule scroll-mt-24"
-        >
-          <div className="grid md:grid-cols-[1fr_3fr] gap-6 md:gap-12">
+      {threads.map((t) => (
+        <section key={t.n} id={`thread-${t.n}`} className="mb-10 scroll-mt-8">
+          <h2 className="section-title">{t.title}</h2>
+          <div className="space-y-3 leading-relaxed">
+            <p>
+              <em>{t.question}</em>
+            </p>
+            <p>{t.body}</p>
+            <p>
+              <strong>So far.</strong> {t.finding}
+            </p>
             <div>
-              <p className="overline mb-2">Ongoing work</p>
-              <h2 id="ongoing-h" className="font-serif text-2xl text-ink tracking-tight leading-snug">
-                Not yet a paper
-              </h2>
+              <p>
+                <strong>Open questions.</strong>
+              </p>
+              <ul className="list-disc pl-6 mt-1 space-y-0.5">
+                {t.open.map((q, i) => (
+                  <li key={i}>{q}</li>
+                ))}
+              </ul>
             </div>
             <div>
-              <span className="badge badge-secondary">Code and results public · 2026</span>
-              <h3 className="mt-3 font-serif text-2xl text-ink tracking-tight leading-snug mb-4">
-                {ongoing.title}
-              </h3>
-              <p className="text-base text-ink leading-loose mb-6 text-pretty">
-                {ongoing.summary}
+              <p>
+                <strong>Work.</strong>
               </p>
-              <ul className="space-y-3 mb-6">
-                {ongoing.results.map((r, i) => (
-                  <li key={i} className="text-sm text-muted leading-relaxed flex gap-3">
-                    <span className="font-mono text-accent flex-shrink-0 tabular">
-                      [{i + 1}]
-                    </span>
-                    <span>{r}</span>
+              <ul className="list-disc pl-6 mt-1 space-y-0.5">
+                {t.work.map((w) => (
+                  <li key={w.title + w.meta}>
+                    <WorkLink w={w} />
                   </li>
                 ))}
               </ul>
-              <a
-                href={ongoing.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="link-inline text-sm"
-              >
-                Code &amp; data &rarr;
-              </a>
             </div>
           </div>
         </section>
+      ))}
 
-        {/* How I work */}
-        <section className="pt-12 border-t border-rule">
-          <div className="grid md:grid-cols-[1fr_3fr] gap-6 md:gap-12">
-            <div>
-              <p className="overline mb-2">Approach</p>
-              <h2 className="font-serif text-2xl text-ink tracking-tight leading-snug">
-                How I work
-              </h2>
-            </div>
-            <div>
-              <p className="text-base text-ink leading-loose text-pretty mb-8">
-                I try to keep the evaluation honest. The holdouts are sealed,
-                the controls are channel-matched, the statistics are checked per
-                tile, and the results that matter come with confidence
-                intervals. Every claim ships with the script that produces it
-                and the result files that redraw the figures, under an open
-                license. The data are real Earth-observation products. The
-                limitations sit next to the results, ranking is kept separate
-                from magnitude, and I try not to claim more than the evidence
-                supports.
-              </p>
-              <p className="text-sm flex flex-wrap gap-x-6 gap-y-2">
-                <Link href="/publications" className="link-inline">
-                  Publications
-                </Link>
-                <Link href="/research-statement" className="link-inline">
-                  Research statement
-                </Link>
-                <Link href="/code" className="link-inline">
-                  Code &amp; data
-                </Link>
-                <a href={asset('/RohanBali_CV.pdf')} download className="link-inline">
-                  CV (PDF)
-                </a>
-              </p>
-            </div>
-          </div>
-        </section>
-      </div>
+      <section id="ongoing" aria-labelledby="ongoing-h" className="mb-10 scroll-mt-8">
+        <h2 id="ongoing-h" className="section-title">
+          Ongoing work (not yet a paper)
+        </h2>
+        <div className="space-y-3 leading-relaxed">
+          <p>
+            <strong>{ongoing.title}.</strong> {ongoing.summary}
+          </p>
+          <ul className="list-disc pl-6 space-y-1">
+            {ongoing.results.map((r, i) => (
+              <li key={i}>{r}</li>
+            ))}
+          </ul>
+          <p>
+            Code and results are public:{' '}
+            <a href={ongoing.href} target="_blank" rel="noopener noreferrer">
+              GitHub repository
+            </a>
+            .
+          </p>
+        </div>
+      </section>
+
+      <section aria-labelledby="how-h">
+        <h2 id="how-h" className="section-title">
+          How I work
+        </h2>
+        <p className="leading-relaxed">
+          I try to keep the evaluation honest. The holdouts are sealed, the
+          controls are channel-matched, the statistics are checked per tile,
+          and the results that matter come with confidence intervals. Every
+          claim ships with the script that produces it and the result files
+          that redraw the figures, under an open license. The data are real
+          Earth-observation products. The limitations sit next to the results,
+          ranking is kept separate from magnitude, and I try not to claim more
+          than the evidence supports. See also <Link href="/code">code &amp; data</Link>{' '}
+          and the <a href={asset('/RohanBali_CV.pdf')}>CV (PDF)</a>.
+        </p>
+      </section>
     </div>
   );
 }

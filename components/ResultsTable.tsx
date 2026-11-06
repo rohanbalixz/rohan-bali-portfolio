@@ -5,26 +5,15 @@ interface ResultsTableProps {
   highlightRow?: number;
 }
 
-export default function ResultsTable({
-  caption,
-  headers,
-  rows,
-  highlightRow,
-}: ResultsTableProps) {
+export default function ResultsTable({ caption, headers, rows, highlightRow }: ResultsTableProps) {
   return (
-    <figure className="my-10">
-      <div className="overflow-x-auto border border-rule rounded-2xl">
-        <table className="w-full text-sm tabular border-collapse">
+    <figure className="my-7 not-prose">
+      <div className="overflow-x-auto">
+        <table className="w-full text-[15px] tabular border-collapse border-y-2 border-ink/70">
           <thead>
-            <tr className="border-b border-rule bg-paper">
+            <tr className="border-b border-ink/40">
               {headers.map((h, i) => (
-                <th
-                  key={i}
-                  scope="col"
-                  className={`px-4 py-3 font-mono text-xs uppercase tracking-wider text-subtle whitespace-nowrap ${
-                    i === 0 ? 'text-left' : 'text-right'
-                  }`}
-                >
+                <th key={i} scope="col" className={`px-3 py-1.5 font-bold whitespace-nowrap ${i === 0 ? 'text-left' : 'text-right'}`}>
                   {h}
                 </th>
               ))}
@@ -32,20 +21,11 @@ export default function ResultsTable({
           </thead>
           <tbody>
             {rows.map((row, ri) => (
-              <tr
-                key={ri}
-                className={`border-b border-rule last:border-b-0 ${
-                  ri === highlightRow ? 'bg-accent/5' : ''
-                }`}
-              >
+              <tr key={ri}>
                 {row.map((cell, ci) => (
                   <td
                     key={ci}
-                    className={`px-4 py-3 ${
-                      ci === 0
-                        ? 'text-ink font-medium'
-                        : 'text-muted text-right whitespace-nowrap'
-                    } ${ri === highlightRow ? 'text-ink' : ''}`}
+                    className={`px-3 py-1 ${ci === 0 ? 'text-left' : 'text-right whitespace-nowrap'} ${ri === highlightRow ? 'font-bold' : ''}`}
                   >
                     {cell}
                   </td>
@@ -55,11 +35,7 @@ export default function ResultsTable({
           </tbody>
         </table>
       </div>
-      {caption && (
-        <figcaption className="mt-3 text-xs font-mono text-subtle leading-relaxed">
-          {caption}
-        </figcaption>
-      )}
+      {caption && <figcaption className="mt-2 text-sm text-muted leading-normal">{caption}</figcaption>}
     </figure>
   );
 }

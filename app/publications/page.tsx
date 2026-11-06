@@ -15,13 +15,13 @@ const other = all.filter((p) => !('featured' in p));
 
 export default function PublicationsPage() {
   return (
-    <div className="py-20 md:py-24">
-      <div className="max-w-4xl mx-auto px-6">
-        <header className="mb-14 max-w-2xl">
-          <h1 className="font-serif text-4xl md:text-5xl text-ink tracking-[-0.025em] leading-[1.1] mb-6 text-balance">
+    <div className="max-w-3xl mx-auto px-5 pt-8">
+      <div>
+        <header className="mb-8">
+          <h1 className="text-[32px] leading-tight mb-4">
             Publications
           </h1>
-          <p className="text-base text-muted leading-loose">
+          <p className="leading-relaxed">
             All sole-authored, with public code and data. Abstracts and BibTeX
             are under each entry. Also on{' '}
             <a
@@ -37,12 +37,12 @@ export default function PublicationsPage() {
         </header>
 
         <section className="mb-16" aria-labelledby="peer-reviewed">
-          <h2 id="peer-reviewed" className="overline mb-8">
+          <h2 id="peer-reviewed" className="section-title">
             Peer-reviewed
           </h2>
           <ol className="space-y-12">
             {peerReviewed.map((p) => (
-              <li key={p.id} id={p.id} className="pt-10 border-t border-rule first:border-t-0 first:pt-0 scroll-mt-24">
+              <li key={p.id} id={p.id} className="scroll-mt-8">
                 <PaperCard paper={p} />
               </li>
             ))}
@@ -50,8 +50,8 @@ export default function PublicationsPage() {
         </section>
 
         {other.length > 0 && (
-          <section aria-labelledby="other-writing" className="pt-10 border-t border-rule">
-            <h2 id="other-writing" className="overline mb-8">
+          <section aria-labelledby="other-writing">
+            <h2 id="other-writing" className="section-title">
               Other writing
             </h2>
             <ol className="space-y-10">

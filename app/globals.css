@@ -6,8 +6,6 @@
   html {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    text-rendering: optimizeLegibility;
-    font-feature-settings: 'kern', 'liga', 'calt', 'ss01';
   }
 
   body {
@@ -27,54 +25,57 @@
     background-position: -1px -1px;
   }
 
-  h1, h2, h3, h4, h5, h6 {
-    @apply font-serif text-ink;
-    font-feature-settings: 'kern', 'liga', 'ss01';
+  h1, h2, h3, h4 {
+    @apply font-sans text-ink font-normal;
   }
 
   a {
-    @apply transition-colors duration-150;
+    @apply text-accent no-underline hover:underline underline-offset-2;
+  }
+
+  code, pre, kbd {
+    @apply font-mono;
   }
 
   :focus-visible {
     outline: 2px solid theme('colors.accent');
-    outline-offset: 3px;
-    border-radius: 2px;
+    outline-offset: 2px;
   }
 
   ::selection {
-    background-color: theme('colors.accent');
-    color: white;
+    background-color: #d6e6fb;
   }
 }
 
 @layer components {
-  .overline {
-    @apply text-xs font-sans font-medium uppercase tracking-widest text-muted;
+  /* small bold run-in heading, e.g. "Open questions" */
+  .label {
+    @apply text-sm font-bold text-ink;
+  }
+
+  /* section heading with a thin rule under it */
+  .section-title {
+    @apply text-xl text-ink font-normal pb-1.5 mb-5 border-b border-rule;
   }
 
   .hairline {
     @apply border-t border-rule;
   }
 
-  .lede {
-    @apply font-serif text-xl leading-relaxed text-ink;
-  }
-
   .prose-research {
-    @apply max-w-prose text-base leading-loose text-ink;
+    @apply max-w-prose text-base leading-relaxed text-ink;
   }
 
   .prose-research p + p {
-    @apply mt-6;
+    @apply mt-4;
   }
 
   .badge {
-    @apply inline-flex items-center text-xs font-sans font-medium uppercase tracking-widest text-subtle;
+    @apply inline text-sm text-muted;
   }
 
   .badge-accent {
-    @apply text-accent;
+    @apply text-highlight font-bold;
   }
 
   .badge-secondary {
@@ -86,23 +87,16 @@
   }
 
   .link-inline {
-    @apply text-accent underline decoration-accent/30 underline-offset-4 hover:decoration-accent;
+    @apply text-accent no-underline hover:underline;
   }
 
   .link-quiet {
-    @apply text-ink hover:text-accent;
+    @apply text-accent no-underline hover:underline;
   }
 
-  .btn-primary {
-    @apply inline-flex items-center gap-1.5 text-base text-accent underline decoration-accent/40 underline-offset-4 transition-colors duration-150 hover:decoration-accent;
-  }
-
+  .btn-primary,
   .btn-secondary {
-    @apply inline-flex items-center gap-1.5 text-base text-ink underline decoration-rule underline-offset-4 transition-colors duration-150 hover:decoration-ink;
-  }
-
-  .card-lift {
-    @apply transition-colors duration-150;
+    @apply text-accent no-underline hover:underline;
   }
 }
 
@@ -121,7 +115,6 @@
   *::before,
   *::after {
     animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }

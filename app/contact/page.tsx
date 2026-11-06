@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { siteMeta, geoaiPaperUrl } from '@/lib/site';
-import SocialLinks from '@/components/SocialLinks';
+import socialLinks from '@/data/social_links.json';
 
 export const metadata: Metadata = {
   title: 'Contact',
@@ -10,13 +10,13 @@ export const metadata: Metadata = {
 
 export default function ContactPage() {
   return (
-    <div className="py-20 md:py-28">
-      <div className="max-w-2xl mx-auto px-6">
-        <header className="mb-16">
-          <h1 className="font-serif text-3xl md:text-4xl text-ink tracking-tight mb-8">
+    <div className="max-w-3xl mx-auto px-5 pt-8">
+      <div>
+        <header className="mb-8">
+          <h1 className="text-[32px] leading-tight mb-4">
             Contact
           </h1>
-          <p className="prose-research">
+          <p className="leading-relaxed">
             Email is the best way to reach me. I am applying to PhD programs
             starting in Fall 2027 and would be glad to hear from potential supervisors and
             collaborators working on evaluation under distribution shift,
@@ -24,58 +24,28 @@ export default function ContactPage() {
           </p>
         </header>
 
-        <section className="border-t border-rule pt-10 mb-12">
-          <div className="grid sm:grid-cols-[1.5fr_1fr_1fr] gap-10">
-            <div>
-              <p className="overline mb-3">Email</p>
-              <a
-                href={`mailto:${siteMeta.email}`}
-                className="text-base text-ink hover:text-accent transition-colors break-words"
-              >
-                {siteMeta.email}
-              </a>
-            </div>
-            <div>
-              <p className="overline mb-3">Location</p>
-              <p className="text-base text-ink">Boston, MA</p>
-              <p className="text-sm text-subtle mt-2">{siteMeta.affiliation}</p>
-            </div>
-            <div>
-              <p className="overline mb-3">Elsewhere</p>
-              <SocialLinks />
-            </div>
-          </div>
-        </section>
-
-        <section className="border-t border-rule pt-10">
-          <p className="overline mb-4">Materials</p>
-          <p className="text-sm text-muted">
-            <Link href="/cv" className="link-inline">
-              CV
-            </Link>
-            <span className="text-rule mx-2">·</span>
-            <Link href="/research-statement" className="link-inline">
-              Research statement
-            </Link>
-            <span className="text-rule mx-2">·</span>
-            <Link href="/publications" className="link-inline">
-              Publications
-            </Link>
-            <span className="text-rule mx-2">·</span>
-            <a
-              href={geoaiPaperUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="link-inline"
-            >
-              GeoAI paper (PDF)
-            </a>
-            <span className="text-rule mx-2">·</span>
-            <Link href="/code" className="link-inline">
-              Code &amp; data
-            </Link>
-          </p>
-        </section>
+        <p className="leading-relaxed">
+          <strong>Email:</strong>{' '}
+          <a href={`mailto:${siteMeta.email}`}>{siteMeta.email}</a>
+          <br />
+          <strong>Location:</strong> Boston, MA
+          <br />
+          <strong>Elsewhere:</strong>{' '}
+          <a href={socialLinks.github} target="_blank" rel="noopener noreferrer">GitHub</a>
+          {' / '}
+          <a href={socialLinks.scholar} target="_blank" rel="noopener noreferrer">Google Scholar</a>
+          {' / '}
+          <a href={socialLinks.orcid} target="_blank" rel="noopener noreferrer">ORCID</a>
+          {' / '}
+          <a href={socialLinks.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        </p>
+        <p className="mt-4 leading-relaxed">
+          Materials: <Link href="/cv">CV</Link> /{' '}
+          <Link href="/research-statement">research statement</Link> /{' '}
+          <Link href="/publications">publications</Link> /{' '}
+          <a href={geoaiPaperUrl} target="_blank" rel="noopener noreferrer">GeoAI paper (PDF)</a> /{' '}
+          <Link href="/code">code &amp; data</Link>
+        </p>
       </div>
     </div>
   );

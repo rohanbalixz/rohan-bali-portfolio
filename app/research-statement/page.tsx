@@ -35,7 +35,7 @@ const studies = [
 const work = [
   {
     title: 'Channel Count, Not Horizon Length, Drives Architectural Divergence in Multi-Horizon Urban Growth Prediction',
-    venue: 'GeoAI 2026, Ghent · Oral',
+    venue: 'GeoAI 2026, Ghent (oral)',
     status: 'Published',
     links: [
       { label: 'Paper', href: geoaiPaperUrl, external: true },
@@ -44,7 +44,7 @@ const work = [
   },
   {
     title: 'The Channel-Count Confound: A Continental Audit of Multi-horizon Urban Growth Prediction',
-    venue: 'SpatialDI 2026 · Springer LNCS',
+    venue: 'SpatialDI 2026, Springer LNCS',
     status: 'Accepted, to appear',
     links: [
       { label: 'Project page', href: '/research/channel-count-confound' },
@@ -71,13 +71,13 @@ const work = [
   },
 ];
 
-const ext = { target: '_blank', rel: 'noopener noreferrer', className: 'link-inline' } as const;
+const ext = { target: '_blank', rel: 'noopener noreferrer' } as const;
 
 function StudyHeading({ id, title, meta }: { id: string; title: string; meta: string }) {
   return (
-    <header id={id} className="mt-16 mb-6 scroll-mt-24">
-      <h2 className="font-serif text-2xl text-ink tracking-tight leading-snug">{title}</h2>
-      <p className="mt-2 text-sm text-muted italic">
+    <header id={id} className="mt-10 mb-3 scroll-mt-8">
+      <h2 className="section-title mb-1">{title}</h2>
+      <p className="text-[15px] text-muted italic">
         <Linkify text={meta} />
       </p>
     </header>
@@ -86,16 +86,11 @@ function StudyHeading({ id, title, meta }: { id: string; title: string; meta: st
 
 export default function ResearchStatementPage() {
   return (
-    <div className="py-20 md:py-24">
-      <div className="max-w-3xl mx-auto px-6">
-        <header className="mb-12">
-          <p className="overline mb-4">Research statement</p>
-          <h1 className="font-serif text-4xl md:text-5xl text-ink tracking-[-0.025em] leading-[1.1] mb-6 text-balance">
-            When can a model of the Earth be trusted where it was not trained?
-          </h1>
-          <p className="text-sm font-mono uppercase tracking-wider text-subtle">
-            Rohan Bali · Independent researcher · November 2026
-          </p>
+    <div className="max-w-3xl mx-auto px-5 pt-8">
+      <div>
+        <header className="mb-8">
+          <h1 className="text-[32px] leading-tight mb-1">Research statement</h1>
+          <p className="text-muted">Rohan Bali, November 2026</p>
         </header>
 
         <article className="prose-research max-w-prose">
@@ -122,8 +117,8 @@ export default function ResearchStatementPage() {
 
         {/* Program diagram */}
         <figure className="my-12" aria-labelledby="program-caption">
-          <div className="border border-accent/40 bg-paper px-5 py-4 text-center">
-            <p className="font-serif text-base text-ink leading-snug">
+          <div className="border border-ink/50 bg-paper px-5 py-3 text-center">
+            <p className="font-bold leading-snug">
               When can an Earth-observation model be trusted where it was not trained?
             </p>
           </div>
@@ -137,7 +132,7 @@ export default function ResearchStatementPage() {
           <div className="grid sm:grid-cols-3 gap-3 mt-3 sm:mt-0">
             {studies.map((s) => (
               <div key={s.label} className="border border-rule bg-paper p-4">
-                <p className="text-sm font-medium text-ink mb-1">{s.label}</p>
+                <p className="text-sm font-bold mb-1">{s.label}</p>
                 <p className="text-sm text-muted leading-snug mb-3">{s.finding}</p>
                 <p className="text-xs text-subtle">{s.venue}</p>
               </div>
@@ -151,7 +146,7 @@ export default function ResearchStatementPage() {
             ))}
           </div>
           <div className="border border-rule bg-paper p-4 mt-3 sm:mt-0">
-            <p className="text-sm font-medium text-ink mb-1">
+            <p className="text-sm font-bold mb-1">
               PhD agenda: evidence checks before deployment
             </p>
             <p className="text-sm text-muted leading-snug">
@@ -161,13 +156,13 @@ export default function ResearchStatementPage() {
               training data.
             </p>
           </div>
-          <figcaption id="program-caption" className="mt-3 text-xs font-mono text-subtle">
+          <figcaption id="program-caption" className="mt-2 text-sm text-muted">
             One question, three studies, one agenda.
           </figcaption>
         </figure>
 
         <article className="prose-research max-w-prose">
-          <h2 className="font-serif text-2xl text-ink tracking-tight leading-snug mt-4 mb-6">
+          <h2 className="section-title mt-10">
             How I came to this question
           </h2>
           <p>
@@ -312,7 +307,7 @@ export default function ResearchStatementPage() {
             are public.
           </p>
 
-          <h2 id="agenda" className="font-serif text-2xl text-ink tracking-tight leading-snug mt-16 mb-6 scroll-mt-24">
+          <h2 id="agenda" className="section-title mt-10">
             Research agenda
           </h2>
           <p>
@@ -348,7 +343,7 @@ export default function ResearchStatementPage() {
             collecting data.
           </p>
 
-          <h2 className="font-serif text-2xl text-ink tracking-tight leading-snug mt-16 mb-6">
+          <h2 className="section-title mt-10">
             How I work
           </h2>
           <p>
@@ -367,60 +362,38 @@ export default function ResearchStatementPage() {
         </article>
 
         {/* Selected work */}
-        <section className="mt-16 pt-10 border-t border-rule" aria-labelledby="selected-work">
-          <h2 id="selected-work" className="font-serif text-2xl text-ink tracking-tight mb-2">
+        <section className="mt-10" aria-labelledby="selected-work">
+          <h2 id="selected-work" className="section-title">
             Selected work
           </h2>
-          <p className="text-sm text-muted italic mb-8">
-            All sole-authored, with public code and data.
-          </p>
-          <ol className="divide-y divide-rule border-y border-rule">
+          <p className="mb-3">All sole-authored, with public code and data.</p>
+          <ol className="list-decimal pl-6 space-y-2 leading-normal">
             {work.map((w) => (
-              <li key={w.title} className="py-5 grid sm:grid-cols-[1fr_auto] gap-x-6 gap-y-2">
-                <div>
-                  <p className="font-serif text-base text-ink leading-snug text-pretty">{w.title}</p>
-                  <p className="mt-1 text-sm text-muted">
-                    <em>{w.venue}</em> · {w.status}
-                  </p>
-                </div>
-                <p className="text-sm flex flex-wrap sm:flex-col sm:items-end gap-x-4 gap-y-1">
-                  {w.links.map((l) =>
-                    l.external ? (
-                      <a key={l.label} href={l.href} {...ext}>
-                        {l.label}
+              <li key={w.title}>
+                <strong>{w.title}.</strong> <em>{w.venue}</em>, {w.status.charAt(0).toLowerCase() + w.status.slice(1)}.{' '}
+                {w.links.map((l, i) => (
+                  <span key={l.label}>
+                    {i > 0 && ' / '}
+                    {l.external ? (
+                      <a href={l.href} {...ext}>
+                        {l.label.toLowerCase()}
                       </a>
                     ) : (
-                      <Link key={l.label} href={l.href} className="link-inline">
-                        {l.label}
-                      </Link>
-                    ),
-                  )}
-                </p>
+                      <Link href={l.href}>{l.label.toLowerCase()}</Link>
+                    )}
+                  </span>
+                ))}
               </li>
             ))}
           </ol>
         </section>
 
-        <section className="mt-12">
-          <p className="overline mb-4">Read further</p>
-          <div className="flex flex-wrap items-center gap-x-6 gap-y-3 text-sm">
-            <Link href="/research" className="link-inline">
-              Research threads
-            </Link>
-            <Link href="/publications" className="link-inline">
-              Publications
-            </Link>
-            <Link href="/code" className="link-inline">
-              Code &amp; data
-            </Link>
-            <a href={asset('/RohanBali_CV.pdf')} download className="link-inline">
-              CV (PDF)
-            </a>
-            <Link href="/#contact" className="link-inline">
-              Contact
-            </Link>
-          </div>
-        </section>
+        <p className="mt-10">
+          See also the <Link href="/research">research threads</Link>,{' '}
+          <Link href="/publications">publications</Link>,{' '}
+          <Link href="/code">code &amp; data</Link> and the{' '}
+          <a href={asset('/RohanBali_CV.pdf')}>CV (PDF)</a>.
+        </p>
       </div>
     </div>
   );

@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next';
-import { Inter, Source_Serif_4, IBM_Plex_Mono } from 'next/font/google';
+import { Lato } from 'next/font/google';
 import './globals.css';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -35,26 +35,12 @@ const personJsonLd = {
   ],
 };
 
-const inter = Inter({
+const lato = Lato({
   subsets: ['latin'],
   display: 'swap',
-  weight: ['400', '500'],
+  weight: ['400', '700'],
   style: ['normal', 'italic'],
-  variable: '--font-sans',
-});
-
-const sourceSerif = Source_Serif_4({
-  subsets: ['latin'],
-  display: 'swap',
-  weight: ['400', '500'],
-  variable: '--font-serif',
-});
-
-const plexMono = IBM_Plex_Mono({
-  subsets: ['latin'],
-  display: 'swap',
-  weight: ['400', '500'],
-  variable: '--font-mono',
+  variable: '--font-lato',
 });
 
 export const metadata: Metadata = {
@@ -112,7 +98,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${sourceSerif.variable} ${plexMono.variable} scroll-smooth`}
+      className={`${lato.variable} scroll-smooth`}
     >
       <body className="antialiased bg-paper text-ink">
         <script
@@ -126,7 +112,7 @@ export default function RootLayout({
           Skip to content
         </a>
         <Navbar />
-        <main id="main" className="min-h-screen pt-20">
+        <main id="main" className="min-h-[70vh]">
           {children}
         </main>
         <Footer />

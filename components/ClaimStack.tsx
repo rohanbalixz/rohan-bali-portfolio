@@ -4,31 +4,12 @@ interface Claim {
   evidence: React.ReactNode;
 }
 
-interface ClaimStackProps {
-  claims: Claim[];
-}
-
-export default function ClaimStack({ claims }: ClaimStackProps) {
+export default function ClaimStack({ claims }: { claims: Claim[] }) {
   return (
-    <ol className="space-y-8">
+    <ol className="list-decimal pl-6 space-y-3">
       {claims.map((c) => (
-        <li
-          key={c.n}
-          className="grid sm:grid-cols-[auto_1fr] gap-4 sm:gap-6 border-t border-rule pt-6"
-        >
-          <div className="font-serif text-3xl text-accent tabular leading-none">
-            {String(c.n).padStart(2, '0')}
-          </div>
-          <div>
-            <p className="overline mb-2">Claim {c.n}</p>
-            <p className="font-serif text-lg text-ink leading-snug mb-3 text-pretty">
-              {c.claim}
-            </p>
-            <div className="text-sm text-muted leading-relaxed">
-              <span className="overline mr-2">Evidence</span>
-              <span>{c.evidence}</span>
-            </div>
-          </div>
+        <li key={c.n}>
+          <strong>{c.claim}</strong> {c.evidence}
         </li>
       ))}
     </ol>

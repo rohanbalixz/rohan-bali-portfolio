@@ -46,10 +46,10 @@ const repos = [
 
 export default function CodePage() {
   return (
-    <div className="py-20 md:py-28">
-      <div className="max-w-2xl mx-auto px-6">
-        <header className="mb-16">
-          <h1 className="font-serif text-3xl md:text-4xl text-ink tracking-tight mb-8">
+    <div className="max-w-3xl mx-auto px-5 pt-8">
+      <div>
+        <header className="mb-8">
+          <h1 className="text-[32px] leading-tight mb-4">
             Code &amp; data
           </h1>
           <p className="prose-research">
@@ -63,21 +63,21 @@ export default function CodePage() {
           </p>
         </header>
 
-        <section className="mb-16">
-          <h2 className="font-serif text-xl text-ink mb-8">Repositories</h2>
-          <ol className="space-y-10">
+        <section className="mb-8">
+          <h2 className="section-title">Repositories</h2>
+          <ol className="space-y-6">
             {repos.map((r) => (
-              <li key={r.title} className="border-t border-rule pt-6">
-                <h3 className="font-serif text-lg text-ink leading-snug mb-2">
+              <li key={r.title}>
+                <h3 className="font-bold leading-snug">
                   {r.title}
                 </h3>
-                <p className="text-sm text-muted leading-relaxed mb-3 text-pretty">
+                <p className="leading-relaxed mt-1 text-pretty">
                   {r.body}
                 </p>
-                <p className="text-sm text-muted">
+                <p className="mt-1">
                   {r.links.map((l, i) => (
                     <span key={l.label}>
-                      {i > 0 && <span className="text-rule mx-2">·</span>}
+                      {i > 0 && ' / '}
                       {l.external ? (
                         <a
                           href={l.href}
@@ -100,8 +100,8 @@ export default function CodePage() {
           </ol>
         </section>
 
-        <section className="mb-16">
-          <h2 className="font-serif text-xl text-ink mb-5">Reproducibility</h2>
+        <section className="mb-8">
+          <h2 className="section-title">Reproducibility</h2>
           <p className="prose-research">
             The Multi-Horizon repository ships under an MIT license with unit
             tests for the models, the per-experiment results files,
@@ -123,7 +123,7 @@ export default function CodePage() {
         </section>
 
         <section>
-          <h2 className="font-serif text-xl text-ink mb-5">Citation</h2>
+          <h2 className="section-title">Citation</h2>
           <CopyableBibtex
             bibtex={`${channelCountBibtex}\n\n${tgisBibtex}`}
           />

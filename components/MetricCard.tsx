@@ -5,24 +5,15 @@ interface MetricCardProps {
   tone?: 'accent' | 'secondary';
 }
 
-export default function MetricCard({
-  value,
-  unit,
-  description,
-  tone = 'accent',
-}: MetricCardProps) {
-  const valueColor = tone === 'secondary' ? 'text-muted' : 'text-ink';
+// A key number with its meaning, rendered as a plain bullet point.
+export default function MetricCard({ value, unit, description }: MetricCardProps) {
   return (
-    <div className="border-t border-ink/80 pt-4">
-      <p className={`font-serif ${valueColor} text-4xl md:text-5xl tabular leading-none tracking-[-0.02em]`}>
+    <li>
+      <strong className="tabular">
         {value}
-        {unit && (
-          <span className="text-xl md:text-2xl text-subtle ml-1">{unit}</span>
-        )}
-      </p>
-      <p className="mt-4 text-sm text-muted leading-relaxed max-w-[28ch]">
-        {description}
-      </p>
-    </div>
+        {unit}
+      </strong>{' '}
+      {description}
+    </li>
   );
 }

@@ -15,11 +15,7 @@ const profileLinks: LinkItem[] = [
   { label: 'LinkedIn', href: socialLinks.linkedin, external: true },
 ];
 
-const ext = {
-  target: '_blank',
-  rel: 'noopener noreferrer',
-  className: 'link-inline',
-} as const;
+const ext = { target: '_blank', rel: 'noopener noreferrer' } as const;
 
 const news = [
   {
@@ -116,151 +112,117 @@ const news = [
 
 const selected = (papers as Paper[]).filter((p) => 'featured' in p);
 
-function InlineLinks({ items }: { items: LinkItem[] }) {
+function SlashLinks({ items }: { items: LinkItem[] }) {
   return (
-    <span className="flex flex-wrap items-center gap-x-2 gap-y-1">
+    <>
       {items
         .filter((l) => l.href)
         .map((l, i) => (
-          <span key={l.label} className="inline-flex items-center gap-x-2 whitespace-nowrap">
-            {i > 0 && (
-              <span className="text-rule" aria-hidden="true">
-                ·
-              </span>
-            )}
+          <span key={l.label}>
+            {i > 0 && ' / '}
             {l.external ? (
-              <a href={l.href} {...ext}>
+              <a href={l.href} target="_blank" rel="noopener noreferrer">
                 {l.label}
               </a>
             ) : (
-              <Link href={l.href} className="link-inline">
-                {l.label}
-              </Link>
+              <Link href={l.href}>{l.label}</Link>
             )}
           </span>
         ))}
-    </span>
+    </>
   );
 }
 
 export default function Home() {
   return (
-    <div className="py-16 md:py-24">
-      <div className="max-w-3xl mx-auto px-6">
-        {/* Header */}
-        <header className="flex flex-col sm:flex-row sm:items-start gap-6 sm:gap-8 mb-10">
-          <figure className="shrink-0">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={asset('/headshot.jpg')}
-              alt="Rohan Bali"
-              width={144}
-              height={144}
-              className="w-28 h-28 sm:w-36 sm:h-36 object-cover border border-rule"
-            />
-          </figure>
-          <div>
-            <h1 className="font-serif text-3xl md:text-4xl text-ink tracking-tight mb-2">
-              Rohan Bali
-            </h1>
-            <p className="text-base text-muted mb-1">{siteMeta.affiliation}</p>
-            <p className="text-base text-ink leading-relaxed mb-4">
-              Reliable machine learning for Earth observation.
-            </p>
-            <p className="text-sm">
-              <InlineLinks items={profileLinks} />
-            </p>
-          </div>
-        </header>
-
-        {/* Bio */}
-        <section className="prose-research space-y-5 mb-16">
-          <p>
-            I study when a model’s measured skill, its explanation of
-            failure, and its uncertainty can be trusted in places and periods it
-            was not trained on. I find evaluation confounds that masquerade as
-            architectural differences, test whether cross-region explanations
-            are identifiable at all when covariate overlap is thin, and measure
-            how well deep-learning uncertainty tracks real error under
-            distribution shift. Each paper ships with its code, data and the
-            result files behind its numbers.
-          </p>
-          <p>
-            I finished my M.S. in Data Science at UMass Dartmouth in May 2026,
-            with a thesis advised by{' '}
-            <a href="https://www.umassd.edu/directory/dyan/" {...ext}>
-              Donghui Yan
-            </a>
-            , and now work as an independent researcher. Before graduate school
-            I was a data scientist at The Parivartan Foundation, an NGO in
-            Shimla, where during the 2023 Himachal Pradesh floods I used
-            satellite and government data to locate about 20 cut-off
-            communities and help direct relief to them. Earlier, I was a
-            software engineer at Capgemini. My{' '}
-            <Link href="/research-statement" className="link-inline">
-              research statement
-            </Link>{' '}
-            says what I want to work on next.
-          </p>
-        </section>
-
-        {/* Publications */}
-        <section id="publications" className="mb-16 scroll-mt-24">
-          <div className="flex items-baseline justify-between mb-2">
-            <h2 className="font-serif text-xl text-ink">Publications</h2>
-            <Link href="/publications" className="text-sm text-muted hover:text-accent">
-              Abstracts &amp; BibTeX
-            </Link>
-          </div>
-          <p className="text-sm text-muted italic mb-8">
-            All sole-authored, with public code and data.
-          </p>
-          <ol className="space-y-10">
-            {selected.map((p) => (
-              <li key={p.id}>
-                <PaperCard paper={p} compact />
-              </li>
-            ))}
-          </ol>
-        </section>
-
-        {/* News */}
-        <section className="mb-16" aria-labelledby="news">
-          <h2 id="news" className="font-serif text-xl text-ink mb-6">
-            News
-          </h2>
-          <ol className="space-y-4">
-            {news.map((n, i) => (
-              <li key={i} className="flex flex-col sm:flex-row sm:gap-6">
-                <span className="shrink-0 text-sm text-subtle tabular sm:w-24 mb-0.5 sm:mb-0 sm:pt-0.5">
-                  {n.date}
-                </span>
-                <p className="text-sm text-ink leading-relaxed flex-1">{n.body}</p>
-              </li>
-            ))}
-          </ol>
-        </section>
-
-        {/* Contact */}
-        <section id="contact" className="scroll-mt-24" aria-labelledby="contact-h">
-          <h2 id="contact-h" className="font-serif text-xl text-ink mb-5">
-            Contact
-          </h2>
-          <div className="prose-research mb-4">
+    <div className="max-w-3xl mx-auto px-5 pt-8">
+      <header className="grid sm:grid-cols-[1fr_180px] gap-x-10 gap-y-6 items-start mb-12">
+        <div className="order-2 sm:order-1">
+          <h1 className="text-[34px] leading-tight text-ink">Rohan Bali</h1>
+          <p className="mt-1 mb-4 text-muted">{siteMeta.affiliation}</p>
+          <div className="space-y-3 leading-relaxed">
             <p>
-              I am applying to PhD programs starting in Fall 2027. If you work on evaluation,
-              generalization, uncertainty, or machine learning for Earth
-              observation, I would be glad to hear from you.
+              I study when a model’s measured skill, its explanation of
+              failure, and its uncertainty can be trusted in places and periods
+              it was not trained on. I find evaluation confounds that
+              masquerade as architectural differences, test whether
+              cross-region explanations are identifiable at all when covariate
+              overlap is thin, and measure how well deep-learning uncertainty
+              tracks real error under distribution shift. Each paper ships with
+              its code, data and the result files behind its numbers.
+            </p>
+            <p>
+              I finished my M.S. in Data Science at UMass Dartmouth in May
+              2026, with a thesis advised by{' '}
+              <a href="https://www.umassd.edu/directory/dyan/" target="_blank" rel="noopener noreferrer">
+                Donghui Yan
+              </a>
+              , and now work as an independent researcher. Before graduate
+              school I was a data scientist at The Parivartan Foundation, an NGO
+              in Shimla, where during the 2023 Himachal Pradesh floods I used
+              satellite and government data to locate about 20 cut-off
+              communities and help direct relief to them. Earlier, I was a
+              software engineer at Capgemini. My{' '}
+              <Link href="/research-statement">research statement</Link> says
+              what I want to work on next.
             </p>
           </div>
-          <p className="text-sm text-muted">
-            <a href={`mailto:${siteMeta.email}`} className="link-inline">
-              {siteMeta.email}
-            </a>
-            {' · '}Boston, MA
+          <p className="mt-4">
+            <SlashLinks items={profileLinks} />
           </p>
-        </section>
-      </div>
+        </div>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={asset('/headshot.jpg')}
+          alt="Rohan Bali"
+          width={180}
+          height={180}
+          className="order-1 sm:order-2 w-36 h-36 sm:w-[180px] sm:h-[180px] rounded-full object-cover"
+        />
+      </header>
+
+      <section id="publications" className="mb-12 scroll-mt-8">
+        <h2 className="section-title">Publications</h2>
+        <p className="mb-7">
+          All sole-authored, with public code and data. Abstracts and BibTeX
+          are on the <Link href="/publications">publications page</Link>.
+        </p>
+        <ol className="space-y-9">
+          {selected.map((p) => (
+            <li key={p.id}>
+              <PaperCard paper={p} compact />
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      <section className="mb-12" aria-labelledby="news">
+        <h2 id="news" className="section-title">
+          News
+        </h2>
+        <table className="w-full text-[15px] leading-normal">
+          <tbody>
+            {news.map((n, i) => (
+              <tr key={i} className="align-top">
+                <td className="w-24 pr-4 py-1.5 whitespace-nowrap text-muted tabular">{n.date}</td>
+                <td className="py-1.5">{n.body}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </section>
+
+      <section id="contact" className="scroll-mt-8" aria-labelledby="contact-h">
+        <h2 id="contact-h" className="section-title">
+          Contact
+        </h2>
+        <p className="leading-relaxed">
+          I am applying to PhD programs starting in Fall 2027. If you work on
+          evaluation, generalization, uncertainty, or machine learning for
+          Earth observation, I would be glad to hear from you:{' '}
+          <a href={`mailto:${siteMeta.email}`}>{siteMeta.email}</a>.
+        </p>
+      </section>
     </div>
   );
 }

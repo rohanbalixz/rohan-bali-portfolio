@@ -12,13 +12,13 @@ export default function ArchivePage() {
   const engineering = projects.filter((p) => p.category === 'engineering');
 
   return (
-    <div className="py-20 md:py-24">
-      <div className="max-w-3xl mx-auto px-6">
-        <header className="mb-16">
-          <h1 className="font-serif text-4xl md:text-5xl text-ink tracking-tighter leading-[1.1] mb-6 text-balance">
+    <div className="max-w-3xl mx-auto px-5 pt-8">
+      <div>
+        <header className="mb-8">
+          <h1 className="text-[32px] leading-tight mb-4">
             Technical projects
           </h1>
-          <p className="text-base text-muted leading-loose max-w-2xl">
+          <p className="leading-relaxed">
             Course and technical projects behind the computing in my research:
             parallel and GPU computing on HPC systems, and geospatial
             visualization. Each one links to its code. For research, see the{' '}
@@ -36,61 +36,41 @@ export default function ArchivePage() {
           </p>
         </header>
 
-        <ul className="divide-y divide-rule">
+        <ul className="space-y-6">
           {engineering.map((p) => (
-            <li key={p.slug} className="py-8">
-              <div className="grid md:grid-cols-[1fr_2.5fr] gap-4 md:gap-10">
-                <div>
-                  <p className="text-xs font-mono uppercase tracking-wider text-subtle mb-2">
-                    {p.tags.join(' · ')}
-                  </p>
-                  {p.github && (
-                    <a
-                      href={p.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-xs font-mono uppercase tracking-wider text-accent hover:text-accent-hover"
-                    >
-                      Code &rarr;
-                    </a>
-                  )}
-                  {'demo' in p && p.demo && (
-                    <a
-                      href={p.demo}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="block mt-1 text-xs font-mono uppercase tracking-wider text-accent hover:text-accent-hover"
-                    >
-                      Live demo &rarr;
-                    </a>
-                  )}
-                </div>
-                <div>
-                  <h2 className="font-serif text-xl text-ink leading-snug mb-2">
+            <li key={p.slug}>
+              <h2 className="font-bold leading-snug">
+                {p.github ? (
+                  <a href={p.github} target="_blank" rel="noopener noreferrer">
                     {p.title}
-                  </h2>
-                  {p.tagline && (
-                    <p className="text-sm text-ink leading-relaxed mb-2">
-                      {p.tagline}
-                    </p>
-                  )}
-                  <p className="text-sm text-muted leading-relaxed mb-3">
-                    {p.description}
-                  </p>
-                  <p className="text-xs font-mono text-subtle">
-                    {p.tech_stack.join(' · ')}
-                  </p>
-                </div>
-              </div>
+                  </a>
+                ) : (
+                  p.title
+                )}
+              </h2>
+              <p className="mt-1 leading-relaxed">{p.description}</p>
+              <p className="mt-1 text-[15px] text-muted">
+                {p.tech_stack.join(', ')}
+                {p.github && (
+                  <>
+                    {' / '}
+                    <a href={p.github} target="_blank" rel="noopener noreferrer">
+                      code
+                    </a>
+                  </>
+                )}
+                {'demo' in p && p.demo && (
+                  <>
+                    {' / '}
+                    <a href={p.demo} target="_blank" rel="noopener noreferrer">
+                      live demo
+                    </a>
+                  </>
+                )}
+              </p>
             </li>
           ))}
         </ul>
-
-        <div className="mt-16 pt-10 border-t border-rule">
-          <Link href="/research" className="link-inline text-sm">
-            &larr; Back to research
-          </Link>
-        </div>
       </div>
     </div>
   );

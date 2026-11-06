@@ -18,15 +18,9 @@ const Section = ({
   title: string;
   children: React.ReactNode;
 }) => (
-  <section className="border-t border-rule pt-12 mt-12">
-    <div className="grid md:grid-cols-[1fr_3fr] gap-6 md:gap-12">
-      <div>
-        <h2 className="font-serif text-2xl text-ink tracking-tight leading-snug">
-          {title}
-        </h2>
-      </div>
-      <div>{children}</div>
-    </div>
+  <section className="mt-9">
+    <h2 className="section-title">{title}</h2>
+    <div>{children}</div>
   </section>
 );
 
@@ -38,9 +32,9 @@ const EntryHeader = ({
   duration?: string;
 }) => (
   <div className="flex flex-wrap justify-between items-baseline gap-2 mb-1">
-    <h3 className="font-serif text-base text-ink leading-snug">{title}</h3>
+    <h3 className="font-bold leading-snug">{title}</h3>
     {duration && (
-      <span className="text-xs font-mono text-subtle">{duration}</span>
+      <span className="text-sm text-muted tabular whitespace-nowrap">{duration}</span>
     )}
   </div>
 );
@@ -74,35 +68,24 @@ const Links = ({ links }: { links?: CvLink[] }) =>
 
 export default function CVPage() {
   return (
-    <div className="py-20 md:py-24">
-      <div className="max-w-4xl mx-auto px-6">
-        <header className="mb-4 max-w-3xl">
-          <p className="overline mb-4">Curriculum vitae</p>
-          <h1 className="font-serif text-4xl md:text-5xl text-ink tracking-tighter leading-[1.1] mb-4">
-            Rohan Bali
-          </h1>
-          <p className="text-xs font-mono uppercase tracking-wider text-subtle mb-6">
-            Boston, MA · {siteMeta.lastUpdated}
+    <div className="max-w-3xl mx-auto px-5 pt-8">
+      <div>
+        <header className="mb-2">
+          <h1 className="text-[32px] leading-tight mb-2">Curriculum vitae</h1>
+          <p className="leading-relaxed">
+            Rohan Bali, Boston, MA ·{' '}
+            <a href={`mailto:${siteMeta.email}`}>{siteMeta.email}</a>
           </p>
-          <p className="text-base text-ink leading-relaxed mb-8 max-w-2xl">
-            {cvData.summary}
+          <p className="mt-1">
+            <a href={asset('/RohanBali_CV.pdf')} download>
+              Download the PDF
+            </a>{' '}
+            <span className="text-muted">({siteMeta.lastUpdated})</span>
           </p>
-          <div className="flex flex-wrap items-center gap-x-5 gap-y-3 text-base">
-            <a
-              href={asset('/RohanBali_CV.pdf')}
-              className="btn-primary"
-              download
-            >
-              Download PDF
-            </a>
-            <a href={`mailto:${siteMeta.email}`} className="link-inline">
-              {siteMeta.email}
-            </a>
-          </div>
         </header>
 
         <Section title="Research interests">
-          <p className="text-base text-ink leading-loose max-w-prose">
+          <p className="text-base text-ink leading-relaxed max-w-prose">
             {cvData.research_interests}
           </p>
         </Section>
@@ -162,7 +145,7 @@ export default function CVPage() {
           <ol className="space-y-6">
             {cvData.publications.map((pub: any, i: number) => (
               <li key={i} className="flex gap-4">
-                <span className="font-mono text-sm text-accent tabular shrink-0 pt-0.5">
+                <span className="text-sm text-accent tabular shrink-0 pt-0.5">
                   [{i + 1}]
                 </span>
                 <div>
@@ -228,7 +211,7 @@ export default function CVPage() {
                   <span className="text-ink">Bali, R.</span> {t.title}{' '}
                   <em>{t.detail}</em>
                 </span>
-                <span className="text-xs font-mono text-subtle">{t.date}</span>
+                <span className="text-sm text-muted tabular whitespace-nowrap">{t.date}</span>
               </li>
             ))}
           </ul>
@@ -253,7 +236,7 @@ export default function CVPage() {
           <dl className="space-y-5">
             {cvData.skills.map((s: any) => (
               <div key={s.label}>
-                <dt className="overline mb-2">{s.label}</dt>
+                <dt className="font-bold">{s.label}</dt>
                 <dd className="text-sm text-ink leading-relaxed">{s.text}</dd>
               </div>
             ))}
@@ -273,15 +256,6 @@ export default function CVPage() {
           </ul>
         </Section>
 
-        <div className="mt-20 pt-10 border-t border-rule text-center">
-          <a
-            href={asset('/RohanBali_CV.pdf')}
-            download
-            className="btn-primary"
-          >
-            Download PDF
-          </a>
-        </div>
       </div>
     </div>
   );

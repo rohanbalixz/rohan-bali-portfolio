@@ -5,7 +5,6 @@ import { asset, geoaiPaperUrl } from '@/lib/site';
 import FlagshipHero from '@/components/FlagshipHero';
 import ResultsTable from '@/components/ResultsTable';
 import ReproChecklist from '@/components/ReproChecklist';
-import StickyToc from '@/components/StickyToc';
 import ClaimStack from '@/components/ClaimStack';
 import MetricCard from '@/components/MetricCard';
 import CopyableBibtex from '@/components/CopyableBibtex';
@@ -17,21 +16,6 @@ export const metadata: Metadata = {
     'One benchmark of multi-horizon urban-growth prediction, two papers: a short paper at GeoAI 2026 (oral) and a full-length paper at SpatialDI 2026 (Springer LNCS). Sealed temporal holdouts, zero-shot transfer to Lagos, and MC Dropout calibration over 8.69M validation pixels.',
 };
 
-const toc = [
-  { id: 'papers', label: 'The two papers' },
-  { id: 'tldr', label: 'Summary' },
-  { id: 'claims', label: 'Claims' },
-  { id: 'problem', label: 'Problem' },
-  { id: 'contribution', label: 'Contribution' },
-  { id: 'methods', label: 'Methods' },
-  { id: 'related', label: 'Related work' },
-  { id: 'results', label: 'Results' },
-  { id: 'repro', label: 'Reproducibility' },
-  { id: 'limitations', label: 'Limitations' },
-  { id: 'next', label: 'What comes next' },
-  { id: 'citation', label: 'Citation' },
-];
-
 const Section = ({
   id,
   title,
@@ -41,35 +25,19 @@ const Section = ({
   title: string;
   children: React.ReactNode;
 }) => (
-  <section
-    id={id}
-    className="border-t border-rule scroll-mt-24"
-  >
-    <div className="py-16 md:py-20">
-      <div className="grid md:grid-cols-[1fr_3fr] gap-6 md:gap-12">
-        <div>
-          <h2 className="font-serif text-2xl text-ink tracking-tight leading-snug">
-            {title}
-          </h2>
-        </div>
-        <div className="prose-research">{children}</div>
-      </div>
-    </div>
+  <section id={id} className="mt-10 scroll-mt-8">
+    <h2 className="section-title">{title}</h2>
+    <div className="prose-research max-w-none">{children}</div>
   </section>
 );
 
 export default function FlagshipPage() {
   return (
-    <article>
+    <article className="max-w-3xl mx-auto px-5 pt-4">
       <FlagshipHero slug="channel-count-confound" variant="page" />
 
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="grid xl:grid-cols-[200px_1fr] gap-12">
-          <aside className="xl:pt-16">
-            <StickyToc items={toc} />
-          </aside>
-
-          <div className="max-w-4xl">
+      <div>
+          <div>
             <Section id="tldr" title="Summary">
               <p>
                 I built a benchmark of six models, a CNN, a U-Net, a ConvLSTM
@@ -179,64 +147,55 @@ export default function FlagshipPage() {
                 none of the benchmarks I examined separates them.
               </p>
 
-              <figure className="my-10">
-                <div className="grid sm:grid-cols-2 gap-4">
-                  <div className="border border-rule bg-surface p-5">
-                    <p className="font-mono text-[10px] uppercase tracking-widest text-subtle leading-none mb-3">
-                      5-year horizon
-                    </p>
-                    <p className="font-serif text-base text-ink leading-snug mb-4">
-                      1975 to 2010 input, target 2015
-                    </p>
-                    <p className="font-serif text-3xl text-accent tabular leading-none">
-                      24{' '}
-                      <span className="text-base text-muted">channels</span>
-                    </p>
-                    <p className="font-mono text-[11px] uppercase tracking-wider text-subtle mt-3 leading-relaxed">
-                      8 epochs · 3 GHSL layers each
-                    </p>
-                  </div>
-                  <div className="border border-rule bg-surface p-5">
-                    <p className="font-mono text-[10px] uppercase tracking-widest text-subtle leading-none mb-3">
-                      10-year horizon
-                    </p>
-                    <p className="font-serif text-base text-ink leading-snug mb-4">
-                      1975 to 2005 input, target 2015
-                    </p>
-                    <p className="font-serif text-3xl text-accent tabular leading-none">
-                      21{' '}
-                      <span className="text-base text-muted">channels</span>
-                    </p>
-                    <p className="font-mono text-[11px] uppercase tracking-wider text-subtle mt-3 leading-relaxed">
-                      7 epochs · 3 GHSL layers each
-                    </p>
-                  </div>
-                </div>
-                <figcaption className="mt-4 text-xs font-mono text-subtle leading-relaxed">
-                  <span className="text-muted">Fig.&nbsp;2.</span> The horizon
-                  changes, but so does the available input stack.
-                  The channel count drops from 24 to 21 between the 5-year and
-                  10-year tasks. Standard benchmark protocols leave this
-                  confound in place.
+              <figure className="my-6 not-prose">
+                <table className="text-[15px] tabular border-collapse border-y-2 border-ink/70">
+                  <thead>
+                    <tr className="border-b border-ink/40">
+                      <th scope="col" className="px-3 py-1.5 text-left font-bold">Horizon</th>
+                      <th scope="col" className="px-3 py-1.5 text-left font-bold">Input years</th>
+                      <th scope="col" className="px-3 py-1.5 text-left font-bold">Target</th>
+                      <th scope="col" className="px-3 py-1.5 text-right font-bold">Epochs</th>
+                      <th scope="col" className="px-3 py-1.5 text-right font-bold">Channels</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td className="px-3 py-1">5-year</td>
+                      <td className="px-3 py-1">1975–2010</td>
+                      <td className="px-3 py-1">2015</td>
+                      <td className="px-3 py-1 text-right">8</td>
+                      <td className="px-3 py-1 text-right">24</td>
+                    </tr>
+                    <tr>
+                      <td className="px-3 py-1">10-year</td>
+                      <td className="px-3 py-1">1975–2005</td>
+                      <td className="px-3 py-1">2015</td>
+                      <td className="px-3 py-1 text-right">7</td>
+                      <td className="px-3 py-1 text-right">21</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <figcaption className="mt-2 text-sm text-muted leading-normal">
+                  Tab. 1. The horizon changes, but so does the available input
+                  stack: each epoch carries 3 GHSL layers, so the channel count
+                  drops from 24 to 21 between the 5-year and 10-year tasks.
+                  Standard benchmark protocols leave this confound in place.
                 </figcaption>
               </figure>
 
-              <h3 className="font-serif text-base text-ink mt-10 mb-4">
+              <h3 className="font-bold mt-6 mb-2">
                 What I controlled
               </h3>
-              <ul className="text-sm text-muted leading-relaxed space-y-2 list-none pl-0">
-                <li className="flex gap-3">
-                  <span className="font-mono text-success flex-shrink-0">✓</span>
+              <ul className="list-disc pl-6 space-y-1">
+                <li>
                   <span>Fixed 2015 prediction target across all horizons</span>
                 </li>
-                <li className="flex gap-3">
-                  <span className="font-mono text-success flex-shrink-0">✓</span>
+                <li>
                   <span>
                     Matched input-channel count via the channel-control CNN
                   </span>
                 </li>
-                <li className="flex gap-3">
-                  <span className="font-mono text-success flex-shrink-0">✓</span>
+                <li>
                   <span>
                     821-tile spatial holdout (
                     <code className="font-mono text-xs">
@@ -245,35 +204,30 @@ export default function FlagshipPage() {
                     )
                   </span>
                 </li>
-                <li className="flex gap-3">
-                  <span className="font-mono text-success flex-shrink-0">✓</span>
+                <li>
                   <span>
                     Sealed 2020 temporal holdout (data downloaded after all
                     model selection)
                   </span>
                 </li>
-                <li className="flex gap-3">
-                  <span className="font-mono text-success flex-shrink-0">✓</span>
+                <li>
                   <span>
                     Zero-shot CONUS to Lagos geographic transfer
                   </span>
                 </li>
-                <li className="flex gap-3">
-                  <span className="font-mono text-success flex-shrink-0">✓</span>
+                <li>
                   <span>
                     MC&nbsp;Dropout calibration on 8.69&nbsp;M validation
                     pixels (20 forward passes)
                   </span>
                 </li>
-                <li className="flex gap-3">
-                  <span className="font-mono text-success flex-shrink-0">✓</span>
+                <li>
                   <span>
                     MSE vs FoM metric analysis (FoM primary, given 89% stable
                     background)
                   </span>
                 </li>
-                <li className="flex gap-3">
-                  <span className="font-mono text-success flex-shrink-0">✓</span>
+                <li>
                   <span>
                     Multi-seed reporting (mean&nbsp;&plusmn;&nbsp;half-range across
                     seeds 0 and 42)
@@ -283,9 +237,8 @@ export default function FlagshipPage() {
             </Section>
 
             <Section id="contribution" title="Contribution">
-              <ol className="space-y-3 list-none pl-0">
-                <li className="flex gap-3">
-                  <span className="font-mono text-accent flex-shrink-0 tabular">[1]</span>
+              <ol className="list-decimal pl-6 space-y-2">
+                <li>
                   <span>
                     <strong className="text-ink">Channel-matched controls.</strong>{' '}
                     Hold the 2015 target fixed and trim inputs from the oldest
@@ -296,8 +249,7 @@ export default function FlagshipPage() {
                     horizon tested.
                   </span>
                 </li>
-                <li className="flex gap-3">
-                  <span className="font-mono text-accent flex-shrink-0 tabular">[2]</span>
+                <li>
                   <span>
                     <strong className="text-ink">Sealed temporal holdout.</strong>{' '}
                     GHSL&nbsp;2020 was downloaded only after all model selection
@@ -305,8 +257,7 @@ export default function FlagshipPage() {
                     on an identical 1.57&nbsp;M-pixel domain.
                   </span>
                 </li>
-                <li className="flex gap-3">
-                  <span className="font-mono text-accent flex-shrink-0 tabular">[3]</span>
+                <li>
                   <span>
                     <strong className="text-ink">Uncertainty calibration.</strong>{' '}
                     MC Dropout (20 forward passes) on 8.69&nbsp;M validation
@@ -314,8 +265,7 @@ export default function FlagshipPage() {
                     &nbsp;&rho;&nbsp;=&nbsp;1.000 across 10 decile bins.
                   </span>
                 </li>
-                <li className="flex gap-3">
-                  <span className="font-mono text-accent flex-shrink-0 tabular">[4]</span>
+                <li>
                   <span>
                     <strong className="text-ink">
                       Zero-shot geographic transfer.
@@ -357,7 +307,7 @@ export default function FlagshipPage() {
                 ) is held out. That gives 821 validation tiles that share no
                 pixels with the training set.
               </p>
-              <figure className="my-10 -mx-2 md:mx-0">
+              <figure className="my-6">
                 <div className="relative w-full aspect-[16/9] bg-white border border-rule overflow-hidden">
                   <Image
                     src={asset('/paper_figures/fig_architecture.png')}
@@ -367,8 +317,8 @@ export default function FlagshipPage() {
                     sizes="(max-width: 768px) 100vw, 768px"
                   />
                 </div>
-                <figcaption className="mt-3 text-xs font-mono text-subtle leading-relaxed">
-                  <span className="text-muted">Fig.&nbsp;3.</span> ConvLSTM +
+                <figcaption className="mt-2 text-sm text-muted leading-normal">
+                  <span>Fig.&nbsp;2.</span> ConvLSTM +
                   MC Dropout architecture. The same decoder is shared across
                   all three deep models; the only variable is how the eight
                   input epochs are encoded (channel concatenation vs.
@@ -394,46 +344,46 @@ export default function FlagshipPage() {
                 surfaces when those models actually differ.
               </p>
 
-              <div className="overflow-x-auto border border-rule rounded-2xl my-10 not-prose">
-                <table className="w-full text-sm tabular border-collapse">
+              <div className="overflow-x-auto my-6 not-prose">
+                <table className="w-full text-[15px] border-collapse border-y-2 border-ink/70">
                   <thead>
-                    <tr className="border-b border-rule bg-paper">
-                      <th scope="col" className="px-4 py-3 font-mono text-xs uppercase tracking-wider text-subtle text-left">
+                    <tr className="border-b border-ink/40">
+                      <th scope="col" className="px-3 py-1.5 text-left font-bold">
                         Reference
                       </th>
-                      <th scope="col" className="px-4 py-3 font-mono text-xs uppercase tracking-wider text-subtle text-left">
+                      <th scope="col" className="px-3 py-1.5 text-left font-bold">
                         Contribution
                       </th>
-                      <th scope="col" className="px-4 py-3 font-mono text-xs uppercase tracking-wider text-subtle text-left">
+                      <th scope="col" className="px-3 py-1.5 text-left font-bold">
                         How this work differs
                       </th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr className="border-b border-rule">
-                      <td className="px-4 py-3 text-ink font-medium align-top">
+                      <td className="px-3 py-1.5 align-top">
                         Pontius et&nbsp;al. 2008
                       </td>
-                      <td className="px-4 py-3 text-muted align-top">
+                      <td className="px-3 py-1.5 align-top">
                         Figure of Merit for comparing land-change models,
                         which scores predicted change rather than stable
                         pixels.
                       </td>
-                      <td className="px-4 py-3 text-muted align-top">
+                      <td className="px-3 py-1.5 align-top">
                         Adopts FoM as the primary metric and pairs it with a
                         per-tile Wilcoxon test and bootstrap CIs, and shows
                         the MSE/FoM inversion in CONUS at 250&nbsp;m.
                       </td>
                     </tr>
                     <tr className="border-b border-rule">
-                      <td className="px-4 py-3 text-ink font-medium align-top">
+                      <td className="px-3 py-1.5 align-top">
                         Clarke et&nbsp;al. 1997 (SLEUTH)
                       </td>
-                      <td className="px-4 py-3 text-muted align-top">
+                      <td className="px-3 py-1.5 align-top">
                         Self-modifying cellular-automaton baseline for urban
                         expansion modeling.
                       </td>
-                      <td className="px-4 py-3 text-muted align-top">
+                      <td className="px-3 py-1.5 align-top">
                         Included as one of the six benchmark models,
                         calibrated on 200 training tiles with TIGER/Line
                         primary roads. Establishes a non-neural baseline
@@ -441,14 +391,14 @@ export default function FlagshipPage() {
                       </td>
                     </tr>
                     <tr className="border-b border-rule">
-                      <td className="px-4 py-3 text-ink font-medium align-top">
+                      <td className="px-3 py-1.5 align-top">
                         Shi et&nbsp;al. 2015 (ConvLSTM)
                       </td>
-                      <td className="px-4 py-3 text-muted align-top">
+                      <td className="px-3 py-1.5 align-top">
                         Original ConvLSTM for spatiotemporal precipitation
                         nowcasting.
                       </td>
-                      <td className="px-4 py-3 text-muted align-top">
+                      <td className="px-3 py-1.5 align-top">
                         Treats ConvLSTM as a candidate architecture rather
                         than a default, and tests whether its recurrence
                         gives a measurable long-horizon advantage. After
@@ -456,31 +406,31 @@ export default function FlagshipPage() {
                       </td>
                     </tr>
                     <tr className="border-b border-rule">
-                      <td className="px-4 py-3 text-ink font-medium align-top">
+                      <td className="px-3 py-1.5 align-top">
                         GHSL R2023A (JRC)
                       </td>
-                      <td className="px-4 py-3 text-muted align-top">
+                      <td className="px-3 py-1.5 align-top">
                         Global Human Settlement Layer built-up, volume, and
                         population products at 100&nbsp;m, used here for 1975
                         to 2020.
                       </td>
-                      <td className="px-4 py-3 text-muted align-top">
+                      <td className="px-3 py-1.5 align-top">
                         Underlying data source for all six models.
                         Reprojected to EPSG:5070 and resampled to
                         250&nbsp;m.
                       </td>
                     </tr>
                     <tr>
-                      <td className="px-4 py-3 text-ink font-medium align-top">
+                      <td className="px-3 py-1.5 align-top">
                         Recent multi-horizon urban-growth literature
                       </td>
-                      <td className="px-4 py-3 text-muted align-top">
+                      <td className="px-3 py-1.5 align-top">
                         CNN vs ConvLSTM comparisons across 5, 10, 20 year
                         horizons show CNN skill falling and ConvLSTM skill
                         rising as the horizon extends, and credit the
                         difference to recurrence.
                       </td>
-                      <td className="px-4 py-3 text-muted align-top">
+                      <td className="px-3 py-1.5 align-top">
                         Shows the comparison is confounded: protocols that
                         vary the horizon also vary the input-channel count.
                         With channels matched, the CNN’s horizon effect
@@ -508,10 +458,10 @@ export default function FlagshipPage() {
             </Section>
 
             <Section id="results" title="Results">
-              <h3 className="font-serif text-base text-ink mb-4">
+              <h3 className="font-bold mt-6 mb-2">
                 Main results
               </h3>
-              <div className="grid sm:grid-cols-2 gap-4 mb-10 not-prose">
+              <ul className="list-disc pl-6 space-y-1 mb-6 not-prose">
                 <MetricCard
                   value="94"
                   unit="%"
@@ -533,7 +483,7 @@ export default function FlagshipPage() {
                   unit="×"
                   description="by which MC Dropout understates the size of errors. Useful for ranking errors, not yet for coverage without post-hoc calibration."
                 />
-              </div>
+              </ul>
 
               <p>
                 <strong className="text-ink">
@@ -546,7 +496,7 @@ export default function FlagshipPage() {
               </p>
 
               <ResultsTable
-                caption="Tab. 1. 2015 spatial block holdout. The CNN leads on FoM with about 6.5× fewer parameters than the ConvLSTM. SLEUTH has 4 calibrated coefficients rather than trained weights."
+                caption="Tab. 2. 2015 spatial block holdout. The CNN leads on FoM with about 6.5× fewer parameters than the ConvLSTM. SLEUTH has 4 calibrated coefficients rather than trained weights."
                 headers={['Model', 'FoM (↑)', 'Params']}
                 rows={[
                   ['SimpleCNN (flat stacking)', '0.702 ± 0.019', '74 K'],
@@ -569,7 +519,7 @@ export default function FlagshipPage() {
               </p>
 
               <ResultsTable
-                caption="Tab. 2. 2020 sealed temporal holdout. SimpleCNN shows the mean with its two seeds in parentheses. Persistence achieves the lowest MSE because 89% of evaluated pixels are stable; this inversion is why FoM is reported as the primary metric for sparse-change spatial tasks."
+                caption="Tab. 3. 2020 sealed temporal holdout. SimpleCNN shows the mean with its two seeds in parentheses. Persistence achieves the lowest MSE because 89% of evaluated pixels are stable; this inversion is why FoM is reported as the primary metric for sparse-change spatial tasks."
                 headers={['Model', 'FoM (↑)', 'MSE (↓)']}
                 rows={[
                   ['SimpleCNN', '0.252 (0.243, 0.260)', '4.90 × 10⁻⁴'],
@@ -582,7 +532,7 @@ export default function FlagshipPage() {
                 highlightRow={0}
               />
 
-              <figure className="my-12 -mx-2 md:mx-0">
+              <figure className="my-6">
                 <div className="relative w-full aspect-[16/8] bg-white border border-rule overflow-hidden">
                   <Image
                     src={asset('/paper_figures/fig_multihorizon.png')}
@@ -592,8 +542,8 @@ export default function FlagshipPage() {
                     sizes="(max-width: 768px) 100vw, 768px"
                   />
                 </div>
-                <figcaption className="mt-3 text-xs font-mono text-subtle leading-relaxed">
-                  <span className="text-muted">Fig.&nbsp;4.</span> Multi-horizon
+                <figcaption className="mt-2 text-sm text-muted leading-normal">
+                  <span>Fig.&nbsp;3.</span> Multi-horizon
                   FoM with the channel-matched CNN control (open markers).
                   With channels matched, almost none of the CNN’s decline
                   remains and the CNN leads at every horizon. The
@@ -611,7 +561,7 @@ export default function FlagshipPage() {
               </p>
 
               <ResultsTable
-                caption="Tab. 3. Per-tile statistical confirmation. The CNN beats the ConvLSTM on 817 of the 821 validation tiles."
+                caption="Tab. 4. Per-tile statistical confirmation. The CNN beats the ConvLSTM on 817 of the 821 validation tiles."
                 headers={['Test', 'Median Δ FoM', 'p-value', 'Mean Δ FoM [95% CI]']}
                 rows={[
                   [
@@ -630,7 +580,7 @@ export default function FlagshipPage() {
                 ]}
               />
 
-              <figure className="my-12 -mx-2 md:mx-0">
+              <figure className="my-6">
                 <div className="relative w-full aspect-[16/9] bg-white border border-rule overflow-hidden">
                   <Image
                     src={asset('/paper_figures/fig_calibration.png')}
@@ -640,8 +590,8 @@ export default function FlagshipPage() {
                     sizes="(max-width: 768px) 100vw, 768px"
                   />
                 </div>
-                <figcaption className="mt-3 text-xs font-mono text-subtle leading-relaxed">
-                  <span className="text-muted">Fig.&nbsp;5.</span>{' '}
+                <figcaption className="mt-2 text-sm text-muted leading-normal">
+                  <span>Fig.&nbsp;4.</span>{' '}
                   MC&nbsp;Dropout calibration. Every higher-uncertainty decile
                   has strictly larger mean actual error than the bin below it.
                   Ranking quality is excellent (r&nbsp;=&nbsp;0.9834); absolute
@@ -770,9 +720,8 @@ export default function FlagshipPage() {
             </Section>
 
             <Section id="next" title="What comes next">
-              <ol className="space-y-3 list-none pl-0">
-                <li className="flex gap-3">
-                  <span className="font-mono text-accent flex-shrink-0 tabular">[1]</span>
+              <ol className="list-decimal pl-6 space-y-2">
+                <li>
                   <span>
                     Geographic transfer at scale. Beyond Lagos, characterize
                     when CONUS-trained spatiotemporal vision retains its
@@ -786,24 +735,21 @@ export default function FlagshipPage() {
                     takes this to 44 cities in four world regions.
                   </span>
                 </li>
-                <li className="flex gap-3">
-                  <span className="font-mono text-accent flex-shrink-0 tabular">[2]</span>
+                <li>
                   <span>
                     Conformal or post-hoc calibration of dropout-based
                     spatiotemporal uncertainty under temporal shift, so that
                     ranking quality becomes coverage quality.
                   </span>
                 </li>
-                <li className="flex gap-3">
-                  <span className="font-mono text-accent flex-shrink-0 tabular">[3]</span>
+                <li>
                   <span>
                     Sequence-effect probes. What temporal information CNN and
                     ConvLSTM models actually encode, preserve, or overweight,
                     beyond channel-count controls.
                   </span>
                 </li>
-                <li className="flex gap-3">
-                  <span className="font-mono text-accent flex-shrink-0 tabular">[4]</span>
+                <li>
                   <span>
                     Benchmark validity as a research target in its own right:
                     more multi-horizon, multi-region, multi-architecture audits
@@ -833,24 +779,12 @@ export default function FlagshipPage() {
               </p>
             </Section>
 
-            <section className="border-t border-rule">
-              <div className="py-12 flex flex-wrap items-center justify-between gap-6">
-                <Link
-                  href="/research"
-                  className="text-xs font-mono uppercase tracking-wider text-muted hover:text-accent"
-                >
-                  &larr; Research
-                </Link>
-                <Link
-                  href="/contact"
-                  className="text-xs font-mono uppercase tracking-wider text-muted hover:text-accent"
-                >
-                  Contact &rarr;
-                </Link>
-              </div>
-            </section>
+            <p className="mt-12 text-[15px]">
+              <Link href="/research">← research</Link>
+              {' · '}
+              <Link href="/research/confident-but-unidentifiable">the identifiability study</Link>
+            </p>
           </div>
-        </div>
       </div>
     </article>
   );

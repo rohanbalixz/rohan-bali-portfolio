@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { asset } from '@/lib/site';
-import StickyToc from '@/components/StickyToc';
 import MetricCard from '@/components/MetricCard';
 import CopyableBibtex from '@/components/CopyableBibtex';
 import { tgisBibtex } from '@/lib/citations';
@@ -16,16 +15,6 @@ export const metadata: Metadata = {
     'When a geospatial model fails in a new region, can the failure be attributed to measured covariates at all? A positivity diagnostic and partial-identification bound, applied to transfer from the contiguous US to 44 cities in four world regions. Accepted pending revisions at Transactions in GIS.',
 };
 
-const toc = [
-  { id: 'summary', label: 'Summary' },
-  { id: 'question', label: 'The question' },
-  { id: 'idea', label: 'The idea' },
-  { id: 'findings', label: 'Findings' },
-  { id: 'implication', label: 'What it implies' },
-  { id: 'repro', label: 'Reproducibility' },
-  { id: 'citation', label: 'Citation' },
-];
-
 const Section = ({
   id,
   title,
@@ -35,15 +24,9 @@ const Section = ({
   title: string;
   children: React.ReactNode;
 }) => (
-  <section id={id} className="border-t border-rule scroll-mt-24">
-    <div className="py-14 md:py-16">
-      <div className="grid md:grid-cols-[1fr_3fr] gap-6 md:gap-12">
-        <h2 className="font-serif text-2xl text-ink tracking-tight leading-snug">
-          {title}
-        </h2>
-        <div className="prose-research">{children}</div>
-      </div>
-    </div>
+  <section id={id} className="mt-10 scroll-mt-8">
+    <h2 className="section-title">{title}</h2>
+    <div className="prose-research max-w-none">{children}</div>
   </section>
 );
 
@@ -58,68 +41,49 @@ const Figure = ({
   n: number;
   children: React.ReactNode;
 }) => (
-  <figure className="my-10">
-    <div className="bg-white border border-rule p-3">
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src={asset(src)} alt={alt} loading="lazy" className="w-full h-auto" />
-    </div>
-    <figcaption className="mt-3 text-xs font-mono text-subtle leading-relaxed">
-      <span className="text-muted">Fig.&nbsp;{n}.</span> {children}
+  <figure className="my-6">
+    {/* eslint-disable-next-line @next/next/no-img-element */}
+    <img src={asset(src)} alt={alt} loading="lazy" className="w-full h-auto bg-white border border-rule p-2" />
+    <figcaption className="mt-2 text-sm text-muted leading-normal">
+      Fig.&nbsp;{n}. {children}
     </figcaption>
   </figure>
 );
 
 export default function ConfidentButUnidentifiablePage() {
   return (
-    <article>
-      <header className="border-t border-rule">
-        <div className="max-w-6xl mx-auto px-6 py-16 md:py-20">
-          <div className="grid md:grid-cols-[1fr_2fr] gap-8 md:gap-16">
-            <div>
-              <p className="overline mb-3">Paper</p>
-              <div className="flex flex-col gap-1.5">
-                <span className="badge badge-accent">Transactions in GIS (Wiley)</span>
-                <span className="badge badge-secondary">Accepted pending revisions</span>
-                <span className="badge">Sole author · Code and data public</span>
-              </div>
-            </div>
-            <div>
-              <h1 className="font-serif text-3xl md:text-4xl text-ink tracking-tight leading-tight mb-4 text-balance">
-                Confident but Unidentifiable: Positivity Limits on Cross-Region
-                Attribution in Geospatial Models
-              </h1>
-              <p className="text-sm text-ink mb-6">
-                <span className="font-medium">Rohan Bali</span>
-              </p>
-              <p className="text-base text-muted leading-relaxed mb-8 text-pretty">
-                When a model trained in one region fails in another, the usual
-                move is to blame a covariate. This paper asks whether the data
-                can support that explanation at all, and finds that, for a
-                confident and well-fit explanation, the answer can be no.
-              </p>
-              <div className="flex flex-wrap gap-x-6 gap-y-3">
-                <a href={REPO} target="_blank" rel="noopener noreferrer" className="btn-primary">
-                  Code &amp; data
-                </a>
-                <span className="btn-secondary opacity-60 cursor-default" aria-disabled="true">
-                  Paper (under revision)
-                </span>
-                <a href="#citation" className="btn-secondary">
-                  BibTeX
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
+    <article className="max-w-3xl mx-auto px-5 pt-4">
+      <header className="pt-6 pb-2">
+        <h1 className="text-[30px] leading-tight text-center text-balance">
+          Confident but Unidentifiable: Positivity Limits on Cross-Region
+          Attribution in Geospatial Models
+        </h1>
+        <p className="mt-2 text-center">
+          <strong>Rohan Bali</strong>
+        </p>
+        <p className="mt-1 text-center text-muted">
+          <em>Transactions in GIS</em> (Wiley), accepted pending revisions
+        </p>
+        <p className="mt-2 text-center">
+          <a href={REPO} target="_blank" rel="noopener noreferrer">
+            code &amp; data
+          </a>
+          {' / '}
+          <span className="text-subtle">paper (under revision)</span>
+          {' / '}
+          <a href="#citation">bibtex</a>
+        </p>
+        <p className="mt-6 leading-relaxed">
+          When a model trained in one region fails in another, the usual move
+          is to blame a covariate. This paper asks whether the data can support
+          that explanation at all, and finds that, for a confident and well-fit
+          explanation, the answer can be no.
+        </p>
       </header>
 
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="grid xl:grid-cols-[200px_1fr] gap-12">
-          <aside className="xl:pt-14">
-            <StickyToc items={toc} />
-          </aside>
-
-          <div className="max-w-4xl">
+      <div>
+        <div>
+          <div>
             <Section id="summary" title="Summary">
               <p>
                 Geospatial models trained in one region routinely fail in
@@ -190,7 +154,7 @@ export default function ConfidentButUnidentifiablePage() {
             </Section>
 
             <Section id="findings" title="Findings">
-              <div className="grid sm:grid-cols-3 gap-4 mb-10 not-prose">
+              <ul className="list-disc pl-6 space-y-1 mb-6 not-prose">
                 <MetricCard
                   value="5.8"
                   unit="%"
@@ -206,7 +170,7 @@ export default function ConfidentButUnidentifiablePage() {
                   value="4 / 4"
                   description="regions where, at the primary setting, the sign of the attributable gap is not identified and the observed gap lies outside the identified set."
                 />
-              </div>
+              </ul>
 
               <p>
                 <strong className="text-ink">Positivity fails, unevenly.</strong>{' '}
@@ -306,20 +270,11 @@ export default function ConfidentButUnidentifiablePage() {
               </p>
             </Section>
 
-            <div className="border-t border-rule py-12 flex flex-wrap items-center justify-between gap-6">
-              <Link
-                href="/research"
-                className="text-xs font-mono uppercase tracking-wider text-muted hover:text-accent"
-              >
-                &larr; Research
-              </Link>
-              <Link
-                href="/research/channel-count-confound"
-                className="text-xs font-mono uppercase tracking-wider text-muted hover:text-accent"
-              >
-                The channel-count study &rarr;
-              </Link>
-            </div>
+            <p className="mt-12 text-[15px]">
+              <Link href="/research">← research</Link>
+              {' · '}
+              <Link href="/research/channel-count-confound">the channel-count study</Link>
+            </p>
           </div>
         </div>
       </div>

@@ -41,7 +41,7 @@ export default function StickyToc({ items }: StickyTocProps) {
       aria-label="On-page contents"
       className="sticky top-24 hidden xl:block"
     >
-      <p className="overline mb-4">Contents</p>
+      <p className="label mb-4">Contents</p>
       <ul className="space-y-2.5 border-l border-rule pl-4">
         {items.map((it) => {
           const active = it.id === activeId;
