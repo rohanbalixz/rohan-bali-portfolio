@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   title:
     'Confident but Unidentifiable: Positivity Limits on Cross-Region Attribution in Geospatial Models',
   description:
-    'When a geospatial model fails in a new region, can the failure be attributed to measured covariates at all? A positivity diagnostic and partial-identification bound, applied to transfer from the contiguous US to 44 cities in four world regions. In major revision at Transactions in GIS.',
+    'When a geospatial model fails in a new region, can the failure be attributed to measured covariates at all? A positivity diagnostic and partial-identification bound, applied to transfer from the contiguous US to 44 cities in four world regions. Accepted pending revisions at Transactions in GIS.',
 };
 
 const toc = [
@@ -79,7 +79,7 @@ export default function ConfidentButUnidentifiablePage() {
               <p className="overline mb-3">Paper</p>
               <div className="flex flex-col gap-1.5">
                 <span className="badge badge-accent">Transactions in GIS (Wiley)</span>
-                <span className="badge badge-secondary">Major revision</span>
+                <span className="badge badge-secondary">Accepted pending revisions</span>
                 <span className="badge">Sole author · Code and data public</span>
               </div>
             </div>
@@ -300,7 +300,7 @@ export default function ConfidentButUnidentifiablePage() {
             <Section id="citation" title="Citation">
               <CopyableBibtex bibtex={tgisBibtex} />
               <p className="mt-6 text-sm text-muted">
-                The paper is in major revision at Transactions in GIS.
+                The paper is accepted pending revisions at Transactions in GIS.
                 This entry will be updated with volume and DOI once it is
                 published.
               </p>

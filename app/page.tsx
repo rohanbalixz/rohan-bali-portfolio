@@ -67,8 +67,8 @@ const news = [
             Attribution in Geospatial Models
           </em>
         </Link>{' '}
-        to Transactions in GIS. It came back with a major-revision decision,
-        and I am revising it now.
+        to Transactions in GIS. It has since been accepted pending revisions,
+        which I am working through now.
       </>
     ),
   },

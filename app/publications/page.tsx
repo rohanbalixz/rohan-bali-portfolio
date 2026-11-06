@@ -10,9 +10,7 @@ export const metadata: Metadata = {
 };
 
 const all = papers as Paper[];
-const inRevision = (p: Paper) => p.state === 'Major revision';
-const accepted = all.filter((p) => 'featured' in p && !inRevision(p));
-const revising = all.filter((p) => 'featured' in p && inRevision(p));
+const peerReviewed = all.filter((p) => 'featured' in p);
 const other = all.filter((p) => !('featured' in p));
 
 export default function PublicationsPage() {
@@ -38,33 +36,18 @@ export default function PublicationsPage() {
           </p>
         </header>
 
-        <section className="mb-16" aria-labelledby="accepted">
-          <h2 id="accepted" className="overline mb-8">
-            Published and accepted
+        <section className="mb-16" aria-labelledby="peer-reviewed">
+          <h2 id="peer-reviewed" className="overline mb-8">
+            Peer-reviewed
           </h2>
           <ol className="space-y-12">
-            {accepted.map((p) => (
+            {peerReviewed.map((p) => (
               <li key={p.id} id={p.id} className="pt-10 border-t border-rule first:border-t-0 first:pt-0 scroll-mt-24">
                 <PaperCard paper={p} />
               </li>
             ))}
           </ol>
         </section>
-
-        {revising.length > 0 && (
-          <section className="mb-16 pt-10 border-t border-rule" aria-labelledby="in-revision">
-            <h2 id="in-revision" className="overline mb-8">
-              In revision
-            </h2>
-            <ol className="space-y-12">
-              {revising.map((p) => (
-                <li key={p.id} id={p.id} className="scroll-mt-24">
-                  <PaperCard paper={p} />
-                </li>
-              ))}
-            </ol>
-          </section>
-        )}
 
         {other.length > 0 && (
           <section aria-labelledby="other-writing" className="pt-10 border-t border-rule">

@@ -66,7 +66,7 @@
       "year": "2026",
       "title": "Confident but unidentifiable: Positivity limits on cross-region attribution in geospatial models.",
       "venue": "Transactions in GIS.",
-      "status": "Major revision.",
+      "status": "Accepted pending revisions.",
       "note": "Derives a positivity diagnostic and partial-identification bound for cross-region attribution; across 44 cities, a confident, well-fit explanation gets the sign of the transfer gap wrong in every degrading model.",
       "links": [
         {

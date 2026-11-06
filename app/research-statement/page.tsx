@@ -23,7 +23,7 @@ const studies = [
   {
     label: 'Explanations of failure',
     finding: 'Only 5.8% of Andes tiles sit in the source support; confident explanations get the sign wrong',
-    venue: 'Transactions in GIS, major revision',
+    venue: 'Transactions in GIS, accepted pending revisions',
   },
   {
     label: 'What transfer depends on',
@@ -54,7 +54,7 @@ const work = [
   {
     title: 'Confident but Unidentifiable: Positivity Limits on Cross-Region Attribution in Geospatial Models',
     venue: 'Transactions in GIS',
-    status: 'Major revision',
+    status: 'Accepted pending revisions',
     links: [
       { label: 'Project page', href: '/research/confident-but-unidentifiable' },
       { label: 'Code', href: REPO_TGIS, external: true },
@@ -242,7 +242,7 @@ export default function ResearchStatementPage() {
           <StudyHeading
             id="explanations"
             title="Explanations the data cannot support"
-            meta="Sole-authored · Transactions in GIS, in major revision"
+            meta="Sole-authored · Transactions in GIS, accepted pending revisions"
           />
           <p>
             When a model trained in one region fails in another, explainable-AI
@@ -273,7 +273,7 @@ export default function ResearchStatementPage() {
             model’s failure has to report whether it is identifiable, not
             only what it attributes. The diagnostic needs only source data and
             target covariates, so it can be run before an explanation is
-            trusted. The paper is in major revision at{' '}
+            trusted. The paper is accepted pending revisions at{' '}
             <em>Transactions in GIS</em>, and its{' '}
             <Link href="/research/confident-but-unidentifiable" className="link-inline">
               analysis
