@@ -72,7 +72,7 @@ const threads: Thread[] = [
     work: [
       {
         title: 'Confident but Unidentifiable: Positivity Limits on Cross-Region Attribution in Geospatial Models',
-        meta: 'Transactions in GIS · Accepted pending revisions',
+        meta: 'Transactions in GIS · Major revision',
         href: '/research/confident-but-unidentifiable',
       },
       {

@@ -10,7 +10,6 @@
       "gpa": "3.77/4.0 (3.86 in CS, data science and mathematics courses)",
       "thesis": "Multi-Horizon Urban Growth Prediction: A Comparative Deep Learning Study",
       "advisor": "Dr. Donghui Yan",
-      "advisor_url": "https://www.umassd.edu/directory/dyan/",
       "coursework": [
         "Advanced Mathematical Statistics (MTH 522), A",
         "Small World Networks (MTH 565), A",
@@ -67,7 +66,7 @@
       "year": "2026",
       "title": "Confident but unidentifiable: Positivity limits on cross-region attribution in geospatial models.",
       "venue": "Transactions in GIS.",
-      "status": "Accepted pending revisions.",
+      "status": "Major revision.",
       "note": "Derives a positivity diagnostic and partial-identification bound for cross-region attribution; across 44 cities, a confident, well-fit explanation gets the sign of the transfer gap wrong in every degrading model.",
       "links": [
         {

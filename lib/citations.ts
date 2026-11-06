@@ -27,7 +27,7 @@ export const tgisBibtex = `@article{bali_confident_2026_tgis,
   title   = {Confident but Unidentifiable: Positivity Limits on Cross-Region Attribution in Geospatial Models},
   journal = {Transactions in GIS},
   year    = {2026},
-  note    = {Accepted pending revisions}
+  note    = {Major revision}
 }`;
 
 export const channelCountBibtex = `${geoaiBibtex}\n\n${spatialdiBibtex}`;

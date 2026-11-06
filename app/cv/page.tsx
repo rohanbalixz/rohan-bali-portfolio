@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { asset, siteMeta } from '@/lib/site';
 import cvData from '@/data/cv.json';
+import { Linkify } from '@/lib/people';
 
 export const metadata: Metadata = {
   title: 'CV',
@@ -128,25 +129,19 @@ export default function CVPage() {
                 {edu.advisor && (
                   <p className="text-sm text-muted leading-relaxed mt-1">
                     <span className="text-ink">Advisor:</span>{' '}
-                    {edu.advisor_url ? (
-                      <a
-                        href={edu.advisor_url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="link-inline"
-                      >
-                        {edu.advisor}
-                      </a>
-                    ) : (
-                      edu.advisor
-                    )}
+                    <Linkify text={edu.advisor} />
                   </p>
                 )}
                 {edu.project && (
                   <p className="text-sm text-muted leading-relaxed mt-1">
                     <span className="text-ink">Minor project:</span>{' '}
                     <em>{edu.project}</em>
-                    {edu.supervisor && <> (Supervisor: {edu.supervisor})</>}
+                    {edu.supervisor && (
+                      <>
+                        {' '}
+                        (Supervisor: <Linkify text={edu.supervisor} />)
+                      </>
+                    )}
                   </p>
                 )}
                 {edu.coursework && (
@@ -198,7 +193,9 @@ export default function CVPage() {
               <li key={i}>
                 <EntryHeader title={r.role} duration={r.duration} />
                 {r.detail && (
-                  <p className="text-sm text-muted italic">{r.detail}</p>
+                  <p className="text-sm text-muted italic">
+                    <Linkify text={r.detail} />
+                  </p>
                 )}
                 <Bullets items={r.bullets} />
               </li>
@@ -267,7 +264,10 @@ export default function CVPage() {
           <ul className="space-y-2">
             {cvData.references.map((r: any) => (
               <li key={r.name} className="text-sm text-muted leading-relaxed">
-                <span className="text-ink">{r.name}</span>, {r.title}
+                <span className="text-ink">
+                  <Linkify text={r.name} />
+                </span>
+                , {r.title}
               </li>
             ))}
           </ul>

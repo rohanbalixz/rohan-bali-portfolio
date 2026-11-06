@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { asset, geoaiPaperUrl } from '@/lib/site';
+import { Linkify } from '@/lib/people';
 
 export const metadata: Metadata = {
   title: 'Research statement',
@@ -22,7 +23,7 @@ const studies = [
   {
     label: 'Explanations of failure',
     finding: 'Only 5.8% of Andes tiles sit in the source support; confident explanations get the sign wrong',
-    venue: 'Transactions in GIS, accepted pending revisions',
+    venue: 'Transactions in GIS, major revision',
   },
   {
     label: 'What transfer depends on',
@@ -53,7 +54,7 @@ const work = [
   {
     title: 'Confident but Unidentifiable: Positivity Limits on Cross-Region Attribution in Geospatial Models',
     venue: 'Transactions in GIS',
-    status: 'Accepted pending revisions',
+    status: 'Major revision',
     links: [
       { label: 'Project page', href: '/research/confident-but-unidentifiable' },
       { label: 'Code', href: REPO_TGIS, external: true },
@@ -76,7 +77,9 @@ function StudyHeading({ id, title, meta }: { id: string; title: string; meta: st
   return (
     <header id={id} className="mt-16 mb-6 scroll-mt-24">
       <h2 className="font-serif text-2xl text-ink tracking-tight leading-snug">{title}</h2>
-      <p className="mt-2 text-sm text-muted italic">{meta}</p>
+      <p className="mt-2 text-sm text-muted italic">
+        <Linkify text={meta} />
+      </p>
     </header>
   );
 }
@@ -239,7 +242,7 @@ export default function ResearchStatementPage() {
           <StudyHeading
             id="explanations"
             title="Explanations the data cannot support"
-            meta="Sole-authored · Transactions in GIS, accepted pending revisions"
+            meta="Sole-authored · Transactions in GIS, in major revision"
           />
           <p>
             When a model trained in one region fails in another, explainable-AI
@@ -270,7 +273,7 @@ export default function ResearchStatementPage() {
             model’s failure has to report whether it is identifiable, not
             only what it attributes. The diagnostic needs only source data and
             target covariates, so it can be run before an explanation is
-            trusted. The paper is accepted pending revisions at{' '}
+            trusted. The paper is in major revision at{' '}
             <em>Transactions in GIS</em>, and its{' '}
             <Link href="/research/confident-but-unidentifiable" className="link-inline">
               analysis

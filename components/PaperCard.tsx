@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { asset } from '@/lib/site';
 import { bibtexById } from '@/lib/citations';
 import CopyableBibtex from '@/components/CopyableBibtex';
+import { Linkify } from '@/lib/people';
 
 export interface PaperLink {
   label: string;
@@ -114,7 +115,10 @@ export default function PaperCard({
         ) : (
           <>
             <p className="mt-0.5 text-sm text-muted leading-relaxed">
-              <em>{paper.venueFull}</em>, {paper.year}
+              <em>
+                <Linkify text={paper.venueFull} />
+              </em>
+              , {paper.year}
             </p>
             {(paper.honor || paper.state || paper.format) && (
               <p className="mt-0.5 text-sm text-muted">
